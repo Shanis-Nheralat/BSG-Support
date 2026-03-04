@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="robots" content="noindex, nofollow">
+  <title>Login | Backsure Global Support</title>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+  
+  <style>
+    /* Color variables */
+    :root {
+      --primary-color: #062767;
+      --primary-color-dark: #051d4a;
+      --primary-color-light: #0b3a84;
+      --accent-color: #b19763;
+      --accent-color-dark: #a48852;
+      --accent-color-light: #c8b08c;
+      --text-light: #ffffff;
+      --text-dark: #333333;
+      --text-gray: #eaeaea;
+      --border-color: rgba(255, 255, 255, 0.1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Open Sans', sans-serif;
+      line-height: 1.6;
+    }
+
+    /* Login specific styles */
+    .login-body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #062767 0%, #0b3a84 100%);
+    }
+    
+    .login-container {
+      max-width: 450px;
+      width: 90%;
+      margin: 30px auto;
+    }
+    
+    .login-box {
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+      overflow: hidden;
+    }
+    
+    .login-logo {
+      text-align: center;
+      padding: 30px 0;
+      background-color: #f8f9fa;
+      border-bottom: 1px solid #eee;
+    }
+    
+    .login-logo img {
+      height: 60px;
+    }
+    
+    .login-form-container {
+      padding: 30px;
+      display: none;
+    }
+    
+    .login-form-container.active {
+      display: block;
+    }
+    
+    .login-form-container h2 {
+      color: #062767;
+      text-align: center;
+      margin-bottom: 10px;
+      font-size: 1.8rem;
+    }
+    
+    .form-subtitle {
+      text-align: center;
+      color: #666;
+      margin-bottom: 25px;
+    }
+    
+    .form-group {
+      margin-bottom: 20px;
+    }
+    
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+    
+    .input-with-icon {
+      position: relative;
+    }
+    
+    .input-with-icon i {
+      position: absolute;
+      left: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #aaa;
+    }
+    
+    .input-with-icon input {
+      padding-left: 40px !important;
+      width: 100%;
+      padding: 12px 15px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+    
+    .form-options {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    
+    .remember-me {
+      display: flex;
+      align-items: center;
+    }
+    
+    .remember-me input {
+      margin-right: 8px;
+    }
+    
+    .forgot-password a {
+      color: #062767;
+      text-decoration: none;
+    }
+    
+    .forgot-password a:hover {
+      text-decoration: underline;
+    }
+    
+    .error-message {
+      color: #e74c3c;
+      margin-top: 5px;
+      margin-bottom: 15px;
+      font-size: 0.9rem;
+      min-height: 20px;
+      display: none;
+    }
+    
+    .error-message.show {
+      display: block;
+    }
+    
+    .success-message {
+      color: #2ecc71;
+      margin-top: 5px;
+      margin-bottom: 15px;
+      font-size: 0.9rem;
+      min-height: 20px;
+      display: none;
+    }
+    
+    .success-message.show {
+      display: block;
+    }
+    
+    .form-actions {
+      margin-top: 20px;
+    }
+    
+    .btn-primary {
+      width: 100%;
+      padding: 12px;
+      background-color: #b19763;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .btn-primary:hover {
+      background-color: #a48852;
+    }
+    
+    .btn-primary i {
+      margin-right: 8px;
+    }
+    
+    .login-footer {
+      text-align: center;
+      margin-top: 20px;
+      color: #666;
+    }
+    
+    .login-footer a {
+      color: #062767;
+      text-decoration: none;
+    }
+    
+    .login-footer a:hover {
+      text-decoration: underline;
+    }
+    
+    .login-footer-main {
+      text-align: center;
+      margin-top: 20px;
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.9rem;
+    }
+    
+    .terms-checkbox {
+      display: flex;
+      align-items: flex-start;
+    }
+    
+    .terms-checkbox input {
+      margin-right: 10px;
+      margin-top: 4px;
+    }
+    
+    .password-strength {
+      margin-top: 10px;
+    }
+    
+    .strength-meter {
+      height: 5px;
+      background-color: #eee;
+      border-radius: 3px;
+      margin-bottom: 5px;
+    }
+    
+    .strength-meter-fill {
+      height: 100%;
+      border-radius: 3px;
+      transition: width 0.3s;
+    }
+    
+    .strength-meter-fill[data-strength="0"] {
+      width: 20%;
+      background-color: #e74c3c;
+    }
+    
+    .strength-meter-fill[data-strength="1"] {
+      width: 40%;
+      background-color: #f39c12;
+    }
+    
+    .strength-meter-fill[data-strength="2"] {
+      width: 60%;
+      background-color: #f1c40f;
+    }
+    
+    .strength-meter-fill[data-strength="3"] {
+      width: 80%;
+      background-color: #2ecc71;
+    }
+    
+    .strength-meter-fill[data-strength="4"] {
+      width: 100%;
+      background-color: #27ae60;
+    }
+    
+    .strength-text {
+      font-size: 0.8rem;
+      color: #777;
+    }
+    
+    /* Modal styles for Terms & Conditions */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 100;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .modal.show {
+      display: flex;
+    }
+    
+    .modal-content {
+      background-color: white;
+      border-radius: 8px;
+      width: 90%;
+      max-width: 600px;
+      max-height: 80vh;
+      overflow-y: auto;
+      padding: 20px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    }
+    
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #eee;
+    }
+    
+    .modal-header h3 {
+      margin: 0;
+      color: var(--primary-color);
+    }
+    
+    .close-modal {
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      line-height: 1;
+      cursor: pointer;
+      color: #777;
+    }
+    
+    .modal-body {
+      margin-bottom: 20px;
+    }
+    
+    .modal-footer {
+      text-align: right;
+      padding-top: 15px;
+      border-top: 1px solid #eee;
+    }
+    
+    .modal-footer button {
+      padding: 8px 16px;
+      background-color: var(--primary-color);
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    
+    @media (max-width: 480px) {
+      .login-container {
+        width: 95%;
+      }
+      
+      .login-form-container {
+        padding: 20px;
+      }
+      
+      .form-options {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      
+      .forgot-password {
+        margin-top: 10px;
+      }
+    }
+  </style>
+</head>
+<body class="login-body">
+  <div class="login-container">
+    <div class="login-box">
+      <!-- Logo -->
+      <div class="login-logo">
+        <img src="Logo.png" alt="Backsure Global Support">
+      </div>
+      
+      <!-- Login Form -->
+      <div class="login-form-container active" id="login-form-container">
+        <h2>Admin Login</h2>
+        <p class="form-subtitle">Sign in to access your dashboard</p>
+        
+        <form id="admin-login-form" action="admin-login-process.php" method="POST">
+          <div class="form-group">
+            <label for="username">Username or Email</label>
+            <div class="input-with-icon">
+              <i class="fas fa-user"></i>
+              <input type="text" id="username" name="username" required>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="password">Password</label>
+            <div class="input-with-icon">
+              <i class="fas fa-lock"></i>
+              <input type="password" id="password" name="password" required>
+            </div>
+          </div>
+          
+          <div class="form-options">
+            <div class="remember-me">
+              <input type="checkbox" id="remember" name="remember">
+              <label for="remember">Remember me</label>
+            </div>
+            <div class="forgot-password">
+              <a href="#" id="forgot-password-link">Forgot Password?</a>
+            </div>
+          </div>
+          
+          <div id="error-message" class="error-message"></div>
+          
+          <div class="form-actions">
+            <button type="submit" class="btn-primary">
+              <i class="fas fa-sign-in-alt"></i> Login
+            </button>
+          </div>
+        </form>
+        
+        <div class="login-footer">
+          <p>Don't have an account? <a href="#" id="signup-link">Sign Up</a></p>
+        </div>
+      </div>
+      
+      <!-- Forgot Password Form -->
+      <div class="login-form-container" id="forgot-password-container">
+        <h2>Reset Password</h2>
+        <p class="form-subtitle">Enter your email address to receive a reset link</p>
+        
+        <form id="forgot-password-form" action="forgot-password-process.php" method="POST">
+          <div class="form-group">
+            <label for="reset-email">Email Address</label>
+            <div class="input-with-icon">
+              <i class="fas fa-envelope"></i>
+              <input type="email" id="reset-email" name="email" required>
+            </div>
+          </div>
+          
+          <div id="forgot-error-message" class="error-message"></div>
+          <div id="forgot-success-message" class="success-message"></div>
+          
+          <div class="form-actions">
+            <button type="submit" class="btn-primary">
+              <i class="fas fa-paper-plane"></i> Send Reset Link
+            </button>
+          </div>
+        </form>
+        
+        <div class="login-footer">
+          <p><a href="#" id="back-to-login-link">Back to Login</a></p>
+        </div>
+      </div>
+      
+      <!-- Sign Up Form -->
+      <div class="login-form-container" id="signup-container">
+        <h2>Create Account</h2>
+        <p class="form-subtitle">Sign up for administrative access</p>
+        
+        <form id="signup-form">
+          <div class="form-group">
+            <label for="fullname">Full Name</label>
+            <div class="input-with-icon">
+              <i class="fas fa-user"></i>
+              <input type="text" id="fullname" name="fullname" required>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="signup-email">Email Address</label>
+            <div class="input-with-icon">
+              <i class="fas fa-envelope"></i>
+              <input type="email" id="signup-email" name="email" required>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="signup-username">Username</label>
+            <div class="input-with-icon">
+              <i class="fas fa-user-tag"></i>
+              <input type="text" id="signup-username" name="username" required>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="signup-password">Password</label>
+            <div class="input-with-icon">
+              <i class="fas fa-lock"></i>
+              <input type="password" id="signup-password" name="password" required>
+            </div>
+            <div class="password-strength">
+              <div class="strength-meter">
+                <div class="strength-meter-fill" data-strength="0"></div>
+              </div>
+              <div class="strength-text">Password strength: <span>Too weak</span></div>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="confirm-password">Confirm Password</label>
+            <div class="input-with-icon">
+              <i class="fas fa-lock"></i>
+              <input type="password" id="confirm-password" name="confirm-password" required>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <div class="terms-checkbox">
+              <input type="checkbox" id="terms" name="terms" required>
+              <label for="terms">I agree to the <a href="#" id="terms-link">Terms &amp; Conditions</a></label>
+            </div>
+          </div>
+          
+          <div id="signup-error-message" class="error-message"></div>
+          <div id="signup-success-message" class="success-message"></div>
+          
+          <div class="form-actions">
+            <button type="submit" class="btn-primary">
+              <i class="fas fa-user-plus"></i> Sign Up
+            </button>
+          </div>
+        </form>
+        
+        <div class="login-footer">
+          <p>Already have an account? <a href="#" id="login-link">Login</a></p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="login-footer-main">
+      <p>&copy; 2025 Backsure Global Support. All rights reserved.</p>
+    </div>
+  </div>
+  
+  <!-- Terms and Conditions Modal -->
+  <div id="terms-modal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Terms and Conditions</h3>
+        <button class="close-modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <h4>1. Acceptance of Terms</h4>
+        <p>By accessing and using the administrative services of Backsure Global Support, you acknowledge that you have read, understood, and agree to be bound by these Terms and Conditions.</p>
+        
+        <h4>2. Account Responsibilities</h4>
+        <p>You are responsible for maintaining the confidentiality of your account information, including your password, and for all activity that occurs under your account. You agree to notify us immediately of any unauthorized use of your account.</p>
+        
+        <h4>3. Acceptable Use</h4>
+        <p>You agree to use the administrative access only for legitimate business purposes related to Backsure Global Support. Any unauthorized use, including but not limited to data mining, scraping, or accessing data not intended for you, is strictly prohibited.</p>
+        
+        <h4>4. Privacy and Data Protection</h4>
+        <p>You acknowledge that you will handle all client and company data in accordance with applicable privacy laws and Backsure Global Support's privacy policies.</p>
+        
+        <h4>5. Intellectual Property</h4>
+        <p>All content, features, and functionality of the administrative interface are the exclusive property of Backsure Global Support and are protected by international copyright, trademark, and other intellectual property laws.</p>
+        
+        <h4>6. Termination</h4>
+        <p>Backsure Global Support reserves the right to terminate or suspend your access to the administrative interface at any time, without prior notice or liability, for any reason.</p>
+        
+        <h4>7. Changes to Terms</h4>
+        <p>Backsure Global Support reserves the right to modify these Terms and Conditions at any time. Your continued use of the administrative interface following the posting of revised Terms and Conditions means you accept and agree to the changes.</p>
+        
+        <h4>8. Limitation of Liability</h4>
+        <p>In no event shall Backsure Global Support be liable for any indirect, incidental, special, consequential or punitive damages, including without limitation, loss of profits, data, use, goodwill, or other intangible losses, resulting from your access to or use of the administrative interface.</p>
+        
+        <h4>9. Governing Law</h4>
+        <p>These Terms and Conditions shall be governed by and construed in accordance with the laws of the jurisdiction in which Backsure Global Support is registered, without regard to its conflict of law provisions.</p>
+      </div>
+      <div class="modal-footer">
+        <button id="accept-terms">I Understand and Accept</button>
+      </div>
+    </div>
+  </div>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Get form containers
+      const loginContainer = document.getElementById('login-form-container');
+      const forgotContainer = document.getElementById('forgot-password-container');
+      const signupContainer = document.getElementById('signup-container');
+      
+      // Get forms
+      const loginForm = document.getElementById('admin-login-form');
+      const forgotForm = document.getElementById('forgot-password-form');
+      const signupForm = document.getElementById('signup-form');
+      
+      // Get navigation links
+      const forgotPasswordLink = document.getElementById('forgot-password-link');
+      const signupLink = document.getElementById('signup-link');
+      const loginLink = document.getElementById('login-link');
+      const backToLoginLink = document.getElementById('back-to-login-link');
+      
+      // Terms and conditions modal elements
+      const termsLink = document.getElementById('terms-link');
+      const termsModal = document.getElementById('terms-modal');
+      const closeModal = termsModal.querySelector('.close-modal');
+      const acceptTermsBtn = document.getElementById('accept-terms');
+      const termsCheckbox = document.getElementById('terms');
+      
+      // Show terms and conditions modal
+      if (termsLink) {
+        termsLink.addEventListener('click', function(e) {
+          e.preventDefault();
+          termsModal.classList.add('show');
+        });
+      }
+      
+      // Close terms modal when clicking the close button
+      if (closeModal) {
+        closeModal.addEventListener('click', function() {
+          termsModal.classList.remove('show');
+        });
+      }
+      
+      // Accept terms and close modal
+      if (acceptTermsBtn) {
+        acceptTermsBtn.addEventListener('click', function() {
+          termsCheckbox.checked = true;
+          termsModal.classList.remove('show');
+        });
+      }
+      
+      // Close modal when clicking outside the content
+      window.addEventListener('click', function(e) {
+        if (e.target === termsModal) {
+          termsModal.classList.remove('show');
+        }
+      });
+      
+      // Function to show a form container
+      function showFormContainer(container) {
+        console.log('Showing container:', container.id);
+        // Hide all containers
+        document.querySelectorAll('.login-form-container').forEach(function(c) {
+          c.classList.remove('active');
+        });
+        
+        // Show selected container
+        container.classList.add('active');
+      }
+      
+      // Switch between forms
+      if (forgotPasswordLink) {
+        forgotPasswordLink.addEventListener('click', function(e) {
+          e.preventDefault();
+          showFormContainer(forgotContainer);
+        });
+      }
+      
+      if (signupLink) {
+        signupLink.addEventListener('click', function(e) {
+          e.preventDefault();
+          console.log('Signup link clicked');
+          showFormContainer(signupContainer);
+        });
+      }
+      
+      if (loginLink) {
+        loginLink.addEventListener('click', function(e) {
+          e.preventDefault();
+          showFormContainer(loginContainer);
+        });
+      }
+      
+      if (backToLoginLink) {
+        backToLoginLink.addEventListener('click', function(e) {
+          e.preventDefault();
+          showFormContainer(loginContainer);
+        });
+      }
+      
+      // Login form submission
+      if (loginForm) {
+        loginForm.addEventListener('submit', function(e) {
+          e.preventDefault();
+          
+          // Clear previous error messages
+          clearErrorMessages();
+          
+          // Get form values
+          const username = document.getElementById('username').value.trim();
+          const password = document.getElementById('password').value.trim();
+          const rememberMe = document.getElementById('remember') ? document.getElementById('remember').checked : false;
+          
+          // Validate form
+          if (!username || !password) {
+            showErrorMessage('error-message', 'Please enter both username and password');
+            return;
+          }
+          
+          // Show loading state
+          const submitBtn = loginForm.querySelector('button[type="submit"]');
+          const originalText = submitBtn.innerHTML;
+          submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Logging in...';
+          submitBtn.disabled = true;
+          
+          // Simulate login (for demo)
+          setTimeout(() => {
+            // Demo credentials (for testing)
+            if ((username === 'admin' && password === 'admin123') || 
+                (username === 'admin@example.com' && password === 'admin123')) {
+              // Success - redirect to dashboard
+              window.location.href = 'admin-dashboard.html';
+            } else {
+              // Error - show message
+              showErrorMessage('error-message', 'Invalid username or password');
+              submitBtn.innerHTML = originalText;
+              submitBtn.disabled = false;
+            }
+          }, 1000);
+        });
+      }
+      
+      // Forgot password form submission
+      if (forgotForm) {
+        forgotForm.addEventListener('submit', function(e) {
+          e.preventDefault();
+          
+          // Clear previous messages
+          clearErrorMessages();
+          
+          // Get email
+          const email = document.getElementById('reset-email').value.trim();
+          
+          // Validate email
+          if (!email) {
+            showErrorMessage('forgot-error-message', 'Please enter your email address');
+            return;
+          }
+          
+          if (!isValidEmail(email)) {
+            showErrorMessage('forgot-error-message', 'Please enter a valid email address');
+            return;
+          }
+          
+          // Show loading state
+          const submitBtn = forgotForm.querySelector('button[type="submit"]');
+          const originalText = submitBtn.innerHTML;
+          submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+          submitBtn.disabled = true;
+          
+          // Simulate sending reset email (for demo)
+          setTimeout(() => {
+            submitBtn.innerHTML = originalText;
+            submitBtn.disabled = false;
+            
+            // Show success message
+            showSuccessMessage('forgot-success-message', 'Password reset instructions have been sent to your email address. Please check your inbox.');
+            
+            // Clear the form
+            forgotForm.reset();
+          }, 1500);
+        });
+      }
+      
+      // Signup form submission
+      if (signupForm) {
+        signupForm.addEventListener('submit', function(e) {
+          e.preventDefault();
+          
+          // Clear previous messages
+          clearErrorMessages();
+          
+          // Get form values
+          const fullname = document.getElementById('fullname').value.trim();
+          const email = document.getElementById('signup-email').value.trim();
+          const username = document.getElementById('signup-username').value.trim();
+          const password = document.getElementById('signup-password').value.trim();
+          const confirmPassword = document.getElementById('confirm-password').value.trim();
+          const termsAccepted = document.getElementById('terms').checked;
+          
+          // Validate form
+          if (!fullname || !email || !username || !password || !confirmPassword) {
+            showErrorMessage('signup-error-message', 'Please fill in all fields');
+            return;
+          }
+          
+          if (!isValidEmail(email)) {
+            showErrorMessage('signup-error-message', 'Please enter a valid email address');
+            return;
+          }
+          
+          if (password.length < 8) {
+            showErrorMessage('signup-error-message', 'Password must be at least 8 characters long');
+            return;
+          }
+          
+          if (password !== confirmPassword) {
+            showErrorMessage('signup-error-message', 'Passwords do not match');
+            return;
+          }
+          
+          if (!termsAccepted) {
+            showErrorMessage('signup-error-message', 'You must agree to the Terms & Conditions');
+            return;
+          }
+          
+          // Calculate password strength
+          const strength = calculatePasswordStrength(password);
+          if (strength < 2) {
+            showErrorMessage('signup-error-message', 'Please choose a stronger password');
+            return;
+          }
+          
+          // Show loading state
+          const submitBtn = signupForm.querySelector('button[type="submit"]');
+          const originalText = submitBtn.innerHTML;
+          submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Creating Account...';
+          submitBtn.disabled = true;
+          
+          // Simulate account creation (for demo)
+          setTimeout(() => {
+            // Check if username/email exists
+            if (username === 'admin' || email === 'admin@example.com') {
+              showErrorMessage('signup-error-message', 'This username or email is already registered');
+              submitBtn.innerHTML = originalText;
+              submitBtn.disabled = false;
+              return;
+            }
+            
+            // Reset button
+            submitBtn.innerHTML = originalText;
+            submitBtn.disabled = false;
+            
+            // Show success message
+            showSuccessMessage('signup-success-message', 'Account created successfully! A confirmation email has been sent to your email address.');
+            
+            // Clear the form
+            signupForm.reset();
+            
+            // Update password strength
+            updatePasswordStrength('');
+            
+            // Only redirect to login after 3 seconds
+            setTimeout(() => {
+              showFormContainer(loginContainer);
+            }, 3000);
+          }, 1500);
+        });
+      }
+      
+      // Password strength meter
+      const passwordInput = document.getElementById('signup-password');
+      if (passwordInput) {
+        passwordInput.addEventListener('input', function() {
+          const password = this.value;
+          updatePasswordStrength(password);
+        });
+      }
+    });
+
+    // Utility functions
+    function clearErrorMessages() {
+      const errorMessages = document.querySelectorAll('.error-message');
+      const successMessages = document.querySelectorAll('.success-message');
+      
+      errorMessages.forEach(msg => {
+        msg.textContent = '';
+        msg.classList.remove('show');
+      });
+      
+      successMessages.forEach(msg => {
+        msg.textContent = '';
+        msg.classList.remove('show');
+      });
+    }
+
+    function showErrorMessage(elementId, message) {
+      const element = document.getElementById(elementId);
+      
+      if (element) {
+        element.textContent = message;
+        element.classList.add('show');
+      }
+    }
+
+    function showSuccessMessage(elementId, message) {
+      const element = document.getElementById(elementId);
+      
+      if (element) {
+        element.textContent = message;
+        element.classList.add('show');
+      }
+    }
+
+    function isValidEmail(email) {
+      const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return re.test(email);
+    }
+
+    function calculatePasswordStrength(password) {
+      let score = 0;
+      
+      // Length check
+      if (password.length >= 8) score++;
+      if (password.length >= 12) score++;
+      
+      // Complexity checks
+      if (/[0-9]/.test(password)) score++;
+      if (/[a-z]/.test(password) && /[A-Z]/.test(password)) score++;
+      if (/[^a-zA-Z0-9]/.test(password)) score++;
+      
+      // Cap score at 4
+      return Math.min(4, score);
+    }
+
+    function updatePasswordStrength(password) {
+      const strengthMeter = document.querySelector('.strength-meter-fill');
+      const strengthText = document.querySelector('.strength-text span');
+      
+      if (!strengthMeter || !strengthText) return;
+      
+      if (!password) {
+        strengthMeter.setAttribute('data-strength', '0');
+        strengthText.textContent = 'Too weak';
+        return;
+      }
+      
+      const score = calculatePasswordStrength(password);
+      
+      // Update strength meter
+      strengthMeter.setAttribute('data-strength', score.toString());
+      
+      // Update strength text
+      switch (score) {
+        case 0:
+          strengthText.textContent = 'Too weak';
+          break;
+        case 1:
+          strengthText.textContent = 'Weak';
+          break;
+        case 2:
+          strengthText.textContent = 'Medium';
+          break;
+        case 3:
+          strengthText.textContent = 'Strong';
+          break;
+        case 4:
+          strengthText.textContent = 'Very strong';
+          break;
+      }
+    }
+  </script>
+</body>
+</html>

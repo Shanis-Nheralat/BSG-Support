@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="robots" content="noindex, nofollow">
+  <title>Marketing Settings | Backsure Global Support</title>
+  <!-- Main Admin CSS -->
+  <link rel="stylesheet" href="admin-dashboard.css" />
+  <!-- Settings-specific CSS -->
+  <link rel="stylesheet" href="admin-settings.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="admin-body" data-user-role="marketing_admin">
+  <div class="admin-container">
+    <!-- Sidebar Navigation (Will be loaded via JS) -->
+    <aside class="admin-sidebar" id="admin-sidebar">
+      <!-- JS will populate this -->
+    </aside>
+    
+    <!-- Main Content Area -->
+    <main class="admin-main">
+      <!-- Top Navigation Bar (Will be loaded via JS) -->
+      <header class="admin-header" id="admin-header">
+        <!-- JS will populate this -->
+      </header>
+      
+      <!-- Settings Content -->
+      <div class="admin-content">
+        <div class="settings-container">
+          <div class="settings-header">
+            <h2><i class="fas fa-bullhorn"></i> Marketing Settings</h2>
+            
+            <div class="settings-actions">
+              <button id="settings-save-btn" class="settings-btn settings-btn-primary">
+                <i class="fas fa-save"></i> Save All Settings
+              </button>
+              <button id="settings-reset-btn" class="settings-btn settings-btn-secondary">
+                <i class="fas fa-undo"></i> Reset to Default
+              </button>
+            </div>
+          </div>
+          
+          <!-- Settings Navigation -->
+          <div class="settings-nav">
+            <div class="settings-nav-item active" data-tab="tab-general">
+              <i class="fas fa-cog"></i> General
+            </div>
+            <div class="settings-nav-item" data-tab="tab-campaigns">
+              <i class="fas fa-rocket"></i> Campaigns
+            </div>
+            <div class="settings-nav-item" data-tab="tab-banners">
+              <i class="fas fa-images"></i> Website Banners
+            </div>
+            <div class="settings-nav-item" data-tab="tab-social">
+              <i class="fas fa-share-alt"></i> Social Media
+            </div>
+            <div class="settings-nav-item" data-tab="tab-social">
+              <i class="fas fa-share-alt"></i> Social Media
+            </div>
+            <div class="settings-nav-item" data-tab="tab-newsletters">
+              <i class="fas fa-envelope-open-text"></i> Newsletters
+            </div>
+            <div class="settings-nav-item" data-tab="tab-analytics">
+              <i class="fas fa-chart-line"></i> Analytics
+            </div>
+            <div class="settings-nav-item" data-tab="tab-export">
+              <i class="fas fa-file-export"></i> Export/Import
+            </div>
+          </div>
+          
+          <!-- General Settings Tab -->
+          <div id="tab-general" class="settings-tab-content active">
+            <section class="settings-section">
+              <h3><i class="fas fa-sliders-h"></i> General Marketing Settings</h3>
+              <p class="settings-description">Configure general settings for the marketing system.</p>
+              
+              <div class="settings-form-group">
+                <label for="marketing-company-name">Company Name</label>
+                <input type="text" id="marketing-company-name" name="marketing_company_name" class="settings-input" value="Backsure Global Support">
+                <small>Company name used in marketing materials.</small>
+              </div>
+              
+              <div class="settings-form-group">
+                <label for="marketing-tagline">Company Tagline</label>
+                <input type="text" id="marketing-tagline" name="marketing_tagline" class="settings-input" value="Supporting Your Business, Globally">
+                <small>Tagline used in marketing materials.</small>
+              </div>
+              
+              <div class="settings-form-group">
+                <label for="marketing-primary-color">Primary Brand Color</label>
+                <div class="settings-color-picker">
+                  <input type="color" id="marketing-primary-color" name="marketing_primary_color" class="settings-color-input" value="#062767">
+                  <input type="text" id="marketing-primary-color-value" class="settings-color-value" value="#062767">
+                </div>
+                <small>Primary color used in marketing materials.</small>
+              </div>
+              
+              <div class="settings-form-group">
+                <label for="marketing-secondary-color">Secondary Brand Color</label>
+                <div class="settings-color-picker">
+                  <input type="color" id="marketing-secondary-color" name="marketing_secondary_color" class="settings-color-input" value="#b19763">
+                  <input type="text" id="marketing-secondary-color-value" class="settings-color-value" value="#b19763">
+                </div>
+                <small>Secondary color used in marketing materials.</small>
+              </div>
+            </section>
+            
+            <section class="settings-section">
+              <h3><i class="fas fa-shield-alt"></i> Default Privacy & Consent Settings</h3>
+              
+              <div class="settings-form-group">
+                <label class="settings-switch-label">
+                  <span>Require Marketing Consent</span>
+                  <label class="settings-switch">
+                    <input type="checkbox" name="marketing_require_consent" data-setting-id="marketing_require_consent" data-initial="true" checked>
+                    <span class="settings-switch-slider"></span>
+                  </label>
+                </label>
+                <small>Require explicit consent before sending marketing communications.</small>
+              </div>
+              
+              <div class="settings-form-group">
+                <label for="marketing-consent-text">Default Consent Text</label>
+                <textarea id="marketing-consent-text" name="marketing_consent_text" class="settings-textarea">I agree to receive marketing communications from Backsure Global Support. I understand that I can unsubscribe at any time by clicking the unsubscribe link in any email.</textarea>
+                <small>Default text used for marketing consent checkboxes.</small>
+              </div>
+              
+              <div class="settings-form-group">
+                <label for="marketing-privacy-notice">Privacy Notice Link</label>
+                <input type="url" id="marketing-privacy-notice" name="marketing_privacy_notice" class="settings-input" value="https://www.backsure.com/privacy-policy">
+                <small>Link to your privacy policy.</small>
+              </div>
+            </section>
+            
+            <section class="settings-section">
+              <h3><i class="fas fa-font"></i> Default Content Settings</h3>
+              
+              <div class="settings-form-group">
+                <label for="marketing-default-font">Default Font Family</label>
+                <select id="marketing-default-font" name="marketing_default_font" class="settings-select">
+                  <option value="Open Sans">Open Sans</option>
+                  <option value="Roboto">Roboto</option>
+                  <option value="Montserrat">Montserrat</option>
+                  <option value="Lato">Lato</option>
+                  <option value="Poppins">Poppins</option>
+                </select>
+                <small>Default font used in marketing materials.</small>
+              </div>
+              
+              <div class="settings-form-group">
+                <label for="marketing-default-image-alt">Default Image Alt Text</label>
+                <input type="text" id="marketing-default-image-alt" name="marketing_default_image_alt" class="settings-input" value="Backsure Global Support - Business Support Services">
+                <small>Default alt text used for images without specific alt text.</small>
+              </div>
+              
+              <div class="settings-form-group">
+                <label for="marketing-default-cta">Default Call to Action</label>
+                <input type="text" id="marketing-default-cta" name="marketing_default_cta" class="settings-input" value="Get in touch today">
+                <small>Default call to action text used in marketing materials.</small>
+              </div>
+            </section>
+          </div>
+          
+          <!-- Campaigns Tab -->
+          <div id="tab-campaigns" class="settings-tab-content">
+            <section class="settings-section">
+              <h3><i class="fas fa-rocket"></i> Campaign Settings</h3>
+              <p class="settings-description">Configure settings for marketing campaigns.</p>
+              
+              <div class="settings-form-group">
+                <label for="marketing-campaign-duration">Default Campaign Duration (days)</label>
+                <input type="number" id="marketing-campaign-duration" name="marketing_campaign_duration" class="settings-input" min="1" max="365" value="30">
+                <small>Default duration in days for new marketing campaigns.</small>
+              </div>
+              
+              <div class="settings-form-group">
+                <label for="marketing-campaign-goal-type">Default Goal Type</label>
+                <select id="marketing-campaign-goal-type" name="marketing_campaign_goal_type" class="settings-select">
+                  <option value="awareness">Brand Awareness</option>
+                  <option value="leads" selected>Lead Generation</option>
+                  <option value="engagement">Engagement</option>
+                  <option value="conversion">Conversion</option>
+                  <option value="retention">Customer Retention</option>
+                </select>
+                <small>Default goal type for new marketing campaigns.</small>
+              </div>
+              
+              <div class="settings-form-group">
+                <label class="settings-switch-label">
+                  <span>Auto-Schedule Social Posts</span>
+                  <label class="settings-switch">
+                    <input type="checkbox" name="marketing_auto_schedule_social" data-setting-id="marketing_auto_schedule_social" data-initial="true" checked>
+                    <span class="settings-switch-slider"></span>
+                  </label>
+                </label>
+                <small>Automatically schedule social media posts for campaigns.</small>
+              </div>
+              
+              <div class="settings-form-group">
+                <label class="settings-switch-label">
+                  <span>Auto-Send Campaign Reports</span>
+                  <label class="settings-switch">
+                    <input type="checkbox" name="marketing_auto_send_reports" data-setting-id="marketing_auto_send_reports" data-initial="true" checked>
+                    <span class="settings-switch-slider"></span>
+                  </label>
+                </label>
+                <small>Automatically send campaign reports when campaigns end.</small>
+              </div>
+            </section>
+            
+            <section class="settings-section">
+              <h3><i class="fas fa-tags"></i> Campaign Categories</h3>
+              
+              <div class="settings-list-container" data-list-id="marketing_campaign_categories">
+                <label>Campaign Categories</label>
+                <div class="settings-list-add">
+                  <input type="text" class="settings-input settings-list-add-input" placeholder="Add new category...">
+                  <button class="settings-btn settings-btn-primary settings-list-add-btn">Add</button>
+                </div>
+                
+                <ul class="settings-list">
+                  <li class="settings-list-item" data-value="Product Launch">
+                    <div class="settings-list-item-content">
+                      <span>Product Launch</span>
+                    </div>
+                    <div class="settings-list-item-actions">
+                      <button class="settings-btn settings-btn-sm settings-list-item-remove" title="Remove">
+                        <i class="fas fa-times"></i>
+                      </button>
+                    </div>
+                  </li>
+                  <li class="settings-list-item" data-value="Event Promotion">
+                    <div class="settings-list-item-content">
+                      <span>Event Promotion</span>
+                    </div>
+                    <div class="settings-list-item-actions">
+                      <button class="settings-btn settings-btn-sm settings-list-item-remove" title="Remove">
+                        <i class="fas fa-times"></i>
+                      </button>
+                    </div>
+                  </li>
+                  <li class="settings-list-item" data-value="Seasonal">
+                    <div class="settings-list-item-content">
+                      <span>Seasonal</span>
+                    </div>
+                    <div class="settings-list-item-actions">
+                      <button class="settings-btn settings-btn-sm settings-list-item-remove" title="Remove">
+                        <i class="fas fa-times"></i>
+                      </button>
+                    </div>
+                  </li>
+                  <li class="settings-list-item" data-value="Lead Generation">
+                    <div class="settings-list-item-content">
+                      <span>Lead Generation</span>
+                    </div>
+                    <div class="settings-list-item-actions">
+                      <button class="settings-btn settings-btn-sm settings-list-item-remove" title="Remove">
+                        <i class="fas fa-times"></i>
+                      </button>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </section>
+            
+            <section class="settings-section">
+              <h3><i class="fas fa-clipboard-list"></i> Campaign Templates</h3>
+              
+              <div class="settings-list-container" data-list-id="marketing_campaign_templates">
+                <label>Campaign Templates</label>
+                
+                <div class="settings-list">
+                  <table class="settings-table">
+                    <thead>
+                      <tr>
+                        <th>Template Name</th>
+                        <th>Category</th>
+                        <th>Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>New Service Announcement</td>
+                        <td>Product Launch</td>
+                        <td>
+                          <div class="table-actions">
+                            <button class="settings-btn settings-btn-sm" title="Edit"><i class="fas fa-edit"></i></button>
+                            <button class="settings-btn settings-btn-sm" title="Delete"><i class="fas fa-trash"></i></button>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Quarterly Newsletter</td>
+                        <td>Seasonal</td>
+                        <td>
+                          <div class="table-actions">
+                            <button class="settings-btn settings-btn-sm" title="Edit"><i class="fas fa-edit"></i></button>
+                            <button class="settings-btn settings-btn-sm" title="Delete"><i class="fas fa-trash"></i></button>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Webinar Promotion</td>
+                        <td>Event Promotion</td>
+                        <td>
+                          <div class="table-actions">
+                            <button class="settings-btn settings-btn-sm" title="Edit"><i class="fas fa-edit"></i></button>
+                            <button class="settings-btn settings-btn-sm" title="Delete"><i class="fas fa-trash"></i></button>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Lead Magnet Campaign</td>
+                        <td>Lead Generation</td>
+                        <td>
+                          <div class="table-actions">
+                            <button class="settings-btn settings-btn-sm" title="Edit"><i class="fas fa-edit"></i></button>
+                            <button class="settings-btn settings-btn-sm" title="Delete"><i class="fas fa-trash"></i></button>
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  
+                  <div style="margin-top: 15px;">
+                    <button class="settings-btn settings-btn-primary">
+                      <i class="fas fa-plus"></i> Add Campaign Template
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+          
+          <!-- Website Banners Tab -->
+          <div id="tab-banners" class="settings-tab-content">
+            <section class="settings-section">
+              <h3><i class="fas fa-images"></i> Website Banner Settings</h3>
+              <p class="settings-description">Configure settings for website banner rotations and displays.</p>
+              
+              <div class="settings-form-group">
+                <label for="marketing-banner-rotation-limit">Homepage Banner Rotation Limit</label>
+                <input type="number" id="marketing-banner-rotation-limit" name="marketing_banner_rotation_limit" class="settings-input" min="1" max="10" value="3">
+                <small>Maximum number of banners to show in the homepage rotation.</small>
+              </div>
+              
+              <div class="settings-form-group">
+                <label for="marketing-banner-transition">Banner Transition Effect</label>
+                <select id="marketing-banner-transition" name="marketing_banner_transition" class="settings-select">
+                  <option value="fade">Fade</option>
+                  <option value="slide" selected>Slide</option>
+                  <option value="zoom">Zoom</option>
+                  <option value="flip">Flip</option>
+                </select>
+                <small>Transition effect between rotating banners.</small>
+              </div>
+              
+              <div class="settings-form-group">
+                <label for="marketing-banner-interval">Banner Transition Interval (seconds)</label>
+                <input type="number" id="marketing-banner-interval" name="marketing_banner_interval" class="settings-input" min="3" max="30" value="5">
+                <small>Time between banner transitions in seconds.</small>
+              </div>
+              
+              <div class="settings-form-group">
+                <label class="settings-switch-label">
+                  <span>Auto-Pause on Hover</span>
+                  <label class="settings-switch">
+                    <input type="checkbox" name="marketing_banner_autopause" data-setting-id="marketing_banner_autopause" data-initial="true" checked>
+                    <span class="settings-switch-slider"></span>
+                  </label>
+                </label>
+                <small>Pause banner rotation when user hovers over the banner.</small>
+              </div>
+              
+              <div class="settings-form-group">
+                <label class="settings-switch-label">
+                  <span>Show Banner Navigation</span>
+                  <label class="settings-switch">
+                    <input type="checkbox" name="marketing_banner_navigation" data-setting-id="marketing_banner_navigation" data-initial="true" checked>
+                    <span class="settings-switch-slider"></span>
+                  </label>
+                </label>
+                <small>Show navigation dots or arrows on the banner.</small>
+              </div>
+            </section>
+            
+            <section class="settings-section">
+              <h3><i class="fas fa-mobile-alt"></i> Responsive Banner Settings</h3>
+              
+              <div class="settings-form-group">
+                <label for="marketing-banner-desktop-height">Desktop Banner Height (px)</label>
+                <input type="number" id="marketing-banner-desktop-height" name="marketing_banner_desktop_height" class="settings-input" min="200" max="800" value="450">
+                <small>Height of banners on desktop devices.</small>
+              </div>
+              
+              <div class="settings-form-group">
+                <label for="marketing-banner-tablet-height">Tablet Banner Height (px)</label>
+                <input type="number" id="marketing-banner-tablet-height" name="marketing_banner_tablet_height" class="settings-input" min="150" max="600" value="350">
+                <small>Height of banners on tablet devices.</small>
+              </div>
+              
+              <div class="settings-form-group">
+                <label for="marketing-banner-mobile-height">Mobile Banner Height (px)</label>
+                <input type="number" id="marketing-banner-mobile-height" name="marketing_banner_mobile_height" class="settings-input" min="100" max="400" value="250">
+                <small>Height of banners on mobile devices.</small>
+              </div>
+              
+              <div class="settings-form-group">
+                <label class="settings-switch-label">
+                  <span>Enable Mobile-Specific Banners</span>
+                  <label class="settings-switch">
+                    <input type="checkbox" name="marketing_banner_mobile_specific" data-setting-id="marketing_banner_mobile_specific" data-initial="true" checked>
+                    <span class="settings-switch-slider"></span>
+                  </label>
+                </label>
+                <small>Allow uploading separate banner images optimized for mobile devices.</small>
+              </div>
+            </section>
+            
+            <section class="settings-section">
+              <h3><i class="fas fa-palette"></i> Banner Design Defaults</h3>
+              
+              <div class="settings-form-group">
+                <label for="marketing-banner-text-color">Default Text Color</label>
+                <div class="settings-color-picker">
+                  <input type="color" id="marketing-banner-text-color" name="marketing_banner_text_color" class="settings-color-input" value="#ffffff">
+                  <input type="text" id="marketing-banner-text-color-value" class="settings-color-value" value="#ffffff">
+                </div>
+                <small>Default color for text overlaying banners.</small>
+              </div>
+              
+              <div class="settings-form-group">
+                <label for="marketing-banner-text-shadow">Text Shadow</label>
+                <select id="marketing-banner-text-shadow" name="marketing_banner_text_shadow" class="settings-select">
+                  <option value="none">None</option>
+                  <option value="light" selected>Light</option>
+                  <option value="medium">Medium</option>
+                  <option value="dark">Dark</option>
+                </select>
+                <small>Shadow effect applied to banner text for better readability.</small>
+              </div>
+              
+              <div class="settings-form-group">
+                <label for="marketing-banner-overlay">Default Banner Overlay</label>
+                <select id="marketing-banner-overlay" name="marketing_banner_overlay" class="settings-select">
+                  <option value="none">None</option>
+                  <option value="light">Light (30% opacity)</option>
+                  <option value="medium" selected>Medium (50% opacity)</option>
+                  <option value="dark">Dark (70% opacity)</option>
+                </select>
+                <small>Default overlay applied to banner images to improve text visibility.</small>
+              </div>
+            </section>
+          </div>
+          
+          <!-- Social Media Tab -->
+          <div id="tab-social" class="settings-tab-content">
+            <section class="settings-section">
+              <h3><i class="fas fa-share-alt"></i> Social Media Settings</h3>
+              <p class="settings-description">Configure settings for social media integration and posting.</p>
+              
+              <div class="settings-form-group">
+                <label>Active Social Media Platforms</label>
+                <div class="settings-checkbox-group">
+                  <label class="settings-checkbox">
+                    <input type="checkbox" name="marketing_social_linkedin" checked>
+                    LinkedIn
+                  </label>
+                  <label class="settings-checkbox">
+                    <input type="checkbox" name="marketing_social_twitter" checked>
+                    Twitter
+                  </label>
+                  <label class="settings-checkbox">
+                    <input type="checkbox" name="marketing_social_facebook" checked>
+                    Facebook
+                  </label>
+                  <label class="settings-checkbox">
+                    <input type="checkbox" name="marketing_social_instagram" checked>
+                    Instagram
+                  </label>
+                  <label class="settings-checkbox">
+                    <input type="checkbox" name="marketing_social_youtube">
+                    YouTube
+                  </label>
+                </div>
+                <small>Select the social media platforms your company is active on.</small>
+              </div>
+            </section>
+            
+            <section class="settings-section">
+              <h3><i class="fas fa-comment"></i> Social Message Templates</h3>
+              
+              <div class="settings-form-group">
+                <label for="marketing-social-default-template">Default Social Message Template</label>
+                <textarea id="marketing-social-default-template" name="marketing_social_default_template" class="settings-textarea">Check out our latest updates on #Backsure! {{post_title}} {{post_url}} #BusinessSupport</textarea>
+                <small>Default template for social media messages. Available variables: {{post_title}}, {{post_url}}, {{post_excerpt}}</small>
+              </div>
+              
+              <div class="settings-form-group">
+                <label for="marketing-social-hashtags">Default Hashtags</label>
+                <input type="text" id="marketing-social-hashtags" name="marketing_social_hashtags" class="settings-input" value="#Backsure #BusinessSupport #GlobalSupport">
+                <small>Default hashtags to append to social media posts.</small>
+              </div>
+              
+              <div class="settings-form-group">
+                <label for="marketing-social-max-length">Twitter Character Limit Warning</label>
+                <input type="number" id="marketing-social-max-length" name="marketing_social_max_length" class="settings-input" min="100" max="280" value="260">
+                <small>Show warning when Twitter posts exceed this character count.</small>
+              </div>
+            </section>
+            
+            <section class="settings-section">
+              <h3><i class="fas fa-clock"></i> Posting Schedule</h3>
+              
+              <div class="settings-form-group">
+                <label for="marketing-social-optimal-times">Optimal Posting Times</label>
+                <select id="marketing-social-optimal-times" name="marketing_social_optimal_times" class="settings-select" multiple>
+                  <option value="8" selected>8:00 AM</option>
+                  <option value="12" selected>12:00 PM</option>
+                  <option value="15">3:00 PM</option>
+                  <option value="17" selected>5:00 PM</option>
+                  <option value="20">8:00 PM</option>
+                </select>
+                <small>Suggested optimal times for scheduling social media posts. Hold Ctrl/Cmd to select multiple.</small>
+              </div>
+              
+              <div class="settings-form-group">
+                <label for="marketing-social-posting-days">Default Posting Days</label>
+                <div class="settings-checkbox-group">
+                  <label class="settings-checkbox">
+                    <input type="checkbox" name="marketing_social_days_monday" checked>
+                    Monday
+                  </label>
+                  <label class="settings-checkbox">
+                    <input type="checkbox" name="marketing_social_days_tuesday" checked>
+                    Tuesday
+                  </label>
+                  <label class="settings-checkbox">
+                    <input type="checkbox" name="marketing_social_days_wednesday" checked>
+                    Wednesday
+                  </label>
+                  <label class="settings-checkbox">
+                    <input type="checkbox" name="marketing_social_days_thursday" checked>
+                    Thursday
+                  </label>
+                  <label class="settings-checkbox">
+                    <input type="checkbox" name="marketing_social_days_friday" checked>
+                    Friday
+                  </label>
+                  <label class="settings-checkbox">
+                    <input type="checkbox" name="marketing_social_days_saturday">
+                    Saturday
+                  </label>
+                  <label class="settings-checkbox">
+                    <input type="checkbox" name="marketing_social_days_sunday">
+                    Sunday
+                  </label>
+                </div>
+                <small>Default days to schedule social media posts.</small>
+              </div>
+              
+              <div class="settings-form-group">
+                <label class="settings-switch-label">
+                  <span>Post Same Content to All Platforms</span>
+                  <label class="settings-switch">
+                    <input type="checkbox" name="marketing_social_cross_post" data-setting-id="marketing_social_cross_post" data-initial="false">
+                    <span class="settings-switch-slider"></span>
+                  </label>
+                </label>
+                <small>Post the same content to all active social media platforms.</small>
+              </div>
+            </section>
+          </div>
+          
+          <!-- Newsletters Tab -->
+          <div id="tab-newsletters" class="settings-tab-content">
+            <section class="settings-section">
+              <h3><i class="fas fa-envelope-open-text"></i> Newsletter Settings</h3>
+              <p class="settings-description">Configure settings for email newsletters and campaigns.</p>
+              
+              <div class="settings-form-group">
+                <label for="marketing-newsletter-sender-name">Sender Name</label>
+                <input type="text" id="marketing-newsletter-sender-name" name="marketing_newsletter_sender_name" class="settings-input" value="Backsure Global Support">
+                <small>Name that will appear as the sender of newsletters.</small>
+              </div>
+              
+              <div class="settings-form-group">
+                <label for="marketing-newsletter-sender-email">Sender Email</label>
+                <input type="email" id="marketing-newsletter-sender-email" name="marketing_newsletter_sender_email" class="settings-input" value="newsletter@backsure.com">
+                <small>Email address that will be used to send newsletters.</small>
+              </div>
+              
+              <div class="settings-form-group">
+                <label for="marketing-newsletter-reply-to">Reply-To Email</label>
+                <input type="email" id="marketing-newsletter-reply-to" name="marketing_newsletter_reply_to" class="settings-input" value="info@backsure.com">
+                <small>Email address for recipients to reply to.</small>
+              </div>
+              
+              <div class="settings-form-group">
+                <label class="settings-switch-label">
+                  <span>Include Company Logo</span>
+                  <label class="settings-switch">
+                    <input type="checkbox" name="marketing_newsletter_include_logo" data-setting-id="marketing_newsletter_include_logo" data-initial="true" checked>
+                    <span class="settings-switch-slider"></span>
+                  </label>
+                </label>
+                <small>Include the company logo in newsletter templates.</small>
+              </div>
+            </section>
+            
+            <section class="settings-section">
+              <h3><i class="fas fa-file-alt"></i> Newsletter Templates</h3>
+              
+              <div class="settings-form-group">
+                <label for="marketing-newsletter-templates">Select Template to Edit</label>
+                <select id="marketing-newsletter-templates" name="marketing_newsletter_template_select" class="settings-select">
+                  <option value="monthly_update">Monthly Update</option>
+                  <option value="product_announcement">Product Announcement</option>
+                  <option value="company_news">Company News</option>
+                  <option value="welcome_email">Welcome Email</option>
+                </select>
+              </div>
+              
+              <div class="settings-form-group">
+                <label for="marketing-newsletter-subject">Email Subject</label>
+                <input type="text" id="marketing-newsletter-subject" name="marketing_newsletter_subject" class="settings-input" value="Monthly Updates from Backsure Global Support">
+              </div>
+              
+              <div class="template-builder" data-template-id="marketing_newsletter_template">
+                <div class="template-toolbar">
+                  <button data-command="h2" title="Heading 2"><i class="fas fa-heading"></i> H2</button>
+                  <button data-command="h3" title="Heading 3"><i class="fas fa-heading"></i> H3</button>
+                  <button data-command="paragraph" title="Paragraph"><i class="fas fa-paragraph"></i></button>
+                  <button data-command="bold" title="Bold"><i class="fas fa-bold"></i></button>
+                  <button data-command="italic" title="Italic"><i class="fas fa-italic"></i></button>
+                  <button data-command="underline" title="Underline"><i class="fas fa-underline"></i></button>
+                  <button data-command="link" title="Insert Link"><i class="fas fa-link"></i></button>
+                  <button data-command="unlink" title="Remove Link"><i class="fas fa-unlink"></i></button>
+                  <button data-command="ul" title="Bulleted List"><i class="fas fa-list-ul"></i></button>
+                  <button data-command="ol" title="Numbered List"><i class="fas fa-list-ol"></i></button>
+                </div>
+                
+                <div class="template-editor" contenteditable="true">
+                  <h2>Monthly Updates from Backsure Global Support</h2>
+                  
+                  <p>Hello {{subscriber_name}},</p>
+                  
+                  <p>We hope this newsletter finds you well. Here are our latest updates and news from Backsure Global Support.</p>
+                  
+                  <h3>Latest News</h3>
+                  <p>{{latest_news}}</p>
+                  
+                  <h3>Featured Services</h3>
+                  <p>{{featured_services}}</p>
+                  
+                  <h3>Upcoming Events</h3>
+                  <p>{{upcoming_events}}</p>
+                  
+                  <p>Thank you for your continued partnership with Backsure Global Support. If you have any questions or would like to learn more about our services, please don't hesitate to contact us.</p>
+                  
+                  <p>Best regards,<br>
+                  The Backsure Global Support Team</p>
+                </div>
+                
+                <div class="template-variables">
+                  <div class="template-variables-title">Insert Variables:</div>
+                  <div class="template-variables-list">
+                    <span class="template-variable" data-variable="subscriber_name">Subscriber Name</span>
+                    <span class="template-variable" data-variable="latest_news">Latest News</span>
+                    <span class="template-variable" data-variable="featured_services">Featured Services</span>
+                    <span class="template-variable" data-variable="upcoming_events">Upcoming Events</span>
+                    <span class="template-variable" data-variable="current_date">Current Date</span>
+                    <span class="template-variable" data-variable="company_name">Company Name</span>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="settings-form-group" style="margin-top: 15px;">
+                <button class="settings-btn settings-btn-primary">
+                  <i class="fas fa-save"></i> Save Template
+                </button>
+                <button class="settings-btn settings-btn-secondary">
+                  <i class="fas fa-envelope"></i> Send Test Email
+                </button>
+              </div>
+            </section>
+            
+            <section class="settings-section">
+              <h3><i class="fas fa-user-check"></i> Subscription Management</h3>
+              
+              <div class="settings-form-group">
+                <label class="settings-switch-label">
+                  <span>Double Opt-In</span>
+                  <label class="settings-switch">
+                    <input type="checkbox" name="marketing_newsletter_double_optin" data-setting-id="marketing_newsletter_double_optin" data-initial="true" checked>
+                    <span class="settings-switch-slider"></span>
+                  </label>
+                </label>
+                <small>Require email confirmation for new newsletter subscriptions.</small>
+              </div>
+              
+              <div class="settings-form-group">
+                <label for="marketing-newsletter-frequency">Default Newsletter Frequency</label>
+                <select id="marketing-newsletter-frequency" name="marketing_newsletter_frequency" class="settings-select">
+                  <option value="weekly">Weekly</option>
+                  <option value="biweekly">Bi-weekly</option>
+                  <option value="monthly" selected>Monthly</option>
+                  <option value="quarterly">Quarterly</option>
+                </select>
+                <small>Default frequency for sending regular newsletters.</small>
+              </div>
+              
+              <div class="settings-form-group">
+                <label for="marketing-unsubscribe-message">Unsubscribe Message</label>
+                <textarea id="marketing-unsubscribe-message" name="marketing_unsubscribe_message" class="settings-textarea">You have successfully unsubscribed from our newsletter. We're sorry to see you go! If you have feedback on how we could improve, please let us know.</textarea>
+                <small>Message shown to users after unsubscribing.</small>
+              </div>
+            </section>
+          </div>
+          
+          <!-- Analytics Tab -->
+          <div id="tab-analytics" class="settings-tab-content">
+            <section class="settings-section">
+              <h3><i class="fas fa-chart-line"></i> Analytics Settings</h3>
+              <p class="settings-description">Configure settings for marketing analytics and reporting.</p>
+              
+              <div class="settings-form-group">
+                <label for="marketing-analytics-tracking-id">Google Analytics Tracking ID</label>
+                <input type="text" id="marketing-analytics-tracking-id" name="marketing_analytics_tracking_id" class="settings-input" value="UA-12345678-1">
+                <small>Your Google Analytics tracking ID.</small>
+              </div>
+              
+              <div class="settings-form-group">
+                <label for="marketing-conversion-tracking">Conversion Tracking Snippet</label>
+                <textarea id="marketing-conversion-tracking" name="marketing_conversion_tracking" class="settings-textarea" style="font-family: monospace; height: 100px;"><!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-XXXX');</script>
+<!-- End Google Tag Manager --></textarea>
+                <small>Tracking code for conversion tracking.</small>
+              </div>
+              
+              <div class="settings-form-group">
+                <label class="settings-switch-label">
+                  <span>Enable Facebook Pixel</span>
+                  <label class="settings-switch">
+                    <input type="checkbox" name="marketing_enable_facebook_pixel" data-setting-id="marketing_enable_facebook_pixel" data-initial="true" checked>
+                    <span class="settings-switch-slider"></span>
+                  </label>
+                </label>
+                <small>Enable Facebook Pixel tracking code on the website.</small>
+              </div>
+              
+              <div class="settings-form-group">
+                <label for="marketing-facebook-pixel-id">Facebook Pixel ID</label>
+                <input type="text" id="marketing-facebook-pixel-id" name="marketing_facebook_pixel_id" class="settings-input" value="123456789012345">
+                <small>Your Facebook Pixel ID.</small>
+              </div>
+            </section>
+            
+            <section class="settings-section">
+              <h3><i class="fas fa-envelope-open-text"></i> Email Analytics</h3>
+              
+              <div class="settings-form-group">
+                <label class="settings-switch-label">
+                  <span>Track Email Opens</span>
+                  <label class="settings-switch">
+                    <input type="checkbox" name="marketing_track_email_opens" data-setting-id="marketing_track_email_opens" data-initial="true" checked>
+                    <span class="settings-switch-slider"></span>
+                  </label>
+                </label>
+                <small>Track when recipients open emails.</small>
+              </div>
+              
+              <div class="settings-form-group">
+                <label class="settings-switch-label">
+                  <span>Track Email Clicks</span>
+                  <label class="settings-switch">
+                    <input type="checkbox" name="marketing_track_email_clicks" data-setting-id="marketing_track_email_clicks" data-initial="true" checked>
+                    <span class="settings-switch-slider"></span>
+                  </label>
+                </label>
+                <small>Track when recipients click links in emails.</small>
+              </div>
+              
+              <div class="settings-form-group">
+                <label for="marketing-email-report-recipients">Analytics Report Recipients</label>
+                <input type="text" id="marketing-email-report-recipients" name="marketing_email_report_recipients" class="settings-input" value="marketing@backsure.com, manager@backsure.com">
+                <small>Email addresses to receive regular analytics reports (comma-separated).</small>
+              </div>
+            </section>
+            
+            <section class="settings-section">
+              <h3><i class="fas fa-file-alt"></i> Custom Reports</h3>
+              
+              <div class="settings-form-group">
+                <label for="marketing-report-frequency">Analytics Reports Frequency</label>
+                <select id="marketing-report-frequency" name="marketing_report_frequency" class="settings-select">
+                  <option value="daily">Daily</option>
+                  <option value="weekly" selected>Weekly</option>
+                  <option value="biweekly">Bi-weekly</option>
+                  <option value="monthly">Monthly</option>
+                </select>
+                <small>How often to generate and send analytics reports.</small>
+              </div>
+              
+              <div class="settings-form-group">
+                <label>Report Sections</label>
+                <div class="settings-checkbox-group">
+                  <label class="settings-checkbox">
+                    <input type="checkbox" name="marketing_report_website_traffic" checked>
+                    Website Traffic
+                  </label>
+                  <label class="settings-checkbox">
+                    <input type="checkbox" name="marketing_report_conversions" checked>
+                    Conversions
+                  </label>
+                  <label class="settings-checkbox">
+                    <input type="checkbox" name="marketing_report_campaigns" checked>
+                    Campaign Performance
+                  </label>
+                  <label class="settings-checkbox">
+                    <input type="checkbox" name="marketing_report_social" checked>
+                    Social Media Performance
+                  </label>
+                  <label class="settings-checkbox">
+                    <input type="checkbox" name="marketing_report_newsletters" checked>
+                    Newsletter Performance
+                  </label>
+                </div>
+                <small>Sections to include in analytics reports.</small>
+              </div>
+            </section>
+          </div>
+          
+          <!-- Export/Import Tab -->
+          <div id="tab-export" class="settings-tab-content">
+            <section class="settings-section">
+              <h3><i class="fas fa-file-export"></i> Export Settings</h3>
+              <p class="settings-description">Export your marketing settings to a JSON file for backup or transfer to another installation.</p>
+              
+              <div class="settings-export-options">
+                <label>Select what to export:</label>
+                <div class="settings-checkbox-group">
+                  <label class="settings-checkbox">
+                    <input type="checkbox" class="settings-export-option" value="general" checked>
+                    General Settings
+                  </label>
+                  <label class="settings-checkbox">
+                    <input type="checkbox" class="settings-export-option" value="campaigns" checked>
+                    Campaign Settings
+                  </label>
+                  <label class="settings-checkbox">
+                    <input type="checkbox" class="settings-export-option" value="banners" checked>
+                    Banner Settings
+                  </label>
+                  <label class="settings-checkbox">
+                    <input type="checkbox" class="settings-export-option" value="social" checked>
+                    Social Media Settings
+                  </label>
+                  <label class="settings-checkbox">
+                    <input type="checkbox" class="settings-export-option" value="newsletters" checked>
+                    Newsletter Settings
+                  </label>
+                  <label class="settings-checkbox">
+                    <input type="checkbox" class="settings-export-option" value="analytics" checked>
+                    Analytics Settings
+                  </label>
+                </div>
+              </div>
+              
+              <button id="settings-export-btn" class="settings-btn settings-btn-primary">
+                <i class="fas fa-download"></i> Export Settings
+              </button>
+            </section>
+            
+            <section class="settings-section">
+              <h3><i class="fas fa-file-import"></i> Import Settings</h3>
+              <p class="settings-description">Import marketing settings from a previously exported JSON file.</p>
+              
+              <div class="settings-import-options">
+                <label>Import options:</label>
+                <div class="settings-checkbox-group">
+                  <label class="settings-checkbox">
+                    <input type="checkbox" name="import_override" checked>
+                    Override existing settings
+                  </label>
+                  <label class="settings-checkbox">
+                    <input type="checkbox" name="import_merge_categories">
+                    Merge campaign categories instead of replacing
+                  </label>
+                </div>
+              </div>
+              
+              <input type="file" id="settings-import-file" style="display: none;" accept=".json">
+              <button id="settings-import-btn" class="settings-btn settings-btn-primary">
+                <i class="fas fa-upload"></i> Import Settings
+              </button>
+              
+              <div class="settings-form-group" style="margin-top: 15px;">
+                <div class="settings-alert settings-alert-warning">
+                  <i class="fas fa-exclamation-triangle"></i>
+                  <div>
+                    <strong>Warning:</strong> Importing settings will override your current configuration. Make sure to export your current settings first as a backup.
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Admin Footer -->
+      <footer class="admin-footer" id="admin-footer">
+        <!-- JS will populate this -->
+      </footer>
+    </main>
+  </div>
+  
+  <!-- JavaScript for Admin Panel -->
+  <script src="admin-dashboard.js"></script>
+  <script src="admin-settings.js"></script>
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="robots" content="noindex, nofollow">
+  <title>Marketing Settings | Backsure Global Support</title>
+  <!-- Main Admin CSS -->
+  <link rel="stylesheet" href="admin-dashboard.css" />
+  <!-- Settings-specific CSS -->
+  <link rel="stylesheet" href="admin-settings.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="admin-body" data-user-role="marketing_admin">
+  <div class="admin-container">
+    <!-- Sidebar Navigation (Will be loaded via JS) -->
+    <aside class="admin-sidebar" id="admin-sidebar">
+      <!-- JS will populate this -->
+    </aside>
+    
+    <!-- Main Content Area -->
+    <main class="admin-main">
+      <!-- Top Navigation Bar (Will be loaded via JS) -->
+      <header class="admin-header" id="admin-header">
+        <!-- JS will populate this -->
+      </header>
+      
+      <!-- Settings Content -->
+      <div class="admin-content">
+        <div class="settings-container">
+          <div class="settings-header">
+            <h2><i class="fas fa-bullhorn"></i> Marketing Settings</h2>
+            
+            <div class="settings-actions">
+              <button id="settings-save-btn" class="settings-btn settings-btn-primary">
+                <i class="fas fa-save"></i> Save All Settings
+              </button>
+              <button id="settings-reset-btn" class="settings-btn settings-btn-secondary">
+                <i class="fas fa-undo"></i> Reset to Default
+              </button>
+            </div>
+          </div>
+          
+          <!-- Settings Navigation -->
+          <div class="settings-nav">
+            <div class="settings-nav-item active" data-tab="tab-general">
+              <i class="fas fa-cog"></i> General
+            </div>
+            <div class="settings-nav-item" data-tab="tab-campaigns">
+              <i class="fas fa-rocket"></i> Campaigns
+            </div>
+            <div class="settings-nav-item" data-tab="tab-banners">
+              <i class="fas fa-images"></i> Website Banners
+            </div>
+            <div class="settings-nav-item" data-tab="tab-social">
+              <i class="fas fa-share-alt"></i> Social Media
+            </div>
+            <div class="settings-nav-item"

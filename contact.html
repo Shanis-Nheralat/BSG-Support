@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Contact Backsure Global Support for smart outsourcing solutions. Book a consultation or get in touch with our team.">
+  <title>Contact Us | Backsure Global Support</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+</head>
+<body>
+
+  <!-- Load Header -->
+  <div id="header-placeholder"></div>
+
+  <!-- Page Header Banner -->
+  <section class="page-header">
+    <div class="container">
+      <h1>Contact Us</h1>
+      <p>Let's discuss how we can help your business grow</p>
+    </div>
+  </section>
+
+  <main id="main-content">
+    <!-- Contact Options Section -->
+    <section class="contact-options">
+      <div class="container">
+        <div class="contact-grid">
+          <div class="contact-card">
+            <div class="contact-icon">
+              <i class="fas fa-phone-alt"></i>
+            </div>
+            <h3>Call Us</h3>
+            <p>Speak directly with our team</p>
+            <a href="tel:+971524419445" class="contact-link">+971524419445</a>
+          </div>
+          
+          <div class="contact-card">
+            <div class="contact-icon">
+              <i class="fas fa-envelope"></i>
+            </div>
+            <h3>Email Us</h3>
+            <p>We'll respond within 24 hours</p>
+            <a href="mailto:info@backsureglobalsupport.com" class="contact-link">info@backsureglobalsupport.com</a>
+          </div>
+          
+          <div class="contact-card">
+            <div class="contact-icon">
+              <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <h3>Our Locations</h3>
+            <div class="location-container">
+              <div class="location">
+                <h4>United Arab Emirates</h4>
+                <address class="contact-address">
+                  Paradise Building, Barsha Heights<br>
+                  Dubai
+                </address>
+              </div>
+              <div class="location">
+                <h4>India</h4>
+                <address class="contact-address">
+                  Corporate Court, #108 Infantry Road<br>
+                  Bangalore - 560 001
+                </address>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Forms Section -->
+    <section class="contact-forms">
+      <div class="container">
+        <div class="tabs-container">
+          <div class="tabs">
+            <button class="tab-btn active" data-tab="general-inquiry">General Inquiry</button>
+            <button class="tab-btn" data-tab="schedule-meeting">Schedule a Meeting</button>
+            <button class="tab-btn" data-tab="intake-form">Service Intake Form</button>
+          </div>
+          
+          <!-- General Inquiry Form -->
+          <div class="tab-content active" id="general-inquiry">
+            <h2>Get in Touch</h2>
+            <p>
+              If you're looking for a long-term, committed outsourcing partner who understands your business, let's build it together.
+            </p>
+            
+            <form class="contact-form" id="general-inquiry-form" action="submit-form.php" method="POST">
+              <input type="hidden" name="form_type" value="general_inquiry">
+              
+              <div class="form-group">
+                <label for="name">Your Name <span class="required">*</span></label>
+                <input type="text" id="name" name="name" required />
+              </div>
+              
+              <div class="form-group">
+                <label for="email">Your Email <span class="required">*</span></label>
+                <input type="email" id="email" name="email" required />
+              </div>
+              
+              <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" />
+              </div>
+              
+              <div class="form-group">
+                <label for="company">Company Name</label>
+                <input type="text" id="company" name="company" />
+              </div>
+              
+              <div class="form-group full-width">
+                <label for="message">Your Message <span class="required">*</span></label>
+                <textarea id="message" name="message" rows="6" required></textarea>
+              </div>
+              
+              <div class="form-group full-width">
+                <div class="checkbox-container">
+                  <input type="checkbox" id="privacy-policy" name="privacy-policy" required />
+                  <label for="privacy-policy">I agree to the <a href="privacy.html">privacy policy</a> <span class="required">*</span></label>
+                </div>
+              </div>
+              
+              <div class="form-actions">
+                <button type="submit" class="btn-primary">Send Message</button>
+              </div>
+            </form>
+          </div>
+          
+          <!-- Schedule Meeting Form -->
+          <div class="tab-content" id="schedule-meeting">
+            <h2>Schedule a Consultation</h2>
+            <p>
+              Book a time with our specialists to discuss your business needs and how we can support your growth.
+            </p>
+            
+            <form class="contact-form meeting-form" id="meeting-form" action="submit-form.php" method="POST">
+              <input type="hidden" name="form_type" value="meeting_request">
+              
+              <div class="form-section">
+                <h3>Select a date and time <span class="required">*</span></h3>
+                
+                <div class="form-group">
+                  <label for="meeting-date">Date <span class="required">*</span></label>
+                  <input type="date" id="meeting-date" name="date" required />
+                </div>
+                
+                <div class="form-group">
+                  <label for="meeting-time">Available Time Slots (UAE Time) <span class="required">*</span></label>
+                  <div class="time-slots">
+                    <label class="time-slot">
+                      <input type="radio" name="time" value="10:00" required />
+                      <span>10:00-11:00 AM</span>
+                    </label>
+                    <label class="time-slot">
+                      <input type="radio" name="time" value="11:00" />
+                      <span>11:00-12:00 PM</span>
+                    </label>
+                    <label class="time-slot">
+                      <input type="radio" name="time" value="12:00" />
+                      <span>12:00-1:00 PM</span>
+                    </label>
+                    <label class="time-slot">
+                      <input type="radio" name="time" value="13:00" />
+                      <span>1:00-2:00 PM</span>
+                    </label>
+                    <label class="time-slot">
+                      <input type="radio" name="time" value="14:00" />
+                      <span>2:00-3:00 PM</span>
+                    </label>
+                    <label class="time-slot">
+                      <input type="radio" name="time" value="15:00" />
+                      <span>3:00-4:00 PM</span>
+                    </label>
+                  </div>
+                  <small id="indian-time-display">Equivalent Indian Time: <span id="indian-time"></span></small>
+                </div>
+                
+                <div class="timezone-selector">
+                  <label for="timezone">Time Zone</label>
+                  <select id="timezone" name="timezone">
+                    <option value="GMT+0400" selected>GMT+04:00 (Dubai, UAE)</option>
+                    <option value="GMT+0530">GMT+05:30 (India)</option>
+                    <option value="GMT-0400">GMT-04:00 (New York, USA)</option>
+                    <option value="GMT+0000">GMT+00:00 (London, UK)</option>
+                  </select>
+                </div>
+              </div>
+              
+              <div class="form-section">
+                <h3>Your Information</h3>
+                
+                <div class="form-group">
+                  <label for="meeting-name">Name <span class="required">*</span></label>
+                  <input type="text" id="meeting-name" name="name" required />
+                </div>
+                
+                <div class="form-group">
+                  <label for="meeting-email">Email Address <span class="required">*</span></label>
+                  <input type="email" id="meeting-email" name="email" required />
+                </div>
+                
+                <div class="form-group">
+                  <label for="meeting-phone">Phone Number <span class="required">*</span></label>
+                  <input type="tel" id="meeting-phone" name="phone" required />
+                </div>
+                
+                <div class="form-group full-width">
+                  <label>Which service or services are you interested in?</label>
+                  <div class="checkbox-grid">
+                    <div class="checkbox-container">
+                      <input type="checkbox" id="service-sales" name="services[]" value="Dedicated Employee Support" />
+                      <label for="service-sales">Dedicated Employee Support</label>
+                    </div>
+                    <div class="checkbox-container">
+                      <input type="checkbox" id="service-data" name="services[]" value="On-Demand Service Support" />
+                      <label for="service-data">On-Demand Service Support</label>
+                    </div>
+                    <div class="checkbox-container">
+                      <input type="checkbox" id="service-backend" name="services[]" value="Business Care Plans" />
+                      <label for="service-backend">Business Care Plans</label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="form-group full-width">
+                  <label for="meeting-message">Meeting Purpose <span class="required">*</span></label>
+                  <textarea id="meeting-message" name="purpose" rows="4" required placeholder="Please share the purpose of this meeting and any specific topics you'd like to discuss..."></textarea>
+                </div>
+              </div>
+              
+              <div class="form-actions">
+                <button type="submit" class="btn-primary">Schedule Meeting</button>
+              </div>
+            </form>
+          </div>
+          
+          <!-- Intake Form -->
+          <div class="tab-content" id="intake-form">
+            <h2>Help Us Serve You Better</h2>
+            <p>
+              Fill out this brief intake form to help us understand your specific needs and better prepare our solutions for you.
+            </p>
+            
+            <form class="contact-form intake-form" id="service-intake-form" action="submit-form.php" method="POST">
+              <input type="hidden" name="form_type" value="service_intake">
+              
+              <div class="form-group">
+                <label for="intake-name">Name <span class="required">*</span></label>
+                <input type="text" id="intake-name" name="name" required />
+              </div>
+              
+              <div class="form-group">
+                <label for="intake-email">Email Address <span class="required">*</span></label>
+                <input type="email" id="intake-email" name="email" required />
+              </div>
+              
+              <div class="form-group">
+                <label for="intake-phone">Phone Number</label>
+                <input type="tel" id="intake-phone" name="phone" />
+              </div>
+              
+              <div class="form-group">
+                <label for="service-type">Solution Type <span class="required">*</span></label>
+                <select id="service-type" name="service_type" required>
+                  <option value="" selected disabled>Select a service</option>
+                  <option value="Sales Support">Sales Support</option>
+                  <option value="Data Entry">Data Entry</option>
+                  <option value="Backend Support">Backend Support</option>
+                  <option value="Customer Service">Customer Service</option>
+                  <option value="Technical Support">Technical Support</option>
+                  <option value="Human Resources">Human Resources</option>
+                  <option value="Marketing">Marketing</option>
+                  <option value="Accounting">Accounting</option>
+                </select>
+              </div>
+              
+              <div class="form-group">
+                <label for="business-industry">Business Industry</label>
+                <select id="business-industry" name="business-industry">
+                  <option value="" selected disabled>Select</option>
+                  <option value="Insurance">Insurance</option>
+                  <option value="Banking">Banking</option>
+                  <option value="Healthcare">Healthcare</option>
+                  <option value="Retail">Retail</option>
+                  <option value="Technology">Technology</option>
+                  <option value="Manufacturing">Manufacturing</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+              
+              <div class="form-group">
+                <label for="implementation-timeline">Implementation Timeline</label>
+                <select id="implementation-timeline" name="timeline">
+                  <option value="" selected disabled>Select</option>
+                  <option value="Immediately">Immediately</option>
+                  <option value="Within 1 month">Within 1 month</option>
+                  <option value="1-3 months">1-3 months</option>
+                  <option value="3-6 months">3-6 months</option>
+                  <option value="6+ months">6+ months</option>
+                </select>
+              </div>
+              
+              <div class="form-group full-width">
+                <label for="service-requirements">Service Requirements <span class="required">*</span></label>
+                <textarea id="service-requirements" name="requirements" rows="5" required></textarea>
+              </div>
+              
+              <div class="form-group full-width">
+                <label for="additional-comments">Additional Comments</label>
+                <textarea id="additional-comments" name="additional_comments" rows="4"></textarea>
+              </div>
+              
+              <div class="form-actions">
+                <button type="submit" class="btn-primary">Submit Request</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Admin Login Link (hidden in footer) -->
+  <div class="admin-login-link" style="text-align: center; padding-bottom: 20px;">
+    <a href="admin-login.html" class="admin-link" style="color: rgba(6, 39, 103, 0.3); font-size: 0.75rem; text-decoration: none;">Admin</a>
+  </div>
+
+  <!-- ONLY ONE Footer Placeholder -->
+  <div id="footer-placeholder"></div>
+
+  <!-- Include necessary JS files -->
+  <script src="include.js"></script>
+  <script src="contact.js"></script>
+</body>
+</html>

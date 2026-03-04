@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#062767" />
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Team Efficiency Calculator by BSG - Analyze team inefficiencies and calculate potential cost savings with professional business optimization services." />
+    <meta name="keywords" content="team efficiency, business optimization, cost savings, BSG, productivity analysis, workforce optimization" />
+    <meta name="author" content="BSG Business Support Group" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://bsg-efficiency-calculator.com/" />
+    <meta property="og:title" content="Team Efficiency Calculator - BSG Business Optimization" />
+    <meta property="og:description" content="Calculate your team's efficiency gaps and discover potential cost savings with BSG's professional analysis tool." />
+    <meta property="og:image" content="%PUBLIC_URL%/og-image.png" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://bsg-efficiency-calculator.com/" />
+    <meta property="twitter:title" content="Team Efficiency Calculator - BSG Business Optimization" />
+    <meta property="twitter:description" content="Calculate your team's efficiency gaps and discover potential cost savings with BSG's professional analysis tool." />
+    <meta property="twitter:image" content="%PUBLIC_URL%/twitter-image.png" />
+
+    <!-- Apple Touch Icon -->
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    
+    <!-- Web App Manifest -->
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    
+    <!-- Google Fonts - Poppins & Open Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Open+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Favicon variations for different devices -->
+    <link rel="icon" type="image/png" sizes="32x32" href="%PUBLIC_URL%/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="%PUBLIC_URL%/favicon-16x16.png">
+    
+    <!-- Page Title -->
+    <title>Team Efficiency Calculator - Backsure Global Support</title>
+    
+    <!-- Inline Critical CSS for Performance -->
+    <style>
+      /* Critical CSS for initial page load */
+      * {
+        box-sizing: border-box;
+      }
+      
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Open Sans', 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        background: linear-gradient(135deg, #f8fafc 0%, #e8eef8 100%);
+        min-height: 100vh;
+      }
+      
+      /* Loading spinner styles */
+      .app-loading {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        background: linear-gradient(135deg, #f8fafc 0%, #e8eef8 100%);
+      }
+      
+      .loading-spinner {
+        width: 50px;
+        height: 50px;
+        border: 4px solid #e2e8f0;
+        border-top: 4px solid #062767;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+      }
+      
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+      
+      .loading-text {
+        margin-top: 20px;
+        color: #64748b;
+        font-weight: 500;
+        text-align: center;
+      }
+      
+      /* Hide loading when React loads */
+      #root:not(:empty) + .app-loading {
+        display: none;
+      }
+      
+      /* Error fallback styles */
+      .error-boundary {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+        padding: 20px;
+      }
+      
+      .error-content {
+        max-width: 400px;
+        text-align: center;
+        background: white;
+        padding: 40px;
+        border-radius: 16px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      }
+      
+      /* Print styles for PDF generation */
+      @media print {
+        body {
+          background: white !important;
+        }
+        
+        .no-print {
+          display: none !important;
+        }
+        
+        .print-only {
+          display: block !important;
+        }
+        
+        /* Ensure proper page breaks */
+        .page-break {
+          page-break-before: always;
+        }
+        
+        .avoid-break {
+          page-break-inside: avoid;
+        }
+      }
+      
+      /* Accessibility improvements */
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
+      
+      /* High contrast mode support */
+      @media (prefers-contrast: high) {
+        body {
+          background: white;
+          color: black;
+        }
+      }
+      
+      /* Dark mode support (if needed in future) */
+      @media (prefers-color-scheme: dark) {
+        body {
+          background: #0f172a;
+          color: #f1f5f9;
+        }
+      }
+    </style>
+    
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Team Efficiency Calculator",
+      "description": "Professional team efficiency analysis and cost savings calculator by BSG Business Support Group",
+      "url": "https://bsg-efficiency-calculator.com",
+      "author": {
+        "@type": "Organization",
+        "name": "BSG Business Support Group",
+        "url": "https://bsgsupport.com"
+      },
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web Browser",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    }
+    </script>
+  </head>
+  
+  <body>
+    <!-- No JavaScript Fallback -->
+    <noscript>
+      <div class="error-boundary">
+        <div class="error-content">
+          <h1>JavaScript Required</h1>
+          <p>The Team Efficiency Calculator requires JavaScript to function properly. Please enable JavaScript in your browser and refresh the page.</p>
+          <p>If you continue to have issues, please contact <a href="mailto:support@bsgsupport.com">support@bsgsupport.com</a></p>
+        </div>
+      </div>
+    </noscript>
+    
+    <!-- Main React Application Mount Point -->
+    <div id="root"></div>
+    
+    <!-- Loading Fallback (shown while React loads) -->
+    <div class="app-loading">
+      <div>
+        <div class="loading-spinner"></div>
+        <div class="loading-text">
+          <div>Loading Team Efficiency Calculator...</div>
+          <div style="font-size: 14px; margin-top: 10px; color: #94a3b8;">
+            Powered by BSG Business Support Group
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Service Worker Registration (for PWA features if needed) -->
+    <script>
+      // Register service worker for offline capabilities (optional)
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function() {
+          // navigator.serviceWorker.register('/sw.js');
+        });
+      }
+      
+      // Basic error tracking
+      window.addEventListener('error', function(e) {
+        console.error('Application Error:', e.error);
+        // In production, send to error tracking service
+      });
+      
+      // Performance monitoring
+      window.addEventListener('load', function() {
+        // Track page load time
+        const loadTime = performance.timing.loadEventEnd - performance.timing.navigationStart;
+        console.log('Page Load Time:', loadTime + 'ms');
+        
+        // In production, send to analytics
+        // gtag('event', 'page_load_time', { value: loadTime });
+      });
+    </script>
+    
+    <!-- Analytics placeholder (add your tracking codes) -->
+    <!--
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_TRACKING_ID"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'GA_TRACKING_ID');
+    </script>
+    -->
+  </body>
+</html>

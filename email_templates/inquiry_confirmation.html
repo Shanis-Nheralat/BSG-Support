@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Inquiry Confirmation</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; color: #333; }
+        .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+        .header { background-color: #0b2e59; color: white; padding: 20px; text-align: center; }
+        .content { padding: 20px; background-color: #f9f9f9; }
+        .inquiry { background-color: #e9e9e9; padding: 15px; border-radius: 4px; margin: 15px 0; }
+        .footer { padding: 20px; text-align: center; font-size: 12px; color: #777; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Thank You for Your Inquiry</h1>
+        </div>
+        <div class="content">
+            <p>Hello {{name}},</p>
+            <p>Thank you for contacting Backsure Global Support. We have received your inquiry and will respond as soon as possible.</p>
+            <p>Here is a summary of your message:</p>
+            <div class="inquiry">
+                <p><strong>Subject:</strong> {{subject}}</p>
+                <p><strong>Message:</strong></p>
+                <p>{{message}}</p>
+                <p><strong>Date:</strong> {{date}}</p>
+            </div>
+            <p>If you need to provide additional information or have any questions, please reply to this email.</p>
+            <p>Thank you,<br>BSG Support Team</p>
+        </div>
+        <div class="footer">
+            <p>&copy; {{current_year}} Backsure Global Support. All rights reserved.</p>
+        </div>
+    </div>
+</body>
+</html>

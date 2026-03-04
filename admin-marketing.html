@@ -1,0 +1,71 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="robots" content="noindex, nofollow">
+  <title>Marketing Panel | Backsure Global Support</title>
+  <link rel="stylesheet" href="admin/css/admin-style.css" />
+  <link rel="stylesheet" href="admin/css/admin-settings.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+</head>
+<body class="admin-body">
+  <div class="admin-container">
+    <aside class="admin-sidebar">
+      <!-- Sidebar loaded via JS -->
+    </aside>
+
+    <main class="admin-main">
+      <h2>Marketing Management</h2>
+
+      <!-- TODO: Role-based check for 'marketing' or 'superadmin' -->
+
+      <!-- Section: Banners -->
+      <section class="marketing-section">
+        <h3>Promotional Banners</h3>
+        <button class="add-banner-btn">+ Add New Banner</button>
+        <div class="banner-list">
+          <!-- Dynamic banners will appear here -->
+          <div class="banner-item">
+            <p>Homepage Banner - Summer Sale</p>
+            <button>Edit</button>
+            <button>Delete</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section: Newsletter -->
+      <section class="marketing-section">
+        <h3>Newsletter Content</h3>
+        <textarea placeholder="Enter newsletter content here..."></textarea>
+        <button>Save Newsletter</button>
+      </section>
+
+      <!-- Section: Social Media Links -->
+      <section class="marketing-section">
+        <h3>Social Media Links</h3>
+        <form>
+          <label>Facebook</label>
+          <input type="url" placeholder="https://facebook.com/yourpage" />
+          <label>LinkedIn</label>
+          <input type="url" placeholder="https://linkedin.com/company/yourpage" />
+          <label>Instagram</label>
+          <input type="url" placeholder="https://instagram.com/yourhandle" />
+          <button type="submit">Update Links</button>
+        </form>
+      </section>
+
+      <!-- Section: Analytics (Future) -->
+      <section class="marketing-section">
+        <h3>Campaign Analytics</h3>
+        <p><i>Coming soon: views, clicks, engagement...</i></p>
+      </section>
+    </main>
+  </div>
+
+  <script src="admin.js"></script>
+</body>
+</html>

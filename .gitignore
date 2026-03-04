@@ -1,0 +1,39 @@
+# Dependencies
+node_modules/
+
+# Environment files
+.env
+.env.local
+.env*.local
+
+# Build outputs
+build/
+dist/
+
+# IDE and editors
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Test outputs
+test-results/
+
+# Qoder
+.qoder/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Uploads (keep structure but ignore contents)
+uploads/*
+!uploads/.gitkeep
+
+# Temporary files
+*.tmp
+nul

@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog | Backsure Global Support</title>
+  
+  <!-- Meta tags for SEO -->
+  <meta name="description" content="Explore the latest industry insights, trends, and business support strategies from Backsure Global Support.">
+  <meta name="keywords" content="outsourcing, business support, UAE, India, finance, accounting, HR, insurance, admin">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Main stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+  
+  <!-- Blog specific styles -->
+  <style>
+    :root {
+      --primary-color: #062767;
+      --primary-light: #3a5ca2;
+      --primary-dark: #041c4a;
+      --accent-color: #b19763;
+      --accent-light: #cdb48e;
+      --accent-dark: #97814c;
+      --text-dark: #333333;
+      --text-light: #ffffff;
+      --text-gray: #f8f9fc;
+      --body-bg: #f5f6fa;
+      --card-bg: #ffffff;
+      --border-color: rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Blog-specific styles */
+    .blog-hero {
+      background-color: var(--primary-color);
+      color: var(--text-light);
+      padding: 60px 0;
+      text-align: center;
+      position: relative;
+    }
+    
+    .blog-hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      font-weight: 700;
+    }
+    
+    .blog-hero p {
+      max-width: 700px;
+      margin: 0 auto 30px;
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+    
+    .blog-search {
+      max-width: 550px;
+      margin: 0 auto;
+      position: relative;
+    }
+    
+    .blog-search input {
+      width: 100%;
+      padding: 15px 20px;
+      border-radius: 50px;
+      border: none;
+      outline: none;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      font-size: 1rem;
+      padding-right: 50px;
+    }
+    
+    .blog-search button {
+      position: absolute;
+      right: 5px;
+      top: 5px;
+      background: var(--accent-color);
+      border: none;
+      color: white;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    
+    .blog-search button:hover {
+      background: var(--accent-dark);
+    }
+    
+    .blog-filters {
+      background-color: white;
+      padding: 15px 0;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    }
+    
+    .filter-container {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+    
+    .filter-btn {
+      background: none;
+      border: 2px solid var(--primary-color);
+      color: var(--primary-color);
+      padding: 8px 20px;
+      border-radius: 30px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    
+    .filter-btn:hover, .filter-btn.active {
+      background-color: var(--primary-color);
+      color: white;
+    }
+    
+    .blog-container {
+      padding: 60px 0;
+      background-color: var(--body-bg);
+    }
+    
+    .blog-container h2 {
+      text-align: center;
+      margin-bottom: 40px;
+      font-size: 2rem;
+      color: var(--primary-color);
+      position: relative;
+    }
+    
+    .blog-container h2:after {
+      content: '';
+      display: block;
+      width: 80px;
+      height: 3px;
+      background-color: var(--accent-color);
+      margin: 15px auto 0;
+    }
+    
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 30px;
+      margin-bottom: 50px;
+    }
+    
+    .blog-card {
+      background: var(--card-bg);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    
+    .blog-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+    
+    .blog-card-image {
+      height: 200px;
+      overflow: hidden;
+    }
+    
+    .blog-card-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s;
+    }
+    
+    .blog-card:hover .blog-card-image img {
+      transform: scale(1.05);
+    }
+    
+    .blog-card-content {
+      padding: 20px;
+    }
+    
+    .blog-card-title {
+      font-size: 1.25rem;
+      margin-bottom: 10px;
+      color: var(--primary-color);
+      line-height: 1.4;
+    }
+    
+    .blog-card-title a {
+      color: var(--primary-color);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    
+    .blog-card-title a:hover {
+      color: var(--accent-color);
+    }
+    
+    .blog-meta {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+      font-size: 0.85rem;
+      color: #777;
+    }
+    
+    .blog-meta .category {
+      color: var(--primary-light);
+      font-weight: 600;
+      margin-right: 15px;
+    }
+    
+    .blog-meta .date {
+      display: flex;
+      align-items: center;
+    }
+    
+    .blog-meta .date i {
+      margin-right: 5px;
+    }
+    
+    .blog-card-excerpt {
+      color: #666;
+      margin-bottom: 15px;
+      line-height: 1.6;
+    }
+    
+    .read-more {
+      display: inline-flex;
+      align-items: center;
+      color: var(--accent-color);
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+    
+    .read-more i {
+      margin-left: 5px;
+      transition: transform 0.3s;
+    }
+    
+    .read-more:hover {
+      color: var(--accent-dark);
+    }
+    
+    .read-more:hover i {
+      transform: translateX(3px);
+    }
+    
+    .blog-pagination {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+    }
+    
+    .page-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: white;
+      color: var(--primary-color);
+      text-decoration: none;
+      transition: all 0.3s;
+      font-weight: 600;
+    }
+    
+    .page-link:hover, .page-link.active {
+      background: var(--primary-color);
+      color: white;
+    }
+    
+    .page-link.prev, .page-link.next {
+      width: auto;
+      padding: 0 15px;
+      border-radius: 20px;
+    }
+    
+    .page-link.prev i, .page-link.next i {
+      margin: 0 5px;
+    }
+    
+    .featured-post {
+      position: relative;
+      grid-column: span 2;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .featured-post .blog-card-image {
+      height: 250px;
+    }
+    
+    .featured-tag {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      background-color: var(--accent-color);
+      color: white;
+      padding: 5px 10px;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      z-index: 1;
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 992px) {
+      .blog-hero h1 {
+        font-size: 2rem;
+      }
+      
+      .featured-post {
+        grid-column: span 1;
+      }
+      
+      .blog-grid {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .blog-hero {
+        padding: 40px 0;
+      }
+      
+      .blog-container {
+        padding: 40px 0;
+      }
+      
+      .blog-card-image {
+        height: 180px;
+      }
+    }
+    
+    @media (max-width: 576px) {
+      .filter-container {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .filter-btn {
+        width: 100%;
+        max-width: 200px;
+      }
+      
+      .blog-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header Placeholder -->
+  <div id="header-placeholder"></div>
+  
+  <!-- Blog Hero Section -->
+  <section class="blog-hero">
+    <div class="container">
+      <h1>Insights & Resources</h1>
+      <p>Explore the latest insights, industry trends, and expert advice to help your business thrive in today's competitive market.</p>
+      
+      <div class="blog-search">
+        <input type="text" id="blog-search-input" placeholder="Search for articles...">
+        <button type="button" id="blog-search-btn">
+          <i class="fas fa-search"></i>
+        </button>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Category Filters -->
+  <section class="blog-filters">
+    <div class="container">
+      <div class="filter-container">
+        <button class="filter-btn active" data-category="all">All Categories</button>
+        <button class="filter-btn" data-category="business-growth">Business Growth</button>
+        <button class="filter-btn" data-category="outsourcing">Outsourcing Tips</button>
+        <button class="filter-btn" data-category="hr-management">HR Management</button>
+        <button class="filter-btn" data-category="finance">Finance & Accounting</button>
+        <button class="filter-btn" data-category="compliance">Compliance & Admin</button>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Blog Posts -->
+  <section class="blog-container">
+    <div class="container">
+      <h2>Latest Articles</h2>
+      
+      <div class="blog-grid" id="blog-grid">
+        <!-- Featured Post -->
+        <article class="blog-card featured-post" data-category="outsourcing">
+          <span class="featured-tag">Featured</span>
+          <div class="blog-card-image">
+            <img src="images/blog/blog-featured.jpg" alt="5 Ways Outsourcing Can Accelerate Your Business Growth">
+          </div>
+          <div class="blog-card-content">
+            <h3 class="blog-card-title"><a href="blog-detail.html">5 Ways Outsourcing Can Accelerate Your Business Growth</a></h3>
+            <div class="blog-meta">
+              <span class="category">Outsourcing Tips</span>
+              <span class="date"><i class="far fa-calendar-alt"></i> April 15, 2025</span>
+            </div>
+            <p class="blog-card-excerpt">Learn how strategic outsourcing can help you scale faster, reduce costs, and focus on your core business strengths in today's competitive landscape. Discover the key benefits that make outsourcing a game-changer for businesses of all sizes.</p>
+            <a href="blog-detail.html" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </article>
+        
+        <!-- Regular Blog Posts -->
+        <article class="blog-card" data-category="hr-management">
+          <div class="blog-card-image">
+            <img src="images/blog/blog-1.jpg" alt="Building Effective Remote Teams: Best Practices">
+          </div>
+          <div class="blog-card-content">
+            <h3 class="blog-card-title"><a href="blog-detail.html">Building Effective Remote Teams: Best Practices</a></h3>
+            <div class="blog-meta">
+              <span class="category">HR Management</span>
+              <span class="date"><i class="far fa-calendar-alt"></i> April 12, 2025</span>
+            </div>
+            <p class="blog-card-excerpt">Discover proven strategies for managing remote teams effectively and maintaining strong team culture across borders.</p>
+            <a href="blog-detail.html" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </article>
+        
+        <article class="blog-card" data-category="finance">
+          <div class="blog-card-image">
+            <img src="images/blog/blog-2.jpg" alt="Streamlining Financial Operations: Key Strategies for SMEs">
+          </div>
+          <div class="blog-card-content">
+            <h3 class="blog-card-title"><a href="blog-detail.html">Streamlining Financial Operations: Key Strategies for SMEs</a></h3>
+            <div class="blog-meta">
+              <span class="category">Finance & Accounting</span>
+              <span class="date"><i class="far fa-calendar-alt"></i> April 8, 2025</span>
+            </div>
+            <p class="blog-card-excerpt">Learn practical approaches to optimize your financial processes, reduce costs, and improve financial visibility for better decision-making.</p>
+            <a href="blog-detail.html" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </article>
+        
+        <article class="blog-card" data-category="compliance">
+          <div class="blog-card-image">
+            <img src="images/blog/blog-3.jpg" alt="Understanding UAE Corporate Tax: A Guide for Businesses">
+          </div>
+          <div class="blog-card-content">
+            <h3 class="blog-card-title"><a href="blog-detail.html">Understanding UAE Corporate Tax: A Guide for Businesses</a></h3>
+            <div class="blog-meta">
+              <span class="category">Compliance & Admin</span>
+              <span class="date"><i class="far fa-calendar-alt"></i> April 5, 2025</span>
+            </div>
+            <p class="blog-card-excerpt">Navigate the complexities of UAE's corporate tax system with this comprehensive guide for business owners and finance teams.</p>
+            <a href="blog-detail.html" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </article>
+        
+        <article class="blog-card" data-category="business-growth">
+          <div class="blog-card-image">
+            <img src="images/blog/blog-4.jpg" alt="Digital Transformation: Adapting Your Business for Future Success">
+          </div>
+          <div class="blog-card-content">
+            <h3 class="blog-card-title"><a href="blog-detail.html">Digital Transformation: Adapting Your Business for Future Success</a></h3>
+            <div class="blog-meta">
+              <span class="category">Business Growth</span>
+              <span class="date"><i class="far fa-calendar-alt"></i> March 30, 2025</span>
+            </div>
+            <p class="blog-card-excerpt">Explore the essential steps to successfully implement digital transformation in your business and stay ahead of the competition.</p>
+            <a href="blog-detail.html" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </article>
+        
+        <article class="blog-card" data-category="outsourcing">
+          <div class="blog-card-image">
+            <img src="images/blog/blog-5.jpg" alt="How to Choose the Right Outsourcing Partner for Your Business">
+          </div>
+          <div class="blog-card-content">
+            <h3 class="blog-card-title"><a href="blog-detail.html">How to Choose the Right Outsourcing Partner for Your Business</a></h3>
+            <div class="blog-meta">
+              <span class="category">Outsourcing Tips</span>
+              <span class="date"><i class="far fa-calendar-alt"></i> March 25, 2025</span>
+            </div>
+            <p class="blog-card-excerpt">Understand the key factors to consider when selecting an outsourcing partner that aligns with your business goals and values.</p>
+            <a href="blog-detail.html" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </article>
+        
+        <article class="blog-card" data-category="hr-management">
+          <div class="blog-card-image">
+            <img src="images/blog/blog-6.jpg" alt="Employee Engagement Strategies for a Diverse Workforce">
+          </div>
+          <div class="blog-card-content">
+            <h3 class="blog-card-title"><a href="blog-detail.html">Employee Engagement Strategies for a Diverse Workforce</a></h3>
+            <div class="blog-meta">
+              <span class="category">HR Management</span>
+              <span class="date"><i class="far fa-calendar-alt"></i> March 20, 2025</span>
+            </div>
+            <p class="blog-card-excerpt">Discover effective approaches to boost engagement and productivity in multicultural and diverse teams across different locations.</p>
+            <a href="blog-detail.html" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </article>
+      </div>
+      
+      <!-- Pagination -->
+      <div class="blog-pagination">
+        <a href="#" class="page-link prev"><i class="fas fa-chevron-left"></i> Previous</a>
+        <a href="#" class="page-link active">1</a>
+        <a href="#" class="page-link">2</a>
+        <a href="#" class="page-link">3</a>
+        <a href="#" class="page-link">...</a>
+        <a href="#" class="page-link">8</a>
+        <a href="#" class="page-link next">Next <i class="fas fa-chevron-right"></i></a>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Footer Placeholder -->
+  <div id="footer-placeholder"></div>
+  
+  <!-- Include Header/Footer Script -->
+  <script src="include.js"></script>
+  
+  <!-- JavaScript for handling interactions -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Category Filter Functionality
+      const filterBtns = document.querySelectorAll('.filter-btn');
+      const blogPosts = document.querySelectorAll('.blog-card');
+      
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+          // Remove active class from all buttons
+          filterBtns.forEach(btn => btn.classList.remove('active'));
+          
+          // Add active class to clicked button
+          this.classList.add('active');
+          
+          // Get category to filter
+          const category = this.getAttribute('data-category');
+          
+          // Filter blog posts
+          blogPosts.forEach(post => {
+            if (category === 'all' || post.getAttribute('data-category') === category) {
+              post.style.display = 'block';
+            } else {
+              post.style.display = 'none';
+            }
+          });
+        });
+      });
+      
+      // Search Functionality
+      const searchInput = document.getElementById('blog-search-input');
+      const searchBtn = document.getElementById('blog-search-btn');
+      
+      function performSearch() {
+        const searchTerm = searchInput.value.toLowerCase().trim();
+        
+        if (searchTerm === '') {
+          // If search is empty, show all posts
+          blogPosts.forEach(post => {
+            post.style.display = 'block';
+          });
+          return;
+        }
+        
+        // Filter posts based on search term
+        blogPosts.forEach(post => {
+          const title = post.querySelector('.blog-card-title').textContent.toLowerCase();
+          const excerpt = post.querySelector('.blog-card-excerpt').textContent.toLowerCase();
+          const category = post.querySelector('.category').textContent.toLowerCase();
+          
+          if (title.includes(searchTerm) || 
+              excerpt.includes(searchTerm) || 
+              category.includes(searchTerm)) {
+            post.style.display = 'block';
+          } else {
+            post.style.display = 'none';
+          }
+        });
+      }
+      
+      searchBtn.addEventListener('click', performSearch);
+      
+      searchInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+          performSearch();
+        }
+      });
+      
+      // For a real backend implementation, you would fetch posts like this:
+      // This is commented out since it's just a template for implementation
+      /*
+      function fetchBlogPosts(page = 1, category = 'all', search = '') {
+        // Create URL with query parameters
+        const url = new URL('/api/blog-posts', window.location.origin);
+        url.searchParams.append('page', page);
+        
+        if (category !== 'all') {
+          url.searchParams.append('category', category);
+        }
+        
+        if (search) {
+          url.searchParams.append('search', search);
+        }
+        
+        // Fetch posts from API
+        fetch(url)
+          .then(response => response.json())
+          .then(data => {
+            // Clear existing posts
+            const blogGrid = document.getElementById('blog-grid');
+            blogGrid.innerHTML = '';
+            
+            // Add posts to grid
+            data.posts.forEach(post => {
+              const postElement = createPostElement(post);
+              blogGrid.appendChild(postElement);
+            });
+            
+            // Update pagination
+            updatePagination(data.currentPage, data.totalPages);
+          })
+          .catch(error => console.error('Error fetching blog posts:', error));
+      }
+      
+      function createPostElement(post) {
+        const article = document.createElement('article');
+        article.className = 'blog-card';
+        article.setAttribute('data-category', post.category.slug);
+        
+        // Add featured tag if post is featured
+        if (post.featured) {
+          article.classList.add('featured-post');
+          const featuredTag = document.createElement('span');
+          featuredTag.className = 'featured-tag';
+          featuredTag.textContent = 'Featured';
+          article.appendChild(featuredTag);
+        }
+        
+        article.innerHTML = `
+          <div class="blog-card-image">
+            <img src="${post.image}" alt="${post.title}">
+          </div>
+          <div class="blog-card-content">
+            <h3 class="blog-card-title"><a href="/blog/${post.slug}">${post.title}</a></h3>
+            <div class="blog-meta">
+              <span class="category">${post.category.name}</span>
+              <span class="date"><i class="far fa-calendar-alt"></i> ${formatDate(post.publishedAt)}</span>
+            </div>
+            <p class="blog-card-excerpt">${post.excerpt}</p>
+            <a href="/blog/${post.slug}" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+          </div>
+        `;
+        
+        return article;
+      }
+      
+      function updatePagination(currentPage, totalPages) {
+        const pagination = document.querySelector('.blog-pagination');
+        
+        // Clear existing pagination
+        pagination.innerHTML = '';
+        
+        // Add previous button
+        if (currentPage > 1) {
+          const prevLink = document.createElement('a');
+          prevLink.className = 'page-link prev';
+          prevLink.href = '#';
+          prevLink.innerHTML = '<i class="fas fa-chevron-left"></i> Previous';
+          prevLink.addEventListener('click', e => {
+            e.preventDefault();
+            fetchBlogPosts(currentPage - 1);
+          });
+          pagination.appendChild(prevLink);
+        }
+        
+        // Add page numbers
+        for (let i = 1; i <= totalPages; i++) {
+          if (
+            i === 1 || // First page
+            i === totalPages || // Last page
+            (i >= currentPage - 1 && i <= currentPage + 1) // Pages around current
+          ) {
+            const pageLink = document.createElement('a');
+            pageLink.className = 'page-link';
+            if (i === currentPage) {
+              pageLink.classList.add('active');
+            }
+            pageLink.href = '#';
+            pageLink.textContent = i;
+            pageLink.addEventListener('click', e => {
+              e.preventDefault();
+              if (i !== currentPage) {
+                fetchBlogPosts(i);
+              }
+            });
+            pagination.appendChild(pageLink);
+          } else if (
+            (i === 2 && currentPage > 3) || // Ellipsis after first page
+            (i === totalPages - 1 && currentPage < totalPages - 2) // Ellipsis before last page
+          ) {
+            const ellipsis = document.createElement('span');
+            ellipsis.className = 'page-link';
+            ellipsis.textContent = '...';
+            pagination.appendChild(ellipsis);
+          }
+        }
+        
+        // Add next button
+        if (currentPage < totalPages) {
+          const nextLink = document.createElement('a');
+          nextLink.className = 'page-link next';
+          nextLink.href = '#';
+          nextLink.innerHTML = 'Next <i class="fas fa-chevron-right"></i>';
+          nextLink.addEventListener('click', e => {
+            e.preventDefault();
+            fetchBlogPosts(currentPage + 1);
+          });
+          pagination.appendChild(nextLink);
+        }
+      }
+      
+      function formatDate(dateString) {
+        const date = new Date(dateString);
+        return date.toLocaleDateString('en-US', { 
+          year: 'numeric', 
+          month: 'long', 
+          day: 'numeric' 
+        });
+      }
+      
+      // Initial load of blog posts
+      fetchBlogPosts();
+      
+      // Category filter event listeners
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+          // Remove active class from all buttons
+          filterBtns.forEach(btn => btn.classList.remove('active'));
+          
+          // Add active class to clicked button
+          this.classList.add('active');
+          
+          // Get category to filter
+          const category = this.getAttribute('data-category');
+          
+          // Fetch posts with selected category
+          fetchBlogPosts(1, category, searchInput.value);
+        });
+      });
+      
+      // Search event listener
+      searchBtn.addEventListener('click', function() {
+        const category = document.querySelector('.filter-btn.active').getAttribute('data-category');
+        fetchBlogPosts(1, category, searchInput.value);
+      });
+      
+      searchInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+          const category = document.querySelector('.filter-btn.active').getAttribute('data-category');
+          fetchBlogPosts(1, category, searchInput.value);
+        }
+      });
+      */
+    });
+  </script>
+</body>
+</html>

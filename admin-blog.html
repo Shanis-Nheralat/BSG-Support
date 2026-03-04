@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="robots" content="noindex, nofollow">
+  <title>Blog Management | Backsure Global Support</title>
+  <!-- Main Admin CSS -->
+  <link rel="stylesheet" href="admin-dashboard.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- DataTables CSS -->
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.bootstrap5.min.css">
+</head>
+<body class="admin-body" data-user-role="content_admin">
+  <div class="admin-container">
+    <!-- Sidebar Navigation (Will be loaded via JS) -->
+    <aside class="admin-sidebar" id="admin-sidebar">
+      <!-- JS will populate this -->
+    </aside>
+    
+    <!-- Main Content Area -->
+    <main class="admin-main">
+      <!-- Top Navigation Bar (Will be loaded via JS) -->
+      <header class="admin-header" id="admin-header">
+        <!-- JS will populate this -->
+      </header>
+      
+      <!-- Blog Management Content -->
+      <div class="admin-content">
+        <!-- Page Header -->
+        <div class="page-header">
+          <h1><i class="fas fa-blog"></i> Blog Management</h1>
+          <div class="page-header-actions">
+            <a href="admin-blog-add.html" class="btn-primary">
+              <i class="fas fa-plus"></i> Add New Post
+            </a>
+            <button class="btn-secondary" id="bulk-actions-btn">
+              <i class="fas fa-tasks"></i> Bulk Actions
+            </button>
+            <a href="blog-settings.html" class="btn-outline">
+              <i class="fas fa-cog"></i> Blog Settings
+            </a>
+          </div>
+        </div>
+        
+        <!-- Filters & Search -->
+        <div class="filter-container">
+          <div class="filter-section">
+            <div class="filter-group">
+              <label for="filter-status">Status:</label>
+              <select id="filter-status" class="filter-select">
+                <option value="">All Statuses</option>
+                <option value="published">Published</option>
+                <option value="draft">Draft</option>
+                <option value="pending">Pending Review</option>
+                <option value="scheduled">Scheduled</option>
+              </select>
+            </div>
+            
+            <div class="filter-group">
+              <label for="filter-category">Category:</label>
+              <select id="filter-category" class="filter-select">
+                <option value="">All Categories</option>
+                <option value="company-news">Company News</option>
+                <option value="product-updates">Product Updates</option>
+                <option value="guides-tutorials">Guides & Tutorials</option>
+                <option value="industry-insights">Industry Insights</option>
+              </select>
+            </div>
+            
+            <div class="filter-group">
+              <label for="filter-author">Author:</label>
+              <select id="filter-author" class="filter-select">
+                <option value="">All Authors</option>
+                <option value="1">John Smith</option>
+                <option value="2">Sarah Johnson</option>
+                <option value="3">Michael Chen</option>
+              </select>
+            </div>
+            
+            <div class="filter-group">
+              <label for="date-range">Date Range:</label>
+              <div class="date-range-container">
+                <input type="date" id="date-from" class="date-input">
+                <span class="date-separator">to</span>
+                <input type="date" id="date-to" class="date-input">
+              </div>
+            </div>
+          </div>
+          
+          <div class="search-section">
+            <div class="search-box">
+              <input type="text" id="search-posts" placeholder="Search posts...">
+              <button type="button" id="search-btn">
+                <i class="fas fa-search"></i>
+              </button>
+            </div>
+          </div>
+          
+          <div class="filter-actions">
+            <button id="apply-filters" class="btn-primary">Apply Filters</button>
+            <button id="reset-filters" class="btn-text">Reset</button>
+          </div>
+        </div>
+        
+        <!-- Bulk Actions Panel (Hidden by default) -->
+        <div id="bulk-actions-panel" class="bulk-actions-panel" style="display: none;">
+          <div class="bulk-actions-container">
+            <div class="bulk-action-title">
+              <i class="fas fa-tasks"></i> Bulk Actions
+              <span class="selected-count">0 items selected</span>
+            </div>
+            <div class="bulk-action-buttons">
+              <button class="bulk-btn" data-action="publish">
+                <i class="fas fa-check-circle"></i> Publish
+              </button>
+              <button class="bulk-btn" data-action="draft">
+                <i class="fas fa-save"></i> Move to Draft
+              </button>
+              <button class="bulk-btn" data-action="delete">
+                <i class="fas fa-trash"></i> Delete
+              </button>
+              <button class="bulk-btn" data-action="categories">
+                <i class="fas fa-tags"></i> Update Categories
+              </button>
+            </div>
+            <button class="bulk-close">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+        </div>
+        
+        <!-- Blog Posts Table -->
+        <div class="table-responsive">
+          <table id="blog-posts-table" class="data-table">
+            <thead>
+              <tr>
+                <th class="select-checkbox">
+                  <div class="checkbox-wrapper">
+                    <input type="checkbox" id="select-all">
+                    <label for="select-all"></label>
+                  </div>
+                </th>
+                <th>Title</th>
+                <th>Category</th>
+                <th>Author</th>
+                <th>Status</th>
+                <th>Comments</th>
+                <th>Published</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Sample data, would be populated dynamically -->
+              <tr data-id="1">
+                <td class="select-checkbox">
+                  <div class="checkbox-wrapper">
+                    <input type="checkbox" id="select-1" class="row-checkbox">
+                    <label for="select-1"></label>
+                  </div>
+                </td>
+                <td>
+                  <div class="post-title">
+                    <a href="admin-blog-add.html?id=1">Introduction to Backsure Global Support Services</a>
+                    <span class="preview-text">Learn about our comprehensive services...</span>
+                  </div>
+                </td>
+                <td>Company News</td>
+                <td>John Smith</td>
+                <td><span class="status-badge published">Published</span></td>
+                <td>12</td>
+                <td>Apr 15, 2025</td>
+                <td>
+                  <div class="action-buttons">
+                    <a href="admin-blog-add.html?id=1" class="action-btn edit" title="Edit">
+                      <i class="fas fa-edit"></i>
+                    </a>
+                    <a href="#" class="action-btn view" title="View" data-url="blog/introduction-to-backsure">
+                      <i class="fas fa-eye"></i>
+                    </a>
+                    <button class="action-btn duplicate" title="Duplicate" data-id="1">
+                      <i class="fas fa-copy"></i>
+                    </button>
+                    <button class="action-btn delete" title="Delete" data-id="1">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+              <tr data-id="2">
+                <td class="select-checkbox">
+                  <div class="checkbox-wrapper">
+                    <input type="checkbox" id="select-2" class="row-checkbox">
+                    <label for="select-2"></label>
+                  </div>
+                </td>
+                <td>
+                  <div class="post-title">
+                    <a href="admin-blog-add.html?id=2">5 Ways to Improve Your Business Efficiency</a>
+                    <span class="preview-text">Discover practical tips to enhance productivity...</span>
+                  </div>
+                </td>
+                <td>Guides & Tutorials</td>
+                <td>Sarah Johnson</td>
+                <td><span class="status-badge draft">Draft</span></td>
+                <td>0</td>
+                <td>-</td>
+                <td>
+                  <div class="action-buttons">
+                    <a href="admin-blog-add.html?id=2" class="action-btn edit" title="Edit">
+                      <i class="fas fa-edit"></i>
+                    </a>
+                    <a href="#" class="action-btn view" title="Preview" data-url="blog/5-ways-business-efficiency?preview=true">
+                      <i class="fas fa-eye"></i>
+                    </a>
+                    <button class="action-btn duplicate" title="Duplicate" data-id="2">
+                      <i class="fas fa-copy"></i>
+                    </button>
+                    <button class="action-btn delete" title="Delete" data-id="2">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+              <tr data-id="3">
+                <td class="select-checkbox">
+                  <div class="checkbox-wrapper">
+                    <input type="checkbox" id="select-3" class="row-checkbox">
+                    <label for="select-3"></label>
+                  </div>
+                </td>
+                <td>
+                  <div class="post-title">
+                    <a href="admin-blog-add.html?id=3">The Future of Remote Business Support</a>
+                    <span class="preview-text">Exploring trends in global business support...</span>
+                  </div>
+                </td>
+                <td>Industry Insights</td>
+                <td>Michael Chen</td>
+                <td><span class="status-badge pending">Pending Review</span></td>
+                <td>0</td>
+                <td>-</td>
+                <td>
+                  <div class="action-buttons">
+                    <a href="admin-blog-add.html?id=3" class="action-btn edit" title="Edit">
+                      <i class="fas fa-edit"></i>
+                    </a>
+                    <a href="#" class="action-btn view" title="Preview" data-url="blog/future-remote-business-support?preview=true">
+                      <i class="fas fa-eye"></i>
+                    </a>
+                    <button class="action-btn duplicate" title="Duplicate" data-id="3">
+                      <i class="fas fa-copy"></i>
+                    </button>
+                    <button class="action-btn delete" title="Delete" data-id="3">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+              <tr data-id="4">
+                <td class="select-checkbox">
+                  <div class="checkbox-wrapper">
+                    <input type="checkbox" id="select-4" class="row-checkbox">
+                    <label for="select-4"></label>
+                  </div>
+                </td>
+                <td>
+                  <div class="post-title">
+                    <a href="admin-blog-add.html?id=4">Upcoming Feature: Enhanced Reporting Dashboard</a>
+                    <span class="preview-text">We're excited to announce our latest feature...</span>
+                  </div>
+                </td>
+                <td>Product Updates</td>
+                <td>Sarah Johnson</td>
+                <td><span class="status-badge scheduled">Scheduled</span></td>
+                <td>0</td>
+                <td>May 1, 2025</td>
+                <td>
+                  <div class="action-buttons">
+                    <a href="admin-blog-add.html?id=4" class="action-btn edit" title="Edit">
+                      <i class="fas fa-edit"></i>
+                    </a>
+                    <a href="#" class="action-btn view" title="Preview" data-url="blog/upcoming-feature-reporting-dashboard?preview=true">
+                      <i class="fas fa-eye"></i>
+                    </a>
+                    <button class="action-btn duplicate" title="Duplicate" data-id="4">
+                      <i class="fas fa-copy"></i>
+                    </button>
+                    <button class="action-btn delete" title="Delete" data-id="4">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+              <tr data-id="5">
+                <td class="select-checkbox">
+                  <div class="checkbox-wrapper">
+                    <input type="checkbox" id="select-5" class="row-checkbox">
+                    <label for="select-5"></label>
+                  </div>
+                </td>
+                <td>
+                  <div class="post-title">
+                    <a href="admin-blog-add.html?id=5">Case Study: How Company X Improved Efficiency by 30%</a>
+                    <span class="preview-text">Learn how our services transformed operations...</span>
+                  </div>
+                </td>
+                <td>Company News</td>
+                <td>John Smith</td>
+                <td><span class="status-badge published">Published</span></td>
+                <td>5</td>
+                <td>Apr 10, 2025</td>
+                <td>
+                  <div class="action-buttons">
+                    <a href="admin-blog-add.html?id=5" class="action-btn edit" title="Edit">
+                      <i class="fas fa-edit"></i>
+                    </a>
+                    <a href="#" class="action-btn view" title="View" data-url="blog/case-study-company-x">
+                      <i class="fas fa-eye"></i>
+                    </a>
+                    <button class="action-btn duplicate" title="Duplicate" data-id="5">
+                      <i class="fas fa-copy"></i>
+                    </button>
+                    <button class="action-btn delete" title="Delete" data-id="5">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        
+        <!-- Pagination (will be handled by DataTables) -->
+        <div class="pagination-container">
+          <!-- DataTables will insert pagination here -->
+        </div>
+      </div>
+      
+      <!-- Admin Footer -->
+      <footer class="admin-footer" id="admin-footer">
+        <!-- JS will populate this -->
+      </footer>
+    </main>
+  </div>
+  
+  <!-- Modal for Category Update -->
+  <div class="modal" id="category-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Update Categories</h3>
+        <button class="modal-close">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Select categories for the selected posts:</p>
+        <div class="category-options">
+          <div class="checkbox-group">
+            <label class="checkbox-label">
+              <input type="checkbox" value="company-news" name="bulk-categories">
+              Company News
+            </label>
+          </div>
+          <div class="checkbox-group">
+            <label class="checkbox-label">
+              <input type="checkbox" value="product-updates" name="bulk-categories">
+              Product Updates
+            </label>
+          </div>
+          <div class="checkbox-group">
+            <label class="checkbox-label">
+              <input type="checkbox" value="guides-tutorials" name="bulk-categories">
+              Guides & Tutorials
+            </label>
+          </div>
+          <div class="checkbox-group">
+            <label class="checkbox-label">
+              <input type="checkbox" value="industry-insights" name="bulk-categories">
+              Industry Insights
+            </label>
+          </div>
+        </div>
+        <div class="modal-options">
+          <label class="radio-label">
+            <input type="radio" name="category-action" value="add" checked>
+            Add to selected categories
+          </label>
+          <label class="radio-label">
+            <input type="radio" name="category-action" value="replace">
+            Replace with selected categories
+          </label>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-secondary modal-cancel">Cancel</button>
+        <button class="btn-primary" id="update-categories-btn">Update Categories</button>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Confirmation Modal -->
+  <div class="modal" id="confirm-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Confirm Action</h3>
+        <button class="modal-close">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p id="confirm-message">Are you sure you want to perform this action?</p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-secondary modal-cancel">Cancel</button>
+        <button class="btn-primary" id="confirm-action-btn">Confirm</button>
+      </div>
+    </div>
+  </div>
+  
+  <!-- JavaScript -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
+  <script src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
+  <script src="admin-dashboard.js"></script>
+  <script src="admin-blog.js"></script>
+</body>
+</html>

@@ -1,0 +1,479 @@
+/**
+ * Admin Dashboard JavaScript
+ * Handles dashboard functionality, charts, and interactions
+ */
+
+document.addEventListener('DOMContentLoaded', function() {
+  console.log('Dashboard script loaded successfully');
+  
+  // Initialize dashboard functionality
+  initDashboard();
+});
+
+/**
+ * Initialize all dashboard components
+ */
+function initDashboard() {
+  // Initialize tabs
+  initDashboardTabs();
+  
+  // Initialize charts if Chart.js is loaded
+  if (typeof Chart !== 'undefined') {
+    initDashboardCharts();
+  } else {
+    console.error('Chart.js is not loaded. Loading it dynamically...');
+    loadChartJS();
+  }
+  
+  // Initialize quick action buttons hover effects
+  initQuickActions();
+  
+  // Set current date
+  updateCurrentDate();
+  
+  // Initialize chart controls for the traffic chart
+  initChartControls();
+  
+  // Log dashboard view for analytics
+  logDashboardView();
+}
+
+/**
+ * Initialize dashboard tabs
+ */
+function initDashboardTabs() {
+  const tabs = document.querySelectorAll('.chart-tab');
+  const panes = document.querySelectorAll('.chart-pane');
+  
+  tabs.forEach(tab => {
+    tab.addEventListener('click', function() {
+      // Get target tab
+      const targetTab = this.getAttribute('data-tab');
+      
+      // Remove active class from all tabs and panes
+      tabs.forEach(t => t.classList.remove('active'));
+      panes.forEach(p => p.classList.remove('active'));
+      
+      // Add active class to current tab and pane
+      this.classList.add('active');
+      document.getElementById(`${targetTab}-pane`).classList.add('active');
+    });
+  });
+}
+
+/**
+ * Dynamically load Chart.js if not already loaded
+ */
+function loadChartJS() {
+  const script = document.createElement('script');
+  script.src = 'https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js';
+  script.onload = initDashboardCharts;
+  document.head.appendChild(script);
+}
+
+/**
+ * Initialize all dashboard charts
+ */
+function initDashboardCharts() {
+  console.log('Initializing dashboard charts');
+  
+  try {
+    // Activity chart in Overview tab
+    initActivityChart();
+    
+    // Content distribution chart in Content tab
+    initContentDistributionChart();
+    
+    // User actions chart in Users tab
+    initUserActionsChart();
+    
+    // Traffic chart in Analytics section
+    initTrafficChart();
+  } catch (error) {
+    console.error('Error initializing charts:', error);
+    showChartErrors();
+  }
+}
+
+/**
+ * Initialize activity overview chart
+ */
+function initActivityChart() {
+  const ctx = document.getElementById('activityChart');
+  if (!ctx) return;
+  
+  // Get data from the page or fetch from an API
+  // This is example data - in a real implementation, this would come from PHP/backend
+  const labels = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'];
+  const pageViews = [1200, 1800, 1400, 2000, 2400, 2200, 2600];
+  const sessions = [400, 500, 450, 600, 700, 650, 750];
+  const newUsers = [200, 250, 220, 280, 320, 300, 350];
+  
+  // Create the chart
+  new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: labels,
+      datasets: [
+        {
+          label: 'Page Views',
+          data: pageViews,
+          borderColor: '#3498db',
+          backgroundColor: 'rgba(52, 152, 219, 0.1)',
+          borderWidth: 2,
+          tension: 0.3,
+          fill: true
+        },
+        {
+          label: 'Sessions',
+          data: sessions,
+          borderColor: '#2ecc71',
+          backgroundColor: 'rgba(46, 204, 113, 0.1)',
+          borderWidth: 2,
+          tension: 0.3,
+          fill: true
+        },
+        {
+          label: 'New Users',
+          data: newUsers,
+          borderColor: '#9b59b6',
+          backgroundColor: 'rgba(155, 89, 182, 0.1)',
+          borderWidth: 2,
+          tension: 0.3,
+          fill: true
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          position: 'top',
+        },
+        tooltip: {
+          mode: 'index',
+          intersect: false
+        }
+      },
+      scales: {
+        y: {
+          beginAtZero: true,
+          grid: {
+            color: 'rgba(0, 0, 0, 0.05)'
+          }
+        },
+        x: {
+          grid: {
+            display: false
+          }
+        }
+      }
+    }
+  });
+}
+
+/**
+ * Initialize content distribution chart
+ */
+function initContentDistributionChart() {
+  const ctx = document.getElementById('contentDistributionChart');
+  if (!ctx) return;
+  
+  // Example data
+  const data = [
+    { name: 'Blog Posts', value: 45, color: '#3498db' },
+    { name: 'Services', value: 25, color: '#2ecc71' },
+    { name: 'Testimonials', value: 15, color: '#9b59b6' },
+    { name: 'FAQ', value: 10, color: '#f39c12' },
+    { name: 'Other', value: 5, color: '#e74c3c' }
+  ];
+  
+  const labels = data.map(item => item.name);
+  const values = data.map(item => item.value);
+  const colors = data.map(item => item.color);
+  
+  new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+      labels: labels,
+      datasets: [
+        {
+          data: values,
+          backgroundColor: colors,
+          borderWidth: 1
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          position: 'bottom',
+          labels: {
+            boxWidth: 12
+          }
+        },
+        tooltip: {
+          callbacks: {
+            label: function(context) {
+              return context.label + ': ' + context.raw + '%';
+            }
+          }
+        }
+      }
+    }
+  });
+}
+
+/**
+ * Initialize user actions chart
+ */
+function initUserActionsChart() {
+  const ctx = document.getElementById('userActionsChart');
+  if (!ctx) return;
+  
+  // Example data
+  const data = [
+    { name: 'View', count: 820 },
+    { name: 'Create', count: 330 },
+    { name: 'Update', count: 450 },
+    { name: 'Delete', count: 140 }
+  ];
+  
+  const labels = data.map(item => item.name);
+  const counts = data.map(item => item.count);
+  
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: labels,
+      datasets: [
+        {
+          label: 'Number of Actions',
+          data: counts,
+          backgroundColor: '#3498db',
+          borderWidth: 0
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      scales: {
+        y: {
+          beginAtZero: true,
+          grid: {
+            color: 'rgba(0, 0, 0, 0.05)'
+          }
+        },
+        x: {
+          grid: {
+            display: false
+          }
+        }
+      }
+    }
+  });
+}
+
+/**
+ * Initialize traffic chart in the analytics section
+ */
+function initTrafficChart() {
+  const ctx = document.getElementById('traffic-chart');
+  if (!ctx) return;
+  
+  new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+      datasets: [
+        {
+          label: 'This Year',
+          data: [1500, 1800, 2200, 1800, 2400, 2800],
+          borderColor: '#4e73df',
+          backgroundColor: 'rgba(78, 115, 223, 0.05)',
+          pointBackgroundColor: '#4e73df',
+          tension: 0.3,
+          fill: true
+        },
+        {
+          label: 'Last Year',
+          data: [1000, 1300, 1500, 1200, 1800, 2100],
+          borderColor: '#1cc88a',
+          backgroundColor: 'rgba(28, 200, 138, 0.05)',
+          pointBackgroundColor: '#1cc88a',
+          tension: 0.3,
+          fill: true
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      scales: {
+        y: {
+          beginAtZero: true,
+          grid: {
+            color: 'rgba(0, 0, 0, 0.05)'
+          }
+        },
+        x: {
+          grid: {
+            display: false
+          }
+        }
+      }
+    }
+  });
+}
+
+/**
+ * Initialize chart controls for traffic chart
+ */
+function initChartControls() {
+  const controls = document.querySelectorAll('.chart-controls button');
+  if (!controls.length) return;
+  
+  controls.forEach(button => {
+    button.addEventListener('click', function() {
+      // Remove active class from all controls
+      controls.forEach(btn => btn.classList.remove('active'));
+      
+      // Add active class to clicked button
+      this.classList.add('active');
+      
+      // In a real implementation, this would reload the chart with new data
+      // For demonstration, we're just updating the UI
+      
+      // Get the chart period from the button text
+      const period = this.textContent.trim().toLowerCase();
+      console.log(`Switching chart to ${period} view`);
+      
+      // This would typically trigger a function to update the chart data
+      // updateTrafficChartData(period);
+    });
+  });
+}
+
+/**
+ * Initialize quick action buttons
+ */
+function initQuickActions() {
+  const quickActions = document.querySelectorAll('.quick-action-btn');
+  
+  quickActions.forEach(button => {
+    button.addEventListener('mouseenter', function() {
+      this.style.transform = 'translateY(-5px)';
+    });
+    
+    button.addEventListener('mouseleave', function() {
+      this.style.transform = 'translateY(0)';
+    });
+  });
+}
+
+/**
+ * Update current date display with proper formatting
+ */
+function updateCurrentDate() {
+  const dateElement = document.getElementById('current-date');
+  if (!dateElement) return;
+  
+  const today = new Date();
+  const options = { 
+    year: 'numeric', 
+    month: 'long', 
+    day: 'numeric' 
+  };
+  
+  dateElement.textContent = today.toLocaleDateString('en-US', options);
+}
+
+/**
+ * Show error message if charts fail to load
+ */
+function showChartErrors() {
+  const chartContainers = document.querySelectorAll('.chart-container');
+  
+  chartContainers.forEach(container => {
+    container.innerHTML = `
+      <div class="chart-error">
+        <i class="fas fa-exclamation-triangle"></i>
+        <p>Charts could not be loaded. Please check if Chart.js is properly loaded.</p>
+      </div>
+    `;
+  });
+}
+
+/**
+ * Log dashboard view for analytics
+ */
+function logDashboardView() {
+  // In a real implementation, this would make an AJAX request to log the view
+  console.log('Dashboard view logged');
+  
+  // Example of how this might be implemented with fetch API
+  /*
+  fetch('admin-analytics.php', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      page: 'admin-dashboard.php',
+      action: 'view'
+    })
+  })
+  .then(response => response.json())
+  .then(data => {
+    console.log('Analytics logged:', data);
+  })
+  .catch(error => {
+    console.error('Error logging analytics:', error);
+  });
+  */
+}
+
+/**
+ * Handles delete confirmation for table actions
+ */
+document.addEventListener('click', function(e) {
+  if (e.target.closest('.delete-btn')) {
+    e.preventDefault();
+    
+    const deleteBtn = e.target.closest('.delete-btn');
+    const itemId = deleteBtn.getAttribute('data-id');
+    
+    if (confirm('Are you sure you want to delete this item?')) {
+      console.log(`Delete item with ID: ${itemId}`);
+      // This would typically make an AJAX request to delete the item
+      // deleteItem(itemId);
+    }
+  }
+});
+
+/**
+ * Utility function to format numbers with commas
+ * @param {number} num - Number to format
+ * @returns {string} Formatted number string
+ */
+function formatNumber(num) {
+  return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
+/**
+ * Utility function to format date strings
+ * @param {string} dateString - Date string to format
+ * @returns {string} Formatted date string
+ */
+function formatDate(dateString) {
+  const date = new Date(dateString);
+  return date.toLocaleDateString('en-US', { 
+    year: 'numeric', 
+    month: 'short', 
+    day: 'numeric' 
+  });
+}

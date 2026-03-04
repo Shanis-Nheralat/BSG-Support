@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome to BSG Support Admin</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; color: #333; }
+        .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+        .header { background-color: #0b2e59; color: white; padding: 20px; text-align: center; }
+        .content { padding: 20px; background-color: #f9f9f9; }
+        .button { display: inline-block; background-color: #0b2e59; color: white; padding: 12px 24px; text-decoration: none; border-radius: 4px; }
+        .credentials { background-color: #e9e9e9; padding: 15px; border-radius: 4px; margin: 15px 0; }
+        .footer { padding: 20px; text-align: center; font-size: 12px; color: #777; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Welcome to BSG Support Admin</h1>
+        </div>
+        <div class="content">
+            <p>Hello {{name}},</p>
+            <p>Your account has been created in the BSG Support Admin system with the role of <strong>{{role}}</strong>.</p>
+            <p>Here are your login credentials:</p>
+            <div class="credentials">
+                <p><strong>Username:</strong> {{username}}</p>
+                <p><strong>Password:</strong> {{password}}</p>
+            </div>
+            <p>For security reasons, we recommend changing your password after your first login.</p>
+            <p style="text-align: center;">
+                <a href="{{login_url}}" class="button">Log In Now</a>
+            </p>
+            <p>If you have any questions or need assistance, please contact the admin team.</p>
+            <p>Thank you,<br>BSG Support Team</p>
+        </div>
+        <div class="footer">
+            <p>&copy; {{current_year}} Backsure Global Support. All rights reserved.</p>
+        </div>
+    </div>
+</body>
+</html>

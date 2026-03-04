@@ -1,0 +1,3163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title id="page-title">Blog Post Title | Backsure Global Support</title>
+  
+  <!-- Meta tags for SEO - will be dynamically updated -->
+  <meta name="description" content="Blog post description for SEO purposes">
+  <meta name="keywords" content="relevant, keywords, for, this, post">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Main stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+  
+  <!-- Blog detail specific styles -->
+  <style>
+    :root {
+      --primary-color: #062767;
+      --primary-light: #3a5ca2;
+      --primary-dark: #041c4a;
+      --accent-color: #b19763;
+      --accent-light: #cdb48e;
+      --accent-dark: #97814c;
+      --text-dark: #333333;
+      --text-light: #ffffff;
+      --text-gray: #f8f9fc;
+      --body-bg: #f5f6fa;
+      --card-bg: #ffffff;
+      --border-color: rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Blog detail specific styles */
+    .blog-detail-container {
+      padding: 40px 0 60px;
+      background-color: var(--body-bg);
+    }
+    
+    .blog-breadcrumbs {
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      font-size: 0.9rem;
+    }
+    
+    .blog-breadcrumbs a {
+      color: var(--primary-color);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    
+    .blog-breadcrumbs a:hover {
+      color: var(--accent-color);
+    }
+    
+    .blog-breadcrumbs i {
+      margin: 0 8px;
+      color: #999;
+      font-size: 0.8rem;
+    }
+    
+    .blog-breadcrumbs .current {
+      color: #666;
+    }
+    
+    .blog-post-header {
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 30px;
+    }
+    
+    .post-featured-image {
+      width: 100%;
+      height: 400px;
+      overflow: hidden;
+      position: relative;
+    }
+    
+    .post-featured-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .post-featured-image.has-overlay::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,0) 50%, rgba(0,0,0,0.7) 100%);
+    }
+    
+    .post-header-content {
+      padding: 30px;
+    }
+    
+    .post-category {
+      display: inline-block;
+      background-color: var(--primary-light);
+      color: white;
+      padding: 5px 15px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-bottom: 15px;
+      text-decoration: none;
+      transition: background-color 0.3s;
+    }
+    
+    .post-category:hover {
+      background-color: var(--primary-color);
+    }
+    
+    .post-title {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+      color: var(--primary-color);
+      line-height: 1.3;
+    }
+    
+    .post-meta {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-bottom: 15px;
+      color: #666;
+      font-size: 0.9rem;
+    }
+    
+    .post-meta div {
+      display: flex;
+      align-items: center;
+    }
+    
+    .post-meta i {
+      margin-right: 5px;
+      color: var(--accent-color);
+    }
+    
+    .post-author img {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      margin-right: 8px;
+      object-fit: cover;
+    }
+    
+    .blog-content-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      gap: 30px;
+    }
+    
+    .blog-post-content {
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      padding: 30px;
+    }
+    
+    .blog-post-content h2 {
+      font-size: 1.8rem;
+      color: var(--primary-color);
+      margin: 30px 0 15px;
+    }
+    
+    .blog-post-content h2:first-child {
+      margin-top: 0;
+    }
+    
+    .blog-post-content h3 {
+      font-size: 1.4rem;
+      color: var(--primary-color);
+      margin: 25px 0 15px;
+    }
+    
+    .blog-post-content p {
+      margin-bottom: 20px;
+      line-height: 1.7;
+      color: #444;
+    }
+    
+    .blog-post-content ul, 
+    .blog-post-content ol {
+      margin-bottom: 20px;
+      padding-left: 25px;
+    }
+    
+    .blog-post-content li {
+      margin-bottom: 10px;
+      line-height: 1.6;
+    }
+    
+    .blog-post-content img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 20px 0;
+    }
+    
+    .blog-post-content a {
+      color: var(--primary-color);
+      text-decoration: underline;
+      transition: color 0.3s;
+    }
+    
+    .blog-post-content a:hover {
+      color: var(--accent-color);
+    }
+    
+    .blog-post-content blockquote {
+      border-left: 4px solid var(--accent-color);
+      padding: 15px 20px;
+      margin: 20px 0;
+      background-color: #f9f9f9;
+      font-style: italic;
+      color: #555;
+    }
+    
+    .blog-post-content code {
+      background-color: #f5f5f5;
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-family: monospace;
+      font-size: 0.9em;
+    }
+    
+    .blog-post-content pre {
+      background-color: #f5f5f5;
+      padding: 15px;
+      border-radius: 8px;
+      overflow-x: auto;
+      margin: 20px 0;
+    }
+    
+    .blog-post-content pre code {
+      background-color: transparent;
+      padding: 0;
+    }
+    
+    .post-tags {
+      margin-top: 30px;
+      padding-top: 20px;
+      border-top: 1px solid #eee;
+    }
+    
+    .post-tags h4 {
+      margin-bottom: 10px;
+      font-size: 1rem;
+    }
+    
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    
+    .tag {
+      background-color: #f0f0f0;
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      color: #555;
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+    
+    .tag:hover {
+      background-color: var(--accent-light);
+      color: white;
+    }
+    
+    .post-share {
+      margin-top.post-share {
+      margin-top: 30px;
+      padding-top: 20px;
+      border-top: 1px solid #eee;
+    }
+    
+    .post-share h4 {
+      margin-bottom: 15px;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+    }
+    
+    .post-share h4 i {
+      margin-right: 8px;
+      color: var(--accent-color);
+    }
+    
+    .share-buttons {
+      display: flex;
+      gap: 10px;
+    }
+    
+    .share-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-decoration: none;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    
+    .share-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    .share-btn.facebook {
+      background-color: #3b5998;
+    }
+    
+    .share-btn.twitter {
+      background-color: #1da1f2;
+    }
+    
+    .share-btn.linkedin {
+      background-color: #0077b5;
+    }
+    
+    .share-btn.whatsapp {
+      background-color: #25d366;
+    }
+    
+    .share-btn.email {
+      background-color: #777;
+    }
+    
+    /* Blog Sidebar */
+    .blog-sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+    
+    .sidebar-widget {
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      padding: 25px;
+    }
+    
+    .sidebar-widget h3 {
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--accent-color);
+      color: var(--primary-color);
+      font-size: 1.2rem;
+    }
+    
+    .recent-posts-list {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    
+    .recent-post-item {
+      display: flex;
+      gap: 12px;
+    }
+    
+    .recent-post-img {
+      width: 70px;
+      height: 70px;
+      border-radius: 8px;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    
+    .recent-post-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .recent-post-content {
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .recent-post-title {
+      font-weight: 600;
+      line-height: 1.4;
+      margin-bottom: 5px;
+      color: var(--primary-color);
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: color 0.3s;
+    }
+    
+    .recent-post-title:hover {
+      color: var(--accent-color);
+    }
+    
+    .recent-post-date {
+      font-size: 0.8rem;
+      color: #777;
+    }
+    
+    .categories-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    
+    .category-item {
+      display: flex;
+      justify-content: space-between;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #eee;
+      text-decoration: none;
+      transition: transform 0.3s;
+    }
+    
+    .category-item:hover {
+      transform: translateX(5px);
+    }
+    
+    .category-item:last-child {
+      border-bottom: none;
+    }
+    
+    .category-name {
+      color: #444;
+      font-weight: 500;
+    }
+    
+    .category-count {
+      background-color: var(--primary-light);
+      color: white;
+      font-size: 0.8rem;
+      border-radius: 20px;
+      padding: 2px 10px;
+      font-weight: 600;
+    }
+    
+    .tags-widget .tag-list {
+      margin-top: 0;
+    }
+    
+    .contact-cta {
+      background-color: var(--primary-color);
+      color: white;
+      padding: 25px;
+      border-radius: 8px;
+      text-align: center;
+    }
+    
+    .contact-cta h3 {
+      margin-bottom: 15px;
+      padding-bottom: 0;
+      border-bottom: none;
+      color: white;
+    }
+    
+    .contact-cta p {
+      margin-bottom: 20px;
+      opacity: 0.9;
+    }
+    
+    .cta-btn {
+      display: inline-block;
+      background-color: var(--accent-color);
+      color: white;
+      padding: 10px 20px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background-color 0.3s, transform 0.3s;
+    }
+    
+    .cta-btn:hover {
+      background-color: var(--accent-dark);
+      transform: translateY(-3px);
+    }
+    
+    /* Related Posts Section */
+    .related-posts {
+      margin-top: 50px;
+    }
+    
+    .related-posts h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: var(--primary-color);
+      position: relative;
+    }
+    
+    .related-posts h2:after {
+      content: '';
+      display: block;
+      width: 80px;
+      height: 3px;
+      background-color: var(--accent-color);
+      margin: 15px auto 0;
+    }
+    
+    .related-posts-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 30px;
+    }
+    
+    /* Comments Section */
+    .comments-section {
+      margin-top: 50px;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      padding: 30px;
+    }
+    
+    .comments-section h2 {
+      margin-bottom: 30px;
+      color: var(--primary-color);
+      position: relative;
+    }
+    
+    .comments-section h2:after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 3px;
+      background-color: var(--accent-color);
+      margin-top: 10px;
+    }
+    
+    .comments-list {
+      margin-bottom: 40px;
+    }
+    
+    .comment {
+      margin-bottom: 25px;
+      padding-bottom: 25px;
+      border-bottom: 1px solid #eee;
+    }
+    
+    .comment:last-child {
+      border-bottom: none;
+    }
+    
+    .comment-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    
+    .comment-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      margin-right: 15px;
+      overflow: hidden;
+    }
+    
+    .comment-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .comment-meta {
+      flex: 1;
+    }
+    
+    .comment-author {
+      font-weight: 600;
+      margin-bottom: 3px;
+      color: var(--primary-color);
+    }
+    
+    .comment-date {
+      font-size: 0.8rem;
+      color: #777;
+    }
+    
+    .comment-content {
+      line-height: 1.6;
+      color: #444;
+    }
+    
+    .comment-reply {
+      margin-top: 10px;
+    }
+    
+    .reply-btn {
+      display: inline-flex;
+      align-items: center;
+      color: var(--primary-color);
+      font-size: 0.9rem;
+      font-weight: 500;
+      text-decoration: none;
+    }
+    
+    .reply-btn i {
+      margin-right: 5px;
+      font-size: 0.8rem;
+    }
+    
+    .reply-btn:hover {
+      color: var(--accent-color);
+    }
+    
+    .comment-reply-form {
+      margin-top: 15px;
+      padding: 15px;
+      background-color: #f9f9f9;
+      border-radius: 8px;
+      display: none;
+    }
+    
+    .comment-form h3 {
+      margin-bottom: 20px;
+      font-size: 1.3rem;
+      color: var(--primary-color);
+    }
+    
+    .form-group {
+      margin-bottom: 20px;
+    }
+    
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: #444;
+    }
+    
+    .form-control {
+      width: 100%;
+      padding: 12px 15px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 0.95rem;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    
+    .form-control:focus {
+      border-color: var(--primary-light);
+      box-shadow: 0 0 0 3px rgba(6, 39, 103, 0.1);
+      outline: none;
+    }
+    
+    textarea.form-control {
+      min-height: 120px;
+      resize: vertical;
+    }
+    
+    .form-row {
+      display: flex;
+      gap: 20px;
+    }
+    
+    .form-row .form-group {
+      flex: 1;
+    }
+    
+    .submit-btn {
+      background-color: var(--primary-color);
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 4px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    
+    .submit-btn:hover {
+      background-color: var(--primary-dark);
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 992px) {
+      .blog-content-wrapper {
+        grid-template-columns: 1fr;
+      }
+      
+      .post-title {
+        font-size: 2rem;
+      }
+      
+      .post-featured-image {
+        height: 300px;
+      }
+      
+      .form-row {
+        flex-direction: column;
+        gap: 0;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .post-title {
+        font-size: 1.8rem;
+      }
+      
+      .post-header-content {
+        padding: 20px;
+      }
+      
+      .blog-post-content {
+        padding: 20px;
+      }
+      
+      .post-featured-image {
+        height: 250px;
+      }
+      
+      .blog-post-content h2 {
+        font-size: 1.5rem;
+      }
+      
+      .related-posts-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header Placeholder -->
+  <div id="header-placeholder"></div>
+  
+  <!-- Blog Post Content -->
+  <div class="blog-detail-container">
+    <div class="container">
+      <!-- Breadcrumbs -->
+      <div class="blog-breadcrumbs">
+        <a href="index.html">Home</a> <i class="fas fa-chevron-right"></i>
+        <a href="blog.html">Blog</a> <i class="fas fa-chevron-right"></i>
+        <span class="current" id="breadcrumb-title">Blog Post Title</span>
+      </div>
+      
+      <!-- Blog Post Header -->
+      <article class="blog-post">
+        <div class="blog-post-header">
+          <div class="post-featured-image">
+            <img id="post-image" src="images/blog/blog-featured.jpg" alt="Blog Post Featured Image">
+          </div>
+          <div class="post-header-content">
+            <a href="#" class="post-category" id="post-category">Category Name</a>
+            <h1 class="post-title" id="post-title">Blog Post Title Will Be Displayed Here</h1>
+            <div class="post-meta">
+              <div class="post-date"><i class="far fa-calendar-alt"></i> <span id="post-date">April 15, 2025</span></div>
+              <div class="post-author"><i class="far fa-user"></i> <span id="post-author">Author Name</span></div>
+              <div class="post-views"><i class="far fa-eye"></i> <span id="post-views">245</span> views</div>
+              <div class="post-comments"><i class="far fa-comment"></i> <span id="post-comments">8</span> comments</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="blog-content-wrapper">
+          <!-- Main Blog Content -->
+          <div class="blog-post-content" id="post-content">
+            <!-- Content will be loaded dynamically -->
+            <p>Loading content...</p>
+          </div>
+          
+          <!-- Sidebar -->
+          <aside class="blog-sidebar">
+            <!-- Recent Posts Widget -->
+            <div class="sidebar-widget recent-posts-widget">
+              <h3>Recent Posts</h3>
+              <div class="recent-posts-list" id="recent-posts-list">
+                <!-- Will be populated dynamically -->
+                <div class="recent-post-item">
+                  <div class="recent-post-img">
+                    <img src="images/blog/blog-1.jpg" alt="Recent Post">
+                  </div>
+                  <div class="recent-post-content">
+                    <a href="blog-detail.html" class="recent-post-title">Building Effective Remote Teams: Best Practices</a>
+                    <span class="recent-post-date">April 12, 2025</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Categories Widget -->
+            <div class="sidebar-widget categories-widget">
+              <h3>Categories</h3>
+              <div class="categories-list" id="categories-list">
+                <!-- Will be populated dynamically -->
+                <a href="#" class="category-item">
+                  <span class="category-name">Business Growth</span>
+                  <span class="category-count">8</span>
+                </a>
+              </div>
+            </div>
+            
+            <!-- Tags Widget -->
+            <div class="sidebar-widget tags-widget">
+              <h3>Popular Tags</h3>
+              <div class="tag-list" id="popular-tags">
+                <!-- Will be populated dynamically -->
+                <a href="#" class="tag">outsourcing</a>
+                <a href="#" class="tag">business growth</a>
+                <a href="#" class="tag">finance</a>
+                <a href="#" class="tag">HR</a>
+                <a href="#" class="tag">remote work</a>
+                <a href="#" class="tag">UAE</a>
+              </div>
+            </div>
+            
+            <!-- CTA Widget -->
+            <div class="sidebar-widget contact-cta">
+              <h3>Need Business Support?</h3>
+              <p>Discover how our services can help your business grow and thrive.</p>
+              <a href="contact.html" class="cta-btn">Contact Us Today</a>
+            </div>
+          </aside>
+        </div>
+        
+        <!-- Post tags & sharing -->
+        <div class="blog-post-content" style="margin-top: 30px;">
+          <div class="post-tags">
+            <h4>Tags:</h4>
+            <div class="tag-list" id="post-tags">
+              <!-- Will be populated dynamically -->
+              <a href="#" class="tag">outsourcing</a>
+              <a href="#" class="tag">business growth</a>
+              <a href="#" class="tag">strategy</a>
+            </div>
+          </div>
+          
+          <div class="post-share">
+            <h4><i class="fas fa-share-alt"></i> Share this post:</h4>
+            <div class="share-buttons">
+              <a href="#" class="share-btn facebook" id="share-facebook"><i class="fab fa-facebook-f"></i></a>
+              <a href="#" class="share-btn twitter" id="share-twitter"><i class="fab fa-twitter"></i></a>
+              <a href="#" class="share-btn linkedin" id="share-linkedin"><i class="fab fa-linkedin-in"></i></a>
+              <a href="#" class="share-btn whatsapp" id="share-whatsapp"><i class="fab fa-whatsapp"></i></a>
+              <a href="#" class="share-btn email" id="share-email"><i class="fas fa-envelope"></i></a>
+            </div>
+          </div>
+        </div>
+      </article>
+      
+      <!-- Related Posts Section -->
+      <section class="related-posts">
+        <h2>You May Also Like</h2>
+        <div class="related-posts-grid" id="related-posts">
+          <!-- Will be populated dynamically -->
+        </div>
+      </section>
+      
+      <!-- Comments Section -->
+      <section class="comments-section">
+        <h2>Comments (<span id="comments-count">0</span>)</h2>
+        
+        <div class="comments-list" id="comments-list">
+          <!-- Will be populated dynamically -->
+        </div>
+        
+        <div class="comment-form">
+          <h3>Leave a Comment</h3>
+          <form id="post-comment-form">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="comment-name">Your Name*</label>
+                <input type="text" id="comment-name" class="form-control" required>
+              </div>
+              <div class="form-group">
+                <label for="comment-email">Your Email*</label>
+                <input type="email" id="comment-email" class="form-control" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="comment-website">Website</label>
+              <input type="url" id="comment-website" class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="comment-content">Your Comment*</label>
+              <textarea id="comment-content" class="form-control" required></textarea>
+            </div>
+            <button type="submit" class="submit-btn">Post Comment</button>
+          </form>
+        </div>
+      </section>
+    </div>
+  </div>
+  
+  <!-- Footer Placeholder -->
+  <div id="footer-placeholder"></div>
+  
+  <!-- Include Header/Footer Script -->
+  <script src="include.js"></script>
+  
+  <!-- JavaScript for handling blog details -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Get the blog post slug from URL
+      const urlParams = new URLSearchParams(window.location.search);
+      const postSlug = urlParams.get('slug') || '5-ways-outsourcing-can-accelerate-business-growth'; // Default post slug
+      
+      // Fetch the blog post data
+      fetchBlogPost(postSlug);
+      
+      // Set up comment form submission
+      const commentForm = document.getElementById('post-comment-form');
+      commentForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        submitComment(postSlug);
+      });
+      
+      // Set up sharing buttons
+      setupShareButtons();
+    });
+    
+    /**
+     * Fetch blog post data from the API
+     */
+    function fetchBlogPost(slug) {
+      // Create URL for the API
+      const apiUrl = `/api/blog-post.php?slug=${slug}`;
+      
+      fetch(apiUrl)
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.json();
+        })
+        .then(data => {
+          // Populate the blog post with the fetched data
+          populateBlogPost(data.post);
+          
+          // Populate the sidebar widgets
+          populateSidebar(data.recentPosts, data.categories, data.popularTags);
+          
+          // Populate related posts
+          populateRelatedPosts(data.relatedPosts);
+          
+          // Populate comments
+          populateComments(data.comments);
+        })
+        .catch(error => {
+          console.error('Error fetching blog post:', error);
+          
+          // For demo/development, use dummy data when API fails
+          if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+            console.log('Using dummy data for development');
+            const dummyData = getDummyPostData();
+            populateBlogPost(dummyData.post);
+            populateSidebar(dummyData.recentPosts, dummyData.categories, dummyData.popularTags);
+            populateRelatedPosts(dummyData.relatedPosts);
+            populateComments(dummyData.comments);
+          } else {
+            // Show error message in production
+            document.getElementById('post-content').innerHTML = `
+              <div class="error-message">
+                <h2>Oops! Unable to load the blog post</h2>
+                <p>We're having trouble loading this content right now. Please try again later.</p>
+                <a href="blog.html" class="cta-btn">Return to Blog</a>
+              </div>
+            `;
+          }
+        });
+    }
+    
+    /**
+     * Populate the blog post with the fetched data
+     */
+    function populateBlogPost(post) {
+      // Update the document title
+      document.title = `${post.title} | Backsure Global Support`;
+      
+      // Update meta tags
+      document.querySelector('meta[name="description"]').content = post.excerpt;
+      document.querySelector('meta[name="keywords"]').content = post.metaKeywords || post.tags.join(', ');
+      
+      // Update breadcrumb
+      document.getElementById('breadcrumb-title').textContent = post.title;
+      
+      // Update post header
+      document.getElementById('post-image').src = post.image;
+      document.getElementById('post-image').alt = post.title;
+      
+      document.getElementById('post-category').textContent = post.category.name;
+      document.getElementById('post-category').href = `blog.html?category=${post.category.slug}`;
+      
+      document.getElementById('post-title').textContent = post.title;
+      document.getElementById('post-date').textContent = formatDate(post.publishedAt);
+      document.getElementById('post-author').textContent = post.author.name;
+      document.getElementById('post-views').textContent = post.views || 0;
+      document.getElementById('post-comments').textContent = post.commentsCount || 0;
+      
+      // Update post content
+      document.getElementById('post-content').innerHTML = post.content;
+      
+      // Update post tags
+      const tagsContainer = document.getElementById('post-tags');
+      tagsContainer.innerHTML = '';
+      
+      post.tags.forEach(tag => {
+        const tagLink = document.createElement('a');
+        tagLink.className = 'tag';
+        tagLink.href = `blog.html?tag=${tag}`;
+        tagLink.textContent = tag;
+        tagsContainer.appendChild(tagLink);
+      });
+    }
+    
+    /**
+     * Populate the sidebar widgets
+     */
+    function populateSidebar(recentPosts, categories, popularTags) {
+      // Populate recent posts
+      const recentPostsList = document.getElementById('recent-posts-list');
+      recentPostsList.innerHTML = '';
+      
+      recentPosts.forEach(post => {
+        const postItem = document.createElement('div');
+        postItem.className = 'recent-post-item';
+        postItem.innerHTML = `
+          <div class="recent-post-img">
+            <img src="${post.image}" alt="${post.title}">
+          </div>
+          <div class="recent-post-content">
+            <a href="blog-detail.html?slug=${post.slug}" class="recent-post-title">${post.title}</a>
+            <span class="recent-post-date">${formatDate(post.publishedAt)}</span>
+          </div>
+        `;
+        recentPostsList.appendChild(postItem);
+      });
+      
+      // Populate categories
+      const categoriesList = document.getElementById('categories-list');
+      categoriesList.innerHTML = '';
+      
+      categories.forEach(category => {
+        const categoryItem = document.createElement('a');
+        categoryItem.className = 'category-item';
+        categoryItem.href = `blog.html?category=${category.slug}`;
+        categoryItem.innerHTML = `
+          <span class="category-name">${category.name}</span>
+          <span class="category-count">${category.count}</span>
+        `;
+        categoriesList.appendChild(categoryItem);
+      });
+      
+      // Populate popular tags
+      const tagsContainer = document.getElementById('popular-tags');
+      tagsContainer.innerHTML = '';
+      
+      popularTags.forEach(tag => {
+        const tagLink = document.createElement('a');
+        tagLink.className = 'tag';
+        tagLink.href = `blog.html?tag=${tag}`;
+        tagLink.textContent = tag;
+        tagsContainer.appendChild(tagLink);
+      });
+    }
+    
+    /**
+     * Populate related posts
+     */
+    function populateRelatedPosts(relatedPosts) {
+      const relatedPostsContainer = document.getElementById('related-posts');
+      relatedPostsContainer.innerHTML = '';
+      
+      relatedPosts.forEach(post => {
+        const article = document.createElement('article');
+        article.className = 'blog-card';
+        article.innerHTML = `
+          <div class="blog-card-image">
+            <img src="${post.image}" alt="${post.title}">
+          </div>
+          <div class="blog-card-content">
+            <h3 class="blog-card-title"><a href="blog-detail.html?slug=${post.slug}">${post.title}</a></h3>
+            <div class="blog-meta">
+              <span class="category">${post.category.name}</span>
+              <span class="date"><i class="far fa-calendar-alt"></i> ${formatDate(post.publishedAt)}</span>
+            </div>
+            <p class="blog-card-excerpt">${post.excerpt}</p>
+            <a href="blog-detail.html?slug=${post.slug}" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+          </div>
+        `;
+        relatedPostsContainer.appendChild(article);
+      });
+    }
+    
+    /**
+     * Populate comments section
+     */
+    function populateComments(comments) {
+      const commentsContainer = document.getElementById('comments-list');
+      commentsContainer.innerHTML = '';
+      
+      // Update comments count
+      document.getElementById('comments-count').textContent = comments.length;
+      
+      if (comments.length === 0) {
+        commentsContainer.innerHTML = '<p>No comments yet. Be the first to comment!</p>';
+        return;
+      }
+      
+      comments.forEach(comment => {
+        const commentElement = document.createElement('div');
+        commentElement.className = 'comment';
+        commentElement.innerHTML = `
+          <div class="comment-header">
+            <div class="comment-avatar">
+              <img src="images/avatar-placeholder.jpg" alt="${comment.authorName}">
+            </div>
+            <div class="comment-meta">
+              <div class="comment-author">${comment.authorName}</div>
+              <div class="comment-date">${formatDate(comment.createdAt)}</div>
+            </div>
+          </div>
+          <div class="comment-content">
+            <p>${comment.content}</p>
+          </div>
+          <div class="comment-reply">
+            <a href="#" class="reply-btn" data-comment-id="${comment.id}"><i class="fas fa-reply"></i> Reply</a>
+          </div>
+          <div class="comment-reply-form" id="reply-form-${comment.id}">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="reply-name-${comment.id}">Your Name*</label>
+                <input type="text" id="reply-name-${comment.id}" class="form-control" required>
+              </div>
+              <div class="form-group">
+                <label for="reply-email-${comment.id}">Your Email*</label>
+                <input type="email" id="reply-email-${comment.id}" class="form-control" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="reply-content-${comment.id}">Your Reply*<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title id="page-title">Blog Post Title | Backsure Global Support</title>
+  
+  <!-- Meta tags for SEO - will be dynamically updated -->
+  <meta name="description" content="Blog post description for SEO purposes">
+  <meta name="keywords" content="relevant, keywords, for, this, post">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Main stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+  
+  <!-- Blog detail specific styles -->
+  <style>
+    :root {
+      --primary-color: #062767;
+      --primary-light: #3a5ca2;
+      --primary-dark: #041c4a;
+      --accent-color: #b19763;
+      --accent-light: #cdb48e;
+      --accent-dark: #97814c;
+      --text-dark: #333333;
+      --text-light: #ffffff;
+      --text-gray: #f8f9fc;
+      --body-bg: #f5f6fa;
+      --card-bg: #ffffff;
+      --border-color: rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Blog detail specific styles */
+    .blog-detail-container {
+      padding: 40px 0 60px;
+      background-color: var(--body-bg);
+    }
+    
+    .blog-breadcrumbs {
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      font-size: 0.9rem;
+    }
+    
+    .blog-breadcrumbs a {
+      color: var(--primary-color);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    
+    .blog-breadcrumbs a:hover {
+      color: var(--accent-color);
+    }
+    
+    .blog-breadcrumbs i {
+      margin: 0 8px;
+      color: #999;
+      font-size: 0.8rem;
+    }
+    
+    .blog-breadcrumbs .current {
+      color: #666;
+    }
+    
+    .blog-post-header {
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 30px;
+    }
+    
+    .post-featured-image {
+      width: 100%;
+      height: 400px;
+      overflow: hidden;
+      position: relative;
+    }
+    
+    .post-featured-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .post-featured-image.has-overlay::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,0) 50%, rgba(0,0,0,0.7) 100%);
+    }
+    
+    .post-header-content {
+      padding: 30px;
+    }
+    
+    .post-category {
+      display: inline-block;
+      background-color: var(--primary-light);
+      color: white;
+      padding: 5px 15px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-bottom: 15px;
+      text-decoration: none;
+      transition: background-color 0.3s;
+    }
+    
+    .post-category:hover {
+      background-color: var(--primary-color);
+    }
+    
+    .post-title {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+      color: var(--primary-color);
+      line-height: 1.3;
+    }
+    
+    .post-meta {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-bottom: 15px;
+      color: #666;
+      font-size: 0.9rem;
+    }
+    
+    .post-meta div {
+      display: flex;
+      align-items: center;
+    }
+    
+    .post-meta i {
+      margin-right: 5px;
+      color: var(--accent-color);
+    }
+    
+    .post-author img {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      margin-right: 8px;
+      object-fit: cover;
+    }
+    
+    .blog-content-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      gap: 30px;
+    }
+    
+    .blog-post-content {
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      padding: 30px;
+    }
+    
+    .blog-post-content h2 {
+      font-size: 1.8rem;
+      color: var(--primary-color);
+      margin: 30px 0 15px;
+    }
+    
+    .blog-post-content h2:first-child {
+      margin-top: 0;
+    }
+    
+    .blog-post-content h3 {
+      font-size: 1.4rem;
+      color: var(--primary-color);
+      margin: 25px 0 15px;
+    }
+    
+    .blog-post-content p {
+      margin-bottom: 20px;
+      line-height: 1.7;
+      color: #444;
+    }
+    
+    .blog-post-content ul, 
+    .blog-post-content ol {
+      margin-bottom: 20px;
+      padding-left: 25px;
+    }
+    
+    .blog-post-content li {
+      margin-bottom: 10px;
+      line-height: 1.6;
+    }
+    
+    .blog-post-content img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 20px 0;
+    }
+    
+    .blog-post-content a {
+      color: var(--primary-color);
+      text-decoration: underline;
+      transition: color 0.3s;
+    }
+    
+    .blog-post-content a:hover {
+      color: var(--accent-color);
+    }
+    
+    .blog-post-content blockquote {
+      border-left: 4px solid var(--accent-color);
+      padding: 15px 20px;
+      margin: 20px 0;
+      background-color: #f9f9f9;
+      font-style: italic;
+      color: #555;
+    }
+    
+    .blog-post-content code {
+      background-color: #f5f5f5;
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-family: monospace;
+      font-size: 0.9em;
+    }
+    
+    .blog-post-content pre {
+      background-color: #f5f5f5;
+      padding: 15px;
+      border-radius: 8px;
+      overflow-x: auto;
+      margin: 20px 0;
+    }
+    
+    .blog-post-content pre code {
+      background-color: transparent;
+      padding: 0;
+    }
+    
+    .post-tags {
+      margin-top: 30px;
+      padding-top: 20px;
+      border-top: 1px solid #eee;
+    }
+    
+    .post-tags h4 {
+      margin-bottom: 10px;
+      font-size: 1rem;
+    }
+    
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    
+    .tag {
+      background-color: #f0f0f0;
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      color: #555;
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+    
+    .tag:hover {
+      background-color: var(--accent-light);
+      color: white;
+    }
+    
+    .post-share {
+      margin-top.post-share {
+      margin-top: 30px;
+      padding-top: 20px;
+      border-top: 1px solid #eee;
+    }
+    
+    .post-share h4 {
+      margin-bottom: 15px;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+    }
+    
+    .post-share h4 i {
+      margin-right: 8px;
+      color: var(--accent-color);
+    }
+    
+    .share-buttons {
+      display: flex;
+      gap: 10px;
+    }
+    
+    .share-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-decoration: none;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    
+    .share-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    .share-btn.facebook {
+      background-color: #3b5998;
+    }
+    
+    .share-btn.twitter {
+      background-color: #1da1f2;
+    }
+    
+    .share-btn.linkedin {
+      background-color: #0077b5;
+    }
+    
+    .share-btn.whatsapp {
+      background-color: #25d366;
+    }
+    
+    .share-btn.email {
+      background-color: #777;
+    }
+    
+    /* Blog Sidebar */
+    .blog-sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+    
+    .sidebar-widget {
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      padding: 25px;
+    }
+    
+    .sidebar-widget h3 {
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--accent-color);
+      color: var(--primary-color);
+      font-size: 1.2rem;
+    }
+    
+    .recent-posts-list {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    
+    .recent-post-item {
+      display: flex;
+      gap: 12px;
+    }
+    
+    .recent-post-img {
+      width: 70px;
+      height: 70px;
+      border-radius: 8px;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    
+    .recent-post-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .recent-post-content {
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .recent-post-title {
+      font-weight: 600;
+      line-height: 1.4;
+      margin-bottom: 5px;
+      color: var(--primary-color);
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: color 0.3s;
+    }
+    
+    .recent-post-title:hover {
+      color: var(--accent-color);
+    }
+    
+    .recent-post-date {
+      font-size: 0.8rem;
+      color: #777;
+    }
+    
+    .categories-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    
+    .category-item {
+      display: flex;
+      justify-content: space-between;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #eee;
+      text-decoration: none;
+      transition: transform 0.3s;
+    }
+    
+    .category-item:hover {
+      transform: translateX(5px);
+    }
+    
+    .category-item:last-child {
+      border-bottom: none;
+    }
+    
+    .category-name {
+      color: #444;
+      font-weight: 500;
+    }
+    
+    .category-count {
+      background-color: var(--primary-light);
+      color: white;
+      font-size: 0.8rem;
+      border-radius: 20px;
+      padding: 2px 10px;
+      font-weight: 600;
+    }
+    
+    .tags-widget .tag-list {
+      margin-top: 0;
+    }
+    
+    .contact-cta {
+      background-color: var(--primary-color);
+      color: white;
+      padding: 25px;
+      border-radius: 8px;
+      text-align: center;
+    }
+    
+    .contact-cta h3 {
+      margin-bottom: 15px;
+      padding-bottom: 0;
+      border-bottom: none;
+      color: white;
+    }
+    
+    .contact-cta p {
+      margin-bottom: 20px;
+      opacity: 0.9;
+    }
+    
+    .cta-btn {
+      display: inline-block;
+      background-color: var(--accent-color);
+      color: white;
+      padding: 10px 20px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background-color 0.3s, transform 0.3s;
+    }
+    
+    .cta-btn:hover {
+      background-color: var(--accent-dark);
+      transform: translateY(-3px);
+    }
+    
+    /* Related Posts Section */
+    .related-posts {
+      margin-top: 50px;
+    }
+    
+    .related-posts h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: var(--primary-color);
+      position: relative;
+    }
+    
+    .related-posts h2:after {
+      content: '';
+      display: block;
+      width: 80px;
+      height: 3px;
+      background-color: var(--accent-color);
+      margin: 15px auto 0;
+    }
+    
+    .related-posts-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 30px;
+    }
+    
+    /* Comments Section */
+    .comments-section {
+      margin-top: 50px;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      padding: 30px;
+    }
+    
+    .comments-section h2 {
+      margin-bottom: 30px;
+      color: var(--primary-color);
+      position: relative;
+    }
+    
+    .comments-section h2:after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 3px;
+      background-color: var(--accent-color);
+      margin-top: 10px;
+    }
+    
+    .comments-list {
+      margin-bottom: 40px;
+    }
+    
+    .comment {
+      margin-bottom: 25px;
+      padding-bottom: 25px;
+      border-bottom: 1px solid #eee;
+    }
+    
+    .comment:last-child {
+      border-bottom: none;
+    }
+    
+    .comment-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    
+    .comment-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      margin-right: 15px;
+      overflow: hidden;
+    }
+    
+    .comment-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .comment-meta {
+      flex: 1;
+    }
+    
+    .comment-author {
+      font-weight: 600;
+      margin-bottom: 3px;
+      color: var(--primary-color);
+    }
+    
+    .comment-date {
+      font-size: 0.8rem;
+      color: #777;
+    }
+    
+    .comment-content {
+      line-height: 1.6;
+      color: #444;
+    }
+    
+    .comment-reply {
+      margin-top: 10px;
+    }
+    
+    .reply-btn {
+      display: inline-flex;
+      align-items: center;
+      color: var(--primary-color);
+      font-size: 0.9rem;
+      font-weight: 500;
+      text-decoration: none;
+    }
+    
+    .reply-btn i {
+      margin-right: 5px;
+      font-size: 0.8rem;
+    }
+    
+    .reply-btn:hover {
+      color: var(--accent-color);
+    }
+    
+    .comment-reply-form {
+      margin-top: 15px;
+      padding: 15px;
+      background-color: #f9f9f9;
+      border-radius: 8px;
+      display: none;
+    }
+    
+    .comment-form h3 {
+      margin-bottom: 20px;
+      font-size: 1.3rem;
+      color: var(--primary-color);
+    }
+    
+    .form-group {
+      margin-bottom: 20px;
+    }
+    
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: #444;
+    }
+    
+    .form-control {
+      width: 100%;
+      padding: 12px 15px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 0.95rem;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    
+    .form-control:focus {
+      border-color: var(--primary-light);
+      box-shadow: 0 0 0 3px rgba(6, 39, 103, 0.1);
+      outline: none;
+    }
+    
+    textarea.form-control {
+      min-height: 120px;
+      resize: vertical;
+    }
+    
+    .form-row {
+      display: flex;
+      gap: 20px;
+    }
+    
+    .form-row .form-group {
+      flex: 1;
+    }
+    
+    .submit-btn {
+      background-color: var(--primary-color);
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 4px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    
+    .submit-btn:hover {
+      background-color: var(--primary-dark);
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 992px) {
+      .blog-content-wrapper {
+        grid-template-columns: 1fr;
+      }
+      
+      .post-title {
+        font-size: 2rem;
+      }
+      
+      .post-featured-image {
+        height: 300px;
+      }
+      
+      .form-row {
+        flex-direction: column;
+        gap: 0;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .post-title {
+        font-size: 1.8rem;
+      }
+      
+      .post-header-content {
+        padding: 20px;
+      }
+      
+      .blog-post-content {
+        padding: 20px;
+      }
+      
+      .post-featured-image {
+        height: 250px;
+      }
+      
+      .blog-post-content h2 {
+        font-size: 1.5rem;
+      }
+      
+      .related-posts-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header Placeholder -->
+  <div id="header-placeholder"></div>
+  
+  <!-- Blog Post Content -->
+  <div class="blog-detail-container">
+    <div class="container">
+      <!-- Breadcrumbs -->
+      <div class="blog-breadcrumbs">
+        <a href="index.html">Home</a> <i class="fas fa-chevron-right"></i>
+        <a href="blog.html">Blog</a> <i class="fas fa-chevron-right"></i>
+        <span class="current" id="breadcrumb-title">Blog Post Title</span>
+      </div>
+      
+      <!-- Blog Post Header -->
+      <article class="blog-post">
+        <div class="blog-post-header">
+          <div class="post-featured-image">
+            <img id="post-image" src="images/blog/blog-featured.jpg" alt="Blog Post Featured Image">
+          </div>
+          <div class="post-header-content">
+            <a href="#" class="post-category" id="post-category">Category Name</a>
+            <h1 class="post-title" id="post-title">Blog Post Title Will Be Displayed Here</h1>
+            <div class="post-meta">
+              <div class="post-date"><i class="far fa-calendar-alt"></i> <span id="post-date">April 15, 2025</span></div>
+              <div class="post-author"><i class="far fa-user"></i> <span id="post-author">Author Name</span></div>
+              <div class="post-views"><i class="far fa-eye"></i> <span id="post-views">245</span> views</div>
+              <div class="post-comments"><i class="far fa-comment"></i> <span id="post-comments">8</span> comments</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="blog-content-wrapper">
+          <!-- Main Blog Content -->
+          <div class="blog-post-content" id="post-content">
+            <!-- Content will be loaded dynamically -->
+            <p>Loading content...</p>
+          </div>
+          
+          <!-- Sidebar -->
+          <aside class="blog-sidebar">
+            <!-- Recent Posts Widget -->
+            <div class="sidebar-widget recent-posts-widget">
+              <h3>Recent Posts</h3>
+              <div class="recent-posts-list" id="recent-posts-list">
+                <!-- Will be populated dynamically -->
+                <div class="recent-post-item">
+                  <div class="recent-post-img">
+                    <img src="images/blog/blog-1.jpg" alt="Recent Post">
+                  </div>
+                  <div class="recent-post-content">
+                    <a href="blog-detail.html" class="recent-post-title">Building Effective Remote Teams: Best Practices</a>
+                    <span class="recent-post-date">April 12, 2025</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Categories Widget -->
+            <div class="sidebar-widget categories-widget">
+              <h3>Categories</h3>
+              <div class="categories-list" id="categories-list">
+                <!-- Will be populated dynamically -->
+                <a href="#" class="category-item">
+                  <span class="category-name">Business Growth</span>
+                  <span class="category-count">8</span>
+                </a>
+              </div>
+            </div>
+            
+            <!-- Tags Widget -->
+            <div class="sidebar-widget tags-widget">
+              <h3>Popular Tags</h3>
+              <div class="tag-list" id="popular-tags">
+                <!-- Will be populated dynamically -->
+                <a href="#" class="tag">outsourcing</a>
+                <a href="#" class="tag">business growth</a>
+                <a href="#" class="tag">finance</a>
+                <a href="#" class="tag">HR</a>
+                <a href="#" class="tag">remote work</a>
+                <a href="#" class="tag">UAE</a>
+              </div>
+            </div>
+            
+            <!-- CTA Widget -->
+            <div class="sidebar-widget contact-cta">
+              <h3>Need Business Support?</h3>
+              <p>Discover how our services can help your business grow and thrive.</p>
+              <a href="contact.html" class="cta-btn">Contact Us Today</a>
+            </div>
+          </aside>
+        </div>
+        
+        <!-- Post tags & sharing -->
+        <div class="blog-post-content" style="margin-top: 30px;">
+          <div class="post-tags">
+            <h4>Tags:</h4>
+            <div class="tag-list" id="post-tags">
+              <!-- Will be populated dynamically -->
+              <a href="#" class="tag">outsourcing</a>
+              <a href="#" class="tag">business growth</a>
+              <a href="#" class="tag">strategy</a>
+            </div>
+          </div>
+          
+          <div class="post-share">
+            <h4><i class="fas fa-share-alt"></i> Share this post:</h4>
+            <div class="share-buttons">
+              <a href="#" class="share-btn facebook" id="share-facebook"><i class="fab fa-facebook-f"></i></a>
+              <a href="#" class="share-btn twitter" id="share-twitter"><i class="fab fa-twitter"></i></a>
+              <a href="#" class="share-btn linkedin" id="share-linkedin"><i class="fab fa-linkedin-in"></i></a>
+              <a href="#" class="share-btn whatsapp" id="share-whatsapp"><i class="fab fa-whatsapp"></i></a>
+              <a href="#" class="share-btn email" id="share-email"><i class="fas fa-envelope"></i></a>
+            </div>
+          </div>
+        </div>
+      </article>
+      
+      <!-- Related Posts Section -->
+      <section class="related-posts">
+        <h2>You May Also Like</h2>
+        <div class="related-posts-grid" id="related-posts">
+          <!-- Will be populated dynamically -->
+        </div>
+      </section>
+      
+      <!-- Comments Section -->
+      <section class="comments-section">
+        <h2>Comments (<span id="comments-count">0</span>)</h2>
+        
+        <div class="comments-list" id="comments-list">
+          <!-- Will be populated dynamically -->
+        </div>
+        
+        <div class="comment-form">
+          <h3>Leave a Comment</h3>
+          <form id="post-comment-form">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="comment-name">Your Name*</label>
+                <input type="text" id="comment-name" class="form-control" required>
+              </div>
+              <div class="form-group">
+                <label for="comment-email">Your Email*</label>
+                <input type="email" id="comment-email" class="form-control" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="comment-website">Website</label>
+              <input type="url" id="comment-website" class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="comment-content">Your Comment*</label>
+              <textarea id="comment-content" class="form-control" required></textarea>
+            </div>
+            <button type="submit" class="submit-btn">Post Comment</button>
+          </form>
+        </div>
+      </section>
+    </div>
+  </div>
+  
+  <!-- Footer Placeholder -->
+  <div id="footer-placeholder"></div>
+  
+  <!-- Include Header/Footer Script -->
+  <script src="include.js"></script>
+  
+  <!-- JavaScript for handling blog details -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Get the blog post slug from URL
+      const urlParams = new URLSearchParams(window.location.search);
+      const postSlug = urlParams.get('slug') || '5-ways-outsourcing-can-accelerate-business-growth'; // Default post slug
+      
+      // Fetch the blog post data
+      fetchBlogPost(postSlug);
+      
+      // Set up comment form submission
+      const commentForm = document.getElementById('post-comment-form');
+      commentForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        submitComment(postSlug);
+      });
+      
+      // Set up sharing buttons
+      setupShareButtons();
+    });
+    
+    /**
+     * Fetch blog post data from the API
+     */
+    function fetchBlogPost(slug) {
+      // Create URL for the API
+      const apiUrl = `/api/blog-post.php?slug=${slug}`;
+      
+      fetch(apiUrl)
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.json();
+        })
+        .then(data => {
+          // Populate the blog post with the fetched data
+          populateBlogPost(data.post);
+          
+          // Populate the sidebar widgets
+          populateSidebar(data.recentPosts, data.categories, data.popularTags);
+          
+          // Populate related posts
+          populateRelatedPosts(data.relatedPosts);
+          
+          // Populate comments
+          populateComments(data.comments);
+        })
+        .catch(error => {
+          console.error('Error fetching blog post:', error);
+          
+          // For demo/development, use dummy data when API fails
+          if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+            console.log('Using dummy data for development');
+            const dummyData = getDummyPostData();
+            populateBlogPost(dummyData.post);
+            populateSidebar(dummyData.recentPosts, dummyData.categories, dummyData.popularTags);
+            populateRelatedPosts(dummyData.relatedPosts);
+            populateComments(dummyData.comments);
+          } else {
+            // Show error message in production
+            document.getElementById('post-content').innerHTML = `
+              <div class="error-message">
+                <h2>Oops! Unable to load the blog post</h2>
+                <p>We're having trouble loading this content right now. Please try again later.</p>
+                <a href="blog.html" class="cta-btn">Return to Blog</a>
+              </div>
+            `;
+          }
+        });
+    }
+    
+    /**
+     * Populate the blog post with the fetched data
+     */
+    function populateBlogPost(post) {
+      // Update the document title
+      document.title = `${post.title} | Backsure Global Support`;
+      
+      // Update meta tags
+      document.querySelector('meta[name="description"]').content = post.excerpt;
+      document.querySelector('meta[name="keywords"]').content = post.metaKeywords || post.tags.join(', ');
+      
+      // Update breadcrumb
+      document.getElementById('breadcrumb-title').textContent = post.title;
+      
+      // Update post header
+      document.getElementById('post-image').src = post.image;
+      document.getElementById('post-image').alt = post.title;
+      
+      document.getElementById('post-category').textContent = post.category.name;
+      document.getElementById('post-category').href = `blog.html?category=${post.category.slug}`;
+      
+      document.getElementById('post-title').textContent = post.title;
+      document.getElementById('post-date').textContent = formatDate(post.publishedAt);
+      document.getElementById('post-author').textContent = post.author.name;
+      document.getElementById('post-views').textContent = post.views || 0;
+      document.getElementById('post-comments').textContent = post.commentsCount || 0;
+      
+      // Update post content
+      document.getElementById('post-content').innerHTML = post.content;
+      
+      // Update post tags
+      const tagsContainer = document.getElementById('post-tags');
+      tagsContainer.innerHTML = '';
+      
+      post.tags.forEach(tag => {
+        const tagLink = document.createElement('a');
+        tagLink.className = 'tag';
+        tagLink.href = `blog.html?tag=${tag}`;
+        tagLink.textContent = tag;
+        tagsContainer.appendChild(tagLink);
+      });
+    }
+    
+    /**
+     * Populate the sidebar widgets
+     */
+    function populateSidebar(recentPosts, categories, popularTags) {
+      // Populate recent posts
+      const recentPostsList = document.getElementById('recent-posts-list');
+      recentPostsList.innerHTML = '';
+      
+      recentPosts.forEach(post => {
+        const postItem = document.createElement('div');
+        postItem.className = 'recent-post-item';
+        postItem.innerHTML = `
+          <div class="recent-post-img">
+            <img src="${post.image}" alt="${post.title}">
+          </div>
+          <div class="recent-post-content">
+            <a href="blog-detail.html?slug=${post.slug}" class="recent-post-title">${post.title}</a>
+            <span class="recent-post-date">${formatDate(post.publishedAt)}</span>
+          </div>
+        `;
+        recentPostsList.appendChild(postItem);
+      });
+      
+      // Populate categories
+      const categoriesList = document.getElementById('categories-list');
+      categoriesList.innerHTML = '';
+      
+      categories.forEach(category => {
+        const categoryItem = document.createElement('a');
+        categoryItem.className = 'category-item';
+        categoryItem.href = `blog.html?category=${category.slug}`;
+        categoryItem.innerHTML = `
+          <span class="category-name">${category.name}</span>
+          <span class="category-count">${category.count}</span>
+        `;
+        categoriesList.appendChild(categoryItem);
+      });
+      
+      // Populate popular tags
+      const tagsContainer = document.getElementById('popular-tags');
+      tagsContainer.innerHTML = '';
+      
+      popularTags.forEach(tag => {
+        const tagLink = document.createElement('a');
+        tagLink.className = 'tag';
+        tagLink.href = `blog.html?tag=${tag}`;
+        tagLink.textContent = tag;
+        tagsContainer.appendChild(tagLink);
+      });
+    }
+    
+    /**
+     * Populate related posts
+     */
+    function populateRelatedPosts(relatedPosts) {
+      const relatedPostsContainer = document.getElementById('related-posts');
+      relatedPostsContainer.innerHTML = '';
+      
+      relatedPosts.forEach(post => {
+        const article = document.createElement('article');
+        article.className = 'blog-card';
+        article.innerHTML = `
+          <div class="blog-card-image">
+            <img src="${post.image}" alt="${post.title}">
+          </div>
+          <div class="blog-card-content">
+            <h3 class="blog-card-title"><a href="blog-detail.html?slug=${post.slug}">${post.title}</a></h3>
+            <div class="blog-meta">
+              <span class="category">${post.category.name}</span>
+              <span class="date"><i class="far fa-calendar-alt"></i> ${formatDate(post.publishedAt)}</span>
+            </div>
+            <p class="blog-card-excerpt">${post.excerpt}</p>
+            <a href="blog-detail.html?slug=${post.slug}" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+          </div>
+        `;
+        relatedPostsContainer.appendChild(article);
+      });
+    }
+    
+    /**
+     * Populate comments section
+     */
+    function populateComments(comments) {
+      const commentsContainer = document.getElementById('comments-list');
+      commentsContainer.innerHTML = '';
+      
+      // Update comments count
+      document.getElementById('comments-count').textContent = comments.length;
+      
+      if (comments.length === 0) {
+        commentsContainer.innerHTML = '<p>No comments yet. Be the first to comment!</p>';
+        return;
+      }
+      
+      comments.forEach(comment => {
+        const commentElement = document.createElement('div');
+        commentElement.className = 'comment';
+        commentElement.innerHTML = `
+          <div class="comment-header">
+            <div class="comment-avatar">
+              <img src="images/avatar-placeholder.jpg" alt="${comment.authorName}">
+            </div>
+            <div class="comment-meta">
+              <div class="comment-author">${comment.authorName}</div>
+              <div class="comment-date">${formatDate(comment.createdAt)}</div>
+            </div>
+          </div>
+          <div class="comment-content">
+            <p>${comment.content}</p>
+          </div>
+          <div class="comment-reply">
+            <a href="#" class="reply-btn" data-comment-id="${comment.id}"><i class="fas fa-reply"></i> Reply</a>
+          </div>
+          <div class="comment-reply-form" id="reply-form-${comment.id}">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="reply-name-${comment.id}">Your Name*</label>
+                <input type="text" id="reply-name-${comment.id}" class="form-control" required>
+              </div>
+              <div class="form-group">
+                <label for="reply-email-${comment.id}">Your Email*</label>
+                <input type="email" id="reply-email-${comment.id}" class="form-control" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="reply-content-${comment.id}">Your Reply*</label>
+              <textarea id="reply-content-${comment.id}" class="form-control" required></textarea>
+            </div>
+            <button type="button" class="submit-btn submit-reply-btn" data-comment-id="${comment.id}">Post Reply</button>
+          </div>
+        `;
+        
+        commentsContainer.appendChild(commentElement);
+        
+        // Add nested replies if any
+        if (comment.replies && comment.replies.length > 0) {
+          const repliesContainer = document.createElement('div');
+          repliesContainer.className = 'comment-replies';
+          repliesContainer.style.marginLeft = '40px';
+          repliesContainer.style.marginTop = '20px';
+          
+          comment.replies.forEach(reply => {
+            const replyElement = document.createElement('div');
+            replyElement.className = 'comment';
+            replyElement.innerHTML = `
+              <div class="comment-header">
+                <div class="comment-avatar">
+                  <img src="images/avatar-placeholder.jpg" alt="${reply.authorName}">
+                </div>
+                <div class="comment-meta">
+                  <div class="comment-author">${reply.authorName}</div>
+                  <div class="comment-date">${formatDate(reply.createdAt)}</div>
+                </div>
+              </div>
+              <div class="comment-content">
+                <p>${reply.content}</p>
+              </div>
+            `;
+            
+            repliesContainer.appendChild(replyElement);
+          });
+          
+          commentElement.appendChild(repliesContainer);
+        }
+      });
+      
+      // Add reply functionality
+      document.querySelectorAll('.reply-btn').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          const commentId = this.getAttribute('data-comment-id');
+          const replyForm = document.getElementById(`reply-form-${commentId}`);
+          
+          // Toggle reply form
+          if (replyForm.style.display === 'block') {
+            replyForm.style.display = 'none';
+          } else {
+            // Hide all other reply forms first
+            document.querySelectorAll('.comment-reply-form').forEach(form => {
+              form.style.display = 'none';
+            });
+            
+            replyForm.style.display = 'block';
+          }
+        });
+      });
+      
+      // Add reply submission
+      document.querySelectorAll('.submit-reply-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+          const commentId = this.getAttribute('data-comment-id');
+          submitReply(commentId);
+        });
+      });
+    }
+    
+    /**
+     * Submit a new comment
+     */
+    function submitComment(postSlug) {
+      const name = document.getElementById('comment-name').value;
+      const email = document.getElementById('comment-email').value;
+      const website = document.getElementById('comment-website').value;
+      const content = document.getElementById('comment-content').value;
+      
+      if (!name || !email || !content) {
+        alert('Please fill in all required fields');
+        return;
+      }
+      
+      // In a real implementation, this would make an API call
+      console.log('Submitting comment:', {
+        postSlug,
+        name,
+        email,
+        website,
+        content
+      });
+      
+      // Simulate API call
+      showLoadingIndicator('Submitting comment...');
+      
+      setTimeout(() => {
+        // Add new comment to the UI
+        const commentsContainer = document.getElementById('comments-list');
+        const newComment = document.createElement('div');
+        newComment.className = 'comment';
+        newComment.innerHTML = `
+          <div class="comment-header">
+            <div class="comment-avatar">
+              <img src="images/avatar-placeholder.jpg" alt="${name}">
+            </div>
+            <div class="comment-meta">
+              <div class="comment-author">${name}</div>
+              <div class="comment-date">${formatDate(new Date())}</div>
+            </div>
+          </div>
+          <div class="comment-content">
+            <p>${content}</p>
+          </div>
+          <div class="comment-reply">
+            <a href="#" class="reply-btn"><i class="fas fa-reply"></i> Reply</a>
+          </div>
+        `;
+        
+        // If no comments exist yet, clear the "no comments" message
+        if (commentsContainer.querySelector('p') && commentsContainer.childElementCount === 1) {
+          commentsContainer.innerHTML = '';
+        }
+        
+        commentsContainer.appendChild(newComment);
+        
+        // Update comment count
+        const commentsCount = document.getElementById('comments-count');
+        commentsCount.textContent = parseInt(commentsCount.textContent) + 1;
+        
+        // Reset form
+        document.getElementById('comment-name').value = '';
+        document.getElementById('comment-email').value = '';
+        document.getElementById('comment-website').value = '';
+        document.getElementById('comment-content').value = '';
+        
+        hideLoadingIndicator();
+        showNotification('Comment submitted successfully. It will be visible after approval.');
+      }, 1500);
+    }
+    
+    /**
+     * Submit a reply to a comment
+     */
+    function submitReply(commentId) {
+      const name = document.getElementById(`reply-name-${commentId}`).value;
+      const email = document.getElementById(`reply-email-${commentId}`).value;
+      const content = document.getElementById(`reply-content-${commentId}`).value;
+      
+      if (!name || !email || !content) {
+        alert('Please fill in all required fields');
+        return;
+      }
+      
+      // In a real implementation, this would make an API call
+      console.log('Submitting reply:', {
+        commentId,
+        name,
+        email,
+        content
+      });
+      
+      // Simulate API call
+      showLoadingIndicator('Submitting reply...');
+      
+      setTimeout(() => {
+        // Hide the reply form
+        document.getElementById(`reply-form-${commentId}`).style.display = 'none';
+        
+        hideLoadingIndicator();
+        showNotification('Reply submitted successfully. It will be visible after approval.');
+      }, 1500);
+    }
+    
+    /**
+     * Set up sharing buttons
+     */
+    function setupShareButtons() {
+      const pageUrl = encodeURIComponent(window.location.href);
+      const pageTitle = encodeURIComponent(document.title);
+      
+      // Facebook share
+      document.getElementById('share-facebook').href = `https://www.facebook.com/sharer/sharer.php?u=${pageUrl}`;
+      
+      // Twitter share
+      document.getElementById('share-twitter').href = `https://twitter.com/intent/tweet?url=${pageUrl}&text=${pageTitle}`;
+      
+      // LinkedIn share
+      document.getElementById('share-linkedin').href = `https://www.linkedin.com/sharing/share-offsite/?url=${pageUrl}`;
+      
+      // WhatsApp share
+      document.getElementById('share-whatsapp').href = `https://wa.me/?text=${pageTitle}%20${pageUrl}`;
+      
+      // Email share
+      document.getElementById('share-email').href = `mailto:?subject=${pageTitle}&body=Check%20out%20this%20article:%20${pageUrl}`;
+      
+      // Open share links in a popup window
+      document.querySelectorAll('.share-btn').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          
+          const width = 550;
+          const height = 420;
+          const left = (window.innerWidth - width) / 2;
+          const top = (window.innerHeight - height) / 2;
+          
+          window.open(
+            this.href,
+            'share-popup',
+            `width=${width},height=${height},top=${top},left=${left},toolbar=0,location=0,menubar=0,directories=0,scrollbars=0`
+          );
+        });
+      });
+    }
+    
+    /**
+     * Format a date string
+     */
+    function formatDate(dateString) {
+      const date = new Date(dateString);
+      const options = { year: 'numeric', month: 'long', day: 'numeric' };
+      return date.toLocaleDateString('en-US', options);
+    }
+    
+    /**
+     * Show loading indicator
+     */
+    function showLoadingIndicator(message = 'Loading...') {
+      // Remove any existing indicators
+      hideLoadingIndicator();
+      
+      // Create indicator
+      const indicator = document.createElement('div');
+      indicator.className = 'loading-indicator';
+      indicator.innerHTML = `
+        <div class="loading-spinner">
+          <div class="spinner"></div>
+          <p>${message}</p>
+        </div>
+      `;
+      
+      document.body.appendChild(indicator);
+      
+      // Add styles if not already present
+      if (!document.getElementById('loading-styles')) {
+        const style = document.createElement('style');
+        style.id = 'loading-styles';
+        style.textContent = `
+          .loading-indicator {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+          }
+          
+          .loading-spinner {
+            background-color: white;
+            padding: 20px 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+          }
+          
+          .spinner {
+            width: 40px;
+            height: 40px;
+            margin: 0 auto 10px;
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            border-radius: 50%;
+            border-top: 4px solid var(--primary-color);
+            animation: spin 1s linear infinite;
+          }
+          
+          @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+          }
+        `;
+        
+        document.head.appendChild(style);
+      }
+    }
+    
+    /**
+     * Hide loading indicator
+     */
+    function hideLoadingIndicator() {
+      const indicator = document.querySelector('.loading-indicator');
+      if (indicator) {
+        indicator.remove();
+      }
+    }
+    
+    /**
+     * Show notification
+     */
+    function showNotification(message, type = 'success', duration = 4000) {
+      // Remove any existing notifications
+      const existingNotification = document.querySelector('.notification');
+      if (existingNotification) {
+        existingNotification.remove();
+      }
+      
+      // Create notification
+      const notification = document.createElement('div');
+      notification.className = `notification notification-${type}`;
+      notification.innerHTML = `
+        <div class="notification-content">
+          <i class="fas ${type === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle'}"></i>
+          <p>${message}</p>
+        </div>
+        <button class="notification-close"><i class="fas fa-times"></i></button>
+      `;
+      
+      document.body.appendChild(notification);
+      
+      // Add styles if not already present
+      if (!document.getElementById('notification-styles')) {
+        const style = document.createElement('style');
+        style.id = 'notification-styles';
+        style.textContent = `
+          .notification {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            max-width: 400px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 9999;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+          }
+          
+          .notification.show {
+            transform: translateY(0);
+            opacity: 1;
+          }
+          
+          .notification-content {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+          }
+          
+          .notification-content i {
+            font-size: 1.5rem;
+          }
+          
+          .notification-success i {
+            color: #1cc88a;
+          }
+          
+          .notification-error i {
+            color: #e74a3b;
+          }
+          
+          .notification-close {
+            background: none;
+            border: none;
+            color: #999;
+            cursor: pointer;
+            padding: 5px;
+          }
+          
+          .notification-close:hover {
+            color: #666;
+          }
+        `;
+        
+        document.head.appendChild(style);
+      }
+      
+      // Show notification
+      setTimeout(() => {
+        notification.classList.add('show');
+      }, 10);
+      
+      // Add close button functionality
+      const closeBtn = notification.querySelector('.notification-close');
+      closeBtn.addEventListener('click', () => {
+        notification.classList.remove('show');
+        setTimeout(() => {
+          notification.remove();
+        }, 300);
+      });
+      
+      // Auto-close after duration
+      setTimeout(() => {
+        if (document.body.contains(notification)) {
+          notification.classList.remove('show');
+          setTimeout(() => {
+            if (document.body.contains(notification)) {
+              notification.remove();
+            }
+          }, 300);
+        }
+      }, duration);
+    }
+    
+    /**
+     * Get dummy data for development/demo
+     */
+    function getDummyPostData() {
+      return {
+        post: {
+          id: 1,
+          title: '5 Ways Outsourcing Can Accelerate Your Business Growth',
+          slug: '5-ways-outsourcing-can-accelerate-business-growth',
+          excerpt: 'Learn how strategic outsourcing can help you scale faster, reduce costs, and focus on your core business strengths in today\'s competitive landscape.',
+          content: `
+            <h2>Introduction</h2>
+            <p>In today's fast-paced business environment, companies are constantly seeking ways to gain a competitive edge while optimizing their resources. Outsourcing has emerged as a powerful strategy that can significantly accelerate business growth when implemented strategically.</p>
+            
+            <h2>1. Focus on Core Competencies</h2>
+            <p>By outsourcing non-core functions, your team can concentrate on what truly matters - your unique value proposition and revenue-generating activities. This laser focus on core competencies can drive innovation and growth.</p>
+            <p>When your internal resources are freed from routine tasks, they can be redirected toward developing new products, improving existing offerings, and finding creative solutions to business challenges.</p>
+            
+            <h2>2. Access to Specialized Expertise</h2>
+            <p>Outsourcing partners bring specialized knowledge and skills that might be expensive or difficult to develop in-house. This expertise can elevate the quality of your operations and services.</p>
+            <p>Rather than investing time and resources in training your team in specialized areas, you can leverage the experience of professionals who have already mastered these skills, allowing you to implement best practices immediately.</p>
+            
+            <h2>3. Cost Efficiency and Scalability</h2>
+            <p>Strategic outsourcing converts fixed costs to variable costs, providing flexibility to scale operations up or down based on business needs without the overhead of hiring or training.</p>
+            <p>This flexibility is particularly valuable for businesses experiencing seasonal fluctuations or rapid growth. You can quickly adapt to changing market conditions without the constraints of fixed internal resources.</p>
+            
+            <h2>4. Accelerated Time-to-Market</h2>
+            <p>With the right outsourcing partner, you can expedite product development and service delivery, helping you capture market opportunities faster than competitors.</p>
+            <p>By distributing workloads across specialized teams, you can run processes in parallel rather than sequentially, significantly reducing the time required to bring new offerings to market.</p>
+            
+            <h2>5. Global Market Expansion</h2>
+            <p>Leveraging outsourcing partners with local market knowledge can facilitate smoother entry into new geographical markets, reducing risk and accelerating international growth.</p>
+            <p>Partners familiar with local regulations, cultural nuances, and business practices can help you navigate complex international environments, avoiding costly mistakes and delays.</p>
+            
+            <h2>Conclusion</h2>
+            <p>When implemented thoughtfully, outsourcing is not just a cost-cutting measure but a strategic tool that can drive substantial business growth and competitive advantage. By leveraging external expertise, focusing on core strengths, and gaining operational flexibility, companies of all sizes can accelerate their path to success.</p>
+          `,
+          image: 'images/blog/blog-featured.jpg',
+          featured: true,
+          publishedAt: '2025-04-15T12:00:00Z',
+          views: 245,
+          commentsCount: 8,
+          category: {
+            id: 2,
+            name: 'Outsourcing Tips',
+            slug: 'outsourcing'
+          },
+          author: {
+            id: 1,
+            name: 'Admin User'
+          },
+          tags: ['outsourcing', 'business growth', 'strategy', 'scaling', 'cost efficiency'],
+          metaKeywords: 'outsourcing, business growth, scaling, cost efficiency, specialized expertise'
+        },
+        recentPosts: [
+          {
+            id: 2,
+            title: 'Building Effective Remote Teams: Best Practices',
+            slug: 'building-effective-remote-teams',
+            image: 'images/blog/blog-1.jpg',
+            publishedAt: '2025-04-12T10:30:00Z'
+          },
+          {
+            id: 3,
+            title: 'Streamlining Financial Operations: Key Strategies for SMEs',
+            slug: 'streamlining-financial-operations',
+            image: 'images/blog/blog-2.jpg',
+            publishedAt: '2025-04-08T09:15:00Z'
+          },
+          {
+            id: 4,
+            title: 'Understanding UAE Corporate Tax: A Guide for Businesses',
+            slug: 'understanding-uae-corporate-tax',
+            image: 'images/blog/blog-3.jpg',
+            publishedAt: '2025-04-05T14:45:00Z'
+          }
+        ],
+        categories: [
+          { name: 'Business Growth', slug: 'business-growth', count: 8 },
+          { name: 'Outsourcing Tips', slug: 'outsourcing', count: 12 },
+          { name: 'HR Management', slug: 'hr-management', count: 6 },
+          { name: 'Finance & Accounting', slug: 'finance', count: 9 },
+          { name: 'Compliance & Admin', slug: 'compliance', count: 4 }
+        ],
+        popularTags: [
+          'outsourcing', 'business growth', 'finance', 'HR', 'remote work', 
+          'UAE', 'tax compliance', 'digital transformation', 'payroll'
+        ],
+        relatedPosts: [
+          {
+            id: 6,
+            title: 'How to Choose the Right Outsourcing Partner for Your Business',
+            slug: 'choose-right-outsourcing-partner',
+            excerpt: 'Understand the key factors to consider when selecting an outsourcing partner that aligns with your business goals and values.',
+            image: 'images/blog/blog-5.jpg',
+            publishedAt: '2025-03-25T13:10:00Z',
+            category: {
+              name: 'Outsourcing Tips',
+              slug: 'outsourcing'
+            }
+          },
+          {
+            id: 2,
+            title: 'Building Effective Remote Teams: Best Practices',
+            slug: 'building-effective-remote-teams',
+            excerpt: 'Discover proven strategies for managing remote teams effectively and maintaining strong team culture across borders.',
+            image: 'images/blog/blog-1.jpg',
+            publishedAt: '2025-04-12T10:30:00Z',
+            category: {
+              name: 'HR Management',
+              slug: 'hr-management'
+            }
+          },
+          {
+            id: 5,
+            title: 'Digital Transformation: Adapting Your Business for Future Success',
+            slug: 'digital-transformation-business-success',
+            excerpt: 'Explore the essential steps to successfully implement digital transformation in your business and stay ahead of the competition.',
+            image: 'images/blog/blog-4.jpg',
+            publishedAt: '2025-03-30T11:20:00Z',
+            category: {
+              name: 'Business Growth',
+              slug: 'business-growth'
+            }
+          }
+        ],
+        comments: [
+          {
+            id: 1,
+            authorName: 'John Thompson',
+            authorEmail: 'john@example.com',
+            content: 'Great article! We\'ve been considering outsourcing some of our non-core operations, and this provides a helpful framework for thinking about the strategic benefits beyond just cost savings.',
+            createdAt: '2025-04-16T09:23:00Z',
+            replies: []
+          },
+          {
+            id: 2,
+            authorName: 'Sarah Miller',
+            authorEmail: 'sarah@example.com',
+            content: 'I particularly appreciate the point about accessing specialized expertise. We recently outsourced our payroll processing and gained not just efficiency but also better compliance outcomes thanks to the provider\'s specialized knowledge.',
+            createdAt: '2025-04-16T14:35:00Z',
+            replies: [
+              {
+                id: 3,
+                authorName: 'Admin User',
+                content: 'Thanks for sharing your experience, Sarah! Payroll is indeed an area where specialized expertise can make a significant difference, especially when dealing with complex compliance requirements.',
+                createdAt: '2025-04-17T08:12:00Z'
+              }
+            ]
+          },
+          {
+            id: 4,
+            authorName: 'David Chen',
+            authorEmail: 'david@example.com',
+            content: 'Do you have any recommendations for how to effectively manage outsourced teams? We\'ve had some communication challenges with our offshore development team.',
+            createdAt: '2025-04-18T11:05:00Z',
+            replies: [
+              {
+                id: 5,
+                authorName: 'Admin User',
+                content: 'Great question, David. Effective communication is key to successful outsourcing relationships. I recommend establishing clear communication protocols, scheduling regular video meetings, using collaborative tools, and investing time in building relationships. We\'ll be covering this topic in more detail in an upcoming post about managing remote teams.',
+                createdAt: '2025-04-18T14:30:00Z'
+              }
+            ]
+          }
+        ]
+      };
+    }
+  </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title id="page-title">Blog Post Title | Backsure Global Support</title>
+  
+  <!-- Meta tags for SEO - will be dynamically updated -->
+  <meta name="description" content="Blog post description for SEO purposes">
+  <meta name="keywords" content="relevant, keywords, for, this, post">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Main stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+  
+  <!-- Blog detail specific styles -->
+  <style>
+    :root {
+      --primary-color: #062767;
+      --primary-light: #3a5ca2;
+      --primary-dark: #041c4a;
+      --accent-color: #b19763;
+      --accent-light: #cdb48e;
+      --accent-dark: #97814c;
+      --text-dark: #333333;
+      --text-light: #ffffff;
+      --text-gray: #f8f9fc;
+      --body-bg: #f5f6fa;
+      --card-bg: #ffffff;
+      --border-color: rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Blog detail specific styles */
+    .blog-detail-container {
+      padding: 40px 0 60px;
+      background-color: var(--body-bg);
+    }
+    
+    .blog-breadcrumbs {
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      font-size: 0.9rem;
+    }
+    
+    .blog-breadcrumbs a {
+      color: var(--primary-color);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    
+    .blog-breadcrumbs a:hover {
+      color: var(--accent-color);
+    }
+    
+    .blog-breadcrumbs i {
+      margin: 0 8px;
+      color: #999;
+      font-size: 0.8rem;
+    }
+    
+    .blog-breadcrumbs .current {
+      color: #666;
+    }
+    
+    .blog-post-header {
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 30px;
+    }
+    
+    .post-featured-image {
+      width: 100%;
+      height: 400px;
+      overflow: hidden;
+      position: relative;
+    }
+    
+    .post-featured-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .post-featured-image.has-overlay::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,0) 50%, rgba(0,0,0,0.7) 100%);
+    }
+    
+    .post-header-content {
+      padding: 30px;
+    }
+    
+    .post-category {
+      display: inline-block;
+      background-color: var(--primary-light);
+      color: white;
+      padding: 5px 15px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-bottom: 15px;
+      text-decoration: none;
+      transition: background-color 0.3s;
+    }
+    
+    .post-category:hover {
+      background-color: var(--primary-color);
+    }
+    
+    .post-title {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+      color: var(--primary-color);
+      line-height: 1.3;
+    }
+    
+    .post-meta {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-bottom: 15px;
+      color: #666;
+      font-size: 0.9rem;
+    }
+    
+    .post-meta div {
+      display: flex;
+      align-items: center;
+    }
+    
+    .post-meta i {
+      margin-right: 5px;
+      color: var(--accent-color);
+    }
+    
+    .post-author img {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      margin-right: 8px;
+      object-fit: cover;
+    }
+    
+    .blog-content-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      gap: 30px;
+    }
+    
+    .blog-post-content {
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      padding: 30px;
+    }
+    
+    .blog-post-content h2 {
+      font-size: 1.8rem;
+      color: var(--primary-color);
+      margin: 30px 0 15px;
+    }
+    
+    .blog-post-content h2:first-child {
+      margin-top: 0;
+    }
+    
+    .blog-post-content h3 {
+      font-size: 1.4rem;
+      color: var(--primary-color);
+      margin: 25px 0 15px;
+    }
+    
+    .blog-post-content p {
+      margin-bottom: 20px;
+      line-height: 1.7;
+      color: #444;
+    }
+    
+    .blog-post-content ul, 
+    .blog-post-content ol {
+      margin-bottom: 20px;
+      padding-left: 25px;
+    }
+    
+    .blog-post-content li {
+      margin-bottom: 10px;
+      line-height: 1.6;
+    }
+    
+    .blog-post-content img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 20px 0;
+    }
+    
+    .blog-post-content a {
+      color: var(--primary-color);
+      text-decoration: underline;
+      transition: color 0.3s;
+    }
+    
+    .blog-post-content a:hover {
+      color: var(--accent-color);
+    }
+    
+    .blog-post-content blockquote {
+      border-left: 4px solid var(--accent-color);
+      padding: 15px 20px;
+      margin: 20px 0;
+      background-color: #f9f9f9;
+      font-style: italic;
+      color: #555;
+    }
+    
+    .blog-post-content code {
+      background-color: #f5f5f5;
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-family: monospace;
+      font-size: 0.9em;
+    }
+    
+    .blog-post-content pre {
+      background-color: #f5f5f5;
+      padding: 15px;
+      border-radius: 8px;
+      overflow-x: auto;
+      margin: 20px 0;
+    }
+    
+    .blog-post-content pre code {
+      background-color: transparent;
+      padding: 0;
+    }
+    
+    .post-tags {
+      margin-top: 30px;
+      padding-top: 20px;
+      border-top: 1px solid #eee;
+    }
+    
+    .post-tags h4 {
+      margin-bottom: 10px;
+      font-size: 1rem;
+    }
+    
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    
+    .tag {
+      background-color: #f0f0f0;
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      color: #555;
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+    
+    .tag:hover {
+      background-color: var(--accent-light);
+      color: white;
+    }
+    
+    .post-share {
+      margin-top

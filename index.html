@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Backsure Global Support</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
+    <style>
+        :root {
+            --navy: #002868;
+            --gold: #b89c63;
+            --accent-blue: #0088cc;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            color: #333;
+        }
+        
+        /* Hero Section Styles */
+        .hero-section {
+            min-height: calc(100vh - 80px);
+            display: flex;
+            align-items: center;
+        }
+        
+        .hero-headline {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--navy);
+            line-height: 1.2;
+        }
+        
+        .hero-subheadline {
+            font-size: 1.5rem;
+            color: #444;
+            margin-top: 1rem;
+        }
+        
+        .btn-gold {
+            background-color: var(--gold);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .btn-gold:hover {
+            background-color: #a08757;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        /* Diagonal Section Styles */
+        .diagonal-section {
+            position: relative;
+            background-color: var(--gold);
+            overflow: hidden;
+            padding: 6rem 0;
+        }
+        
+        .diagonal-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background-color: white;
+            transform: skewY(-5deg);
+            transform-origin: top right;
+            z-index: 1;
+        }
+        
+        .diagonal-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        /* Tab Section Styles */
+        .tab-section {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 5rem 0;
+        }
+        
+        .tab-item {
+            padding: 1rem;
+            border-left: 3px solid transparent;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .tab-item.active {
+            border-left: 3px solid var(--gold);
+            background-color: rgba(255,255,255,0.7);
+        }
+        
+        /* Benefits Section Styles */
+        .benefit-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: all 0.3s;
+            height: 100%;
+        }
+        
+        .benefit-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+        
+        .benefits-section {
+            background-color: #f8f9fa;
+            padding: 5rem 0;
+        }
+        
+        /* Service CTA Styles */
+        .service-cta {
+            background-color: var(--gold);
+            padding: 4rem 0;
+        }
+        
+        .service-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s;
+            height: 100%;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background-color: rgba(184, 156, 99, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+        }
+        
+        /* FAQ Section Styles */
+        .faq-section {
+            background-color: #f8f9fa;
+            padding: 5rem 0;
+        }
+        
+        .faq-item {
+            border-bottom: 1px solid #e2e8f0;
+            margin-bottom: 1rem;
+        }
+        
+        .faq-question {
+            padding: 1rem 0;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: var(--navy);
+        }
+        
+        .faq-answer {
+            padding: 0 1rem 1rem 1rem;
+            color: #4a5568;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s ease;
+        }
+        
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            padding: 1rem;
+        }
+        
+        .faq-icon {
+            transition: transform 0.3s;
+        }
+        
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+        }
+        
+        /* Final CTA Section Styles */
+        .final-cta {
+            background-color: white;
+            padding: 5rem 0;
+            text-align: center;
+        }
+        
+        /* Animation for Hero Tech Visual */
+        .tech-visual {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            min-height: 400px;
+        }
+        
+        .circle {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.5;
+            animation: pulse 4s infinite;
+        }
+        
+        .circle:nth-child(1) {
+            width: 200px;
+            height: 200px;
+            background-color: rgba(0, 40, 104, 0.1);
+            top: 10%;
+            left: 20%;
+        }
+        
+        .circle:nth-child(2) {
+            width: 150px;
+            height: 150px;
+            background-color: rgba(184, 156, 99, 0.1);
+            top: 30%;
+            left: 50%;
+            animation-delay: 1s;
+        }
+        
+        .circle:nth-child(3) {
+            width: 100px;
+            height: 100px;
+            background-color: rgba(0, 136, 204, 0.1);
+            top: 60%;
+            left: 30%;
+            animation-delay: 2s;
+        }
+        
+        .line {
+            position: absolute;
+            background-color: rgba(0, 40, 104, 0.1);
+            animation: draw 3s infinite;
+        }
+        
+        .line:nth-child(4) {
+            width: 2px;
+            height: 0;
+            top: 20%;
+            left: 30%;
+            animation: drawVertical 3s infinite;
+        }
+        
+        .line:nth-child(5) {
+            width: 0;
+            height: 2px;
+            top: 40%;
+            left: 40%;
+            animation: drawHorizontal 3s infinite;
+            animation-delay: 1s;
+        }
+        
+        .dot {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: var(--gold);
+            border-radius: 50%;
+            animation: blink 2s infinite;
+        }
+        
+        .dot:nth-child(6) {
+            top: 25%;
+            left: 35%;
+        }
+        
+        .dot:nth-child(7) {
+            top: 45%;
+            left: 55%;
+            animation-delay: 0.5s;
+        }
+        
+        .dot:nth-child(8) {
+            top: 65%;
+            left: 40%;
+            animation-delay: 1s;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.7; }
+            100% { transform: scale(1); opacity: 0.5; }
+        }
+        
+        @keyframes drawVertical {
+            0% { height: 0; }
+            50% { height: 150px; }
+            100% { height: 0; }
+        }
+        
+        @keyframes drawHorizontal {
+            0% { width: 0; }
+            50% { width: 150px; }
+            100% { width: 0; }
+        }
+        
+        @keyframes blink {
+            0% { opacity: 0.3; }
+            50% { opacity: 1; }
+            100% { opacity: 0.3; }
+        }
+        
+        /* Metrics animation */
+        .metric-item {
+            position: relative;
+            animation: fadeInUp 0.8s ease-out forwards;
+            opacity: 0;
+        }
+        
+        .metric-item:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+        
+        .metric-item:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+        
+        .metric-item:nth-child(4) {
+            animation-delay: 0.6s;
+        }
+        
+        .metric-item:nth-child(5) {
+            animation-delay: 0.8s;
+        }
+        
+        .metric-value {
+            font-weight: 700;
+            font-size: 2.5rem;
+            color: var(--navy);
+        }
+        
+        .metric-label {
+            font-size: 1rem;
+            color: #666;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .hero-headline {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subheadline {
+                font-size: 1.25rem;
+            }
+            
+            .tech-visual {
+                min-height: 300px;
+            }
+            
+            .metric-value {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Placeholder -->
+    <div id="header-placeholder"></div>
+
+    <!-- 1. Hero Section - UPDATED CONTENT -->
+    <section class="hero-section py-16 md:py-24 bg-white">
+        <div class="container mx-auto px-4 md:px-8">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-12 md:mb-0">
+                    <h1 class="hero-headline">Scale Smarter. Grow Faster.</h1>
+                    <p class="hero-subheadline">with Backsure Global Support</p>
+                    <p class="text-gray-600 my-6 max-w-lg">
+                        Trust Us as Your Strategic Partner
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 mt-8">
+                        <button class="btn-gold" aria-label="Talk to an Expert">Talk to an Expert</button>
+                    </div>
+                </div>
+                
+                <div class="md:w-1/2">
+                    <!-- Image/SVG fallback logic -->
+                    <div id="hero-visual-container" class="relative">
+                        <!-- Primary uploaded image (hidden by default until loaded) -->
+                        <img id="hero-primary-image" src="" alt="Backsure Global Support" class="w-full h-auto rounded-lg shadow-xl hidden">
+                        
+                        <!-- Fallback animated SVG (shown by default) -->
+                        <div id="hero-fallback-svg" class="tech-visual h-96 relative">
+                            <div class="circle"></div>
+                            <div class="circle"></div>
+                            <div class="circle"></div>
+                            <div class="line"></div>
+                            <div class="line"></div>
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Metrics Row - UPDATED TO 5 ITEMS -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 mt-16">
+                <div class="metric-item text-center">
+                    <div class="metric-value">5+</div>
+                    <div class="metric-label">Core Service Domains</div>
+                    <p class="text-sm text-gray-500 mt-2">Supporting businesses across industries</p>
+                </div>
+                <div class="metric-item text-center">
+                    <div class="metric-value"><i class="fas fa-file-contract"></i></div>
+                    <div class="metric-label">Flexible Contract</div>
+                    <p class="text-sm text-gray-500 mt-2">Simple terms with transparent monthly billing</p>
+                </div>
+                <div class="metric-item text-center">
+                    <div class="metric-value"><i class="fas fa-cogs"></i></div>
+                    <div class="metric-label">Tailored Support</div>
+                    <p class="text-sm text-gray-500 mt-2">Designed to fit startups, SMEs, and large enterprises</p>
+                </div>
+                <div class="metric-item text-center">
+                    <div class="metric-value">24/7</div>
+                    <div class="metric-label">Global Support</div>
+                    <p class="text-sm text-gray-500 mt-2">Always available, wherever you are</p>
+                </div>
+                <div class="metric-item text-center">
+                    <div class="metric-value"><i class="fas fa-star"></i></div>
+                    <div class="metric-label">Positive Client Experiences</div>
+                    <p class="text-sm text-gray-500 mt-2">Trusted by early clients and growing partnerships</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. Yellow Diagonal Highlight Block - UPDATED CONTENT -->
+    <section class="diagonal-section py-20">
+        <div class="container mx-auto px-4 md:px-8">
+            <div class="diagonal-content flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                    <h2 class="text-3xl font-bold mb-4" style="color: var(--navy);">Our Scalable Service Models</h2>
+                    <p class="text-gray-600 mb-6">
+                        Explore our service tiers built for growth and operational flexibility. From startups to enterprise solutions, we scale with your needs.
+                    </p>
+                    <a href="#services-section" class="inline-block btn-gold">Our Services</a>
+                </div>
+                
+                <div class="md:w-1/2">
+                    <!-- Image with fallback logic -->
+                    <div id="diagonal-visual-container" class="relative">
+                        <!-- Primary uploaded image (hidden by default until loaded) -->
+                        <img id="diagonal-primary-image" src="" alt="Scalable Service Models" class="w-full rounded-lg shadow-lg hidden">
+                        
+                        <!-- Fallback placeholder image -->
+                        <img id="diagonal-fallback-image" src="/api/placeholder/600/400" alt="Service Models" class="rounded-lg shadow-lg w-full">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Interactive Tabs Section - UPDATED WORKFLOW AUTOMATION TEXT -->
+    <section class="tab-section py-20" id="expertise-section">
+        <div class="container mx-auto px-4 md:px-8">
+            <h2 class="text-3xl font-bold text-center mb-16" style="color: var(--navy);">Leverage Our Expertise</h2>
+            
+            <div class="mb-12">
+                <div class="flex flex-col md:flex-row">
+                    <div class="md:w-1/3">
+                        <div class="tab-item active p-4 mb-2">
+                            <h4 class="font-semibold" style="color: var(--navy);">Assessment of Requirements</h4>
+                        </div>
+                    </div>
+                    <div class="md:w-2/3 bg-white p-8 shadow-lg rounded-lg">
+                        <div class="flex items-start">
+                            <div class="mr-6 bg-blue-50 p-4 rounded-full" style="color: var(--accent-blue);">
+                                <i class="fas fa-clipboard-check fa-2x" aria-hidden="true"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold mb-4" style="color: var(--navy);">Assessment of Requirements</h3>
+                                <p class="text-gray-600">
+                                    Our systematic approach to understanding your business needs ensures we deliver precisely what you need. Through detailed analysis and collaborative sessions, we map out comprehensive requirement specifications that align with your strategic goals.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mb-12">
+                <div class="flex flex-col md:flex-row">
+                    <div class="md:w-1/3">
+                        <div class="tab-item p-4 mb-2">
+                            <h4 class="font-semibold" style="color: var(--navy);">Process Mapping</h4>
+                        </div>
+                    </div>
+                    <div class="md:w-2/3 bg-white p-8 shadow-lg rounded-lg">
+                        <div class="flex items-start">
+                            <div class="mr-6 bg-blue-50 p-4 rounded-full" style="color: var(--accent-blue);">
+                                <i class="fas fa-project-diagram fa-2x" aria-hidden="true"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold mb-4" style="color: var(--navy);">Process Mapping</h3>
+                                <p class="text-gray-600">
+                                    We document and visualize your operational workflows, identifying optimization opportunities and streamlining critical processes.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mb-12">
+                <div class="flex flex-col md:flex-row">
+                    <div class="md:w-1/3">
+                        <div class="tab-item p-4 mb-2">
+                            <h4 class="font-semibold" style="color: var(--navy);">Workflow Automation</h4>
+                        </div>
+                    </div>
+                    <div class="md:w-2/3 bg-white p-8 shadow-lg rounded-lg">
+                        <div class="flex items-start">
+                            <div class="mr-6 bg-blue-50 p-4 rounded-full" style="color: var(--accent-blue);">
+                                <i class="fas fa-robot fa-2x" aria-hidden="true"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold mb-4" style="color: var(--navy);">Workflow Automation</h3>
+                                <p class="text-gray-600">
+                                    Streamline operational tasks through smart automation—reducing effort, improving accuracy, and enhancing your team's impact.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div>
+                <div class="flex flex-col md:flex-row">
+                    <div class="md:w-1/3">
+                        <div class="tab-item p-4 mb-2">
+                            <h4 class="font-semibold" style="color: var(--navy);">Performance Monitoring</h4>
+                        </div>
+                    </div>
+                    <div class="md:w-2/3 bg-white p-8 shadow-lg rounded-lg">
+                        <div class="flex items-start">
+                            <div class="mr-6 bg-blue-50 p-4 rounded-full" style="color: var(--accent-blue);">
+                                <i class="fas fa-chart-line fa-2x" aria-hidden="true"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold mb-4" style="color: var(--navy);">Performance Monitoring</h3>
+                                <p class="text-gray-600">
+                                    We track key metrics and provide regular insights, helping you make data-driven decisions and continuously improve operations.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- 4. Benefits Grid Section - UPDATED CONTENT -->
+    <section class="benefits-section py-20">
+        <div class="container mx-auto px-4 md:px-8">
+            <h2 class="text-3xl font-bold text-center mb-16" style="color: var(--navy);">Why BSG Support?</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Benefit Card 1 -->
+                <div class="benefit-card">
+                    <div class="mb-6 flex justify-center">
+                        <div class="w-16 h-16 flex items-center justify-center rounded-full" style="background-color: rgba(0, 40, 104, 0.1);">
+                            <i class="fas fa-chart-pie fa-2x" style="color: var(--navy);" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-center mb-4" style="color: var(--navy);">Results That Matter</h3>
+                    <p class="text-gray-600 text-center">
+                        We're driven by outcomes—delivering measurable impact aligned with your business goals.
+                    </p>
+                    <div class="mt-6 flex justify-center">
+                        <img src="/api/placeholder/100/50" alt="Results graphic" class="h-10">
+                    </div>
+                </div>
+                
+                <!-- Benefit Card 2 -->
+                <div class="benefit-card">
+                    <div class="mb-6 flex justify-center">
+                        <div class="w-16 h-16 flex items-center justify-center rounded-full" style="background-color: rgba(0, 40, 104, 0.1);">
+                            <i class="fas fa-comments fa-2x" style="color: var(--navy);" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-center mb-4" style="color: var(--navy);">Crystal-Clear Communication</h3>
+                    <p class="text-gray-600 text-center">
+                        Transparent, timely, and consistent communication from start to finish.
+                    </p>
+                    <div class="mt-6 flex justify-center">
+                        <img src="/api/placeholder/100/50" alt="Communication graphic" class="h-10">
+                    </div>
+                </div>
+                
+                <!-- Benefit Card 3 -->
+                <div class="benefit-card">
+                    <div class="mb-6 flex justify-center">
+                        <div class="w-16 h-16 flex items-center justify-center rounded-full" style="background-color: rgba(0, 40, 104, 0.1);">
+                            <i class="fas fa-handshake fa-2x" style="color: var(--navy);" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-center mb-4" style="color: var(--navy);">Ongoing Partnership</h3>
+                    <p class="text-gray-600 text-center">
+                        Our support continues beyond launch, evolving with your business needs.
+                    </p>
+                    <div class="mt-6 flex justify-center">
+                        <img src="/api/placeholder/100/50" alt="Partnership graphic" class="h-10">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Services CTA Strip - UPDATED CONTENT -->
+    <section class="service-cta py-16" id="services-section">
+        <div class="container mx-auto px-4 md:px-8">
+            <h2 class="text-3xl font-bold text-center mb-12 text-white">Explore More From Backsure</h2>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Service Card 1 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-user-tie" style="color: var(--navy);" aria-hidden="true"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3" style="color: var(--navy);">Dedicated Employee Support</h3>
+                    <p class="text-gray-600 mb-4">
+                        Boost your business performance with our skilled, full-time teams.
+                    </p>
+                    <a href="https://www.backsureglobalsupport.com/service-model-a.html" class="inline-block text-sm font-semibold" style="color: var(--gold);" aria-label="Learn more about Dedicated Employee Support">
+                        Learn More <i class="fas fa-arrow-right ml-1" aria-hidden="true"></i>
+                    </a>
+                </div>
+                
+                <!-- Service Card 2 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-headset" style="color: var(--navy);" aria-hidden="true"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3" style="color: var(--navy);">On-Demand Service Support</h3>
+                    <p class="text-gray-600 mb-4">
+                        Get expert help when you need it—without the overhead.
+                    </p>
+                    <a href="https://www.backsureglobalsupport.com/service-model-b.html" class="inline-block text-sm font-semibold" style="color: var(--gold);" aria-label="Learn more about On-Demand Service Support">
+                        Learn More <i class="fas fa-arrow-right ml-1" aria-hidden="true"></i>
+                    </a>
+                </div>
+                
+                <!-- Service Card 3 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-briefcase" style="color: var(--navy);" aria-hidden="true"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3" style="color: var(--navy);">Business Care Plans</h3>
+                    <p class="text-gray-600 mb-4">
+                        We manage the back office, so you can focus on growth.
+                    </p>
+                    <a href="https://www.backsureglobalsupport.com/service-model-b.html" class="inline-block text-sm font-semibold" style="color: var(--gold);" aria-label="Learn more about Business Care Plans">
+                        Learn More <i class="fas fa-arrow-right ml-1" aria-hidden="true"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. FAQ Section - UPDATED CONTENT -->
+    <section class="faq-section py-20" id="faq-section">
+        <div class="container mx-auto px-4 md:px-8">
+            <h2 class="text-3xl font-bold text-center mb-4" style="color: var(--navy);">Have Questions? We've Got Answers.</h2>
+            <p class="text-gray-600 text-center mb-12 max-w-3xl mx-auto">
+                A quick look at some common queries about Backsure's solutions and services.
+            </p>
+            
+            <div class="max-w-3xl mx-auto">
+                <!-- FAQ Item 1 -->
+                <div class="faq-item" id="faq-1">
+                    <div class="faq-question" onclick="toggleFAQ('faq-1')" aria-expanded="false" aria-controls="faq-answer-1">
+                        <span>What types of businesses do you support?</span>
+                        <i class="fas fa-chevron-down faq-icon" aria-hidden="true"></i>
+                    </div>
+                    <div class="faq-answer" id="faq-answer-1">
+                        <p>From early-stage startups to enterprises, across all industries. Our flexible service models allow us to tailor our approach to your specific needs, regardless of your company size or sector.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 2 -->
+                <div class="faq-item" id="faq-2">
+                    <div class="faq-question" onclick="toggleFAQ('faq-2')" aria-expanded="false" aria-controls="faq-answer-2">
+                        <span>How does your pricing structure work?</span>
+                        <i class="fas fa-chevron-down faq-icon" aria-hidden="true"></i>
+                    </div>
+                    <div class="faq-answer" id="faq-answer-2">
+                        <p>Monthly billing. Flexible terms. Fully customized quotes. We offer transparent pricing based on the service model you choose and the level of support required, allowing for predictable budgeting without unnecessary overhead.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 3 -->
+                <div class="faq-item" id="faq-3">
+                    <div class="faq-question" onclick="toggleFAQ('faq-3')" aria-expanded="false" aria-controls="faq-answer-3">
+                        <span>What makes Backsure different from other providers?</span>
+                        <i class="fas fa-chevron-down faq-icon" aria-hidden="true"></i>
+                    </div>
+                    <div class="faq-answer" id="faq-answer-3">
+                        <p>We're a partner—not just a service vendor. Measurable results and growth-focused. Unlike traditional outsourcing companies, we position ourselves as a strategic partner focused on your business growth with a results-driven approach that evolves with your needs.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 4 -->
+                <div class="faq-item" id="faq-4">
+                    <div class="faq-question" onclick="toggleFAQ('faq-4')" aria-expanded="false" aria-controls="faq-answer-4">
+                        <span>How quickly can you start?</span>
+                        <i class="fas fa-chevron-down faq-icon" aria-hidden="true"></i>
+                    </div>
+                    <div class="faq-answer" id="faq-answer-4">
+                        <p>1–2 week onboarding depending on complexity. Faster for urgent needs. We begin with a thorough assessment, followed by process mapping and team alignment. For urgent requirements, we can expedite certain services while completing the full onboarding process.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 5 -->
+                <div class="faq-item" id="faq-5">
+                    <div class="faq-question" onclick="toggleFAQ('faq-5')" aria-expanded="false" aria-controls="faq-answer-5">
+                        <span>How do you ensure data security?</span>
+                        <i class="fas fa-chevron-down faq-icon" aria-hidden="true"></i>
+                    </div>
+                    <div class="faq-answer" id="faq-answer-5">
+                        <p>Global security protocols, encryption, and strict confidentiality measures. We implement industry-standard security practices and can adapt to your specific requirements, providing detailed documentation of our security measures upon request.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. Final CTA Section -->
+    <section class="final-cta py-16" id="cta-section">
+        <div class="container mx-auto px-4 md:px-8">
+            <h2 class="text-3xl font-bold mb-4" style="color: var(--navy);">Ready to Scale Smarter?</h2>
+            <p class="text-gray-600 mb-8 max-w-2xl mx-auto">
+                Let's create a custom support model for your business.
+            </p>
+            <button class="btn-gold" aria-label="Talk to Our Team">Talk to Our Team</button>
+        </div>
+    </section>
+
+    <script>
+        // Image fallback logic
+        document.addEventListener("DOMContentLoaded", function() {
+            // Hero image logic
+            const heroImage = document.getElementById('hero-primary-image');
+            const heroFallback = document.getElementById('hero-fallback-svg');
+            
+            // Simulate CMS image load - in real implementation, this would be set from CMS
+            const heroImageUrl = ""; // Empty for demo to show fallback
+            
+            if (heroImageUrl && heroImageUrl.trim() !== "") {
+                heroImage.src = heroImageUrl;
+                heroImage.onload = function() {
+                    heroImage.classList.remove('hidden');
+                    heroFallback.classList.add('hidden');
+                };
+                heroImage.onerror = function() {
+                    heroImage.classList.add('hidden');
+                    heroFallback.classList.remove('hidden');
+                };
+            } else {
+                heroFallback.classList.remove('hidden');
+            }
+            
+            // Diagonal section image logic
+            const diagonalImage = document.getElementById('diagonal-primary-image');
+            const diagonalFallback = document.getElementById('diagonal-fallback-image');
+            
+            // Simulate CMS image load
+            const diagonalImageUrl = ""; // Empty for demo to show fallback
+            
+            if (diagonalImageUrl && diagonalImageUrl.trim() !== "") {
+                diagonalImage.src = diagonalImageUrl;
+                diagonalImage.onload = function() {
+                    diagonalImage.classList.remove('hidden');
+                    diagonalFallback.classList.add('hidden');
+                };
+                diagonalImage.onerror = function() {
+                    diagonalImage.classList.add('hidden');
+                    diagonalFallback.classList.remove('hidden');
+                };
+            } else {
+                diagonalFallback.classList.remove('hidden');
+            }
+        });
+        
+        // Tab interaction
+        document.querySelectorAll('.tab-item').forEach(tab => {
+            tab.addEventListener('click', function() {
+                // Remove active class from all tabs
+                document.querySelectorAll('.tab-item').forEach(t => {
+                    t.classList.remove('active');
+                });
+                
+                // Add active class to clicked tab
+                this.classList.add('active');
+            });
+        });
+        
+        // FAQ accordion logic
+        function toggleFAQ(id) {
+            const faqItem = document.getElementById(id);
+            const faqQuestion = faqItem.querySelector('.faq-question');
+            const isExpanded = faqQuestion.getAttribute('aria-expanded') === 'true';
+            
+            // Toggle the active class
+            if (faqItem.classList.contains('active')) {
+                faqItem.classList.remove('active');
+                faqQuestion.setAttribute('aria-expanded', 'false');
+            } else {
+                faqItem.classList.add('active');
+                faqQuestion.setAttribute('aria-expanded', 'true');
+            }
+        }
+        
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+
+    <!-- Footer Placeholder -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Include Header/Footer Script -->
+    <script src="include.js"></script>
+</body>
+</html>

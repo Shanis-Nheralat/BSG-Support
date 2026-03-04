@@ -1,0 +1,702 @@
+/**
+ * admin-settings.css
+ * Styles specific to the admin settings pages
+ */
+
+/* Settings Container */
+.settings-container {
+  display: flex;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+
+/* Settings Navigation */
+.settings-navigation {
+  width: 250px;
+  background-color: var(--gray-100);
+  border-right: 1px solid var(--gray-200);
+}
+
+.settings-tabs {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.settings-tabs li {
+  padding: 15px 20px;
+  display: flex;
+  align-items: center;
+  color: var(--gray-700);
+  cursor: pointer;
+  transition: all 0.3s;
+  border-left: 3px solid transparent;
+}
+
+.settings-tabs li:hover {
+  background-color: var(--gray-200);
+}
+
+.settings-tabs li.active {
+  background-color: white;
+  color: var(--primary-color);
+  border-left-color: var(--primary-color);
+  font-weight: 600;
+}
+
+.settings-tabs li i {
+  margin-right: 10px;
+  width: 20px;
+  text-align: center;
+}
+
+/* Settings Content */
+.settings-content {
+  flex: 1;
+  padding: 25px;
+  overflow: auto;
+}
+
+.settings-panel {
+  display: none;
+}
+
+.settings-panel.active {
+  display: block;
+}
+
+.settings-panel h2 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid var(--gray-200);
+}
+
+/* Settings Section */
+.settings-section {
+  margin-bottom: 30px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid var(--gray-200);
+}
+
+.settings-section:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.settings-section h3 {
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+/* Form Elements */
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--gray-800);
+}
+
+.form-group input[type="text"],
+.form-group input[type="url"],
+.form-group input[type="email"],
+.form-group input[type="password"],
+.form-group input[type="number"],
+.form-group input[type="tel"],
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--gray-300);
+  border-radius: 4px;
+  font-size: 0.95rem;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px rgba(6, 39, 103, 0.1);
+  outline: none;
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.field-help {
+  margin-top: 5px;
+  font-size: 0.85rem;
+  color: var(--gray-600);
+}
+
+/* Toggle Switch */
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 24px;
+}
+
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.toggle-switch label {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--gray-300);
+  transition: .4s;
+  border-radius: 24px;
+}
+
+.toggle-switch label:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: .4s;
+  border-radius: 50%;
+}
+
+.toggle-switch input:checked + label {
+  background-color: var(--primary-color);
+}
+
+.toggle-switch input:checked + label:before {
+  transform: translateX(26px);
+}
+
+/* Custom Colors */
+.color-scheme-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.color-option {
+  position: relative;
+}
+
+.color-option input[type="radio"] {
+  opacity: 0;
+  position: absolute;
+}
+
+.color-option label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+}
+
+.color-preview {
+  width: 60px;
+  height: 60px;
+  border-radius: 8px;
+  margin-bottom: 5px;
+  border: 3px solid transparent;
+  transition: all 0.3s;
+}
+
+.color-option input[type="radio"]:checked + label .color-preview {
+  border-color: var(--primary-color);
+}
+
+.color-name {
+  font-size: 0.9rem;
+  color: var(--gray-700);
+}
+
+/* Color scheme previews */
+.color-preview.default {
+  background: linear-gradient(135deg, #062767 0%, #062767 50%, #b19763 50%, #b19763 100%);
+}
+
+.color-preview.blue {
+  background: linear-gradient(135deg, #1a56db 0%, #1a56db 50%, #3f83f8 50%, #3f83f8 100%);
+}
+
+.color-preview.green {
+  background: linear-gradient(135deg, #046c4e 0%, #046c4e 50%, #0e9f6e 50%, #0e9f6e 100%);
+}
+
+.color-preview.purple {
+  background: linear-gradient(135deg, #5521b5 0%, #5521b5 50%, #8b5cf6 50%, #8b5cf6 100%);
+}
+
+.color-preview.dark {
+  background: linear-gradient(135deg, #111827 0%, #111827 50%, #374151 50%, #374151 100%);
+}
+
+/* Custom color inputs */
+.custom-colors {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 15px;
+}
+
+.color-input {
+  width: calc(33.333% - 14px);
+}
+
+.color-input label {
+  display: block;
+  font-size: 0.9rem;
+  margin-bottom: 5px;
+}
+
+.color-input input[type="color"] {
+  width: 100%;
+  height: 40px;
+  border: 1px solid var(--gray-300);
+  border-radius: 4px;
+  background-color: white;
+  cursor: pointer;
+}
+
+/* Code editor style */
+.code-editor {
+  font-family: monospace;
+  tab-size: 4;
+  white-space: pre;
+  background-color: var(--gray-100);
+  border: 1px solid var(--gray-300);
+  border-radius: 4px;
+}
+
+/* Media upload preview */
+.media-upload-preview {
+  margin-bottom: 10px;
+}
+
+.preview-container {
+  width: 100%;
+  max-width: 300px;
+  height: 100px;
+  border: 1px solid var(--gray-300);
+  border-radius: 4px;
+  overflow: hidden;
+  background-color: var(--gray-100);
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.preview-container img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.media-upload-actions {
+  display: flex;
+  gap: 10px;
+}
+
+/* Input with icon */
+.input-with-icon {
+  position: relative;
+}
+
+.input-with-icon i {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--gray-600);
+}
+
+.input-with-icon input {
+  padding-left: 35px !important;
+}
+
+/* Checkbox group */
+.checkbox-group {
+  margin-top: 10px;
+}
+
+.checkbox-item {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.checkbox-item input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+.checkbox-item label {
+  margin-bottom: 0;
+  font-weight: normal;
+}
+
+/* Character count */
+.character-count {
+  text-align: right;
+  margin-top: 5px;
+  font-size: 0.85rem;
+  color: var(--gray-600);
+}
+
+.character-count span.over-limit {
+  color: var(--danger-color);
+  font-weight: 600;
+}
+
+/* Action buttons */
+.action-buttons {
+  margin-top: 20px;
+  display: flex;
+  gap: 10px;
+}
+
+/* Form actions */
+.form-actions {
+  margin-top: 30px;
+  display: flex;
+  gap: 10px;
+}
+
+/* Backup options */
+.backup-options {
+  margin: 20px 0;
+}
+
+/* File upload */
+.file-upload {
+  position: relative;
+  margin-bottom: 15px;
+}
+
+.file-upload input[type="file"] {
+  position: absolute;
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.upload-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 12px 20px;
+  background-color: var(--gray-100);
+  border: 1px dashed var(--gray-400);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.upload-label:hover {
+  background-color: var(--gray-200);
+}
+
+.upload-label i {
+  font-size: 1.2rem;
+  color: var(--gray-600);
+}
+
+/* Backup list */
+.backup-list {
+  margin: 15px 0;
+}
+
+/* Status badges */
+.status-badge {
+  display: inline-block;
+  padding: 3px 8px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.status-badge.success {
+  background-color: #dcfce7;
+  color: #166534;
+}
+
+.status-badge.pending {
+  background-color: #ffedd5;
+  color: #c2410c;
+}
+
+.status-badge.error {
+  background-color: #fee2e2;
+  color: #b91c1c;
+}
+
+/* Table actions */
+.table-actions {
+  display: flex;
+  gap: 5px;
+}
+
+.table-actions a {
+  width: 28px;
+  height: 28px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+}
+
+.download-btn {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.restore-btn {
+  background-color: var(--warning-color);
+  color: var(--dark-color);
+}
+
+.delete-btn {
+  background-color: var(--danger-color);
+  color: white;
+}
+
+.table-actions a:hover {
+  opacity: 0.9;
+}
+
+/* Media library modal */
+.media-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 15px;
+  max-height: 400px;
+  overflow-y: auto;
+  padding: 5px;
+  margin-bottom: 15px;
+}
+
+.media-item {
+  border: 2px solid transparent;
+  border-radius: 4px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.media-item.selected {
+  border-color: var(--primary-color);
+}
+
+.media-preview {
+  height: 100px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--gray-100);
+}
+
+.media-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.media-info {
+  padding: 8px 10px;
+  background-color: white;
+}
+
+.media-title {
+  font-size: 0.85rem;
+  margin: 0 0 5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.media-date {
+  font-size: 0.75rem;
+  color: var(--gray-600);
+}
+
+.media-selection {
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Upload area */
+.upload-area {
+  padding: 40px 20px;
+  border: 2px dashed var(--gray-300);
+  border-radius: 8px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.upload-area:hover, .upload-area.dragover {
+  border-color: var(--primary-color);
+  background-color: rgba(6, 39, 103, 0.05);
+}
+
+.upload-area i {
+  font-size: 3rem;
+  color: var(--gray-500);
+  margin-bottom: 15px;
+}
+
+.upload-area h3 {
+  margin: 10px 0;
+}
+
+/* Tabs in modals */
+.media-tabs {
+  display: flex;
+  border-bottom: 1px solid var(--gray-300);
+  margin-bottom: 15px;
+}
+
+.tab-btn {
+  padding: 10px 15px;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--gray-600);
+  transition: all 0.3s;
+}
+
+.tab-btn.active {
+  color: var(--primary-color);
+  border-bottom-color: var(--primary-color);
+}
+
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+/* Media filter */
+.media-filter {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
+  flex-wrap: wrap;
+}
+
+.search-box {
+  position: relative;
+  flex: 1;
+}
+
+.search-box input {
+  width: 100%;
+  padding: 8px 12px;
+  padding-right: 35px;
+  border: 1px solid var(--gray-300);
+  border-radius: 4px;
+}
+
+.search-box button {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  width: 35px;
+  background: none;
+  border: none;
+  color: var(--gray-600);
+  cursor: pointer;
+}
+
+/* Responsive styles */
+@media (max-width: 992px) {
+  .settings-container {
+    flex-direction: column;
+  }
+  
+  .settings-navigation {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid var(--gray-200);
+  }
+  
+  .settings-tabs {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .settings-tabs li {
+    border-left: none;
+    border-bottom: 3px solid transparent;
+  }
+  
+  .settings-tabs li.active {
+    border-left-color: transparent;
+    border-bottom-color: var(--primary-color);
+  }
+  
+  .custom-colors {
+    gap: 10px;
+  }
+  
+  .color-input {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .settings-tabs li {
+    padding: 10px 15px;
+    font-size: 0.9rem;
+  }
+  
+  .settings-content {
+    padding: 15px;
+  }
+  
+  .media-filter {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .search-box {
+    width: 100%;
+  }
+  
+  .media-filter select {
+    width: 100%;
+  }
+  
+  .form-actions, .action-buttons {
+    flex-direction: column;
+  }
+}

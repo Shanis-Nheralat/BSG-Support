@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="robots" content="noindex, nofollow">
+  <title>Blog Management Settings | Backsure Global Support</title>
+  <!-- Main Admin CSS -->
+  <link rel="stylesheet" href="admin-dashboard.css" />
+  <!-- Settings-specific CSS -->
+  <link rel="stylesheet" href="admin-settings.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="admin-body" data-user-role="content_admin">
+  <div class="admin-container">
+    <!-- Sidebar Navigation (Will be loaded via JS) -->
+    <aside class="admin-sidebar" id="admin-sidebar">
+      <!-- JS will populate this -->
+    </aside>
+    
+    <!-- Main Content Area -->
+    <main class="admin-main">
+      <!-- Top Navigation Bar (Will be loaded via JS) -->
+      <header class="admin-header" id="admin-header">
+        <!-- JS will populate this -->
+      </header>
+      
+      <!-- Settings Content -->
+      <div class="admin-content">
+        <div class="settings-container">
+          <div class="settings-header">
+            <h2><i class="fas fa-blog"></i> Blog Management Settings</h2>
+            
+            <div class="settings-actions">
+              <button id="settings-save-btn" class="settings-btn settings-btn-primary">
+                <i class="fas fa-save"></i> Save All Settings
+              </button>
+              <button id="settings-reset-btn" class="settings-btn settings-btn-secondary">
+                <i class="fas fa-undo"></i> Reset to Default
+              </button>
+            </div>
+          </div>
+          
+          <!-- Settings Navigation -->
+          <div class="settings-nav">
+            <div class="settings-nav-item active" data-tab="tab-general">
+              <i class="fas fa-cog"></i> General
+            </div>
+            <div class="settings-nav-item" data-tab="tab-approval">
+              <i class="fas fa-check-circle"></i> Approval Workflow
+            </div>
+            <div class="settings-nav-item" data-tab="tab-comments">
+              <i class="fas fa-comments"></i> Comment Settings
+            </div>
+            <div class="settings-nav-item" data-tab="tab-templates">
+              <i class="fas fa-file-alt"></i> Post Templates
+            </div>
+            <div class="settings-nav-item" data-tab="tab-export">
+              <i class="fas fa-file-export"></i> Export/Import
+            </div>
+            <div class="settings-nav-item" data-tab="tab-advanced">
+              <i class="fas fa-sliders-h"></i> Advanced
+            </div>
+          </div>
+          
+          <!-- General Settings Tab -->
+          <div id="tab-general" class="settings-tab-content active">
+            <section class="settings-section">
+              <h3><i class="fas fa-sliders-h"></i> General Blog Settings</h3>
+              <p class="settings-description">Configure general settings for your blog system.</p>
+              
+              <div class="settings-form-group">
+                <label for="blog-posts-per-page">Posts Per Page</label>
+                <input type="number" id="blog-posts-per-page" name="blog_posts_per_page" class="settings-input" min="1" max="50" value="10">
+                <small>Number of blog posts to display per page.</small>
+              </div>
+              
+              <div class="settings-form-group">
+                <label for="blog-excerpt-length">Excerpt Length</label>
+                <input type="number" id="blog-excerpt-length" name="blog_excerpt_length" class="settings-input" min="50" max="500" value="150">
+                <small>Maximum character length for post excerpts.</small>
+              </div>
+              
+              <div class="settings-form-group">
+                <label for="blog-default-category">Default Category</label>
+                <select id="blog-default-category" name="blog_default_category" class="settings-select">
+                  <option value="news">Company News</option>
+                  <option value="updates">Product Updates</option>
+                  <option value="guides">Guides & Tutorials</option>
+                  <option value="industry">Industry Insights</option>
+                </select>
+                <small>The default category assigned to new blog posts.</small>
+              </div>
+              
+              <div class="settings-form-group">
+                <label class="settings-switch-label">
+                  <span>Featured Image Required</span>
+                  <label class="settings-switch">
+                    <input type="checkbox" name="blog_featured_image_required" data-setting-id="blog_featured_image_required" data-initial="true" checked>
+                    <span class="settings-switch-slider"></span>
+                  </label>
+                </label>
+                <small>Require a featured image for all blog posts.</small>
+              </div>
+            </section>
+            
+            <section class="settings-section">
+              <h3><i class="fas fa-tags"></i> Categories & Tags</h3>
+              
+              <div class="settings-form-group">
+                <label for="blog-tag-limit">Maximum Tags Per Post</label>
+                <input type="number" id="blog-tag-limit" name="blog_tag_limit" class="settings-input" min="1" max="20" value="5">
+                <small>Limit the number of tags that can be added to a post.</small>
+              </div>
+              
+              <div class="settings-list-container" data-list-id="blog_categories">
+                <label>Blog Categories</label>
+                <div class="settings-list-add">
+                  <input type="text" class="settings-input settings-list-add-input" placeholder="Add new category...">
+                  <button class="settings-btn settings-btn-primary settings-list-add-btn">Add</button>
+                </div>
+                
+                <ul class="settings-list">
+                  <li class="settings-list-item" data-value="Company News">
+                    <div class="settings-list-item-content">
+                      <span>Company News</span>
+                    </div>
+                    <div class="settings-list-item-actions">
+                      <button class="settings-btn settings-btn-sm settings-list-item-remove" title="Remove">
+                        <i class="fas fa-times"></i>
+                      </button>
+                    </div>
+                  </li>
+                  <li class="settings-list-item" data-value="Product Updates">
+                    <div class="settings-list-item-content">
+                      <span>Product Updates</span>
+                    </div>
+                    <div class="settings-list-item-actions">
+                      <button class="settings-btn settings-btn-sm settings-list-item-remove" title="Remove">
+                        <i class="fas fa-times"></i>
+                      </button>
+                    </div>
+                  </li>
+                  <li class="settings-list-item" data-value="Guides & Tutorials">
+                    <div class="settings-list-item-content">
+                      <span>Guides & Tutorials</span>
+                    </div>
+                    <div class="settings-list-item-actions">
+                      <button class="settings-btn settings-btn-sm settings-list-item-remove" title="Remove">
+                        <i class="fas fa-times"></i>
+                      </button>
+                    </div>
+                  </li>
+                  <li class="settings-list-item" data-value="Industry Insights">
+                    <div class="settings-list-item-content">
+                      <span>Industry Insights</span>
+                    </div>
+                    <div class="settings-list-item-actions">
+                      <button class="settings-btn settings-btn-sm settings-list-item-remove" title="Remove">
+                        <i class="fas fa-times"></i>
+                      </button>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </section>
+            
+            <section class="settings-section">
+              <h3><i class="fas fa-clock"></i> Publishing Options</h3>
+              
+              <div class="settings-form-group">
+                <label class="settings-switch-label">
+                  <span>Allow Scheduled Publishing</span>
+                  <label class="settings-switch">
+                    <input type="checkbox" name="blog_allow_scheduling" data-setting-id="blog_allow_scheduling" data-initial="true" checked>
+                    <span class="settings-switch-slider"></span>
+                  </label>
+                </label>
+                <small>Allow authors to schedule posts for future publishing dates.</small>
+              </div>
+              
+              <div class="settings-form-group">
+                <label for="blog-autosave-interval">Auto-Save Interval (seconds)</label>
+                <select id="blog-autosave-interval" name="blog_autosave_interval" class="settings-select">
+                  <option value="30">30 seconds</option>
+                  <option value="60" selected>1 minute</option>
+                  <option value="300">5 minutes</option>
+                  <option value="600">10 minutes</option>
+                </select>
+                <small>How often to automatically save draft posts while editing.</small>
+              </div>
+            </section>
+          </div>
+          
+          <!-- Approval Workflow Tab -->
+          <div id="tab-approval" class="settings-tab-content">
+            <section class="settings-section">
+              <h3><i class="fas fa-check-circle"></i> Post Approval Workflow</h3>
+              <p class="settings-description">Configure the approval process for new blog posts before they are published.</p>
+              
+              <div class="settings-form-group">
+                <label class="settings-switch-label">
+                  <span>Enable Approval Workflow</span>
+                  <label class="settings-switch">
+                    <input type="checkbox" name="blog_enable_workflow" data-setting-id="blog_enable_workflow" data-initial="true" checked>
+                    <span class="settings-switch-slider"></span>
+                  </label>
+                </label>
+                <small>Require posts to go through an approval process before publishing.</small>
+              </div>
+              
+              <div class="settings-form-group" data-restricted-to="admin,content_admin">
+                <label for="blog-default-status">Default Post Status</label>
+                <select id="blog-default-status" name="blog_default_status" class="settings-select">
+                  <option value="draft" selected>Draft</option>
+                  <option value="pending">Pending Review</option>
+                  <option value="published">Published</option>
+                </select>
+                <small>The default status assigned to new blog posts.</small>
+              </div>
+              
+              <div class="workflow-builder" data-workflow-id="blog_post_approval">
+                <div class="workflow-step" data-step-id="step1" data-step-type="approval" data-assignees="content_admin" data-time-limit="24" data-actions="notify_email,notify_system">
+                  <div class="workflow-step-header">
+                    <div class="workflow-step-title">
+                      <i class="fas fa-check-circle"></i>
+                      <span>Content Review</span>
+                    </div>
+                    <div class="workflow-step-actions">
+                      <button class="settings-btn settings-btn-sm workflow-step-up" title="Move Up">
+                        <i class="fas fa-arrow-up"></i>
+                      </button>
+                      <button class="settings-btn settings-btn-sm workflow-step-down" title="Move Down">
+                        <i class="fas fa-arrow-down"></i>
+                      </button>
+                      <button class="settings-btn settings-btn-sm workflow-step-edit" title="Edit Step">
+                        <i class="fas fa-edit"></i>
+                      </button>
+                      <button class="settings-btn settings-btn-sm workflow-step-delete" title="Delete Step">
+                        <i class="fas fa-trash"></i>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="workflow-step-content">
+                    <div class="settings-form-group">
+                      <small>Assignees: Content Admin</small>
+                    </div>
+                    <div class="settings-form-group">
+                      <small>Time Limit: 24 hours</small>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="workflow-connector">
+                  <i class="fas fa-arrow-down"></i>
+                </div>
+                
+                <div class="workflow-step" data-step-id="step2" data-step-type="approval" data-assignees="admin" data-time-limit="48" data-actions="notify_email,notify_system,escalate">
+                  <div class="workflow-step-header">
+                    <div class="workflow-step-title">
+                      <i class="fas fa-check-circle"></i>
+                      <span>Final Approval</span>
+                    </div>
+                    <div class="workflow-step-actions">
+                      <button class="settings-btn settings-btn-sm workflow-step-up" title="Move Up">
+                        <i class="fas fa-arrow-up"></i>
+                      </button>
+                      <button class="settings-btn settings-btn-sm workflow-step-down" title="Move Down">
+                        <i class="fas fa-arrow-down"></i>
+                      </button>
+                      <button class="settings-btn settings-btn-sm workflow-step-edit" title="Edit Step">
+                        <i class="fas fa-edit"></i>
+                      </button>
+                      <button class="settings-btn settings-btn-sm workflow-step-delete" title="Delete Step">
+                        <i class="fas fa-trash"></i>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="workflow-step-content">
+                    <div class="settings-form-group">
+                      <small>Assignees: Super Admin</small>
+                    </div>
+                    <div class="settings-form-group">
+                      <small>Time Limit: 48 hours</small>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="workflow-connector">
+                  <i class="fas fa-arrow-down"></i>
+                </div>
+                
+                <div class="workflow-step" data-step-id="step3" data-step-type="action" data-assignees="" data-time-limit="0" data-actions="">
+                  <div class="workflow-step-header">
+                    <div class="workflow-step-title">
+                      <i class="fas fa-bolt"></i>
+                      <span>Publish Post</span>
+                    </div>
+                    <div class="workflow-step-actions">
+                      <button class="settings-btn settings-btn-sm workflow-step-up" title="Move Up">
+                        <i class="fas fa-arrow-up"></i>
+                      </button>
+                      <button class="settings-btn settings-btn-sm workflow-step-down" title="Move Down">
+                        <i class="fas fa-arrow-down"></i>
+                      </button>
+                      <button class="settings-btn settings-btn-sm workflow-step-edit" title="Edit Step">
+                        <i class="fas fa-edit"></i>
+                      </button>
+                      <button class="settings-btn settings-btn-sm workflow-step-delete" title="Delete Step">
+                        <i class="fas fa-trash"></i>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="workflow-step-content">
+                    <div class="settings-form-group">
+                      <small>Automated action: Publish post and send notification</small>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="workflow-add-step">
+                  <i class="fas fa-plus-circle"></i> Add Workflow Step
+                </div>
+              </div>
+            </section>
+            
+            <section class="settings-section">
+              <h3><i class="fas fa-bell"></i> Approval Notifications</h3>
+              
+              <div class="settings-form-group">
+                <label>Email Notifications</label>
+                <div class="settings-checkbox-group">
+                  <label class="settings-checkbox">
+                    <input type="checkbox" name="blog_approval_notify_author" checked>
+                    Notify author when post status changes
+                  </label>
+                  <label class="settings-checkbox">
+                    <input type="checkbox" name="blog_approval_notify_admin" checked>
+                    Notify admins when posts need approval
+                  </label>
+                  <label class="settings-checkbox">
+                    <input type="checkbox" name="blog_approval_notify_scheduled">
+                    Notify when scheduled posts are published
+                  </label>
+                </div>
+              </div>
+              
+              <div class="settings-form-group">
+                <label for="blog-approval-reminder">Approval Reminder Frequency</label>
+                <select id="blog-approval-reminder" name="blog_approval_reminder" class="settings-select">
+                  <option value="none">No Reminders</option>
+                  <option value="daily" selected>Daily Reminders</option>
+                  <option value="weekly">Weekly Reminders</option>
+                </select>
+                <small>How often to send reminders about pending approvals.</small>
+              </div>
+            </section>
+          </div>
+          
+          <!-- Comment Settings Tab -->
+          <div id="tab-comments" class="settings-tab-content">
+            <section class="settings-section">
+              <h3><i class="fas fa-comments"></i> Comment Settings</h3>
+              <p class="settings-description">Configure how comments are managed on your blog posts.</p>
+              
+              <div class="settings-form-group">
+                <label class="settings-switch-label">
+                  <span>Enable Comments</span>
+                  <label class="settings-switch">
+                    <input type="checkbox" name="blog_enable_comments" data-setting-id="blog_enable_comments" data-initial="true" checked>
+                    <span class="settings-switch-slider"></span>
+                  </label>
+                </label>
+                <small>Allow users to comment on blog posts.</small>
+              </div>
+              
+              <div class="settings-form-group">
+                <label class="settings-switch-label">
+                  <span>Comments Require Approval</span>
+                  <label class="settings-switch">
+                    <input type="checkbox" name="blog_comments_require_approval" data-setting-id="blog_comments_require_approval" data-initial="true" checked>
+                    <span class="settings-switch-slider"></span>
+                  </label>
+                </label>
+                <small>Comments must be approved by an admin before they appear publicly.</small>
+              </div>
+              
+              <div class="settings-form-group">
+                <label class="settings-switch-label">
+                  <span>Close Comments Automatically</span>
+                  <label class="settings-switch">
+                    <input type="checkbox" name="blog_auto_close_comments" data-setting-id="blog_auto_close_comments" data-initial="false">
+                    <span class="settings-switch-slider"></span>
+                  </label>
+                </label>
+                <small>Automatically close comments after a specified period.</small>
+              </div>
+              
+              <div class="settings-form-group">
+                <label for="blog-close-comments-days">Close Comments After (days)</label>
+                <input type="number" id="blog-close-comments-days" name="blog_close_comments_days" class="settings-input" min="1" max="365" value="30">
+                <small>Number of days after which comments will be closed.</small>
+              </div>
+            </section>
+            
+            <section class="settings-section">
+              <h3><i class="fas fa-filter"></i> Comment Moderation</h3>
+              
+              <div class="settings-form-group">
+                <label>Comment Length Limits</label>
+                <div class="settings-form-group" style="display: flex; gap: 15px;">
+                  <div style="flex: 1;">
+                    <label for="blog-comment-min-length">Minimum Length</label>
+                    <input type="number" id="blog-comment-min-length" name="blog_comment_min_length" class="settings-input" min="1" max="100" value="3">
+                    <small>Minimum character length</small>
+                  </div>
+                  <div style="flex: 1;">
+                    <label for="blog-comment-max-length">Maximum Length</label>
+                    <input type="number" id="blog-comment-max-length" name="blog_comment_max_length" class="settings-input" min="100" max="10000" value="2000">
+                    <small>Maximum character length</small>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="settings-form-group">
+                <label for="blog-comment-blacklist">Comment Blacklist</label>
+                <textarea id="blog-comment-blacklist" name="blog_comment_blacklist" class="settings-textarea" placeholder="Enter terms or phrases, one per line. Comments containing these will be automatically rejected.">gambling
+casino bonus
+viagra
+cialis
+buy now
+free offer</textarea>
+                <small>One term or phrase per line. Comments containing these will be automatically rejected.</small>
+              </div>
+              
+              <div class="settings-form-group">
+                <label class="settings-switch-label">
+                  <span>Enable CAPTCHA</span>
+                  <label class="settings-switch">
+                    <input type="checkbox" name="blog_comments_captcha" data-setting-id="blog_comments_captcha" data-initial="true" checked>
+                    <span class="settings-switch-slider"></span>
+                  </label>
+                </label>
+                <small>Require CAPTCHA verification for comment submission to prevent spam.</small>
+              </div>
+            </section>
+          </div>
+          
+          <!-- Post Templates Tab -->
+          <div id="tab-templates" class="settings-tab-content">
+            <section class="settings-section">
+              <h3><i class="fas fa-file-alt"></i> Default Post Template</h3>
+              <p class="settings-description">Configure the default template for new blog posts.</p>
+              
+              <div class="template-builder" data-template-id="blog_default_template">
+                <div class="template-toolbar">
+                  <button data-command="h2" title="Heading 2"><i class="fas fa-heading"></i> H2</button>
+                  <button data-command="h3" title="Heading 3"><i class="fas fa-heading"></i> H3</button>
+                  <button data-command="paragraph" title="Paragraph"><i class="fas fa-paragraph"></i></button>
+                  <button data-command="bold" title="Bold"><i class="fas fa-bold"></i></button>
+                  <button data-command="italic" title="Italic"><i class="fas fa-italic"></i></button>
+                  <button data-command="underline" title="Underline"><i class="fas fa-underline"></i></button>
+                  <button data-command="link" title="Insert Link"><i class="fas fa-link"></i></button>
+                  <button data-command="unlink" title="Remove Link"><i class="fas fa-unlink"></i></button>
+                  <button data-command="ul" title="Bulleted List"><i class="fas fa-list-ul"></i></button>
+                  <button data-command="ol" title="Numbered List"><i class="fas fa-list-ol"></i></button>
+                </div>
+                
+                <div class="template-editor" contenteditable="true">
+                  <h2>Headline Goes Here</h2>
+                  <p>Introduction paragraph goes here. Briefly explain what this blog post is about and why the reader should care.</p>
+                  
+                  <h3>First Subheading</h3>
+                  <p>Main content goes here. Explain your first main point with supporting details and examples.</p>
+                  
+                  <h3>Second Subheading</h3>
+                  <p>Continue with your second main point. Add relevant information and keep paragraphs concise for better readability.</p>
+                  
+                  <h3>Third Subheading</h3>
+                  <p>Develop your third main point. Consider adding a bulleted or numbered list to break up text:</p>
+                  <ul>
+                    <li>Key point one</li>
+                    <li>Key point two</li>
+                    <li>Key point three</li>
+                  </ul>
+                  
+                  <h3>Conclusion</h3>
+                  <p>Summarize your main points and include a call to action for readers.</p>
+                </div>
+                
+                <div class="template-variables">
+                  <div class="template-variables-title">Insert Variables:</div>
+                  <div class="template-variables-list">
+                    <span class="template-variable" data-variable="post_title">Post Title</span>
+                    <span class="template-variable" data-variable="author_name">Author Name</span>
+                    <span class="template-variable" data-variable="current_date">Current Date</span>
+                    <span class="template-variable" data-variable="category">Category</span>
+                    <span class="template-variable" data-variable="company_name">Company Name</span>
+                  </div>
+                </div>
+              </div>
+            </section>
+            
+            <section class="settings-section">
+              <h3><i class="fas fa-file-alt"></i> Custom Post Templates</h3>
+              
+              <div class="settings-list-container" data-list-id="blog_post_templates">
+                <label>Custom Post Templates</label>
+                <div class="settings-list">
+                  <table class="settings-table">
+                    <thead>
+                      <tr>
+                        <th>Template Name</th>
+                        <th>Associated Category</th>
+                        <th>Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Product Update</td>
+                        <td>Product Updates</td>
+                        <td>
+                          <div class="table-actions">
+                            <button class="settings-btn settings-btn-sm" title="Edit"><i class="fas fa-edit"></i></button>
+                            <button class="settings-btn settings-btn-sm" title="Delete"><i class="fas fa-trash"></i></button>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Industry Report</td>
+                        <td>Industry Insights</td>
+                        <td>
+                          <div class="table-actions">
+                            <button class="settings-btn settings-btn-sm" title="Edit"><i class="fas fa-edit"></i></button>
+                            <button class="settings-btn settings-btn-sm" title="Delete"><i class="fas fa-trash"></i></button>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Tutorial Guide</td>
+                        <td>Guides & Tutorials</td>
+                        <td>
+                          <div class="table-actions">
+                            <button class="settings-btn settings-btn-sm" title="Edit"><i class="fas fa-edit"></i></button>
+                            <button class="settings-btn settings-btn-sm" title="Delete"><i class="fas fa-trash"></i></button>
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                
+                <div style="margin-top: 15px;">
+                  <button class="settings-btn settings-btn-primary">
+                    <i class="fas fa-plus"></i> Add New Template
+                  </button>
+                </div>
+              </div>
+            </section>
+          </div>
+          
+          <!-- Export/Import Tab -->
+          <div id="tab-export" class="settings-tab-content">
+            <section class="settings-section">
+              <h3><i class="fas fa-file-export"></i> Export Settings</h3>
+              <p class="settings-description">Export your blog settings to a JSON file for backup or transfer to another installation.</p>
+              
+              <div class="settings-export-options">
+                <label>Select what to export:</label>
+                <div class="settings-checkbox-group">
+                  <label class="settings-checkbox">
+                    <input type="checkbox" class="settings-export-option" value="general" checked>
+                    General Settings
+                  </label>
+                  <label class="settings-checkbox">
+                    <input type="checkbox" class="settings-export-option" value="approval" checked>
+                    Approval Workflow
+                  </label>
+                  <label class="settings-checkbox">
+                    <input type="checkbox" class="settings-export-option" value="comments" checked>
+                    Comment Settings
+                  </label>
+                  <label class="settings-checkbox">
+                    <input type="checkbox" class="settings-export-option" value="templates" checked>
+                    Post Templates
+                  </label>
+                  <label class="settings-checkbox">
+                    <input type="checkbox" class="settings-export-option" value="categories" checked>
+                    Categories & Tags
+                  </label>
+                </div>
+              </div>
+              
+              <button id="settings-export-btn" class="settings-btn settings-btn-primary">
+                <i class="fas fa-download"></i> Export Settings
+              </button>
+            </section>
+            
+            <section class="settings-section">
+              <h3><i class="fas fa-file-import"></i> Import Settings</h3>
+              <p class="settings-description">Import blog settings from a previously exported JSON file.</p>
+              
+              <div class="settings-import-options">
+                <label>Import options:</label>
+                <div class="settings-checkbox-group">
+                  <label class="settings-checkbox">
+                    <input type="checkbox" name="import_override" checked>
+                    Override existing settings
+                  </label>
+                  <label class="settings-checkbox">
+                    <input type="checkbox" name="import_merge_categories">
+                    Merge categories instead of replacing
+                  </label>
+                </div>
+              </div>
+              
+              <input type="file" id="settings-import-file" style="display: none;" accept=".json">
+              <button id="settings-import-btn" class="settings-btn settings-btn-primary">
+                <i class="fas fa-upload"></i> Import Settings
+              </button>
+              
+              <div class="settings-form-group" style="margin-top: 15px;">
+                <div class="settings-alert settings-alert-warning">
+                  <i class="fas fa-exclamation-triangle"></i>
+                  <div>
+                    <strong>Warning:</strong> Importing settings will override your current configuration. Make sure to export your current settings first as a backup.
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+          
+          <!-- Advanced Tab -->
+          <div id="tab-advanced" class="settings-tab-content">
+            <section class="settings-section" data-restricted-to="admin">
+              <h3><i class="fas fa-code"></i> Advanced Settings</h3>
+              <p class="settings-description">These settings are for advanced users only. Incorrect configuration may affect your blog functionality.</p>
+              
+              <div class="settings-form-group">
+                <label for="blog-cache-time">Cache Expiration (minutes)</label>
+                <input type="number" id="blog-cache-time" name="blog_cache_time" class="settings-input" min="0" max="1440" value="60">
+                <small>How long to cache blog listings and posts. Set to 0 to disable caching.</small>
+              </div>
+              
+              <div class="settings-form-group">
+                <label for="blog-image-quality">Image Compression Quality</label>
+                <input type="range" id="blog-image-quality" name="blog_image_quality" class="settings-range" min="60" max="100" value="85">
+                <small>Quality setting for JPEG image compression (60-100).</small>
+              </div>
+              
+              <div class="settings-form-group">
+                <label for="blog-custom-css">Custom CSS</label>
+                <textarea id="blog-custom-css" name="blog_custom_css" class="settings-textarea" placeholder="Enter custom CSS for the blog..." style="font-family: monospace; height: 150px;">.blog-post-title {
+  font-weight: 700;
+  color: #062767;
+}
+
+.blog-post-meta {
+  color: #666;
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+}</textarea>
+                <small>Custom CSS that will be applied to the blog frontend.</small>
+              </div>
+              
+              <div class="settings-form-group">
+                <label for="blog-meta-description">Default Meta Description</label>
+                <textarea id="blog-meta-description" name="blog_meta_description" class="settings-textarea" placeholder="Enter default meta description..."
+                >Backsure Global Support official blog featuring industry insights, company news, product updates, and helpful guides.</textarea>
+                <small>Default meta description for blog pages when a specific one is not provided.</small>
+              </div>
+            </section>
+            
+            <section class="settings-section" data-restricted-to="admin">
+              <h3><i class="fas fa-database"></i> Database Maintenance</h3>
+              
+              <div class="settings-form-group">
+                <button class="settings-btn settings-btn-secondary">
+                  <i class="fas fa-sync"></i> Regenerate Post Slugs
+                </button>
+                <small>Regenerate URL slugs for all blog posts based on their titles.</small>
+              </div>
+              
+              <div class="settings-form-group">
+                <button class="settings-btn settings-btn-secondary">
+                  <i class="fas fa-compress-alt"></i> Optimize Database Tables
+                </button>
+                <small>Optimize blog-related database tables to improve performance.</small>
+              </div>
+              
+              <div class="settings-form-group">
+                <div class="settings-alert settings-alert-danger">
+                  <i class="fas fa-exclamation-circle"></i>
+                  <div>
+                    <strong>Danger Zone!</strong> The following actions cannot be undone.
+                  </div>
+                </div>
+                
+                <div style="margin-top: 15px;">
+                  <button class="settings-btn settings-btn-danger">
+                    <i class="fas fa-trash"></i> Delete All Spam Comments
+                  </button>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Admin Footer -->
+      <footer class="admin-footer" id="admin-footer">
+        <!-- JS will populate this -->
+      </footer>
+    </main>
+  </div>
+  
+  <!-- JavaScript for Admin Panel -->
+  <script src="admin-dashboard.js"></script>
+  <script src="admin-settings.js"></script>
+</body>
+</html> class="fas fa-broom"></i> Clean Up Trashed Posts
+                </button>
+                <small>Permanently delete all posts in the trash.</small>
+              </div>
+              
+              <div class="settings-form-group">
+                <button class="settings-btn settings-btn-secondary">
+                  <i<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="robots" content="noindex, nofollow">
+  <title>Blog Management Settings | Backsure Global Support</title>
+  <!-- Main Admin CSS -->
+  <link rel="stylesheet" href="admin-dashboard.css" />
+  <!-- Settings-specific CSS -->
+  <link rel="stylesheet" href="admin-settings.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="admin-body" data-user-role="content_admin">
+  <div class="admin-container">
+    <!-- Sidebar Navigation (Will be loaded via JS) -->
+    <aside class="admin-sidebar" id="admin-sidebar">
+      <!-- JS will populate this -->
+    </aside>
+    
+    <!-- Main Content Area -->
+    <main class="admin-main">
+      <!-- Top Navigation Bar (Will be loaded via JS) -->
+      <header class="admin-header" id="admin-header">
+        <!-- JS will populate this -->
+      </header>
+      
+      <!-- Settings Content -->
+      <div class="admin-content">
+        <div class="settings-container">
+          <div class="settings-header">
+            <h2><i class="fas fa-blog"></i> Blog Management Settings</h2>
+            
+            <div class="settings-actions">
+              <button id="settings-save-btn" class="settings-btn settings-btn-primary">
+                <i class="fas fa-save"></i> Save All Settings
+              </button>
+              <button id="settings-reset-btn" class="settings-btn settings-btn-secondary">
+                <i class="fas fa-undo"></i> Reset to Default
+              </button>
+            </div>
+          </div>
+          
+          <!-- Settings Navigation -->
+          <div class="settings-nav">
+            <div class="settings-nav-item active" data-tab="tab-general">
+              <i class="fas fa-cog"></i> General
+            </div>
+            <div class="settings-nav-item" data-tab="tab-approval">
+              <i class="fas fa-check-circle"></i> Approval Workflow
+            </div>
+            <div class="settings-nav-item" data-tab="tab-comments">
+              <i class="fas fa-comments"></i> Comment Settings
+            </div>
+            <div class="settings-nav-item" data-tab="tab-templates">
+              <i class="fas fa-file-alt"></i> Post Templates
+            </div>
+            <div class="settings-nav-item" data-tab="tab-export">
+              <i class="fas fa-file-export"></i> Export/Import

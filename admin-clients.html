@@ -1,0 +1,1643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="robots" content="noindex, nofollow">
+  <title>Client Management | Backsure Global Support</title>
+  <!-- Main Admin CSS -->
+  <link rel="stylesheet" href="admin-dashboard.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- DataTables CSS -->
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.bootstrap5.min.css">
+  <!-- Flatpickr for date selection -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <style>
+    /* Client-specific styles */
+    .status-badge.new {
+      background-color: rgba(54, 185, 204, 0.15);
+      color: #36b9cc;
+    }
+    
+    .status-badge.contacted {
+      background-color: rgba(28, 200, 138, 0.15);
+      color: #1cc88a;
+    }
+    
+    .status-badge.followup {
+      background-color: rgba(246, 194, 62, 0.15);
+      color: #f6c23e;
+    }
+    
+    .status-badge.converted {
+      background-color: rgba(78, 115, 223, 0.15);
+      color: #4e73df;
+    }
+    
+    .status-badge.closed {
+      background-color: rgba(133, 135, 150, 0.15);
+      color: #858796;
+    }
+    
+    .client-detail-modal .client-modal-tabs {
+      display: flex;
+      border-bottom: 1px solid var(--gray-300);
+      margin-bottom: 15px;
+    }
+    
+    .client-modal-tab {
+      padding: 10px 20px;
+      cursor: pointer;
+      color: var(--gray-600);
+      position: relative;
+      transition: all 0.3s;
+    }
+    
+    .client-modal-tab.active {
+      color: var(--primary-color);
+      font-weight: 600;
+    }
+    
+    .client-modal-tab.active::after {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background-color: var(--primary-color);
+    }
+    
+    .client-tab-content {
+      display: none;
+      padding: 15px 0;
+    }
+    
+    .client-tab-content.active {
+      display: block;
+    }
+    
+    .client-header {
+      margin-bottom: 20px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid var(--gray-300);
+    }
+    
+    .client-info {
+      margin-bottom: 20px;
+    }
+    
+    .info-item {
+      margin-bottom: 10px;
+      display: flex;
+    }
+    
+    .info-label {
+      font-weight: 600;
+      width: 120px;
+      color: var(--gray-700);
+    }
+    
+    .info-value {
+      flex: 1;
+    }
+    
+    .note-item, .email-item, .activity-item {
+      background-color: var(--gray-100);
+      border-radius: 8px;
+      padding: 15px;
+      margin-bottom: 15px;
+    }
+    
+    .note-header, .email-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+    
+    .note-author, .email-subject {
+      font-weight: 600;
+      color: var(--gray-800);
+    }
+    
+    .note-time, .email-time {
+      font-size: 0.85rem;
+      color: var(--gray-600);
+    }
+    
+    .followup-item {
+      display: flex;
+      align-items: center;
+      padding: 10px;
+      border-bottom: 1px solid var(--gray-200);
+    }
+    
+    .followup-item:last-child {
+      border-bottom: none;
+    }
+    
+    .followup-date {
+      font-weight: 600;
+      margin-right: 15px;
+      min-width: 120px;
+    }
+    
+    .followup-note {
+      flex: 1;
+    }
+    
+    .followup-status {
+      margin-left: 15px;
+    }
+    
+    .followup-status.pending {
+      color: var(--warning-color);
+    }
+    
+    .followup-status.completed {
+      color: var(--success-color);
+    }
+    
+    .followup-status.overdue {
+      color: var(--danger-color);
+    }
+
+    /* Form styles */
+    .form-section {
+      margin-bottom: 20px;
+    }
+
+    .form-row {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 15px;
+    }
+
+    .form-group {
+      flex: 1;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: 600;
+      color: var(--gray-700);
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 8px 12px;
+      border: 1px solid var(--gray-300);
+      border-radius: 4px;
+      font-size: 0.9rem;
+    }
+
+    .form-control:focus {
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 2px rgba(6, 39, 103, 0.1);
+      outline: none;
+    }
+
+    textarea.form-control {
+      min-height: 100px;
+      resize: vertical;
+    }
+  </style>
+</head>
+<body class="admin-body" data-user-role="admin">
+  <div class="admin-container">
+    <!-- Sidebar Navigation (Will be loaded via JS) -->
+    <aside class="admin-sidebar" id="admin-sidebar">
+      <!-- JS will populate this -->
+    </aside>
+    
+    <!-- Main Content Area -->
+    <main class="admin-main">
+      <!-- Top Navigation Bar (Will be loaded via JS) -->
+      <header class="admin-header" id="admin-header">
+        <!-- JS will populate this -->
+      </header>
+      
+      <!-- Client Management Content -->
+      <div class="admin-content">
+        <!-- Page Header -->
+        <div class="page-header">
+          <h1><i class="fas fa-users"></i> Client Management</h1>
+          <div class="page-header-actions">
+            <button class="btn-primary" id="add-client-btn">
+              <i class="fas fa-plus"></i> Add New Client
+            </button>
+            <button class="btn-secondary" id="bulk-actions-btn">
+              <i class="fas fa-tasks"></i> Bulk Actions
+            </button>
+            <button class="btn-outline" id="export-clients-btn">
+              <i class="fas fa-file-export"></i> Export
+            </button>
+          </div>
+        </div>
+        
+        <!-- Filters & Search -->
+        <div class="filter-container">
+          <div class="filter-section">
+            <div class="filter-group">
+              <label for="filter-status">Status:</label>
+              <select id="filter-status" class="filter-select">
+                <option value="">All Statuses</option>
+                <option value="new">New</option>
+                <option value="contacted">Contacted</option>
+                <option value="followup">Follow-up</option>
+                <option value="converted">Converted</option>
+                <option value="closed">Closed</option>
+              </select>
+            </div>
+            
+            <div class="filter-group">
+              <label for="filter-service">Service Interest:</label>
+              <select id="filter-service" class="filter-select">
+                <option value="">All Services</option>
+                <option value="finance-accounting">Finance & Accounting</option>
+                <option value="hr-admin">HR & Admin</option>
+                <option value="dedicated-teams">Dedicated Teams</option>
+                <option value="insurance">Insurance</option>
+                <option value="business-care">Business Care Plans</option>
+              </select>
+            </div>
+            
+            <div class="filter-group">
+              <label for="filter-source">Source:</label>
+              <select id="filter-source" class="filter-select">
+                <option value="">All Sources</option>
+                <option value="website">Website</option>
+                <option value="referral">Referral</option>
+                <option value="social">Social Media</option>
+                <option value="email">Email Campaign</option>
+                <option value="event">Event</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            
+            <div class="filter-group">
+              <label for="filter-assigned">Assigned To:</label>
+              <select id="filter-assigned" class="filter-select">
+                <option value="">All Admins</option>
+                <option value="1">John Smith</option>
+                <option value="2">Sarah Johnson</option>
+                <option value="3">Michael Chen</option>
+                <option value="4">Unassigned</option>
+              </select>
+            </div>
+          </div>
+          
+          <div class="filter-group">
+            <label for="date-range">Date Range:</label>
+            <div class="date-range-container">
+              <input type="date" id="date-from" class="date-input">
+              <span class="date-separator">to</span>
+              <input type="date" id="date-to" class="date-input">
+            </div>
+          </div>
+          
+          <div class="search-section">
+            <div class="search-box">
+              <input type="text" id="search-clients" placeholder="Search clients...">
+              <button type="button" id="search-btn">
+                <i class="fas fa-search"></i>
+              </button>
+            </div>
+          </div>
+          
+          <div class="filter-actions">
+            <button id="apply-filters" class="btn-primary">Apply Filters</button>
+            <button id="reset-filters" class="btn-text">Reset</button>
+          </div>
+        </div>
+        
+        <!-- Bulk Actions Panel (Hidden by default) -->
+        <div id="bulk-actions-panel" class="bulk-actions-panel" style="display: none;">
+          <div class="bulk-actions-container">
+            <div class="bulk-action-title">
+              <i class="fas fa-tasks"></i> Bulk Actions
+              <span class="selected-count">0 items selected</span>
+            </div>
+            <div class="bulk-action-buttons">
+              <button class="bulk-btn" data-action="contact">
+                <i class="fas fa-envelope"></i> Mark as Contacted
+              </button>
+              <button class="bulk-btn" data-action="followup">
+                <i class="fas fa-calendar-alt"></i> Schedule Follow-up
+              </button>
+              <button class="bulk-btn" data-action="assign">
+                <i class="fas fa-user-check"></i> Assign to User
+              </button>
+              <button class="bulk-btn" data-action="export">
+                <i class="fas fa-file-export"></i> Export
+              </button>
+              <button class="bulk-btn" data-action="delete">
+                <i class="fas fa-trash"></i> Delete
+              </button>
+            </div>
+            <button class="bulk-close">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+        </div>
+        
+        <!-- Clients Table -->
+        <div class="table-responsive">
+          <table id="clients-table" class="data-table">
+            <thead>
+              <tr>
+                <th class="select-checkbox">
+                  <div class="checkbox-wrapper">
+                    <input type="checkbox" id="select-all">
+                    <label for="select-all"></label>
+                  </div>
+                </th>
+                <th>Client Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Service Interest</th>
+                <th>Inquiry Date</th>
+                <th>Status</th>
+                <th>Assigned To</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Sample data, would be populated dynamically -->
+              <tr data-id="1">
+                <td class="select-checkbox">
+                  <div class="checkbox-wrapper">
+                    <input type="checkbox" id="select-1" class="row-checkbox">
+                    <label for="select-1"></label>
+                  </div>
+                </td>
+                <td class="client-name">John Smith</td>
+                <td class="client-email">john.smith@example.com</td>
+                <td>+971 55 123 4567</td>
+                <td>Finance & Accounting</td>
+                <td>Apr 18, 2025</td>
+                <td><span class="status-badge new">New</span></td>
+                <td>Michael Chen</td>
+                <td>
+                  <div class="action-buttons">
+                    <button class="action-btn view" title="View Details" data-id="1">
+                      <i class="fas fa-eye"></i>
+                    </button>
+                    <button class="action-btn contact" title="Contact" data-id="1">
+                      <i class="fas fa-envelope"></i>
+                    </button>
+                    <button class="action-btn edit" title="Edit" data-id="1">
+                      <i class="fas fa-edit"></i>
+                    </button>
+                    <button class="action-btn delete" title="Delete" data-id="1">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+              <tr data-id="2">
+                <td class="select-checkbox">
+                  <div class="checkbox-wrapper">
+                    <input type="checkbox" id="select-2" class="row-checkbox">
+                    <label for="select-2"></label>
+                  </div>
+                </td>
+                <td class="client-name">Sarah Johnson</td>
+                <td class="client-email">sarah.j@example.com</td>
+                <td>+971 55 234 5678</td>
+                <td>HR & Admin</td>
+                <td>Apr 17, 2025</td>
+                <td><span class="status-badge contacted">Contacted</span></td>
+                <td>John Smith</td>
+                <td>
+                  <div class="action-buttons">
+                    <button class="action-btn view" title="View Details" data-id="2">
+                      <i class="fas fa-eye"></i>
+                    </button>
+                    <button class="action-btn contact" title="Contact" data-id="2">
+                      <i class="fas fa-envelope"></i>
+                    </button>
+                    <button class="action-btn edit" title="Edit" data-id="2">
+                      <i class="fas fa-edit"></i>
+                    </button>
+                    <button class="action-btn delete" title="Delete" data-id="2">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+              <tr data-id="3">
+                <td class="select-checkbox">
+                  <div class="checkbox-wrapper">
+                    <input type="checkbox" id="select-3" class="row-checkbox">
+                    <label for="select-3"></label>
+                  </div>
+                </td>
+                <td class="client-name">David Lawrence</td>
+                <td class="client-email">david.l@example.com</td>
+                <td>+971 55 345 6789</td>
+                <td>Dedicated Teams</td>
+                <td>Apr 15, 2025</td>
+                <td><span class="status-badge followup">Follow-up</span></td>
+                <td>Sarah Johnson</td>
+                <td>
+                  <div class="action-buttons">
+                    <button class="action-btn view" title="View Details" data-id="3">
+                      <i class="fas fa-eye"></i>
+                    </button>
+                    <button class="action-btn contact" title="Contact" data-id="3">
+                      <i class="fas fa-envelope"></i>
+                    </button>
+                    <button class="action-btn edit" title="Edit" data-id="3">
+                      <i class="fas fa-edit"></i>
+                    </button>
+                    <button class="action-btn delete" title="Delete" data-id="3">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+              <tr data-id="4">
+                <td class="select-checkbox">
+                  <div class="checkbox-wrapper">
+                    <input type="checkbox" id="select-4" class="row-checkbox">
+                    <label for="select-4"></label>
+                  </div>
+                </td>
+                <td class="client-name">Emma Thompson</td>
+                <td class="client-email">emma.t@example.com</td>
+                <td>+971 55 456 7890</td>
+                <td>Insurance</td>
+                <td>Apr 12, 2025</td>
+                <td><span class="status-badge converted">Converted</span></td>
+                <td>Michael Chen</td>
+                <td>
+                  <div class="action-buttons">
+                    <button class="action-btn view" title="View Details" data-id="4">
+                      <i class="fas fa-eye"></i>
+                    </button>
+                    <button class="action-btn contact" title="Contact" data-id="4">
+                      <i class="fas fa-envelope"></i>
+                    </button>
+                    <button class="action-btn edit" title="Edit" data-id="4">
+                      <i class="fas fa-edit"></i>
+                    </button>
+                    <button class="action-btn delete" title="Delete" data-id="4">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+              <tr data-id="5">
+                <td class="select-checkbox">
+                  <div class="checkbox-wrapper">
+                    <input type="checkbox" id="select-5" class="row-checkbox">
+                    <label for="select-5"></label>
+                  </div>
+                </td>
+                <td class="client-name">Michael Rogers</td>
+                <td class="client-email">m.rogers@example.com</td>
+                <td>+971 55 567 8901</td>
+                <td>Business Care Plans</td>
+                <td>Apr 10, 2025</td>
+                <td><span class="status-badge closed">Closed</span></td>
+                <td>John Smith</td>
+                <td>
+                  <div class="action-buttons">
+                    <button class="action-btn view" title="View Details" data-id="5">
+                      <i class="fas fa-eye"></i>
+                    </button>
+                    <button class="action-btn contact" title="Contact" data-id="5">
+                      <i class="fas fa-envelope"></i>
+                    </button>
+                    <button class="action-btn edit" title="Edit" data-id="5">
+                      <i class="fas fa-edit"></i>
+                    </button>
+                    <button class="action-btn delete" title="Delete" data-id="5">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        
+        <!-- Pagination (will be handled by DataTables) -->
+        <div class="pagination-container">
+          <!-- DataTables will insert pagination here -->
+        </div>
+      </div>
+      
+      <!-- Admin Footer -->
+      <footer class="admin-footer" id="admin-footer">
+        <!-- JS will populate this -->
+      </footer>
+    </main>
+  </div>
+  
+  <!-- Add/Edit Client Modal -->
+  <div class="modal" id="client-form-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 id="client-form-title">Add New Client</h3>
+        <button class="modal-close">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="add-client-form">
+          <input type="hidden" id="client-id" value="">
+          
+          <div class="form-section">
+            <h4>Client Information</h4>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="client-name">Client Name *</label>
+                <input type="text" id="client-name" class="form-control" required>
+              </div>
+              <div class="form-group">
+                <label for="client-company">Company</label>
+                <input type="text" id="client-company" class="form-control">
+              </div>
+            </div>
+            
+            <div class="form-row">
+              <div class="form-group">
+                <label for="client-email">Email Address</label>
+                <input type="email" id="client-email" class="form-control">
+              </div>
+              <div class="form-group">
+                <label for="client-phone">Phone Number</label>
+                <input type="tel" id="client-phone" class="form-control">
+              </div>
+            </div>
+            
+            <div class="form-row">
+              <div class="form-group">
+                <label for="client-service">Service Interest *</label>
+                <select id="client-service" class="form-control" required>
+                  <option value="">Select a Service</option>
+                  <option value="finance-accounting">Finance & Accounting</option>
+                  <option value="hr-admin">HR & Admin</option>
+                  <option value="dedicated-teams">Dedicated Teams</option>
+                  <option value="insurance">Insurance</option>
+                  <option value="business-care">Business Care Plans</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="client-source">Source</label>
+                <select id="client-source" class="form-control">
+                  <option value="">Select a Source</option>
+                  <option value="website">Website</option>
+                  <option value="referral">Referral</option>
+                  <option value="social">Social Media</option>
+                  <option value="email">Email Campaign</option>
+                  <option value="event">Event</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          
+          <div class="form-section">
+            <h4>Additional Information</h4>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="client-status">Status</label>
+                <select id="client-status" class="form-control">
+                  <option value="new">New</option>
+                  <option value="contacted">Contacted</option>
+                  <option value="followup">Follow-up</option>
+                  <option value="converted">Converted</option>
+                  <option value="closed">Closed</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="client-assigned">Assigned To</label>
+                <select id="client-assigned" class="form-control">
+                  <option value="">Unassigned</option>
+                  <option value="1">John Smith</option>
+                  <option value="2">Sarah Johnson</option>
+                  <option value="3">Michael Chen</option>
+                </select>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label for="client-notes">Notes</label>
+              <textarea id="client-notes" class="form-control" rows="4" placeholder="Add any notes about this client..."></textarea>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-secondary modal-cancel">Cancel</button>
+        <button class="btn-primary" id="save-client-btn">Save Client</button>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Client Details Modal -->
+  <div class="modal client-detail-modal" id="client-detail-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 id="client-detail-name">Client Name</h3>
+        <span id="client-detail-id">ID: 1</span>
+        <button class="modal-close">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="client-modal-tabs">
+          <div class="client-modal-tab active" data-tab="client-info">Info</div>
+          <div class="client-modal-tab" data-tab="client-notes">Notes</div>
+          <div class="client-modal-tab" data-tab="client-communication">Communication</div>
+          <div class="client-modal-tab" data-tab="client-activity">Activity Log</div>
+          <div class="client-modal-tab" data-tab="client-followups">Follow-ups</div>
+        </div>
+        
+        <!-- Client Info Tab -->
+        <div id="client-info" class="client-tab-content active">
+          <div class="client-info">
+            <div class="info-item">
+              <div class="info-label">Company:</div>
+              <div class="info-value">ABC Corporation</div>
+            </div>
+            <div class="info-item">
+              <div class="info-label">Email:</div>
+              <div class="info-value">john.smith@example.com</div>
+            </div>
+            <div class="info-item">
+              <div class="info-label">Phone:</div>
+              <div class="info-value">+971 55 123 4567</div>
+            </div>
+            <div class="info-item">
+              <div class="info-label">Service Interest:</div>
+              <div class="info-value">Finance & Accounting</div>
+            </div>
+            <div class="info-item">
+              <div class="info-label">Source:</div>
+              <div class="info-value">Website</div>
+            </div>
+            <div class="info-item">
+              <div class="info-label">Status:</div>
+              <div class="info-value"><span class="status-badge new">New</span></div>
+            </div>
+            <div class="info-item">
+              <div class="info-label">Assigned To:</div>
+              <div class="info-value">Michael Chen</div>
+            </div>
+            <div class="info-item">
+              <div class="info-label">Inquiry Date:</div>
+              <div class="info-value">April 18, 2025</div>
+            </div>
+          </div>
+          
+          <div class="form-actions" style="margin-top: 20px;">
+            <button class="btn-secondary" id="edit-client-btn" data-client-id="1">
+              <i class="fas fa-edit"></i> Edit Client
+            </button>
+          </div>
+        </div>
+        
+        <!-- Notes Tab -->
+        <div id="client-notes" class="client-tab-content">
+          <div class="form-group" style="margin-bottom: 20px;">
+            <textarea id="note-content" class="form-control" placeholder="Add a new note..."></textarea>
+            <div style="text-align: right; margin-top: 10px;">
+              <button class="btn-primary" id="add-note-btn" data-client-id="1">
+                <i class="fas fa-plus"></i> Add Note
+              </button>
+            </div>
+          </div>
+          
+          <div id="client-notes-list">
+            <!-- Notes will be populated here -->
+          </div>
+        </div>
+        
+        <!-- Communication Tab -->
+        <div id="client-communication" class="client-tab-content">
+          <div class="form-section">
+            <h4>Send Email</h4>
+            <div class="form-group">
+              <label for="email-subject">Subject</label>
+              <input type="text" id="email-subject" class="form-control" placeholder="Email subject...">
+            </div>
+            <div class="form-group">
+              <label for="email-body">Message</label>
+              <textarea id="email-body" class="form-control" rows="6" placeholder="Type your message here..."></textarea>
+            </div>
+            <div style="text-align: right; margin-top: 10px;">
+              <button class="btn-primary" id="send-email-btn" data-client-id="1">
+                <i class="fas fa-paper-plane"></i> Send Email
+              </button>
+            </div>
+          </div>
+          
+          <h4 style="margin-top: 30px;">Email History</h4>
+          <div id="client-emails-list">
+            <!-- Email history will be populated here -->
+          </div>
+        </div>
+        
+        <!-- Activity Log Tab -->
+        <div id="client-activity" class="client-tab-content">
+          <div id="client-activities-list">
+            <!-- Activity log will be populated here -->
+          </div>
+        </div>
+        
+        <!-- Follow-ups Tab -->
+        <div id="client-followups" class="client-tab-content">
+          <div class="form-section">
+            <h4>Schedule Follow-up</h4>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="client-followup-date">Follow-up Date & Time</label>
+                <input type="text" id="client-followup-date" class="form
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="robots" content="noindex, nofollow">
+  <title>Client Management | Backsure Global Support</title>
+  <!-- Main Admin CSS -->
+  <link rel="stylesheet" href="admin-dashboard.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- DataTables CSS -->
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.bootstrap5.min.css">
+  <!-- Flatpickr for date selection -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <style>
+    /* Client-specific styles */
+    .status-badge.new {
+      background-color: rgba(54, 185, 204, 0.15);
+      color: #36b9cc;
+    }
+    
+    .status-badge.contacted {
+      background-color: rgba(28, 200, 138, 0.15);
+      color: #1cc88a;
+    }
+    
+    .status-badge.followup {
+      background-color: rgba(246, 194, 62, 0.15);
+      color: #f6c23e;
+    }
+    
+    .status-badge.converted {
+      background-color: rgba(78, 115, 223, 0.15);
+      color: #4e73df;
+    }
+    
+    .status-badge.closed {
+      background-color: rgba(133, 135, 150, 0.15);
+      color: #858796;
+    }
+    
+    .client-detail-modal .client-modal-tabs {
+      display: flex;
+      border-bottom: 1px solid var(--gray-300);
+      margin-bottom: 15px;
+    }
+    
+    .client-modal-tab {
+      padding: 10px 20px;
+      cursor: pointer;
+      color: var(--gray-600);
+      position: relative;
+      transition: all 0.3s;
+    }
+    
+    .client-modal-tab.active {
+      color: var(--primary-color);
+      font-weight: 600;
+    }
+    
+    .client-modal-tab.active::after {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background-color: var(--primary-color);
+    }
+    
+    .client-tab-content {
+      display: none;
+      padding: 15px 0;
+    }
+    
+    .client-tab-content.active {
+      display: block;
+    }
+    
+    .client-header {
+      margin-bottom: 20px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid var(--gray-300);
+    }
+    
+    .client-info {
+      margin-bottom: 20px;
+    }
+    
+    .info-item {
+      margin-bottom: 10px;
+      display: flex;
+    }
+    
+    .info-label {
+      font-weight: 600;
+      width: 120px;
+      color: var(--gray-700);
+    }
+    
+    .info-value {
+      flex: 1;
+    }
+    
+    .note-item, .email-item, .activity-item {
+      background-color: var(--gray-100);
+      border-radius: 8px;
+      padding: 15px;
+      margin-bottom: 15px;
+    }
+    
+    .note-header, .email-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+    
+    .note-author, .email-subject {
+      font-weight: 600;
+      color: var(--gray-800);
+    }
+    
+    .note-time, .email-time {
+      font-size: 0.85rem;
+      color: var(--gray-600);
+    }
+    
+    .followup-item {
+      display: flex;
+      align-items: center;
+      padding: 10px;
+      border-bottom: 1px solid var(--gray-200);
+    }
+    
+    .followup-item:last-child {
+      border-bottom: none;
+    }
+    
+    .followup-date {
+      font-weight: 600;
+      margin-right: 15px;
+      min-width: 120px;
+    }
+    
+    .followup-note {
+      flex: 1;
+    }
+    
+    .followup-status {
+      margin-left: 15px;
+    }
+    
+    .followup-status.pending {
+      color: var(--warning-color);
+    }
+    
+    .followup-status.completed {
+      color: var(--success-color);
+    }
+    
+    .followup-status.overdue {
+      color: var(--danger-color);
+    }
+
+    /* Form styles */
+    .form-section {
+      margin-bottom: 20px;
+    }
+
+    .form-row {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 15px;
+    }
+
+    .form-group {
+      flex: 1;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: 600;
+      color: var(--gray-700);
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 8px 12px;
+      border: 1px solid var(--gray-300);
+      border-radius: 4px;
+      font-size: 0.9rem;
+    }
+
+    .form-control:focus {
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 2px rgba(6, 39, 103, 0.1);
+      outline: none;
+    }
+
+    textarea.form-control {
+      min-height: 100px;
+      resize: vertical;
+    }
+  </style>
+</head>
+<body class="admin-body" data-user-role="admin">
+  <div class="admin-container">
+    <!-- Sidebar Navigation (Will be loaded via JS) -->
+    <aside class="admin-sidebar" id="admin-sidebar">
+      <!-- JS will populate this -->
+    </aside>
+    
+    <!-- Main Content Area -->
+    <main class="admin-main">
+      <!-- Top Navigation Bar (Will be loaded via JS) -->
+      <header class="admin-header" id="admin-header">
+        <!-- JS will populate this -->
+      </header>
+      
+      <!-- Client Management Content -->
+      <div class="admin-content">
+        <!-- Page Header -->
+        <div class="page-header">
+          <h1><i class="fas fa-users"></i> Client Management</h1>
+          <div class="page-header-actions">
+            <button class="btn-primary" id="add-client-btn">
+              <i class="fas fa-plus"></i> Add New Client
+            </button>
+            <button class="btn-secondary" id="bulk-actions-btn">
+              <i class="fas fa-tasks"></i> Bulk Actions
+            </button>
+            <button class="btn-outline" id="export-clients-btn">
+              <i class="fas fa-file-export"></i> Export
+            </button>
+          </div>
+        </div>
+        
+        <!-- Filters & Search -->
+        <div class="filter-container">
+          <div class="filter-section">
+            <div class="filter-group">
+              <label for="filter-status">Status:</label>
+              <select id="filter-status" class="filter-select">
+                <option value="">All Statuses</option>
+                <option value="new">New</option>
+                <option value="contacted">Contacted</option>
+                <option value="followup">Follow-up</option>
+                <option value="converted">Converted</option>
+                <option value="closed">Closed</option>
+              </select>
+            </div>
+            
+            <div class="filter-group">
+              <label for="filter-service">Service Interest:</label>
+              <select id="filter-service" class="filter-select">
+                <option value="">All Services</option>
+                <option value="finance-accounting">Finance & Accounting</option>
+                <option value="hr-admin">HR & Admin</option>
+                <option value="dedicated-teams">Dedicated Teams</option>
+                <option value="insurance">Insurance</option>
+                <option value="business-care">Business Care Plans</option>
+              </select>
+            </div>
+            
+            <div class="filter-group">
+              <label for="filter-source">Source:</label>
+              <select id="filter-source" class="filter-select">
+                <option value="">All Sources</option>
+                <option value="website">Website</option>
+                <option value="referral">Referral</option>
+                <option value="social">Social Media</option>
+                <option value="email">Email Campaign</option>
+                <option value="event">Event</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            
+            <div class="filter-group">
+              <label for="filter-assigned">Assigned To:</label>
+              <select id="filter-assigned" class="filter-select">
+                <option value="">All Admins</option>
+                <option value="1">John Smith</option>
+                <option value="2">Sarah Johnson</option>
+                <option value="3">Michael Chen</option>
+                <option value="4">Unassigned</option>
+              </select>
+            </div>
+          </div>
+          
+          <div class="filter-group">
+            <label for="date-range">Date Range:</label>
+            <div class="date-range-container">
+              <input type="date" id="date-from" class="date-input">
+              <span class="date-separator">to</span>
+              <input type="date" id="date-to" class="date-input">
+            </div>
+          </div>
+          
+          <div class="search-section">
+            <div class="search-box">
+              <input type="text" id="search-clients" placeholder="Search clients...">
+              <button type="button" id="search-btn">
+                <i class="fas fa-search"></i>
+              </button>
+            </div>
+          </div>
+          
+          <div class="filter-actions">
+            <button id="apply-filters" class="btn-primary">Apply Filters</button>
+            <button id="reset-filters" class="btn-text">Reset</button>
+          </div>
+        </div>
+        
+        <!-- Bulk Actions Panel (Hidden by default) -->
+        <div id="bulk-actions-panel" class="bulk-actions-panel" style="display: none;">
+          <div class="bulk-actions-container">
+            <div class="bulk-action-title">
+              <i class="fas fa-tasks"></i> Bulk Actions
+              <span class="selected-count">0 items selected</span>
+            </div>
+            <div class="bulk-action-buttons">
+              <button class="bulk-btn" data-action="contact">
+                <i class="fas fa-envelope"></i> Mark as Contacted
+              </button>
+              <button class="bulk-btn" data-action="followup">
+                <i class="fas fa-calendar-alt"></i> Schedule Follow-up
+              </button>
+              <button class="bulk-btn" data-action="assign">
+                <i class="fas fa-user-check"></i> Assign to User
+              </button>
+              <button class="bulk-btn" data-action="export">
+                <i class="fas fa-file-export"></i> Export
+              </button>
+              <button class="bulk-btn" data-action="delete">
+                <i class="fas fa-trash"></i> Delete
+              </button>
+            </div>
+            <button class="bulk-close">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+        </div>
+        
+        <!-- Clients Table -->
+        <div class="table-responsive">
+          <table id="clients-table" class="data-table">
+            <thead>
+              <tr>
+                <th class="select-checkbox">
+                  <div class="checkbox-wrapper">
+                    <input type="checkbox" id="select-all">
+                    <label for="select-all"></label>
+                  </div>
+                </th>
+                <th>Client Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Service Interest</th>
+                <th>Inquiry Date</th>
+                <th>Status</th>
+                <th>Assigned To</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Sample data, would be populated dynamically -->
+              <tr data-id="1">
+                <td class="select-checkbox">
+                  <div class="checkbox-wrapper">
+                    <input type="checkbox" id="select-1" class="row-checkbox">
+                    <label for="select-1"></label>
+                  </div>
+                </td>
+                <td class="client-name">John Smith</td>
+                <td class="client-email">john.smith@example.com</td>
+                <td>+971 55 123 4567</td>
+                <td>Finance & Accounting</td>
+                <td>Apr 18, 2025</td>
+                <td><span class="status-badge new">New</span></td>
+                <td>Michael Chen</td>
+                <td>
+                  <div class="action-buttons">
+                    <button class="action-btn view" title="View Details" data-id="1">
+                      <i class="fas fa-eye"></i>
+                    </button>
+                    <button class="action-btn contact" title="Contact" data-id="1">
+                      <i class="fas fa-envelope"></i>
+                    </button>
+                    <button class="action-btn edit" title="Edit" data-id="1">
+                      <i class="fas fa-edit"></i>
+                    </button>
+                    <button class="action-btn delete" title="Delete" data-id="1">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+              <tr data-id="2">
+                <td class="select-checkbox">
+                  <div class="checkbox-wrapper">
+                    <input type="checkbox" id="select-2" class="row-checkbox">
+                    <label for="select-2"></label>
+                  </div>
+                </td>
+                <td class="client-name">Sarah Johnson</td>
+                <td class="client-email">sarah.j@example.com</td>
+                <td>+971 55 234 5678</td>
+                <td>HR & Admin</td>
+                <td>Apr 17, 2025</td>
+                <td><span class="status-badge contacted">Contacted</span></td>
+                <td>John Smith</td>
+                <td>
+                  <div class="action-buttons">
+                    <button class="action-btn view" title="View Details" data-id="2">
+                      <i class="fas fa-eye"></i>
+                    </button>
+                    <button class="action-btn contact" title="Contact" data-id="2">
+                      <i class="fas fa-envelope"></i>
+                    </button>
+                    <button class="action-btn edit" title="Edit" data-id="2">
+                      <i class="fas fa-edit"></i>
+                    </button>
+                    <button class="action-btn delete" title="Delete" data-id="2">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+              <tr data-id="3">
+                <td class="select-checkbox">
+                  <div class="checkbox-wrapper">
+                    <input type="checkbox" id="select-3" class="row-checkbox">
+                    <label for="select-3"></label>
+                  </div>
+                </td>
+                <td class="client-name">David Lawrence</td>
+                <td class="client-email">david.l@example.com</td>
+                <td>+971 55 345 6789</td>
+                <td>Dedicated Teams</td>
+                <td>Apr 15, 2025</td>
+                <td><span class="status-badge followup">Follow-up</span></td>
+                <td>Sarah Johnson</td>
+                <td>
+                  <div class="action-buttons">
+                    <button class="action-btn view" title="View Details" data-id="3">
+                      <i class="fas fa-eye"></i>
+                    </button>
+                    <button class="action-btn contact" title="Contact" data-id="3">
+                      <i class="fas fa-envelope"></i>
+                    </button>
+                    <button class="action-btn edit" title="Edit" data-id="3">
+                      <i class="fas fa-edit"></i>
+                    </button>
+                    <button class="action-btn delete" title="Delete" data-id="3">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+              <tr data-id="4">
+                <td class="select-checkbox">
+                  <div class="checkbox-wrapper">
+                    <input type="checkbox" id="select-4" class="row-checkbox">
+                    <label for="select-4"></label>
+                  </div>
+                </td>
+                <td class="client-name">Emma Thompson</td>
+                <td class="client-email">emma.t@example.com</td>
+                <td>+971 55 456 7890</td>
+                <td>Insurance</td>
+                <td>Apr 12, 2025</td>
+                <td><span class="status-badge converted">Converted</span></td>
+                <td>Michael Chen</td>
+                <td>
+                  <div class="action-buttons">
+                    <button class="action-btn view" title="View Details" data-id="4">
+                      <i class="fas fa-eye"></i>
+                    </button>
+                    <button class="action-btn contact" title="Contact" data-id="4">
+                      <i class="fas fa-envelope"></i>
+                    </button>
+                    <button class="action-btn edit" title="Edit" data-id="4">
+                      <i class="fas fa-edit"></i>
+                    </button>
+                    <button class="action-btn delete" title="Delete" data-id="4">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+              <tr data-id="5">
+                <td class="select-checkbox">
+                  <div class="checkbox-wrapper">
+                    <input type="checkbox" id="select-5" class="row-checkbox">
+                    <label for="select-5"></label>
+                  </div>
+                </td>
+                <td class="client-name">Michael Rogers</td>
+                <td class="client-email">m.rogers@example.com</td>
+                <td>+971 55 567 8901</td>
+                <td>Business Care Plans</td>
+                <td>Apr 10, 2025</td>
+                <td><span class="status-badge closed">Closed</span></td>
+                <td>John Smith</td>
+                <td>
+                  <div class="action-buttons">
+                    <button class="action-btn view" title="View Details" data-id="5">
+                      <i class="fas fa-eye"></i>
+                    </button>
+                    <button class="action-btn contact" title="Contact" data-id="5">
+                      <i class="fas fa-envelope"></i>
+                    </button>
+                    <button class="action-btn edit" title="Edit" data-id="5">
+                      <i class="fas fa-edit"></i>
+                    </button>
+                    <button class="action-btn delete" title="Delete" data-id="5">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        
+        <!-- Pagination (will be handled by DataTables) -->
+        <div class="pagination-container">
+          <!-- DataTables will insert pagination here -->
+        </div>
+      </div>
+      
+      <!-- Admin Footer -->
+      <footer class="admin-footer" id="admin-footer">
+        <!-- JS will populate this -->
+      </footer>
+    </main>
+  </div>
+  
+  <!-- Add/Edit Client Modal -->
+  <div class="modal" id="client-form-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 id="client-form-title">Add New Client</h3>
+        <button class="modal-close">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="add-client-form">
+          <input type="hidden" id="client-id" value="">
+          
+          <div class="form-section">
+            <h4>Client Information</h4>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="client-name">Client Name *</label>
+                <input type="text" id="client-name" class="form-control" required>
+              </div>
+              <div class="form-group">
+                <label for="client-company">Company</label>
+                <input type="text" id="client-company" class="form-control">
+              </div>
+            </div>
+            
+            <div class="form-row">
+              <div class="form-group">
+                <label for="client-email">Email Address</label>
+                <input type="email" id="client-email" class="form-control">
+              </div>
+              <div class="form-group">
+                <label for="client-phone">Phone Number</label>
+                <input type="tel" id="client-phone" class="form-control">
+              </div>
+            </div>
+            
+            <div class="form-row">
+              <div class="form-group">
+                <label for="client-service">Service Interest *</label>
+                <select id="client-service" class="form-control" required>
+                  <option value="">Select a Service</option>
+                  <option value="finance-accounting">Finance & Accounting</option>
+                  <option value="hr-admin">HR & Admin</option>
+                  <option value="dedicated-teams">Dedicated Teams</option>
+                  <option value="insurance">Insurance</option>
+                  <option value="business-care">Business Care Plans</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="client-source">Source</label>
+                <select id="client-source" class="form-control">
+                  <option value="">Select a Source</option>
+                  <option value="website">Website</option>
+                  <option value="referral">Referral</option>
+                  <option value="social">Social Media</option>
+                  <option value="email">Email Campaign</option>
+                  <option value="event">Event</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          
+          <div class="form-section">
+            <h4>Additional Information</h4>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="client-status">Status</label>
+                <select id="client-status" class="form-control">
+                  <option value="new">New</option>
+                  <option value="contacted">Contacted</option>
+                  <option value="followup">Follow-up</option>
+                  <option value="converted">Converted</option>
+                  <option value="closed">Closed</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="client-assigned">Assigned To</label>
+                <select id="client-assigned" class="form-control">
+                  <option value="">Unassigned</option>
+                  <option value="1">John Smith</option>
+                  <option value="2">Sarah Johnson</option>
+                  <option value="3">Michael Chen</option>
+                </select>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label for="client-notes">Notes</label>
+              <textarea id="client-notes" class="form-control" rows="4" placeholder="Add any notes about this client..."></textarea>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-secondary modal-cancel">Cancel</button>
+        <button class="btn-primary" id="save-client-btn">Save Client</button>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Client Details Modal -->
+  <div class="modal client-detail-modal" id="client-detail-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 id="client-detail-name">Client Name</h3>
+        <span id="client-detail-id">ID: 1</span>
+        <button class="modal-close">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="client-modal-tabs">
+          <div class="client-modal-tab active" data-tab="client-info">Info</div>
+          <div class="client-modal-tab" data-tab="client-notes">Notes</div>
+          <div class="client-modal-tab" data-tab="client-communication">Communication</div>
+          <div class="client-modal-tab" data-tab="client-activity">Activity Log</div>
+          <div class="client-modal-tab" data-tab="client-followups">Follow-ups</div>
+        </div>
+        
+        <!-- Client Info Tab -->
+        <div id="client-info" class="client-tab-content active">
+          <div class="client-info">
+            <div class="info-item">
+              <div class="info-label">Company:</div>
+              <div class="info-value">ABC Corporation</div>
+            </div>
+            <div class="info-item">
+              <div class="info-label">Email:</div>
+              <div class="info-value">john.smith@example.com</div>
+            </div>
+            <div class="info-item">
+              <div class="info-label">Phone:</div>
+              <div class="info-value">+971 55 123 4567</div>
+            </div>
+            <div class="info-item">
+              <div class="info-label">Service Interest:</div>
+              <div class="info-value">Finance & Accounting</div>
+            </div>
+            <div class="info-item">
+              <div class="info-label">Source:</div>
+              <div class="info-value">Website</div>
+            </div>
+            <div class="info-item">
+              <div class="info-label">Status:</div>
+              <div class="info-value"><span class="status-badge new">New</span></div>
+            </div>
+            <div class="info-item">
+              <div class="info-label">Assigned To:</div>
+              <div class="info-value">Michael Chen</div>
+            </div>
+            <div class="info-item">
+              <div class="info-label">Inquiry Date:</div>
+              <div class="info-value">April 18, 2025</div>
+            </div>
+          </div>
+          
+          <div class="form-actions" style="margin-top: 20px;">
+            <button class="btn-secondary" id="edit-client-btn" data-client-id="1">
+              <i class="fas fa-edit"></i> Edit Client
+            </button>
+          </div>
+        </div>
+        
+        <!-- Notes Tab -->
+        <div id="client-notes" class="client-tab-content">
+          <div class="form-group" style="margin-bottom: 20px;">
+            <textarea id="note-content" class="form-control" placeholder="Add a new note..."></textarea>
+            <div style="text-align: right; margin-top: 10px;">
+              <button class="btn-primary" id="add-note-btn" data-client-id="1">
+                <i class="fas fa-plus"></i> Add Note
+              </button>
+            </div>
+          </div>
+          
+          <div id="client-notes-list">
+            <!-- Notes will be populated here -->
+          </div>
+        </div>
+        
+        <!-- Communication Tab -->
+        <div id="client-communication" class="client-tab-content">
+          <div class="form-section">
+            <h4>Send Email</h4>
+            <div class="form-group">
+              <label for="email-subject">Subject</label>
+              <input type="text" id="email-subject" class="form-control" placeholder="Email subject...">
+            </div>
+            <div class="form-group">
+              <label for="email-body">Message</label>
+              <textarea id="email-body" class="form-control" rows="6" placeholder="Type your message here..."></textarea>
+            </div>
+            <div style="text-align: right; margin-top: 10px;">
+              <button class="btn-primary" id="send-email-btn" data-client-id="1">
+                <i class="fas fa-paper-plane"></i> Send Email
+              </button>
+            </div>
+          </div>
+          
+          <h4 style="margin-top: 30px;">Email History</h4>
+          <div id="client-emails-list">
+            <!-- Email history will be populated here -->
+          </div>
+        </div>
+        
+        <!-- Activity Log Tab -->
+        <div id="client-activity" class="client-tab-content">
+          <div id="client-activities-list">
+            <!-- Activity log will be populated here -->
+          </div>
+        </div>
+        
+        <!-- Follow-ups Tab -->
+        <div id="client-followups" class="client-tab-content">
+          <div class="form-section">
+            <h4>Schedule Follow-up</h4>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="client-followup-date">Follow-up Date & Time</label>
+                <input type="text" id="client-followup-date" class="form<label for="client-followup-date">Follow-up Date & Time</label>
+                <input type="text" id="client-followup-date" class="form-control" placeholder="Select date and time">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="client-followup-note">Follow-up Note</label>
+              <textarea id="client-followup-note" class="form-control" rows="3" placeholder="Notes about this follow-up..."></textarea>
+            </div>
+            <div style="text-align: right; margin-top: 10px;">
+              <button class="btn-primary" id="schedule-client-followup-btn" data-client-id="1">
+                <i class="fas fa-calendar-plus"></i> Schedule Follow-up
+              </button>
+            </div>
+          </div>
+          
+          <h4 style="margin-top: 30px;">Upcoming & Past Follow-ups</h4>
+          <div id="client-followups-list">
+            <!-- Follow-ups will be populated here -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Schedule Follow-up Modal -->
+  <div class="modal" id="followup-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Schedule Follow-up</h3>
+        <button class="modal-close">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Schedule a follow-up for the selected clients:</p>
+        <div class="form-group">
+          <label for="followup-date">Follow-up Date & Time</label>
+          <input type="text" id="followup-date" class="form-control" placeholder="Select date and time">
+        </div>
+        <div class="form-group">
+          <label for="followup-note">Follow-up Note</label>
+          <textarea id="followup-note" class="form-control" rows="3" placeholder="Notes about this follow-up..."></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-secondary modal-cancel">Cancel</button>
+        <button class="btn-primary" id="schedule-followup-btn">Schedule Follow-up</button>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Assign to User Modal -->
+  <div class="modal" id="assign-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Assign to User</h3>
+        <button class="modal-close">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Assign the selected clients to:</p>
+        <div class="form-group">
+          <label for="assigned-user">Assign To</label>
+          <select id="assigned-user" class="form-control">
+            <option value="">Unassigned</option>
+            <option value="1">John Smith</option>
+            <option value="2">Sarah Johnson</option>
+            <option value="3">Michael Chen</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="assign-note">Note (Optional)</label>
+          <textarea id="assign-note" class="form-control" rows="3" placeholder="Add a note about this assignment..."></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-secondary modal-cancel">Cancel</button>
+        <button class="btn-primary" id="assign-to-btn">Assign</button>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Confirmation Modal -->
+  <div class="modal" id="confirm-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Confirm Action</h3>
+        <button class="modal-close">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p id="confirm-message">Are you sure you want to perform this action?</p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-secondary modal-cancel">Cancel</button>
+        <button class="btn-primary" id="confirm-action-btn">Confirm</button>
+      </div>
+    </div>
+  </div>
+  
+  <!-- JavaScript -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
+  <script src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script src="admin-dashboard.js"></script>
+  <script src="admin-clients.js"></script>
+</body>
+</html>
