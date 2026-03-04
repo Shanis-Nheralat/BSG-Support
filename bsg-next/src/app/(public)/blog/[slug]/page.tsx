@@ -4,6 +4,7 @@ import Image from "next/image";
 import { prisma } from "@/lib/prisma";
 import { Calendar, Eye, ArrowLeft, Tag } from "lucide-react";
 import SafeHTML from "@/components/ui/SafeHTML";
+import BlogComments from "@/components/BlogComments";
 import { Metadata } from "next";
 
 interface BlogDetailPageProps {
@@ -104,6 +105,11 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
     },
     take: 3,
     orderBy: { published_at: "desc" },
+  });
+
+  // Get approved comment count
+  const commentCount = await prisma.blog_comments.count({
+    where: { post_id: post.id, status: "approved" },
   });
 
   function formatDate(date: Date | null) {
@@ -248,6 +254,9 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
           />
         </div>
       </article>
+
+      {/* Comments Section */}
+      <BlogComments slug={params.slug} commentCount={commentCount} />
 
       {/* Related Posts */}
       {relatedPosts.length > 0 && (

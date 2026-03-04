@@ -99,6 +99,42 @@ export async function POST(request: NextRequest) {
       });
     }
 
+    // Send confirmation email to the submitter
+    const subjectMap: Record<string, string> = {
+      general_inquiry: "We've received your inquiry - BSG Support",
+      meeting_request: "Your meeting request has been received - BSG Support",
+      service_intake: "Your service inquiry has been received - BSG Support",
+    };
+
+    const meetingDetail =
+      form_type === "meeting_request" && meeting_date
+        ? `<p>We have noted your preferred meeting date: <strong>${new Date(meeting_date).toLocaleDateString("en-US", { weekday: "long", year: "numeric", month: "long", day: "numeric" })}</strong>${meeting_time ? ` at <strong>${meeting_time}</strong>` : ""}.</p>`
+        : "";
+
+    const confirmationHtml = `
+      <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+        <div style="background: #062767; color: white; padding: 20px; text-align: center;">
+          <h1 style="margin: 0; font-size: 22px;">Thank You for Reaching Out</h1>
+        </div>
+        <div style="padding: 24px;">
+          <p>Dear ${name},</p>
+          <p>Thank you for contacting Backsure Global Support. We have received your ${form_type.replace(/_/g, " ")} and our team will review it promptly.</p>
+          ${meetingDetail}
+          <p>We aim to respond within <strong>24 hours</strong>. In the meantime, feel free to reach out to us directly at <a href="mailto:info@backsureglobalsupport.com">info@backsureglobalsupport.com</a>.</p>
+          <p>Best regards,<br>The BSG Team</p>
+        </div>
+        <div style="background: #f3f4f6; padding: 12px; text-align: center; font-size: 12px; color: #6b7280;">
+          Backsure Global Support | Dubai, UAE | <a href="https://backsureglobalsupport.com">www.backsureglobalsupport.com</a>
+        </div>
+      </div>
+    `;
+
+    await sendEmail({
+      to: email,
+      subject: subjectMap[form_type] || "We've received your message - BSG Support",
+      html: confirmationHtml,
+    });
+
     return NextResponse.json(
       {
         success: true,

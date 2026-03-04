@@ -120,6 +120,31 @@ export async function POST(request: NextRequest) {
       });
     }
 
+    // Send confirmation email to applicant
+    const confirmationHtml = `
+      <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+        <div style="background: #062767; color: white; padding: 20px; text-align: center;">
+          <h1 style="margin: 0; font-size: 22px;">Application Received</h1>
+        </div>
+        <div style="padding: 24px;">
+          <p>Dear ${name},</p>
+          <p>Thank you for applying for the <strong>${position}</strong> position at Backsure Global Support. We have received your application and our HR team will review it carefully.</p>
+          <p>If your profile matches our requirements, we will reach out to schedule the next steps. Please allow our team a few business days to review all applications.</p>
+          <p>In the meantime, feel free to reach out to us at <a href="mailto:info@backsureglobalsupport.com">info@backsureglobalsupport.com</a> if you have any questions.</p>
+          <p>Best regards,<br>The BSG HR Team</p>
+        </div>
+        <div style="background: #f3f4f6; padding: 12px; text-align: center; font-size: 12px; color: #6b7280;">
+          Backsure Global Support | Dubai, UAE | <a href="https://backsureglobalsupport.com">www.backsureglobalsupport.com</a>
+        </div>
+      </div>
+    `;
+
+    await sendEmail({
+      to: email,
+      subject: `Application received - ${position} at BSG Support`,
+      html: confirmationHtml,
+    });
+
     return NextResponse.json(
       {
         success: true,

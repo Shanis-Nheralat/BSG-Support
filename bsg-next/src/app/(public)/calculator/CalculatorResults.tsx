@@ -1,10 +1,10 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import dynamic from 'next/dynamic';
 import {
   AlertTriangle, Target, Building, TrendingUp, CheckCircle,
-  DollarSign, Clock, Calculator, ArrowLeft, Mail, Download, Loader2,
+  DollarSign, Clock, Calculator, ArrowLeft, Download, Loader2,
 } from 'lucide-react';
 import type { CalculationResults, FormDataState, TeamDefinition, RoleLevel } from '@/lib/calculator/types';
 import { formatCurrency } from '@/lib/calculator/calculations';
@@ -34,83 +34,92 @@ export default function CalculatorResults({
 }: CalculatorResultsProps) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<{ type: 'success' | 'error'; message: string } | null>(null);
+  const hasSubmitted = useRef(false);
   
   const c = formData.selectedCurrency;
   const { currentSituation, withBSG, results: r, diagnosticResults, employeeCost } = results;
 
-  async function handleConsultationRequest() {
-    setIsSubmitting(true);
-    setSubmitStatus(null);
+  // Auto-submit lead when results page loads
+  useEffect(() => {
+    if (hasSubmitted.current) return;
+    hasSubmitted.current = true;
 
-    try {
-      const response = await fetch('/api/calculator', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          // Contact info
-          fullName: formData.fullName,
-          companyEmail: formData.companyEmail,
-          companyName: formData.companyName,
-          mobileNumber: formData.mobileNumber,
-          // Team selection
-          selectedTeam: selectedTeam?.name || 'Unknown',
-          selectedRole: selectedRole?.name || 'Unknown',
-          teamSize: results.teamSize,
-          teamMaturity: formData.teamMaturity,
-          currency: c,
-          // Financial results
-          currentCost: currentSituation.teamCost,
-          bsgCost: withBSG.bsgTotalCost,
-          savings: r.realSavings,
-          efficiencyGain: r.efficiencyGain,
-          hoursReclaimed: r.hoursReclaimed,
-          roi: r.roi,
-          // Cost breakdown (per employee)
-          costBreakdown: {
-            fullSalary: employeeCost.fullSalary,
-            visaCosts: employeeCost.visaCosts,
-            insurance: employeeCost.insurance,
-            training: employeeCost.training,
-            equipment: employeeCost.equipment,
-            officeSpace: employeeCost.officeSpace,
-            leaveSalary: employeeCost.leaveSalary,
-            annualFlight: employeeCost.annualFlight,
-            eosGratuity: employeeCost.eosGratuity,
-            otherCosts: employeeCost.otherCosts,
-            totalOverheads: employeeCost.totalOverheads,
-            trueCost: employeeCost.trueCost,
-          },
-          // Diagnostic details
-          diagnosticScore: Math.round(diagnosticResults.inefficiencyPercent * 100),
-          diagnosticAnswers: formData.diagnosticAnswers,
-          keyIssues: diagnosticResults.keyIssues,
-          timeWasteHours: diagnosticResults.timeWasteHours,
-          // Goals & preferences
-          primaryGoal: formData.primaryGoal,
-          targetEfficiency: formData.targetEfficiency,
-          timeline: formData.timeline,
-        }),
-      });
+    async function submitLead() {
+      setIsSubmitting(true);
 
-      const data = await response.json();
+      try {
+        const response = await fetch('/api/calculator', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            // Contact info
+            fullName: formData.fullName,
+            companyEmail: formData.companyEmail,
+            companyName: formData.companyName,
+            mobileNumber: formData.mobileNumber,
+            // Team selection
+            selectedTeam: selectedTeam?.name || 'Unknown',
+            selectedRole: selectedRole?.name || 'Unknown',
+            teamSize: results.teamSize,
+            teamMaturity: formData.teamMaturity,
+            currency: c,
+            // Financial results
+            currentCost: currentSituation.teamCost,
+            bsgCost: withBSG.bsgTotalCost,
+            savings: r.realSavings,
+            efficiencyGain: r.efficiencyGain,
+            hoursReclaimed: r.hoursReclaimed,
+            roi: r.roi,
+            // Cost breakdown (per employee)
+            costBreakdown: {
+              fullSalary: employeeCost.fullSalary,
+              visaCosts: employeeCost.visaCosts,
+              insurance: employeeCost.insurance,
+              training: employeeCost.training,
+              equipment: employeeCost.equipment,
+              officeSpace: employeeCost.officeSpace,
+              leaveSalary: employeeCost.leaveSalary,
+              annualFlight: employeeCost.annualFlight,
+              eosGratuity: employeeCost.eosGratuity,
+              otherCosts: employeeCost.otherCosts,
+              totalOverheads: employeeCost.totalOverheads,
+              trueCost: employeeCost.trueCost,
+            },
+            // Diagnostic details
+            diagnosticScore: Math.round(diagnosticResults.inefficiencyPercent * 100),
+            diagnosticAnswers: formData.diagnosticAnswers,
+            keyIssues: diagnosticResults.keyIssues,
+            timeWasteHours: diagnosticResults.timeWasteHours,
+            // Goals & preferences
+            primaryGoal: formData.primaryGoal,
+            targetEfficiency: formData.targetEfficiency,
+            timeline: formData.timeline,
+          }),
+        });
 
-      if (!response.ok) {
-        throw new Error(data.error || 'Failed to submit');
+        const data = await response.json();
+
+        if (!response.ok) {
+          throw new Error(data.error || 'Failed to submit');
+        }
+
+        setSubmitStatus({
+          type: 'success',
+          message: 'Thank you! Our team will contact you within 24 hours to discuss your optimization opportunities.',
+        });
+      } catch (error) {
+        setSubmitStatus({
+          type: 'error',
+          message: error instanceof Error ? error.message : 'Failed to submit. Please try again.',
+        });
+      } finally {
+        setIsSubmitting(false);
       }
-
-      setSubmitStatus({
-        type: 'success',
-        message: 'Thank you! Our team will contact you within 24 hours to discuss your optimization opportunities.',
-      });
-    } catch (error) {
-      setSubmitStatus({
-        type: 'error',
-        message: error instanceof Error ? error.message : 'Failed to submit. Please try again.',
-      });
-    } finally {
-      setIsSubmitting(false);
     }
-  }
+
+    submitLead();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <div className="min-h-screen bg-gray-50 py-8">
@@ -457,6 +466,13 @@ export default function CalculatorResults({
         <div className="rounded-xl border border-gray-200 bg-white p-8 text-center shadow-md print:hidden">
           <h2 className="mb-6 text-2xl font-bold text-navy">Transform Your {selectedTeam?.name} Operations Today</h2>
           
+          {isSubmitting && (
+            <div className="mb-6 flex items-center justify-center gap-2 text-sm text-navy">
+              <Loader2 className="h-5 w-5 animate-spin" />
+              Submitting your analysis...
+            </div>
+          )}
+          
           {submitStatus && (
             <div
               className={`mb-6 rounded-lg p-4 text-sm ${
@@ -470,25 +486,6 @@ export default function CalculatorResults({
           )}
           
           <div className="flex flex-wrap justify-center gap-4">
-            {submitStatus?.type !== 'success' && (
-              <button
-                onClick={handleConsultationRequest}
-                disabled={isSubmitting}
-                className="inline-flex items-center rounded-full bg-navy px-6 py-3 font-semibold text-white shadow-lg transition hover:bg-navy-600 disabled:opacity-50"
-              >
-                {isSubmitting ? (
-                  <>
-                    <Loader2 className="mr-2 h-5 w-5 animate-spin" />
-                    Submitting...
-                  </>
-                ) : (
-                  <>
-                    <Mail className="mr-2 h-5 w-5" />
-                    Request Consultation
-                  </>
-                )}
-              </button>
-            )}
             <PDFDownloadLink
               document={
                 <CalculatorResultsPDF
