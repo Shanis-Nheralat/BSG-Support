@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useMemo, useCallback } from 'react';
+import { useState, useMemo, useCallback, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
 import type { CountryCode, RoleLevelId, FormDataState, MaturityLevel, GoalType, EfficiencyTarget, TimelineOption } from '@/lib/calculator/types';
 import {
@@ -41,6 +41,11 @@ export default function CalculatorClient() {
   const [taskAllocations, setTaskAllocations] = useState<Record<string, number>>({});
   const [showResults, setShowResults] = useState(false);
   const [errors, setErrors] = useState<string[]>([]);
+
+  // Scroll to top when step changes
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [currentStep, showResults]);
 
   const currentTeam = useMemo(() => teams.find((t) => t.id === selectedTeam), [selectedTeam]);
   const currentProfile = useMemo(() => countryProfiles[formData.selectedCountry], [formData.selectedCountry]);
@@ -390,7 +395,7 @@ export default function CalculatorClient() {
               <div className="rounded-xl border border-navy-200 bg-navy-50 p-4">
                 <h3 className="text-sm font-semibold text-navy">{t("teamMaturity")}</h3>
                 <p className="mb-3 text-[10px] text-navy-600">{t("maturityDesc")}</p>
-                <div className="grid grid-cols-4 gap-2">
+                <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
                   {(Object.entries(maturityConfigs) as [MaturityLevel, typeof maturityConfigs[MaturityLevel]][]).map(([key]) => (
                     <button
                       key={key}
@@ -405,8 +410,8 @@ export default function CalculatorClient() {
                       <span className="text-lg">
                         {key === '1' ? <Sprout className="h-5 w-5" /> : key === '2' ? <Leaf className="h-5 w-5" /> : key === '3' ? <TreePine className="h-5 w-5" /> : <Star className="h-5 w-5" />}
                       </span>
-                      <span className="text-xs font-semibold text-navy">{t(`maturity.${key}.label`)}</span>
-                      <span className="text-[9px] text-navy-400">{t(`maturity.${key}.recommendation`)}</span>
+                      <span className="text-[11px] font-semibold text-navy sm:text-xs">{t(`maturity.${key}.label`)}</span>
+                      <span className="text-[9px] leading-tight text-navy-400 sm:text-[10px]">{t(`maturity.${key}.recommendation`)}</span>
                     </button>
                   ))}
                 </div>
@@ -664,7 +669,7 @@ export default function CalculatorClient() {
                           return (
                             <label
                               key={oIdx}
-                              className={`flex cursor-pointer items-center gap-3 rounded-lg border px-3 py-2.5 text-xs transition-all ${
+                              className={`flex cursor-pointer items-center gap-2 rounded-lg border px-2 py-2 text-[11px] transition-all sm:gap-3 sm:px-3 sm:py-2.5 sm:text-xs ${
                                 isSelected
                                   ? `${selectedColors} font-medium`
                                   : 'border-gray-200 text-gray-600 hover:border-gold hover:bg-gray-50'
@@ -684,7 +689,7 @@ export default function CalculatorClient() {
                               />
                               <span className={`h-2 w-2 shrink-0 rounded-full ${dotColor} ${isSelected ? 'opacity-100' : 'opacity-40'}`} />
                               <span className="flex-1">{t(`teams.${currentTeam.id}.questions.${qIdx}.options.${oIdx}`)}</span>
-                              <span className={`rounded px-1.5 py-0.5 text-[9px] font-semibold ${badge}`}>{badgeText}</span>
+                              <span className={`shrink-0 rounded px-1.5 py-0.5 text-[9px] font-semibold sm:text-[10px] ${badge}`}>{badgeText}</span>
                             </label>
                           );
                         })}

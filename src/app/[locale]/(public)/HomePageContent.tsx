@@ -86,7 +86,7 @@ export default function HomePageContent() {
       {/* Metrics with Counter Animation */}
       <section className="border-b border-gray-200 bg-white py-10">
         <div className="mx-auto max-w-7xl px-4 lg:px-8">
-          <div className="grid grid-cols-2 gap-6 md:grid-cols-5">
+          <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:gap-6 lg:grid-cols-5">
             <ScrollReveal animation="fade-in-up" delay={0} className="text-center">
               <p className="font-poppins text-2xl font-bold text-navy">
                 <Counter end={5} suffix="+" duration={1500} />

@@ -154,7 +154,7 @@ function ContactContent() {
                   setSuccess(false);
                   setInitialDate("");
                 }}
-                className={`flex-1 rounded-md px-4 py-2.5 text-sm font-medium transition-colors ${
+                className={`flex-1 rounded-md px-2 py-2.5 text-xs font-medium transition-colors sm:px-4 sm:text-sm ${
                   activeTab === tab.key
                     ? "bg-navy text-white"
                     : "text-gray-600 hover:bg-gray-50"

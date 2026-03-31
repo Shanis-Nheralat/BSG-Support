@@ -31,7 +31,7 @@ const cl = {
 };
 
 const s = StyleSheet.create({
-  page: { padding: 36, fontFamily: "Poppins", fontSize: 10, color: cl.gray900, backgroundColor: cl.white },
+  page: { paddingTop: 50, paddingBottom: 60, paddingHorizontal: 50, fontFamily: "Poppins", fontSize: 10, color: cl.gray900, backgroundColor: cl.white },
   hdr: { backgroundColor: cl.navy, padding: 16, marginBottom: 14, borderRadius: 8, flexDirection: "row", alignItems: "center" },
   hdrLogo: { width: 100, height: 28, marginRight: 12 },
   hdrText: { flex: 1 },
@@ -54,9 +54,9 @@ const s = StyleSheet.create({
   summItem: { flex: 1, alignItems: "center" },
   summLbl: { fontSize: 7, color: cl.white, opacity: 0.7, marginBottom: 2 },
   summVal: { fontSize: 11, fontWeight: 700, color: cl.white },
-  footer: { marginTop: "auto", paddingTop: 8, borderTop: `1px solid ${cl.gray100}`, textAlign: "center" },
+  footer: { position: "absolute", bottom: 30, left: 50, right: 50, paddingTop: 8, borderTop: `1px solid ${cl.gray100}`, textAlign: "center" },
   footerTxt: { fontSize: 7, color: cl.gray500 },
-  pgNum: { position: "absolute", bottom: 16, right: 36, fontSize: 7, color: cl.gray500 },
+  pgNum: { position: "absolute", bottom: 30, right: 50, fontSize: 7, color: cl.gray500 },
   costRow: { flexDirection: "row", justifyContent: "space-between", paddingVertical: 2, borderBottom: "1px solid rgba(255,255,255,0.15)" },
   costLbl: { fontSize: 7, color: cl.white },
   costVal: { fontSize: 7, color: cl.white },
@@ -240,12 +240,12 @@ export function CalculatorResultsPDF({ results, formData, selectedTeam, translat
 
       {/* ─── Page 2: Financial Impact & Cost Breakdown ─── */}
       <Page size="A4" style={s.page}>
-        <View style={[s.hdr, { padding: 10, marginBottom: 10 }]}>
+        <View style={s.hdr}>
           {/* eslint-disable-next-line jsx-a11y/alt-text */}
-          <Image src="/images/logo.png" style={{ width: 80, height: 22, marginRight: 10 }} />
+          <Image src="/images/logo.png" style={s.hdrLogo} />
           <View style={s.hdrText}>
-            <Text style={{ fontSize: 11, fontWeight: 700, color: cl.white }}>{tr.financialImpact}</Text>
-            <Text style={{ fontSize: 7, color: cl.white, opacity: 0.9 }}>{formData.companyName} | {tr.teamName} | {tr.countryName}</Text>
+            <Text style={s.hdrTitle}>{tr.financialImpact}</Text>
+            <Text style={s.hdrSub}>{formData.companyName} | {tr.teamName} | {tr.countryName}</Text>
           </View>
         </View>
 

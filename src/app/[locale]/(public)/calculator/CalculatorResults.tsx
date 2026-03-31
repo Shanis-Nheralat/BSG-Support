@@ -286,22 +286,22 @@ export default function CalculatorResults({
           </div>
 
           {/* ROI Strip */}
-          <div className="mt-3 grid grid-cols-4 gap-2 rounded-xl bg-gradient-to-r from-navy to-navy-dark p-3 text-center text-white">
+          <div className="mt-3 grid grid-cols-2 gap-2 rounded-xl bg-gradient-to-r from-navy to-navy-dark p-3 text-center text-white sm:grid-cols-4">
             <div>
-              <div className="text-base font-bold">{formatCurrency(withBSG.bsgTotalCost, c)}</div>
-              <div className="text-[8px] uppercase tracking-wider opacity-70">{t('investmentLabel')}</div>
+              <div className="text-sm font-bold sm:text-base">{formatCurrency(withBSG.bsgTotalCost, c)}</div>
+              <div className="text-[9px] uppercase tracking-wider opacity-70 sm:text-[10px]">{t('investmentLabel')}</div>
             </div>
             <div>
-              <div className="text-base font-bold">{formatCurrency(Math.abs(r.realSavings), c)}</div>
-              <div className="text-[8px] uppercase tracking-wider opacity-70">{r.isPositiveSavings ? t('savingsLabel') : t('upliftLabel')}</div>
+              <div className="text-sm font-bold sm:text-base">{formatCurrency(Math.abs(r.realSavings), c)}</div>
+              <div className="text-[9px] uppercase tracking-wider opacity-70 sm:text-[10px]">{r.isPositiveSavings ? t('savingsLabel') : t('upliftLabel')}</div>
             </div>
             <div>
-              <div className="text-base font-bold">{r.roi > 0 ? `${r.roi}%` : 'N/A'}</div>
-              <div className="text-[8px] uppercase tracking-wider opacity-70">{t('roiLabel')}</div>
+              <div className="text-sm font-bold sm:text-base">{r.roi > 0 ? `${r.roi}%` : 'N/A'}</div>
+              <div className="text-[9px] uppercase tracking-wider opacity-70 sm:text-[10px]">{t('roiLabel')}</div>
             </div>
             <div>
-              <div className="text-base font-bold">+{r.efficiencyGain}%</div>
-              <div className="text-[8px] uppercase tracking-wider opacity-70">{t('efficiencyLabel')}</div>
+              <div className="text-sm font-bold sm:text-base">+{r.efficiencyGain}%</div>
+              <div className="text-[9px] uppercase tracking-wider opacity-70 sm:text-[10px]">{t('efficiencyLabel')}</div>
             </div>
           </div>
 

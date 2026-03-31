@@ -307,7 +307,7 @@ export default function PublicHeader() {
 
         {/* Mobile Menu */}
         <div
-          className={`fixed right-0 z-50 h-[calc(100vh-var(--header-height))] w-72 transform border-l border-gray-200 bg-white shadow-2xl transition-transform duration-300 lg:hidden ${
+          className={`fixed right-0 z-50 h-[calc(100vh-var(--header-height))] w-64 transform border-l border-gray-200 bg-white shadow-2xl transition-transform duration-300 sm:w-72 lg:hidden ${
             mobileOpen ? "translate-x-0" : "translate-x-full"
           }`}
           style={
