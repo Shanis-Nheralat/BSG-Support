@@ -1,0 +1,2712 @@
+{
+  "Common": {
+    "contactUsToday": "Kontaktieren Sie uns",
+    "learnMore": "Mehr erfahren",
+    "talkToAnExpert": "Experten kontaktieren",
+    "talkToOurTeam": "Unser Team kontaktieren",
+    "getStarted": "Jetzt starten",
+    "requestConsultation": "Beratung anfordern",
+    "skipToMain": "Zum Hauptinhalt springen",
+    "backToTop": "Nach oben"
+  },
+  "Header": {
+    "home": "Startseite",
+    "services": "Dienstleistungen",
+    "dedicatedTeams": "Dedizierte Teams",
+    "onDemandSupport": "On-Demand Support",
+    "businessCarePlans": "Business Care Pakete",
+    "solutions": "Lösungen",
+    "insurance": "Versicherung",
+    "financeAccounting": "Finanzen & Buchhaltung",
+    "hrManagement": "Personalmanagement",
+    "complianceAdmin": "Compliance & Verwaltung",
+    "technologySolutions": "Technologielösungen",
+    "blog": "Blog",
+    "aboutUs": "Über uns",
+    "team": "Team",
+    "careers": "Karriere",
+    "testimonials": "Referenzen",
+    "faq": "FAQ",
+    "contactUs": "Kontakt",
+    "efficiencyCalculator": "Effizienz-Rechner",
+    "openMenu": "Menü öffnen",
+    "closeMenu": "Menü schließen",
+    "logoAlt": "Backsure Global Support – Grenzen überbrücken"
+  },
+  "Footer": {
+    "quickLinks": "Schnelllinks",
+    "ourServices": "Unsere Dienstleistungen",
+    "contactUs": "Kontakt",
+    "aboutUs": "Über uns",
+    "careers": "Karriere",
+    "blog": "Blog",
+    "dataSecurity": "Datensicherheit",
+    "faq": "FAQ",
+    "privacyPolicy": "Datenschutzerklärung",
+    "termsConditions": "AGB",
+    "sitemap": "Sitemap",
+    "dedicatedTeams": "Dedizierte Teams",
+    "onDemandSupport": "On-Demand Support",
+    "businessCarePlans": "Business Care Pakete",
+    "dubaiUAE": "Dubai, VAE",
+    "dubaiAddress": "Paradise Building, Barsha Heights, Dubai, Vereinigte Arabische Emirate",
+    "india": "Indien",
+    "indiaAddress": "Corporate Court, #108 Infantry Road, Bangalore – 560 001",
+    "phone": "+971 52-441-9445",
+    "email": "info@backsureglobalsupport.com",
+    "copyright": "© {year} Backsure Global Support. Alle Rechte vorbehalten.",
+    "logoAlt": "Backsure Global Support – Grenzen überbrücken"
+  },
+  "HeroScheduler": {
+    "title": "Kostenlose Beratung vereinbaren"
+  },
+  "Home": {
+    "meta": {
+      "title": "Backsure Global Support - Smarter skalieren, schneller wachsen",
+      "description": "Engagierte Teams und bedarfsgerechte Unterstützung für Technologielösungen, Versicherung, Finanzen, HR und Compliance — geliefert aus Indien und den Vereinigten Arabischen Emiraten."
+    },
+    "hero": {
+      "title": "Smarter skalieren. Schneller wachsen.",
+      "titleHighlight": "mit Backsure Global Support",
+      "subtitle": "Ihr strategischer Partner für Backend-Operationen",
+      "description": "Dedizierte Teams und On-Demand Support für Technologielösungen, Versicherung, Finanzen, HR und Compliance — bereitgestellt aus Indien und den Vereinigten Arabischen Emiraten."
+    },
+    "metrics": {
+      "coreServiceDomains": "Kerndienstleistungsbereiche",
+      "coreServiceDomainsDesc": "Unterstützung von Unternehmen aller Branchen",
+      "simple": "Einfach",
+      "flexibleContract": "Flexibler Vertrag",
+      "flexibleContractDesc": "Einfache Bedingungen mit transparenter monatlicher Abrechnung",
+      "custom": "Individuell",
+      "tailoredSupport": "Maßgeschneiderte Unterstützung",
+      "tailoredSupportDesc": "Entwickelt für Startups, KMU und Großunternehmen",
+      "globalSupport": "Globaler Support",
+      "globalSupportDesc": "Immer verfügbar, wo auch immer Sie sind",
+      "globalDeliveryCenters": "Globale Lieferzentren",
+      "globalDeliveryCentersDesc": "Standorte in Dubai und Bangalore"
+    },
+    "serviceModels": {
+      "title": "Unsere skalierbaren Servicemodelle",
+      "description": "Entdecken Sie Service-Stufen für Wachstum und operative Flexibilität.",
+      "cta": "Unsere Dienstleistungen"
+    },
+    "expertise": {
+      "title": "Nutzen Sie unsere Expertise",
+      "assessment": {
+        "title": "Anforderungsanalyse",
+        "desc": "Unser systematischer Ansatz zum Verständnis Ihrer Geschäftsanforderungen stellt sicher, dass wir genau das liefern, was Sie brauchen. Durch detaillierte Analysen und kollaborative Sitzungen erstellen wir umfassende Anforderungsspezifikationen, die mit Ihren strategischen Zielen übereinstimmen."
+      },
+      "processMapping": {
+        "title": "Prozessabbildung",
+        "desc": "Wir dokumentieren und visualisieren Ihre betrieblichen Abläufe, identifizieren Optimierungsmöglichkeiten und straffen kritische Prozesse."
+      },
+      "workflowAutomation": {
+        "title": "Workflow-Automatisierung",
+        "desc": "Optimieren Sie betriebliche Aufgaben durch intelligente Automatisierung — weniger Aufwand, höhere Genauigkeit und mehr Wirkung für Ihr Team."
+      },
+      "performanceMonitoring": {
+        "title": "Leistungsüberwachung",
+        "desc": "Wir verfolgen wichtige Kennzahlen und liefern regelmäßige Einblicke, die Ihnen helfen, datenbasierte Entscheidungen zu treffen und den Betrieb kontinuierlich zu verbessern."
+      }
+    },
+    "whyBSG": {
+      "title": "Warum BSG Support?",
+      "results": {
+        "title": "Ergebnisse, die zählen",
+        "desc": "Ergebnisorientiert mit messbarer Wirkung, abgestimmt auf Ihre Geschäftsziele."
+      },
+      "communication": {
+        "title": "Kristallklare Kommunikation",
+        "desc": "Transparente, zeitnahe und konsistente Kommunikation von Anfang bis Ende."
+      },
+      "partnership": {
+        "title": "Langfristige Partnerschaft",
+        "desc": "Unterstützung über den Start hinaus, die sich mit Ihren Geschäftsanforderungen weiterentwickelt."
+      }
+    },
+    "exploreMore": {
+      "title": "Entdecken Sie mehr von Backsure",
+      "dedicatedEmployeeSupport": {
+        "title": "Dedizierte Mitarbeiterunterstützung",
+        "desc": "Steigern Sie die Geschäftsleistung mit qualifizierten Vollzeit-Teams, die exklusiv für Sie arbeiten."
+      },
+      "onDemandServiceSupport": {
+        "title": "On-Demand Service Support",
+        "desc": "Expertenunterstützung bei Bedarf — ohne zusätzliche Kosten."
+      },
+      "businessCarePlans": {
+        "title": "Business Care Pakete",
+        "desc": "Wir verwalten das Backoffice, damit Sie sich auf Wachstum konzentrieren können."
+      }
+    },
+    "industrySolutions": {
+      "title": "Branchenlösungen",
+      "description": "Maßgeschneiderte Lösungen für spezifische betriebliche Anforderungen — angetrieben von Menschen und Technologie.",
+      "insurance": {
+        "title": "Versicherungsunterstützung",
+        "desc": "Backoffice-Support für Makler und Aggregatoren — von Vertrieb bis Schadenkoordination."
+      },
+      "finance": {
+        "title": "Finanzen & Buchhaltung",
+        "desc": "Umfassende Unterstützung für Buchhaltung, Finanzberichte und regulatorische Compliance."
+      },
+      "hr": {
+        "title": "Personalmanagement",
+        "desc": "Unterstützung für Gehaltsabrechnung, HR-Datenerfassung und Onboarding-Prozesse — zuverlässig umgesetzt."
+      },
+      "compliance": {
+        "title": "Compliance & Geschäftsverwaltung",
+        "desc": "Von Gewerbelizenzerneuerungen bis zu PRO-Dienstleistungen — mühelos konform bleiben."
+      },
+      "technology": {
+        "title": "Technologielösungen",
+        "desc": "Individuelle Softwareentwicklung, Anwendungssupport, Automatisierung und Systemintegration."
+      }
+    },
+    "cta": {
+      "title": "Bereit, smarter zu skalieren?",
+      "description": "Lassen Sie uns ein individuelles Support-Modell für Ihr Unternehmen erstellen."
+    }
+  },
+  "HomeFAQ": {
+    "title": "Haben Sie Fragen? Wir haben Antworten.",
+    "subtitle": "Ein kurzer Überblick über häufige Fragen zu den Lösungen und Dienstleistungen von Backsure.",
+    "q1": "Welche Arten von Unternehmen unterstützen Sie?",
+    "a1": "Von Startups in der Frühphase bis hin zu großen Unternehmen, branchenübergreifend. Unsere flexiblen Servicemodelle ermöglichen es uns, unseren Ansatz an Ihre spezifischen Anforderungen anzupassen, unabhängig von Unternehmensgröße oder Branche.",
+    "q2": "Wie funktioniert Ihre Preisstruktur?",
+    "a2": "Monatliche Abrechnung. Flexible Bedingungen. Vollständig individuelle Angebote. Wir bieten transparente Preisgestaltung basierend auf dem gewählten Servicemodell und dem benötigten Umfang der Unterstützung, sodass Sie Ihr Budget planen können — ohne unnötigen Overhead.",
+    "q3": "Was unterscheidet Backsure von anderen Anbietern?",
+    "a3": "Wir sind ein Partner — nicht nur ein Dienstleister. Messbare Ergebnisse und wachstumsorientiert. Anders als traditionelle Outsourcing-Unternehmen verstehen wir uns als strategischer Partner, der auf Ihr Geschäftswachstum fokussiert ist — mit einem ergebnisorientierten Ansatz, der sich mit Ihren Anforderungen weiterentwickelt.",
+    "q4": "Wie schnell können Sie starten?",
+    "a4": "1–2 Wochen Onboarding, je nach Komplexität. Schneller bei dringenden Anforderungen. Wir beginnen mit einer gründlichen Bewertung, gefolgt von Prozessabbildung und Teamabstimmung. Für dringende Anforderungen können wir bestimmte Dienste beschleunigen, während der vollständige Onboarding-Prozess abgeschlossen wird.",
+    "q5": "Wie gewährleisten Sie die Datensicherheit?",
+    "a5": "Globale Sicherheitsprotokolle, Verschlüsselung und strenge Vertraulichkeitsmaßnahmen. Wir implementieren branchenübliche Sicherheitspraktiken und können uns an Ihre spezifischen Anforderungen anpassen. Detaillierte Dokumentation unserer Sicherheitsmaßnahmen stellen wir auf Anfrage bereit."
+  },
+  "About": {
+    "meta": {
+      "title": "Über uns",
+      "description": "Lernen Sie Backsure Global Support kennen — Ihr smarter Backend-Partner für skalierbares Wachstum."
+    },
+    "hero": {
+      "title": "Lernen Sie Backsure Global Support kennen",
+      "subtitle": "Ihr smarter Backend-Partner für skalierbares Wachstum"
+    },
+    "intro": "BSG Support ist ein modernes Backend-Support-Unternehmen, das dedizierten virtuellen Teams für Unternehmen aller Branchen anbietet — von Startups bis hin zu wachsenden Unternehmen. Wir übernehmen Datenverarbeitung, Verwaltungsunterstützung, CRM-Management, Rekrutierungskoordination und wiederkehrende Aufgaben. Unsere Teams sind darauf geschult, sich nahtlos in Ihre Abläufe zu integrieren und vom ersten Tag an Ergebnisse zu liefern.",
+    "corePurpose": {
+      "label": "Kernzweck",
+      "title": "Unternehmen stärken, um eine florierende globale Gemeinschaft zu schaffen"
+    },
+    "vision": {
+      "title": "Unsere Vision",
+      "desc": "Die Geschäftswelt mit qualifizierten Menschen weltweit zu verbinden."
+    },
+    "mission": {
+      "title": "Unsere Mission",
+      "desc": "Der Partner der Wahl für Unternehmenswachstum zu sein, indem wir Unternehmen ermöglichen, die besten globalen Ressourcen zum richtigen Preis zu nutzen."
+    },
+    "valuePillars": {
+      "v1": "Wir handeln und operieren als wahre Repräsentation unserer Kunden und fördern gleichzeitig kontinuierliche Verbesserung.",
+      "v2": "Wir liefern einzigartige Lösungen, die Erwartungen und strategische Ziele unserer Kunden übertreffen.",
+      "v3": "Wir pflegen erstklassige Einrichtungen und Infrastruktur, um betriebliche Stabilität und nahtlose Bereitstellung zu gewährleisten.",
+      "v4": "Wir schützen die Marken unserer Kunden durch den Einsatz branchenführender Praktiken und Kontrollmechanismen für Compliance."
+    },
+    "whoWeAre": {
+      "title": "Wer wir sind",
+      "desc": "Mit einer klaren Vision gegründet, Unternehmen durch die Übernahme ihres Backoffice zu stärken, bieten wir hochqualifizierte, zuverlässige und kosteneffektive virtuelle Teams mit Sitz in Indien. Wir unterstützen Unternehmen weltweit bei nicht zum Kerngeschäft gehörenden, aber geschäftskritischen Aufgaben, die interne Teams verlangsamen."
+    },
+    "whyChoose": {
+      "title": "Warum Backsure Global Support wählen",
+      "industryReadyTeams": {
+        "title": "Branchenfertige Teams",
+        "desc": "Geschult in Branchen-Tools, Abläufen und Compliance-Standards in den Bereichen Technologie, Gesundheitswesen, Immobilien und Bildung."
+      },
+      "flexibleEngagement": {
+        "title": "Flexible Engagement-Modelle",
+        "desc": "Projektbasiert, dedizierte Ressourcen oder monatliche Abonnement-Unterstützung — wählen Sie, was für Sie funktioniert."
+      },
+      "seamlessIntegration": {
+        "title": "Nahtlose Integration",
+        "desc": "Unsere Backend-Teams fügen sich in Ihre Abläufe ein und arbeiten über Ihre Systeme und CRMs zusammen."
+      },
+      "smartProcesses": {
+        "title": "Smarte Prozesse + Menschlichkeit",
+        "desc": "Technologie, wo es zählt, Menschen, wo es darauf ankommt. Effizienz mit Empathie."
+      }
+    },
+    "coreValues": {
+      "title": "Unsere Kernwerte",
+      "safe": {
+        "title": "Wir sind sicher",
+        "subtitle": "Echte Fürsorge",
+        "desc": "Wir behandeln unsere Kunden, Teams und Kunden mit Respekt, Empathie und Professionalität."
+      },
+      "flexible": {
+        "title": "Wir sind flexibel",
+        "subtitle": "Eigentümer-Mentalität",
+        "desc": "Wir übernehmen die volle Verantwortung — wie interne Teams."
+      },
+      "innovative": {
+        "title": "Wir sind innovativ",
+        "subtitle": "Transparenz & Vertrauen",
+        "desc": "Klare Kommunikation, ehrliche Updates, keine Überraschungen."
+      }
+    },
+    "cta": {
+      "title": "Bereit, Ihr Unternehmen mit smartem Backend-Support zu stärken?",
+      "desc": "Lassen Sie uns besprechen, wie unsere dedizierten Teams Ihnen helfen können, effizient zu skalieren."
+    }
+  },
+  "FAQ": {
+    "meta": {
+      "title": "Häufig gestellte Fragen",
+      "description": "Antworten auf häufige Fragen zu unseren Dienstleistungen"
+    },
+    "hero": {
+      "title": "Häufig gestellte Fragen",
+      "subtitle": "Antworten auf häufige Fragen zu unseren Dienstleistungen"
+    },
+    "q1": "Was ist ein dediziertes virtuelles Team?",
+    "a1": "Eine Gruppe von Fachleuten, die exklusiv für Ihr Unternehmen arbeiten, aber remote tätig sind. Sie fungieren als Erweiterung Ihrer Organisation, übernehmen bestimmte Backend-Aufgaben und integrieren sich nahtlos in Ihre bestehenden Abläufe und Systeme. Im Gegensatz zu Freelancern konzentrieren sie sich ausschließlich auf Ihre Geschäftsanforderungen.",
+    "q2": "Wie wählt man den richtigen Outsourcing-Partner für Backend-Operationen?",
+    "a2": "Definieren Sie Ihre spezifischen betrieblichen Anforderungen und Ziele. Recherchieren Sie potenzielle Firmen und bewerten Sie deren Expertise in Ihrer Branche. Berücksichtigen Sie kulturelle Passung und Skalierungsmöglichkeiten. Überprüfen Sie Qualitätssicherungs- und Datensicherheitsmaßnahmen. Bewerten Sie Support-Services und Reaktionszeiten. Stimmen Sie Kosten mit Ihrem Budget ab und fordern Sie Fallstudien oder Kundenreferenzen an.",
+    "q3": "Was sind die Vor- und Nachteile der Zusammenarbeit mit einem dedizierten virtuellen Team?",
+    "a3": "Vorteile umfassen Kosteneffizienz (40–60 % Ersparnis im Vergleich zur lokalen Einstellung), Zugang zu einem globalen Talentpool, einfache Skalierbarkeit, reduzierter Verwaltungsaufwand und Zeitzonenvorteile. Nachteile können Kommunikationsherausforderungen über Zeitzonen hinweg, anfängliche Einrichtungsinvestitionen und weniger direkte tägliche Aufsicht sein. Bei BSG begegnen wir diesen aktiv durch Kommunikationsprotokolle, gründliches Onboarding und kulturelles Training.",
+    "q4": "Welche Rollen sind typischerweise in einem dedizierten Backend-Support-Team enthalten?",
+    "a4": "Typische Rollen umfassen Dateneingabe-Spezialisten, Verwaltungsassistenten, CRM-Manager, virtuelle Assistenten, Rekrutierungskoordinatoren, Dokumentenverarbeiter, Kundenservice-Mitarbeiter und Research-Analysten.",
+    "q5": "Wie gewährleisten Sie die Datensicherheit bei der Zusammenarbeit mit einem ausgelagerten Team?",
+    "a5": "Wir setzen strenge NDAs und Vertraulichkeitsvereinbarungen durch, sichere Zugriffskontrollen und Authentifizierungsprotokolle, regelmäßige Sicherheitsschulungen, überwachte Netzwerkinfrastruktur, Einhaltung von Datenschutzvorschriften, regelmäßige Sicherheitsaudits, sichere Dateifreigabeplattformen und Datenverschlüsselung für sensible Informationen.",
+    "q6": "Welche Branchen bedienen Sie hauptsächlich?",
+    "a6": "Wir bedienen Versicherung (Policenverwaltung, Schadenbearbeitung), Finanzen & Banking (Transaktionsverarbeitung, Compliance), Gesundheitswesen (Aktenverwaltung, Abrechnung), Immobilien (Listungsverwaltung, Dokumentenverarbeitung), E-Commerce (Auftragsabwicklung, Bestand), Technologie (Verwaltungsunterstützung, Onboarding) und professionelle Dienstleistungen (CRM-Administration, Research).",
+    "q7": "Wie gestalten Sie den Onboarding-Prozess für neue Kunden?",
+    "a7": "Unser 8-Schritte-Prozess: Gespräche zur Bedarfsermittlung, Teamzusammenstellung mit den richtigen Fähigkeiten, Systemeinrichtung für Tools und Zugang, umfassende Schulung, eine Pilotphase zur Prozessoptimierung, eine Feedbackschleife mit regelmäßigen Check-ins, schrittweise Skalierung und fortlaufende Unterstützung mit kontinuierlichen Qualitätsprüfungen.",
+    "q8": "Wie funktioniert Ihre Preisgestaltung?",
+    "a8": "Wir bieten transparente monatliche Abrechnung ohne versteckte Gebühren. Die Preisgestaltung basiert auf dem gewählten Servicemodell — Dedizierte Teams, On-Demand Support oder Business Care Pakete — und skaliert mit dem Umfang Ihrer Anforderungen. Es gibt keine langfristigen Bindungsverträge; wir halten die Bedingungen einfach und flexibel, damit Sie sich an die Entwicklung Ihres Unternehmens anpassen können. Kontaktieren Sie uns für ein individuelles Angebot.",
+    "q9": "Warum Backsure Global Support gegenüber anderen Outsourcing-Anbietern wählen?",
+    "a9": "BSG ist als strategischer Partner aufgebaut, nicht als transaktionaler Anbieter. Wir kombinieren dedizierte Teams aus unseren Lieferzentren in Indien und den Vereinigten Arabischen Emiraten mit einem praxisnahen, beziehungsorientierten Ansatz. Jedes Engagement beginnt mit eingehender Prozessabbildung, und wir weisen Fachleute zu, die speziell für Ihre Abläufe geschult sind. Unsere flexiblen Servicemodelle, transparente Preisgestaltung und kontinuierliche Leistungsüberwachung heben uns von generischen Outsourcing-Firmen ab.",
+    "q10": "Wo befinden sich Ihre Büros?",
+    "a10": "Wir arbeiten von zwei globalen Lieferzentren aus: unserem Büro in den VAE im Paradise Building, Barsha Heights, Dubai, und unserem Indien-Büro im Corporate Court, #108 Infantry Road, Bangalore. Dieses Dual-Standort-Setup bietet uns Zeitzonenabdeckung, Kosteneffizienz und Zugang zu einem vielfältigen, qualifizierten Talentpool — so können wir Kunden im Nahen Osten, in Asien, Europa und darüber hinaus bedienen.",
+    "cta": {
+      "title": "Haben Sie weitere Fragen zu unseren dedizierten Teams?",
+      "desc": "Lassen Sie uns Ihre spezifischen Anforderungen besprechen und wie unsere Backend-Support-Lösungen Ihnen helfen können, effizient zu skalieren."
+    }
+  },
+  "Contact": {
+    "hero": {
+      "title": "Kontaktieren Sie uns",
+      "subtitle": "Lassen Sie uns besprechen, wie wir Ihrem Unternehmen beim Wachstum helfen können"
+    },
+    "cards": {
+      "callUs": "Rufen Sie uns an",
+      "callUsDesc": "Sprechen Sie direkt mit unserem Team",
+      "emailUs": "E-Mail senden",
+      "emailUsDesc": "Wir antworten innerhalb von 24 Stunden",
+      "ourLocations": "Unsere Standorte",
+      "uaeLabel": "VAE:",
+      "uaeAddress": "Paradise Building, Barsha Heights, Dubai",
+      "indiaLabel": "Indien:",
+      "indiaAddress": "Corporate Court, #108 Infantry Road, Bangalore – 560 001"
+    },
+    "tabs": {
+      "generalInquiry": "Allgemeine Anfrage",
+      "scheduleMeeting": "Meeting vereinbaren",
+      "serviceIntake": "Service-Aufnahme"
+    },
+    "form": {
+      "yourName": "Ihr Name",
+      "yourEmail": "Ihre E-Mail",
+      "phoneNumber": "Telefonnummer",
+      "companyName": "Firmenname",
+      "yourMessage": "Ihre Nachricht",
+      "name": "Name",
+      "emailAddress": "E-Mail-Adresse",
+      "solutionType": "Lösungstyp",
+      "selectSolution": "Lösung auswählen",
+      "salesSupport": "Vertriebsunterstützung",
+      "dataEntry": "Datenerfassung",
+      "backendSupport": "Backend-Support",
+      "customerService": "Kundenservice",
+      "technicalSupport": "Technischer Support",
+      "humanResources": "Personalwesen",
+      "marketing": "Marketing",
+      "accounting": "Buchhaltung",
+      "implementationTimeline": "Implementierungszeitraum",
+      "immediately": "Sofort",
+      "within1Month": "Innerhalb 1 Monat",
+      "oneToThreeMonths": "1–3 Monate",
+      "threeToSixMonths": "3–6 Monate",
+      "sixPlusMonths": "6+ Monate",
+      "serviceRequirements": "Service-Anforderungen",
+      "submit": "Absenden"
+    },
+    "success": {
+      "title": "Vielen Dank!",
+      "message": "Ihre Nachricht wurde empfangen. Wir melden uns innerhalb von 24 Stunden bei Ihnen."
+    }
+  },
+  "DataSecurity": {
+    "meta": {
+      "title": "Datensicherheit",
+      "description": "Wie Backsure Global Support Ihre Informationen mit einem mehrschichtigen Sicherheitsansatz schützt."
+    },
+    "hero": {
+      "title": "Datensicherheit bei Backsure Global Support",
+      "subtitle": "Ihr Informationsschutz — mit Vertrauen"
+    },
+    "intro": "Die Verwaltung von Geschäftsprozessen umfasst oft den Umgang mit sensiblen, vertraulichen Daten. Wir verfolgen einen mehrschichtigen Sicherheitsansatz, der rechtliche Schutzmaßnahmen, digitale Sicherungen und physische Zugangskontrollen kombiniert. Jede Kundenbeziehung beginnt mit einer Geheimhaltungsvereinbarung (NDA), und alle Teammitglieder unterzeichnen individuelle Vertraulichkeitsvereinbarungen.",
+    "framework": {
+      "title": "Unser Datensicherheits-Framework",
+      "legal": {
+        "title": "Rechtliche Schutzmaßnahmen",
+        "item1": "NDA mit jedem Kunden unterzeichnet",
+        "item2": "Vertraulichkeitsvereinbarungen für alle Mitarbeiter",
+        "item3": "Interne Protokolle für sensible Informationen"
+      },
+      "digital": {
+        "title": "Digitale Sicherheit",
+        "item1": "Ende-zu-Ende-Verschlüsselung für alle Kommunikation",
+        "item2": "VPN-Tunnel für sichere Konnektivität",
+        "item3": "Firewall-Schutz und rollenbasierter Zugang",
+        "item4": "Ausgerichtet an UAE PDPL und GCC-Datenschutzgesetzen"
+      },
+      "physical": {
+        "title": "Physische Sicherheit",
+        "item1": "SmartCard- und Login-basierter Zugang",
+        "item2": "CCTV-überwachte Einrichtungen rund um die Uhr",
+        "item3": "Kontrollierte Gerätenutzung in Arbeitsbereichen",
+        "item4": "Regelmäßige interne Audits"
+      }
+    },
+    "accessProtocols": {
+      "title": "Plattform-Zugriffsprotokolle",
+      "item1": "Dedizierte Benutzeranmeldedaten mit rollenbasiertem Zugang",
+      "item2": "Aktivitätsprotokollierung zur Sicherstellung der Rückverfolgbarkeit",
+      "item3": "Keine unbefugten Downloads oder lokale Speicherung",
+      "item4": "Sofortige Zugriffssperrung bei Rollenwechsel oder Ausscheiden",
+      "item5": "Regelmäßige Zugriffsüberprüfungen und Berechtigungsaudits"
+    },
+    "dataHandling": {
+      "title": "Laufende Datenhandhabung",
+      "secureStorage": {
+        "title": "Sichere Speicherung",
+        "desc": "Verschlüsselte Formate mit mehreren Sicherheitsschichten zur Verhinderung unbefugten Zugriffs."
+      },
+      "accessControl": {
+        "title": "Zugriffskontrolle",
+        "desc": "Strenger rollenbasierter Zugang — nur autorisierte Mitglieder können bestimmte Daten einsehen oder verarbeiten."
+      },
+      "regularAudits": {
+        "title": "Regelmäßige Audits",
+        "desc": "Geplante Sicherheitsaudits zur Überprüfung der Compliance und Identifizierung potenzieller Schwachstellen."
+      },
+      "dataDestruction": {
+        "title": "Datenlöschung",
+        "desc": "Auf Anfrage oder bei Projektabschluss werden Kundendaten dauerhaft gelöscht, mit Verifizierungszertifikaten."
+      }
+    },
+    "comprehensiveMeasures": {
+      "title": "Unsere umfassenden Sicherheitsmaßnahmen",
+      "technical": {
+        "title": "Technische Sicherheit",
+        "desc": "Branchenführende Verschlüsselung, sichere Netzwerke und fortschrittliche Bedrohungsüberwachungssysteme zum Schutz Ihrer Daten auf allen Ebenen."
+      },
+      "personnel": {
+        "title": "Personalsicherheit",
+        "desc": "Gründliche Hintergrundüberprüfungen für alle Mitarbeiter, regelmäßige Sicherheitsschulungen und strenge Zugangsrichtlinien zum Schutz auf menschlicher Ebene."
+      },
+      "compliance": {
+        "title": "Compliance-Framework",
+        "desc": "Vollständig ausgerichtet an UAE PDPL und GCC-Datenschutzgesetzen, mit kontinuierlicher Überwachung und Anpassung an sich entwickelnde regulatorische Anforderungen."
+      }
+    },
+    "cta": {
+      "title": "Ein zuverlässiger Partner im Datenschutz",
+      "desc": "Backsure Global Support gewährleistet, dass Ihre Informationen sicher, vertraulich und stets integer behandelt werden."
+    }
+  },
+  "Services": {
+    "meta": {
+      "title": "Unsere Dienstleistungen",
+      "description": "Entdecken Sie unsere flexiblen Outsourcing-Servicemodelle für wachsende Unternehmen."
+    },
+    "hero": {
+      "title": "Unsere Dienstleistungen",
+      "subtitle": "Entdecken Sie unsere flexiblen Outsourcing-Servicemodelle für wachsende Unternehmen."
+    },
+    "tailoredEmployee": {
+      "title": "Maßgeschneiderte Mitarbeiterlösungen",
+      "desc": "Stärken Sie Ihr Unternehmen mit qualifizierten, dedizierten Teams, die auf Ihre betrieblichen Anforderungen zugeschnitten sind."
+    },
+    "onDemand": {
+      "title": "On-Demand Service Support",
+      "desc": "Erledigen Sie kritische Aufgaben schnell und professionell mit unserer Expertenunterstützung auf Abruf."
+    },
+    "businessCare": {
+      "title": "Business Care Pakete",
+      "desc": "Verwalten Sie Gehaltsabrechnung, Buchhaltung und Compliance mit unseren gebündelten Service-Paketen."
+    },
+    "cta": {
+      "title": "Nicht sicher, welches Modell zu Ihrem Unternehmen passt?",
+      "desc": "Lassen Sie uns Ihre Anforderungen besprechen und gemeinsam die richtige Lösung finden."
+    }
+  },
+  "Solutions": {
+    "meta": {
+      "title": "Unsere Lösungen",
+      "description": "Entdecken Sie unsere technologiegestützten, menschengetriebenen Outsourcing-Lösungen für spezifische betriebliche Anforderungen."
+    },
+    "hero": {
+      "title": "Unsere Lösungen",
+      "subtitle": "Entdecken Sie unsere technologiegestützten, menschengetriebenen Outsourcing-Lösungen für spezifische betriebliche Anforderungen."
+    },
+    "insurance": {
+      "title": "Versicherungsunterstützung",
+      "desc": "Backoffice-Support für Makler und Aggregatoren — von Vertrieb bis Schadenkoordination."
+    },
+    "finance": {
+      "title": "Finanzen & Buchhaltung",
+      "desc": "Umfassende Unterstützung für Buchhaltung, Finanzberichte und regulatorische Compliance."
+    },
+    "hr": {
+      "title": "Personalmanagement",
+      "desc": "Unterstützung für Gehaltsabrechnung, HR-Datenerfassung und Onboarding-Prozesse — zuverlässig umgesetzt."
+    },
+    "compliance": {
+      "title": "Compliance & Geschäftsverwaltung",
+      "desc": "Von Gewerbelizenzerneuerungen bis zu PRO-Dienstleistungen — mühelos konform bleiben."
+    },
+    "technology": {
+      "title": "Technologielösungen",
+      "desc": "Individuelle Softwareentwicklung, Anwendungssupport, Automatisierung und Systemintegration — Technologie, die Ihr Geschäft vorantreibt."
+    },
+    "cta": {
+      "title": "Suchen Sie eine maßgeschneiderte Lösung?",
+      "desc": "Lassen Sie uns besprechen, wie unsere branchenspezifische Unterstützung Ihr Geschäft vorantreiben kann."
+    }
+  },
+  "ServiceTemplate": {
+    "whoPerfectFor": "Für wen es perfekt ist"
+  },
+  "DedicatedTeams": {
+    "meta": {
+      "title": "Dedizierte Mitarbeiterunterstützung",
+      "description": "Vollzeit-Fachkräfte, die exklusiv für Ihr Unternehmen arbeiten — ohne Overhead."
+    },
+    "hero": {
+      "title": "Dedizierte Mitarbeiterunterstützung",
+      "subtitle": "Ihr Team. Unsere Infrastruktur. Keine Grenzen."
+    },
+    "intro": "Stellen Sie sich vor, ein qualifiziertes Vollzeit-Team arbeitet exklusiv für Sie — ohne den Aufwand, Operationen im Ausland aufzubauen. Mit dem dedizierten Mitarbeitermodell von BSG Support erhalten Sie hochqualifizierte Fachkräfte mit Sitz in Indien, die sich nahtlos in Ihr Unternehmen integrieren.",
+    "servicesTitle": "Was Sie erhalten",
+    "services": {
+      "fullTime": {
+        "title": "Vollzeit-dedizierte Fachkräfte",
+        "desc": "Exklusiver Zugang zu qualifizierten Teammitgliedern für Vertrieb, Underwriting, Verwaltung, Datenerfassung und Kundensupport — die ausschließlich für Ihr Unternehmen arbeiten."
+      },
+      "aligned": {
+        "title": "An Ihre Arbeitszeiten angepasst",
+        "desc": "Ihr Team arbeitet nach Ihrer Zeitzone, was Echtzeitkommunikation und nahtlose Zusammenarbeit mit Ihrem lokalen Team ermöglicht."
+      },
+      "handpicked": {
+        "title": "Handverlesene Kandidaten",
+        "desc": "Ein strukturierter Einstellungsprozess mit Kundenbeteiligung stellt sicher, dass jedes Teammitglied Ihren Anforderungen und zur Unternehmenskultur passt."
+      },
+      "infrastructure": {
+        "title": "Komplettes Infrastrukturmanagement",
+        "desc": "Wir übernehmen die gesamte Infrastruktur, Gehaltsabrechnung, HR und Compliance — Sie konzentrieren sich ausschließlich auf die Steuerung der Arbeitsergebnisse und Geschäftsergebnisse."
+      }
+    },
+    "benefitsTitle": "Warum es funktioniert",
+    "benefits": {
+      "lowerCosts": {
+        "title": "Niedrigere Betriebskosten",
+        "desc": "Reduzieren Sie die Ausgaben erheblich bei gleichbleibend hoher Servicequalität."
+      },
+      "fullControl": {
+        "title": "Volle Kontrolle über Ihr Remote-Team",
+        "desc": "Behalten Sie die vollständige Übersicht und Steuerung — wie lokale Mitarbeiter, aber ohne Verwaltungsaufwand."
+      },
+      "quickScaleUp": {
+        "title": "Schnelle Skalierungsmöglichkeiten",
+        "desc": "Erweitern Sie Ihr Team einfach basierend auf Projektanforderungen ohne Einstellungskomplexitäten."
+      },
+      "transparency": {
+        "title": "100 % Transparenz & Leistungsüberwachung",
+        "desc": "Klare Einblicke in Teamaktivitäten und Kennzahlen zur Sicherstellung der Verantwortlichkeit."
+      }
+    },
+    "audience": {
+      "a1": "Unternehmen, die ihre operativen Kapazitäten erweitern möchten, ohne die lokale Belegschaft zu vergrößern",
+      "a2": "Unternehmen, die kosteneffiziente Lösungen für qualifizierte professionelle Dienstleistungen suchen",
+      "a3": "Organisationen mit fortlaufenden, konsistenten operativen Anforderungen",
+      "a4": "Unternehmen, die dedizierte Unterstützung über Vertrieb, Verwaltung und Kundenservice hinweg wünschen"
+    },
+    "cta": {
+      "headline": "Bauen Sie Ihr Traumteam — ohne Grenzen",
+      "text": "Lassen Sie uns Ihr dediziertes Backoffice-Kraftzentrum einrichten, das mit Ihnen wächst.",
+      "button": "Jetzt starten"
+    }
+  },
+  "OnDemand": {
+    "meta": {
+      "title": "On-Demand Service Support",
+      "description": "Flexible, aufgabenbasierte Unterstützung für dringende Aufgaben, saisonale Anforderungen oder einmalige Projekte."
+    },
+    "hero": {
+      "title": "On-Demand Service Support",
+      "subtitle": "Expertenhilfe — nur wenn Sie sie brauchen"
+    },
+    "intro": "Benötigen Sie zuverlässige Hilfe für dringende Aufgaben, saisonale Anforderungen oder einmalige Projekte? Mit dem On-Demand-Servicemodell von BackSure Global Support erhalten Sie flexible, aufgabenbasierte Unterstützung — ohne langfristige Verpflichtung.",
+    "servicesTitle": "Wo wir helfen",
+    "services": {
+      "pro": {
+        "title": "PRO- und Dokumentationsdienstleistungen",
+        "desc": "Professionelle Unterstützung bei der Dokumentenvorbereitung, Beglaubigung und behördlichen Prozessen — wir übernehmen den Papierkram, damit Sie sich auf Ihr Geschäft konzentrieren können."
+      },
+      "regulatory": {
+        "title": "Regulierungs- & Compliance-Einreichungen",
+        "desc": "Bleiben Sie durch rechtzeitige Einreichungen und Meldungen konform mit lokalen Vorschriften und stellen Sie sicher, dass Ihr Unternehmen alle gesetzlichen Anforderungen erfüllt."
+      },
+      "financial": {
+        "title": "Finanzberichte & USt./Steuereinreichungen",
+        "desc": "Unterstützung bei der Erstellung von Finanzberichten, USt.-Erklärungen und Steuerdokumentation — für Genauigkeit und Termingerecht."
+      },
+      "licensing": {
+        "title": "Gewerbeanmeldungen & Verlängerungen",
+        "desc": "Lizenzanträge, Verlängerungen und regulatorischer Papierkram, um Ihren Betrieb reibungslos aufrechtzuerhalten."
+      }
+    },
+    "benefitsTitle": "Warum On-Demand wählen",
+    "benefits": {
+      "fastTurnaround": {
+        "title": "Schnelle Bearbeitung",
+        "desc": "Schnelle Ergebnisse mit einem reaktionsschnellen Team, das für dringende und zeitkritische Aufgaben bereit ist."
+      },
+      "payForUse": {
+        "title": "Nur zahlen, was Sie nutzen",
+        "desc": "Kosteneffektive aufgabenbasierte Preisgestaltung — kein Overhead, keine verschwendeten Ressourcen."
+      },
+      "noContracts": {
+        "title": "Keine langfristigen Verträge",
+        "desc": "Vollständige Flexibilität ohne Bindung. Nutzen Sie Dienstleistungen so viel oder so wenig wie nötig."
+      },
+      "accessProfessionals": {
+        "title": "Sofort auf qualifizierte Fachkräfte zugreifen",
+        "desc": "Greifen Sie auf einen Pool erfahrener Fachkräfte mit branchenspezifischer Expertise zu."
+      }
+    },
+    "audience": {
+      "a1": "Startups und KMU mit schwankendem Arbeitsaufkommen",
+      "a2": "Unternehmen mit vorübergehendem Personalmangel",
+      "a3": "Unternehmen mit saisonalen Verwaltungsspitzen",
+      "a4": "Teams, die spezialisiertes Fachwissen für bestimmte Projekte benötigen"
+    },
+    "cta": {
+      "headline": "Flexibilität trifft Zuverlässigkeit",
+      "text": "Perfekt für dringende Anforderungen oder wenn Ihr Team überlastet ist — senden Sie einfach eine Anfrage, und wir kümmern uns um den Rest.",
+      "button": "Jetzt On-Demand Support erhalten"
+    }
+  },
+  "BusinessCare": {
+    "meta": {
+      "title": "Business Care Pakete",
+      "description": "Umfassende All-in-One Backoffice-Unterstützung von der Gehaltsabrechnung bis zur Compliance."
+    },
+    "hero": {
+      "title": "Business Care Pakete",
+      "subtitle": "Optimieren Sie Ihre Verwaltungsfunktionen mit All-in-One-Support"
+    },
+    "intro": "Bei BackSure Global Support bieten unsere Business Care Pakete eine umfassende Lösung für Ihre Backoffice-Anforderungen. Von der Gehaltsabrechnung bis zur Compliance übernehmen wir die Verwaltungsarbeit, damit Sie sich auf das Wachstum Ihres Unternehmens und die Betreuung Ihrer Kunden konzentrieren können.",
+    "servicesTitle": "Was enthalten ist",
+    "services": {
+      "payroll": {
+        "title": "Gehaltsabrechnung",
+        "desc": "Genaue und pünktliche monatliche Gehaltsabrechnung — Gehaltsberechnungen, Abzüge, elektronische Gehaltsabrechnungen, vollständig konform mit lokalen Arbeitsgesetzen und Unternehmensrichtlinien."
+      },
+      "bookkeeping": {
+        "title": "Buchhaltung & Finanzberichte",
+        "desc": "Regelmäßige Buchhaltungsdienstleistungen einschließlich Transaktionserfassung, Kontenabstimmungen und wesentlicher Finanzberichte für klare Leistungstransparenz."
+      },
+      "hrRecords": {
+        "title": "HR-Dokumentenverwaltung",
+        "desc": "Umfassende Verwaltung von Mitarbeiterakten, Anwesenheitsverfolgung, Urlaubsverwaltung und Dokumentation von HR-Prozessen."
+      },
+      "compliancePRO": {
+        "title": "Compliance & PRO-Dienstleistungen",
+        "desc": "PRO-Dienstleistungen, Dokumentenverarbeitung und Compliance-Überwachung, um Ihnen bei der Navigation durch komplexe lokale Vorschriften zu helfen und mit Zuversicht zu operieren."
+      }
+    },
+    "benefitsTitle": "Warum unsere Business Care Pakete wählen",
+    "benefits": {
+      "simplified": {
+        "title": "Vereinfachte Verwaltung",
+        "desc": "Ein einziger Ansprechpartner für alle Backoffice-Anforderungen — Komplexität und Verwaltungsaufwand reduzieren."
+      },
+      "costEffective": {
+        "title": "Kosteneffiziente Lösung",
+        "desc": "Planbare monatliche Kosten ohne versteckte Gebühren. Kontrollieren Sie Ausgaben und erhalten Sie professionelle Unterstützung."
+      },
+      "scalable": {
+        "title": "Skalierbar mit Ihrem Wachstum",
+        "desc": "Pakete passen sich an Ihre wachsenden Geschäftsanforderungen an — einfach skalierbare Unterstützung, wenn Ihr Unternehmen expandiert."
+      }
+    },
+    "audience": {
+      "a1": "Wachsende Startups, die sich auf ihr Kerngeschäft konzentrieren möchten",
+      "a2": "Etablierte KMU, die ihre Abläufe optimieren wollen",
+      "a3": "Internationale Unternehmen, die in neue Regionen expandieren",
+      "a4": "Unternehmen ohne eigene Verwaltungsabteilungen"
+    },
+    "cta": {
+      "headline": "Konzentrieren Sie sich auf Wachstum. Wir kümmern uns um den Rest.",
+      "text": "Lassen Sie BackSure Global Support Ihre Verwaltungsfunktionen übernehmen, während Sie sich auf das konzentrieren, was am wichtigsten ist — das Wachstum Ihres Unternehmens.",
+      "button": "Individuelles Business Care Paket erhalten"
+    }
+  },
+  "Insurance": {
+    "meta": {
+      "title": "Versicherungsbetrieb-Unterstützung",
+      "description": "Maßgeschneiderte Backend-Lösungen für Versicherungsmakler, Aggregatoren und TPAs."
+    },
+    "hero": {
+      "title": "Versicherungsbetrieb-Unterstützung",
+      "subtitle": "Maßgeschneiderte Lösungen für Makler, Aggregatoren und TPAs"
+    },
+    "intro": "Bei BackSure Global Support sind wir darauf spezialisiert, qualifizierte Backend-Teams für die Versicherungsbranche bereitzustellen — zur Unterstützung von Maklern, Aggregatoren und TPAs in den Bereichen Gesundheit, Kfz und Leben. Ob Sie eine wachsende Maklerei oder ein etablierter Aggregator sind, wir helfen Ihnen, den Betrieb zu skalieren, ohne den Overhead zu erhöhen.",
+    "servicesTitle": "Unsere spezialisierten Dienstleistungen",
+    "services": {
+      "sales": {
+        "title": "Vertriebsunterstützung",
+        "desc": "Lead-Nachverfolgung, Policenerklärungen und Koordination zwischen Kunden und Versicherern zur Verbesserung der Konversionsraten und Entlastung Ihres internen Vertriebsteams."
+      },
+      "underwriting": {
+        "title": "Underwriting-Unterstützung",
+        "desc": "Sammlung und Überprüfung von Kundendokumenten, Vorab-Screening von Anträgen und Koordination mit Versicherern für Genehmigungen."
+      },
+      "policy": {
+        "title": "Policenbearbeitung & Verlängerungen",
+        "desc": "Von der Ausstellung neuer Policen bis zu Verlängerungszyklen — vollständiges Prozessmanagement einschließlich Dokumentation, Datenerfassung und rechtzeitiger Nachverfolgung."
+      },
+      "claims": {
+        "title": "Schadenkoordination",
+        "desc": "Verbindung zwischen Kunden, Versicherern und TPAs. Wir sammeln erforderliche Dokumente, verfolgen Schadenstände und sorgen für eine reibungslose Falllösung."
+      },
+      "crm": {
+        "title": "CRM-Verwaltung",
+        "desc": "Pflegen Sie saubere und aktualisierte CRM-Datensätze in Zoho CRM, Salesforce oder branchenspezifischen Systemen — für Datengenauigkeit und Automatisierungsbereitschaft."
+      },
+      "quotes": {
+        "title": "Angebotsvorbereitung",
+        "desc": "Unterstützung bei der Erstellung vergleichender Versicherungsangebote, Sammlung und Organisation von Informationen von mehreren Partnern zur Beschleunigung der Entscheidungsfindung."
+      },
+      "dataEntry": {
+        "title": "Datenerfassung & Berichterstattung",
+        "desc": "Tägliche Datenaktualisierungen, MIS-Berichte und Übersichts-Dashboards für Vertrieb, Verlängerungen, Schäden und Kundenfeedback — Echtzeit-Einblicke für besseres Management."
+      }
+    },
+    "benefitsTitle": "Warum es wichtig ist",
+    "benefits": {
+      "industryTrained": {
+        "title": "Branchengeschulte Teams",
+        "desc": "Personal, das speziell für die Versicherungsbranche geschult ist, um Fehler zu reduzieren und die Bearbeitungsgeschwindigkeit zu erhöhen."
+      },
+      "costSavings": {
+        "title": "Betriebskosteneinsparungen",
+        "desc": "Skalieren Sie Ihr Backend ohne interne Einstellungen — kosteneffiziente Lösungen mit Leistungsverantwortung."
+      },
+      "clientExperience": {
+        "title": "Bessere Kundenerfahrung",
+        "desc": "Schnellere Antworten, weniger Fehler und saubere Daten sorgen für eine reibungslosere Kundenreise vom Angebot bis zum Schaden."
+      }
+    },
+    "audience": {
+      "a1": "Versicherungsmakler, die die Policenbearbeitung skalieren möchten",
+      "a2": "Aggregatoren, die Multi-Versicherer-Koordination verwalten",
+      "a3": "TPAs, die zuverlässige Schadenbearbeitungsunterstützung benötigen",
+      "a4": "Versicherungs-Startups, die operative Kapazitäten aufbauen"
+    },
+    "cta": {
+      "headline": "Versicherungsunterstützung, die wie Ihr eigenes Team arbeitet",
+      "text": "Wählen Sie BSG Support, um Ihren Versicherungsbetrieb mit zuverlässigen, geschulten und leistungsorientierten Backend-Teams anzutreiben.",
+      "button": "Beratung anfordern"
+    }
+  },
+  "Finance": {
+    "meta": {
+      "title": "Finanzen & Buchhaltung",
+      "description": "Zuverlässige, genaue und skalierbare Finanz- und Buchhaltungslösungen für wachsende Unternehmen."
+    },
+    "hero": {
+      "title": "Finanzen & Buchhaltung",
+      "subtitle": "Entwickelt zur Optimierung Ihrer Finanzprozesse und für klügere Entscheidungen"
+    },
+    "intro": "Bei BackSure Global Support bieten wir zuverlässige, genaue und skalierbare Finanz- und Buchhaltungslösungen für wachsende Unternehmen. Wir kümmern uns um die Zahlen — damit Sie sich auf Wachstum, Strategie und Umsetzung konzentrieren können.",
+    "servicesTitle": "Unsere Kerndienstleistungen",
+    "services": {
+      "bookkeeping": {
+        "title": "Buchhaltung",
+        "desc": "Tägliche, wöchentliche oder monatliche Buchhaltungsdienstleistungen — Erfassung und Kategorisierung von Transaktionen mit Zoho Books, QuickBooks oder Xero für volle finanzielle Transparenz."
+      },
+      "apAr": {
+        "title": "Verbindlichkeiten & Forderungen (AP/AR)",
+        "desc": "Verwaltung von Verbindlichkeiten für pünktliche Lieferantenzahlungen und Optimierung der Forderungen mit konsistenten Nachverfolgungen und Abstimmungen zur Verbesserung des Cashflows."
+      },
+      "vatTax": {
+        "title": "USt. & Körperschaftsteuer-Einreichungshilfe",
+        "desc": "Stellen Sie die Einhaltung der UAE-USt.-Gesetze und Körperschaftsteuervorschriften sicher. USt.-Registrierung, Erklärungseinreichungen und KSt.-Vorbereitung mit Steuerberatern."
+      },
+      "reporting": {
+        "title": "Finanzberichterstattung & Audit-Unterstützung",
+        "desc": "Monatliche und quartalsweise Managementberichte — GuV-Rechnungen, Bilanzen, Cashflow-Zusammenfassungen nach Ihren Anforderungen, plus Audit-Koordination."
+      },
+      "budgeting": {
+        "title": "Budgetierung und Prognosen",
+        "desc": "Unterstützung der Finanzplanung mit realistischer Budgeterstellung, Abweichungsanalyse und rollierenden Prognosen für fundierte Entscheidungen."
+      }
+    },
+    "benefitsTitle": "Warum es wichtig ist",
+    "benefits": {
+      "accuracy": {
+        "title": "Verbesserte Genauigkeit & Transparenz",
+        "desc": "Vermeiden Sie Fehler mit Echtzeit-Zugang zu Finanzdaten für bessere Kontrolle und Entscheidungsfindung."
+      },
+      "compliance": {
+        "title": "Regulatorische Compliance leicht gemacht",
+        "desc": "Bleiben Sie mit lokalen Steuer- und Finanzvorschriften im Einklang — keine Last-Minute-Überraschungen."
+      },
+      "scalable": {
+        "title": "Skalierbarer Support für Wachstum",
+        "desc": "Unsere Dienstleistungen entwickeln sich mit Ihrem Unternehmen weiter, vom Startup in der Frühphase bis zum etablierten Unternehmen."
+      }
+    },
+    "audience": {
+      "a1": "Startups, die von Anfang an professionelle Buchhaltung benötigen",
+      "a2": "KMU, die komplexe Mehrwährungstransaktionen verwalten",
+      "a3": "Unternehmen, die sich auf Audits oder Steuererklärungen vorbereiten",
+      "a4": "Unternehmen, die ihre gesamte Finanzfunktion auslagern möchten"
+    },
+    "cta": {
+      "headline": "Zahlen vereinfacht. Finanzen richtig gemacht.",
+      "text": "Lassen Sie BackSure Global Support Ihre Finanzen und Buchhaltung verwalten — damit Sie Ihr Unternehmen mit Klarheit und Zuversicht führen können.",
+      "button": "Beratung anfordern"
+    }
+  },
+  "HR": {
+    "meta": {
+      "title": "Personalmanagement",
+      "description": "Umfassende HR-Betriebsunterstützung zur effizienten Verwaltung Ihrer Belegschaft."
+    },
+    "hero": {
+      "title": "Personalmanagement",
+      "subtitle": "Zuverlässiger HR-Backoffice-Support zum Aufbau und zur Bindung groSSartiger Teams"
+    },
+    "intro": "Bei BackSure Global Support bieten wir umfassende HR-Betriebsunterstützung, die Unternehmen hilft, ihre Belegschaft effizienter zu verwalten. Ob Sie Ihr Team skalieren oder interne Prozesse optimieren — unsere HR-Backoffice-Dienste übernehmen die Routineaufgaben, damit Sie sich auf Strategie, Kultur und Mitarbeiterentwicklung konzentrieren können.",
+    "servicesTitle": "Unsere Kerndienstleistungen",
+    "services": {
+      "payroll": {
+        "title": "Gehaltsabrechnung",
+        "desc": "Genaue und pünktliche Gehaltsberechnungen, Gehaltszahlungen und Gehaltsabrechnungserstellung — vollständig konform mit lokalen Arbeitsgesetzen und internen Richtlinien."
+      },
+      "attendance": {
+        "title": "Anwesenheits- & Urlaubsverwaltung",
+        "desc": "Überwachung der Arbeitszeiten, Verwaltung von Schichtplänen und Verfolgung von Urlaubssalden mit automatisierten Tools wie Zoho People, abgestimmt auf UAE- oder regionale HR-Richtlinien."
+      },
+      "onboarding": {
+        "title": "Mitarbeiter-Onboarding / -Offboarding",
+        "desc": "Von Angebotsschreiben bis zu Austrittsformaliäten — Verwaltung von Dokumentation, Systemzugang, Ausweiserstellung und Freigaben für reibungslose Mitarbeiterübergänge."
+      },
+      "performance": {
+        "title": "Leistungsüberwachung",
+        "desc": "Einrichtung von Leistungs-KPIs, Fortschrittsverfolgung, Organisation von Bewertungszyklen und Implementierung effizienter Beurteilungsworkflows, ausgerichtet an organisatorischen Zielen."
+      },
+      "statutory": {
+        "title": "Berechnung gesetzlicher Leistungen",
+        "desc": "Genaue Berechnung von Abfindung, Dienstende-Leistungen, Sozialversicherung und gesetzlichen Verpflichtungen basierend auf Vertragsart und Betriebszugehörigkeit."
+      }
+    },
+    "benefitsTitle": "Warum es wichtig ist",
+    "benefits": {
+      "reduceWorkload": {
+        "title": "HR-Aufwand & menschliche Fehler reduzieren",
+        "desc": "Automatisierte und gut verwaltete Prozesse reduzieren Verwaltungskosten und verhindern Fehler bei Gehaltsabrechnung oder Leistungen."
+      },
+      "complianceControl": {
+        "title": "Compliance & Dokumentenkontrolle",
+        "desc": "Alle HR-Funktionen werden in Übereinstimmung mit den UAE-Arbeitsgesetzen und regionalen gesetzlichen Anforderungen ausgeführt."
+      },
+      "employeeExperience": {
+        "title": "Mitarbeitererfahrung verbessern",
+        "desc": "Nahtloses Onboarding und transparente HR-Praktiken steigern die Moral, Bindung und Teamzufriedenheit."
+      }
+    },
+    "audience": {
+      "a1": "Wachsende Unternehmen, die ihre HR-Operationen von Grund auf aufbauen",
+      "a2": "Unternehmen, die in die VAE oder GCC-Region expandieren",
+      "a3": "KMU ohne eigene HR-Abteilung",
+      "a4": "Organisationen, die bestehende HR-Prozesse optimieren möchten"
+    },
+    "cta": {
+      "headline": "Stärken Sie Ihr Team mit nahtloser HR-Unterstützung",
+      "text": "Partner mit BSG Support für zuverlässiges und effizientes Personalmanagement — damit Sie stärkere Teams ohne operativen Stress aufbauen können.",
+      "button": "Beratung anfordern"
+    }
+  },
+  "Compliance": {
+    "meta": {
+      "title": "Compliance & Geschäftsverwaltung",
+      "description": "Bleiben Sie rechtlich konform, operieren Sie effizient und wachsen Sie zuversichtlich mit BSG Support."
+    },
+    "hero": {
+      "title": "Compliance & Geschäftsverwaltung",
+      "subtitle": "Rechtlich konform. Effizient operieren. Zuversichtlich wachsen."
+    },
+    "intro": "Bei BackSure Global Support verstehen wir, dass die Verwaltung von Compliance und Geschäftsverwaltung komplex, zeitaufwendig und riskant sein kann, wenn sie nicht richtig gehandhabt wird. Unser dediziertes Team stellt sicher, dass Ihr Unternehmen mit allen rechtlichen, operativen und regulatorischen Standards im Einklang bleibt, damit Sie sich auf Ihre Kerngeschäfte und Expansion konzentrieren können.",
+    "servicesTitle": "Unsere Schlüsseldienstleistungen",
+    "services": {
+      "companyFormation": {
+        "title": "Firmengründung & Lizenzierungsunterstützung",
+        "desc": "Unterstützung bei der Registrierung Ihres Unternehmens und Beschaffung notwendiger Gewerbelizenzen, Genehmigungen und Zulassungen — für Startups, KMU und expandierende Unternehmen."
+      },
+      "tradeLicense": {
+        "title": "Gewerbelizenz-Verlängerungen",
+        "desc": "Verpassen Sie nie eine Verlängerungsfrist. Wir verfolgen und verwalten den gesamten Verlängerungsprozess für unterbrechungsfreien Betrieb und Vermeidung von Strafen."
+      },
+      "documentPrep": {
+        "title": "Dokumentenvorbereitung & PRO-Dienstleistungen",
+        "desc": "Entwurf von Vereinbarungen, Bearbeitung von Regierungsdokumentation und Erleichterung reibungsloser Behördeninteraktion durch erfahrene PROs."
+      },
+      "regulatoryCompliance": {
+        "title": "Regulatorische Compliance-Unterstützung",
+        "desc": "Bleiben Sie den sich entwickelnden Vorschriften voraus, einschließlich AML, DSGVO und jurisdiktionsspezifischer Compliance-Standards, mit genauer Berichterstattung und Überwachungsrahmen."
+      }
+    },
+    "benefitsTitle": "Warum es wichtig ist",
+    "benefits": {
+      "avoidFines": {
+        "title": "Bußgelder und rechtliche Risiken vermeiden",
+        "desc": "Wir überwachen Fristen und stellen sicher, dass alle Einreichungen und Verfahren aktuell sind."
+      },
+      "reduceBurden": {
+        "title": "Verwaltungsaufwand reduzieren",
+        "desc": "Lassen Sie unser Team den Papierkram verwalten, während sich Ihr Team auf Strategie und Wachstum konzentriert."
+      },
+      "peaceOfMind": {
+        "title": "Seelenfrieden gewinnen",
+        "desc": "BackSure übernimmt Ihre Compliance mit Fachleuten, die lokale Vorschriften und globale Standards verstehen."
+      }
+    },
+    "audience": {
+      "a1": "Neue Unternehmen, die Firmengründung und Lizenzierung benötigen",
+      "a2": "Unternehmen, die laufende PRO- und Compliance-Unterstützung benötigen",
+      "a3": "Internationale Unternehmen, die in UAE/GCC-Märkte expandieren",
+      "a4": "Organisationen, die komplexe regulatorische Anforderungen verwalten"
+    },
+    "cta": {
+      "headline": "Compliance sicherstellen, Kontrolle behalten",
+      "text": "Partnern Sie mit BackSure Global Support, um Ihre Compliance-Reise zu vereinfachen und die volle betriebliche Integrität aufrechtzuerhalten.",
+      "button": "Beratung anfordern"
+    }
+  },
+  "Technology": {
+    "meta": {
+      "title": "Technologielösungen",
+      "description": "Individuelle Softwareentwicklung, Anwendungssupport, Automatisierung und Systemintegration, die Ihr Geschäft vorantreiben."
+    },
+    "hero": {
+      "title": "Technologielösungen",
+      "subtitle": "Individuelle Entwicklung. Laufender Support. Geschäftsautomatisierung."
+    },
+    "intro": "Bei BackSure Global Support kombinieren wir tiefgreifende BPO-Expertise mit moderner Softwareentwicklungsfähigkeit, um Technologie zu liefern, die reale Geschäftsprobleme löst. Von maßgeschneiderten Portalen und Dashboards über laufenden Anwendungssupport bis hin zu Workflow-Automatisierung — wir agieren als Ihr erweitertes Technologieteam, das die Systeme, die Ihre Operationen antreiben, baut, wartet und kontinuierlich verbessert.",
+    "servicesTitle": "Was wir anbieten",
+    "services": {
+      "customDev": {
+        "title": "Individuelle Softwareentwicklung",
+        "desc": "Individuelle Webanwendungen, interne Geschäftssysteme, CRM/ERP-Portale, Dashboards, Admin-Panels und Kunden-, Makler- oder Mitarbeiterportale — nach Ihren genauen Spezifikationen und Geschäftsanforderungen erstellt."
+      },
+      "appSupport": {
+        "title": "Anwendungssupport & Wartung",
+        "desc": "Fehlerbehebung, laufender technischer Support, Funktionserweiterungen, Leistungsverbesserungen, Problemlösung und Produktionsüberwachung — damit Ihre Anwendungen zuverlässig laufen und sich mit Ihrem Geschäft weiterentwickeln."
+      },
+      "automation": {
+        "title": "Automatisierungs- & Workflow-Lösungen",
+        "desc": "Automatisierte Berichte, Schadenworkflows, Policenbearbeitungsflows, E-Mail-Automatisierung, HR-Onboarding-Workflows, Genehmigungssysteme und Dokumentenhandhabung — wo BPO auf Technologie trifft für maximale Geschäftseffizienz."
+      },
+      "uiux": {
+        "title": "UI/UX & Portal-Modernisierung",
+        "desc": "Portal-Redesign, Dashboard-Neugestaltung, Workflow-Optimierung, Admin-System-Modernisierung und Self-Service-Plattformverbesserungen — für ein besseres Erlebnis für Versicherungsmakler, Support-Teams und betriebsintensive Unternehmen."
+      },
+      "dataReporting": {
+        "title": "Daten- & Berichtslösungen",
+        "desc": "KPI-Dashboards, Leistungsüberwachungstools, SLA-Berichte, Finanz-Dashboards, Schaden- und Betriebsanalysen und individuelle Berichtssysteme — für die Transparenz, die Entscheidungsträger benötigen."
+      },
+      "integration": {
+        "title": "Systemintegrations-Support",
+        "desc": "CRM-Integration, Zahlungsgateway-Verbindungen, WhatsApp- und API-Integration, Buchhaltungssystem-Verknüpfung, Dokumentenplattform-Verbindungen und Lead-Management-Integration — Reibungsverluste in Ihrem Tech-Stack beseitigen."
+      }
+    },
+    "benefitsTitle": "Warum es wichtig ist",
+    "benefits": {
+      "endToEnd": {
+        "title": "End-to-End-Fähigkeit",
+        "desc": "Von der initialen Entwicklung über Wartung, Automatisierung und Berichterstattung — ein einziger Partner für Ihren gesamten Technologie-Lebenszyklus."
+      },
+      "businessFirst": {
+        "title": "Business-First-Ansatz",
+        "desc": "Wir schreiben nicht nur Code — wir lösen Geschäftsprobleme mit Technologie, indem wir operative Expertise mit Entwicklungsfähigkeit kombinieren."
+      },
+      "recurringPartnership": {
+        "title": "Wiederkehrendes Partnerschaftsmodell",
+        "desc": "Über einmalige Builds hinaus bieten wir laufenden Support, Wartung und Funktionserweiterung — eine Partnerschaft, die sich mit Ihrem Geschäft weiterentwickelt."
+      }
+    },
+    "audience": {
+      "a1": "Versicherungsmakler und Aggregatoren, die Portal- und Workflow-Lösungen benötigen",
+      "a2": "Betriebsintensive Unternehmen, die manuelle Prozesse automatisieren möchten",
+      "a3": "Unternehmen, die laufenden Anwendungssupport und Wartung suchen",
+      "a4": "Organisationen, die Legacy-Systeme und Dashboards modernisieren möchten"
+    },
+    "cta": {
+      "headline": "Technologie, die Ihr Geschäft vorantreibt",
+      "text": "Partnern Sie mit BSG für individuelle Entwicklung, Automatisierung und laufenden Support — alles von einem Team, das Ihre Abläufe versteht.",
+      "button": "Gespräch starten"
+    }
+  },
+  "Team": {
+    "meta": {
+      "title": "Unser Team",
+      "description": "Lernen Sie das Team hinter Backsure Global Support kennen."
+    },
+    "hero": {
+      "title": "Lernen Sie das Team kennen",
+      "subtitle": "Unsere Stärke liegt in unseren Menschen. Wir bringen engagierte Fachleute zusammen, die leidenschaftlich daran arbeiten, Abläufe zu vereinfachen und das Wachstum unserer Kunden voranzutreiben."
+    },
+    "leadershipTitle": "Führungsteam",
+    "leader1": {
+      "role": "Gründer",
+      "bio": "Bringt umfassende Erfahrung in der Unterstützung schnell wachsender Startups und Unternehmen mit, mit Expertise in Backend-Operationen, Outsourcing-Modellen und Teamaufbau."
+    },
+    "departmentsTitle": "Unsere Abteilungen",
+    "departmentsSubtitle": "Hinter jeder erfolgreichen Kundenpartnerschaft steht ein strukturiertes Team von Spezialisten, die in wichtigen Geschäftsbereichen arbeiten.",
+    "departments": {
+      "operations": {
+        "title": "Operations-Team",
+        "desc": "Unsere Operations-Spezialisten übernehmen die tägliche Arbeit in den Bereichen Versicherung, Finanzen, HR und Compliance — und gewährleisten Genauigkeit, Konsistenz und Geschwindigkeit bei jedem Kundenengagement."
+      },
+      "clientSuccess": {
+        "title": "Client Success Team",
+        "desc": "Engagierte Beziehungsmanager, die als zentrale Ansprechpartner fungieren und nahtloses Onboarding, klare Kommunikation und kontinuierliche Verbesserung sicherstellen."
+      },
+      "technology": {
+        "title": "Technologie & Systeme",
+        "desc": "Unser Tech-Team verwaltet sichere Infrastruktur, CRM-Integrationen und Automatisierungstools, die effiziente Workflows und Echtzeit-Zusammenarbeit mit Kunden ermöglichen."
+      },
+      "hr": {
+        "title": "HR & Talentakquise",
+        "desc": "Verantwortlich für die Suche, Schulung und Bindung von Top-Talenten — damit jedes Teammitglied, das wir einsetzen, höchsten professionellen Standards entspricht."
+      }
+    },
+    "cta": {
+      "title": "Möchten Sie unserem Team beitreten?",
+      "desc": "Wir suchen immer nach talentierten Personen, die unsere Leidenschaft für operative Exzellenz teilen.",
+      "button": "Offene Stellen ansehen"
+    }
+  },
+  "Testimonials": {
+    "meta": {
+      "title": "Kundenstimmen",
+      "description": "Was unsere Kunden über Backsure Global Support sagen."
+    },
+    "hero": {
+      "title": "Was unsere Kunden sagen",
+      "subtitle": "Wir sind stolz darauf, ein Wachstumspartner für jeden Kunden zu sein, mit dem wir zusammenarbeiten. Hier ist, was einige von ihnen zu sagen haben."
+    },
+    "t1": {
+      "quote": "BSG Support hat uns geholfen, unsere Versicherungsabläufe zu optimieren. Ihr dediziertes Support-Modell fühlte sich an, als wären sie Teil unseres internen Teams.",
+      "attribution": "Operations Lead",
+      "company": "VAE-basierter Versicherungsaggregator"
+    },
+    "t2": {
+      "quote": "Von der Gehaltsabrechnung bis zur Compliance-Unterstützung war ihr Team eine zuverlässige Erweiterung unseres Unternehmens. Transparent, effizient und wirklich skalierbar.",
+      "attribution": "CFO",
+      "company": "Regionales Finanzdienstleistungsunternehmen"
+    },
+    "t3": {
+      "quote": "Wir brauchten einen Partner, der unser Back-Office ohne ständige Überwachung handhaben konnte. BSG hat genau das geliefert — zuverlässig, konsistent und immer vor den Deadlines.",
+      "attribution": "Geschäftsführer",
+      "company": "Dubai-basierte Immobiliengruppe"
+    },
+    "t4": {
+      "quote": "Ihr Onboarding-Prozess war nahtlos. Innerhalb von zwei Wochen war das BSG-Team vollständig in unser CRM integriert und bearbeitete Kundenanfragen, als wären sie seit Jahren bei uns.",
+      "attribution": "Leiter Operations",
+      "company": "Krankenversicherungsmakler"
+    },
+    "t5": {
+      "quote": "Was BSG auszeichnet, ist ihre Eigenverantwortung. Sie führen nicht nur Aufgaben aus — sie identifizieren proaktiv Verbesserungen und schlagen bessere Workflows vor.",
+      "attribution": "CEO",
+      "company": "E-Commerce-Startup, MENA-Region"
+    },
+    "t6": {
+      "quote": "Das Outsourcing unserer HR-Abläufe an BSG war eine unserer besten Entscheidungen. Die Genauigkeit der Gehaltsabrechnung verbesserte sich und unser Team konnte sich endlich auf strategische Initiativen konzentrieren.",
+      "attribution": "HR-Direktor",
+      "company": "Professional Services Unternehmen"
+    },
+    "industriesTitle": "Vertrauen über Branchen hinweg",
+    "industriesSubtitle": "Unsere Kunden erstrecken sich über mehrere Sektoren, und wir bringen bei jeder Partnerschaft das gleiche Maß an Engagement und Expertise ein.",
+    "industries": {
+      "insurance": "Versicherung",
+      "finance": "Finanzen & Banken",
+      "healthcare": "Gesundheitswesen",
+      "realEstate": "Immobilien",
+      "ecommerce": "E-Commerce",
+      "technology": "Technologie",
+      "professionalServices": "Professional Services"
+    },
+    "cta": {
+      "title": "Bereit, unsere nächste Erfolgsgeschichte zu werden?",
+      "desc": "Lassen Sie uns besprechen, wie unsere dedizierten Teams Ihrem Unternehmen beim Wachstum helfen können."
+    }
+  },
+  "PrivacyPolicy": {
+    "meta": {
+      "title": "Datenschutzerklärung",
+      "description": "Datenschutzerklärung von Backsure Global Support."
+    },
+    "title": "Datenschutzerklärung",
+    "intro": "Bei Backsure Global Support verpflichten wir uns zum Schutz und zur Wahrung Ihrer Privatsphäre. Diese Richtlinie erklärt, wie wir Ihre persönlichen Daten erheben, verwenden und schützen.",
+    "infoCollectTitle": "Welche Daten wir erheben",
+    "infoCollect": "Wir können persönliche Daten wie Ihren Namen, Ihre E-Mail-Adresse, Telefonnummer und Firmendetails erheben, wenn Sie unsere Kontaktformulare ausfüllen, unseren Newsletter abonnieren oder unsere Dienste nutzen.",
+    "howWeUseTitle": "Wie wir Ihre Daten verwenden",
+    "howWeUse1": "Zur Bereitstellung und Verbesserung unserer Dienste",
+    "howWeUse2": "Um mit Ihnen über Ihre Anfragen zu kommunizieren",
+    "howWeUse3": "Um Ihnen Updates über unsere Dienste zu senden (mit Ihrer Zustimmung)",
+    "howWeUse4": "Zur Erfüllung gesetzlicher Verpflichtungen",
+    "dataSecurityTitle": "Datensicherheit",
+    "dataSecurity": "Wir implementieren angemessene technische und organisatorische Maßnahmen zum Schutz Ihrer persönlichen Daten vor unbefugtem Zugriff, Änderung, Offenlegung oder Zerstörung. Siehe unsere <link>Datensicherheit</link>-Seite für Details.",
+    "thirdPartyTitle": "Weitergabe an Dritte",
+    "thirdParty": "Wir verkaufen oder teilen Ihre persönlichen Daten nicht mit Dritten, es sei denn, dies ist zur Erbringung unserer Dienste oder zur Erfüllung gesetzlicher Anforderungen erforderlich.",
+    "yourRightsTitle": "Ihre Rechte",
+    "yourRights": "Sie haben das Recht, auf Ihre persönlichen Daten zuzugreifen, diese zu korrigieren oder zu löschen. Kontaktieren Sie uns unter {email}, um diese Rechte auszuüben.",
+    "contactTitle": "Kontakt",
+    "contact": "Bei Fragen zu dieser Datenschutzerklärung kontaktieren Sie uns bitte unter {email}."
+  },
+  "Terms": {
+    "meta": {
+      "title": "Nutzungsbedingungen",
+      "description": "Allgemeine Geschäftsbedingungen von Backsure Global Support."
+    },
+    "title": "Nutzungsbedingungen",
+    "intro": "Willkommen bei Backsure Global Support. Durch die Nutzung unserer Website und Dienste stimmen Sie den folgenden Bedingungen zu.",
+    "servicesTitle": "Dienstleistungen",
+    "services": "Backsure Global Support bietet Backend-Betriebsunterstützungsdienste an, einschließlich, aber nicht beschränkt auf dedizierte Teams, On-Demand-Support und Business Care Plans. Servicedetails und Umfang werden in individuellen Kundenvereinbarungen festgelegt.",
+    "useTitle": "Nutzung der Website",
+    "use": "Diese Website dient Informationszwecken. Sie stimmen zu, die Website oder deren Inhalte nicht zu missbrauchen, einschließlich des Versuchs eines unbefugten Zugriffs auf unsere Systeme.",
+    "ipTitle": "Geistiges Eigentum",
+    "ip": "Alle Inhalte dieser Website, einschließlich Texte, Grafiken, Logos und Bilder, sind Eigentum von Backsure Global Support und urheberrechtlich geschützt.",
+    "liabilityTitle": "Haftungsbeschränkung",
+    "liability": "Backsure Global Support haftet nicht für indirekte, zufällige oder Folgeschäden, die aus der Nutzung unserer Website oder Dienste entstehen.",
+    "lawTitle": "Anwendbares Recht",
+    "law": "Diese Bedingungen unterliegen den Gesetzen der Vereinigten Arabischen Emirate. Streitigkeiten unterliegen der Gerichtsbarkeit der Gerichte von Dubai.",
+    "contactTitle": "Kontakt",
+    "contact": "Bei Fragen zu diesen Bedingungen kontaktieren Sie uns bitte unter <email>info@backsureglobalsupport.com</email>."
+  },
+  "SitemapPage": {
+    "meta": {
+      "title": "Sitemap | Backsure Global Support",
+      "description": "Durchsuchen Sie alle Seiten der Backsure Global Support Website. Finden Sie Dienstleistungen, Lösungen, Blogbeiträge, Karriere und mehr."
+    },
+    "title": "Sitemap",
+    "subtitle": "Eine vollständige Übersicht aller Seiten unserer Website",
+    "mainPages": "Hauptseiten",
+    "servicesHeading": "Dienstleistungen",
+    "solutionsHeading": "Lösungen",
+    "blogPosts": "Blogbeiträge",
+    "openPositions": "Offene Stellen",
+    "noBlogPosts": "Noch keine Blogbeiträge veröffentlicht.",
+    "noOpenPositions": "Derzeit keine offenen Stellen.",
+    "xmlSitemapText": "Suchen Sie die XML-Sitemap für Suchmaschinen?",
+    "viewSitemapXml": "sitemap.xml anzeigen",
+    "pageHome": "Startseite",
+    "pageAbout": "Über uns",
+    "pageContact": "Kontakt",
+    "pageBlog": "Blog",
+    "pageCalculator": "Effizienzrechner",
+    "pageCareers": "Karriere",
+    "pageFaq": "FAQ",
+    "pageTeam": "Unser Team",
+    "pageTestimonials": "Referenzen",
+    "pageDataSecurity": "Datensicherheit",
+    "pagePrivacyPolicy": "Datenschutzerklärung",
+    "pageTerms": "Allgemeine Geschäftsbedingungen",
+    "pageServices": "Unsere Dienstleistungen",
+    "pageDedicatedTeams": "Dedizierte Teams",
+    "pageOnDemand": "On-Demand-Support",
+    "pageBusinessCare": "Business Care Pläne",
+    "pageSolutions": "Lösungsübersicht",
+    "pageInsurance": "Versicherung",
+    "pageFinance": "Finanzen & Buchhaltung",
+    "pageHR": "Personalmanagement",
+    "pageCompliance": "Compliance & Verwaltung",
+    "pageTechnology": "Technologie"
+  },
+  "Blog": {
+    "meta": {
+      "title": "Blog | Backsure Global Support",
+      "description": "Entdecken Sie die neuesten Brancheneinblicke, Trends und Strategien für Unternehmensunterstützung von Backsure Global Support."
+    },
+    "heroTitle": "Einblicke & Ressourcen",
+    "heroSubtitle": "Entdecken Sie die neuesten Einblicke, Branchentrends und Expertentipps, um Ihr Unternehmen voranzubringen.",
+    "searchPlaceholder": "Artikel suchen...",
+    "searchButton": "Suchen",
+    "allCategories": "Alle Kategorien",
+    "activeFilters": "Aktive Filter:",
+    "categoryLabel": "Kategorie:",
+    "tagLabel": "Tag:",
+    "searchLabel": "Suche:",
+    "clearAll": "Alle löschen",
+    "clearFilters": "Filter löschen",
+    "showing": "Zeige {from} - {to} von {total} Artikeln",
+    "featured": "Empfohlen",
+    "views": "{count} Aufrufe",
+    "noArticlesFiltered": "Keine Artikel gefunden, die Ihren Filtern entsprechen.",
+    "noArticlesYet": "Noch keine Artikel veröffentlicht. Schauen Sie bald wieder vorbei!",
+    "previous": "Zurück",
+    "next": "Weiter"
+  },
+  "BlogDetail": {
+    "backToBlog": "Zurück zum Blog",
+    "views": "{count} Aufrufe",
+    "minRead": "{minutes} Min. Lesezeit",
+    "relatedArticles": "Verwandte Artikel",
+    "ctaTitle": "Bereit, Ihre Geschäftsabläufe zu transformieren?",
+    "ctaDescription": "Kontaktieren Sie uns noch heute, um zu erfahren, wie BSG Support Ihrem Unternehmen beim Wachstum helfen kann.",
+    "ctaButton": "Kontakt aufnehmen",
+    "postNotFound": "Beitrag nicht gefunden"
+  },
+  "Careers": {
+    "meta": {
+      "title": "Karriere",
+      "description": "Werden Sie Teil von BSG Support – Aktuelle Stellenangebote ansehen und heute bewerben"
+    },
+    "heroTitle": "Karriere bei BSG Support",
+    "heroSubtitle": "Auf der Suche nach einer sinnvollen Karriere?",
+    "intro": "BSG Support stellt nicht einfach nur Mitarbeiter ein — wir bilden zukünftige Führungskräfte in der Branche für Unternehmensunterstützung aus. Arbeiten Sie mit führenden Versicherungsunternehmen in der MENA-Region. Wenn Sie leidenschaftlich, engagiert und bereit sind, in einem kollaborativen Umfeld zu wachsen, möchten wir von Ihnen hören.",
+    "currentOpenings": "Aktuelle Stellenangebote",
+    "featured": "Empfohlen",
+    "viewDetails": "Details anzeigen",
+    "applyNow": "Jetzt bewerben",
+    "noCurrentOpenings": "Keine aktuellen Stellenangebote",
+    "noOpeningsDesc": "Wir haben derzeit keine offenen Stellen, aber wir suchen immer nach talentierten Mitarbeitern. Reichen Sie Ihren Lebenslauf ein und wir werden Sie für zukünftige Möglichkeiten berücksichtigen.",
+    "whatWeOffer": "Was wir bieten",
+    "benefit1": "Wettbewerbsfähiges Gehalt + leistungsbasierte Anreize",
+    "benefit2": "Vorsorgefonds & Sozialversicherung",
+    "benefit3": "Abfindung (gemäß Gesetz)",
+    "benefit4": "Bezahlter Urlaub & Erholungsurlaub",
+    "benefit5": "Krankenversicherungsschutz",
+    "benefit6": "Jahresbonus (basierend auf Unternehmensleistung)",
+    "benefit7": "Karrierewege & interne Beförderungen",
+    "benefit8": "Mitarbeiter-Wellnessprogramme",
+    "benefit9": "Schulungen am Arbeitsplatz & Zertifizierungen",
+    "benefit10": "Unterstützendes Arbeitsumfeld mit Teamfeiern",
+    "howToApply": "So bewerben Sie sich",
+    "ourValues": "Unsere Werte",
+    "excellenceTitle": "Exzellenz",
+    "excellenceDesc": "Wir streben in allem nach Exzellenz, vom Kundenservice bis zur Problemlösung.",
+    "integrityTitle": "Integrität",
+    "integrityDesc": "Wir arbeiten mit Transparenz und Ehrlichkeit in allen unseren Beziehungen.",
+    "innovationTitle": "Innovation",
+    "innovationDesc": "Wir setzen auf kreative Lösungen und verbessern kontinuierlich unsere Prozesse.",
+    "collaborationTitle": "Zusammenarbeit",
+    "collaborationDesc": "Wir glauben an Teamarbeit und gegenseitige Unterstützung, um gemeinsame Ziele zu erreichen."
+  },
+  "CareersForm": {
+    "applicationReceived": "Bewerbung erhalten!",
+    "thankYou": "Vielen Dank für Ihr Interesse. Unser HR-Team wird Ihre Bewerbung prüfen und sich bei Ihnen melden.",
+    "submitAnother": "Weitere Bewerbung einreichen",
+    "firstName": "Vorname",
+    "lastName": "Nachname",
+    "email": "E-Mail-Adresse",
+    "phone": "Telefonnummer",
+    "positionLabel": "Position, auf die Sie sich bewerben",
+    "selectPosition": "Position auswählen...",
+    "generalApplication": "Allgemeine Bewerbung",
+    "generalApplicationOther": "Allgemeine Bewerbung (Sonstige)",
+    "resumeLabel": "Lebenslauf hochladen (PDF, DOC, DOCX - Max 5MB)",
+    "submitApplication": "Bewerbung einreichen"
+  },
+  "JobDetail": {
+    "backToJobs": "Zurück zu allen Stellen",
+    "featuredPosition": "Empfohlene Position",
+    "aboutRole": "Über die Rolle",
+    "requirements": "Anforderungen",
+    "whatWeOffer": "Was wir bieten",
+    "applyForPosition": "Für diese Position bewerben",
+    "applicationSubmitted": "Bewerbung eingereicht!",
+    "willReview": "Wir werden Ihre Bewerbung prüfen und uns in Kürze bei Ihnen melden.",
+    "firstName": "Vorname",
+    "lastName": "Nachname",
+    "emailLabel": "E-Mail",
+    "phoneLabel": "Telefon",
+    "resumeLabel": "Lebenslauf (PDF, DOC, DOCX)",
+    "submitApplication": "Bewerbung einreichen"
+  },
+  "Meeting": {
+    "stepDate": "Datum wählen",
+    "stepTime": "Uhrzeit wählen",
+    "stepDetails": "Ihre Angaben",
+    "stepConfirmed": "Bestätigt",
+    "selectDate": "Datum auswählen",
+    "selectDateDesc": "Wählen Sie ein verfügbares Datum für Ihr 30-minütiges Meeting",
+    "sun": "So",
+    "mon": "Mo",
+    "tue": "Di",
+    "wed": "Mi",
+    "thu": "Do",
+    "fri": "Fr",
+    "sat": "Sa",
+    "available": "Verfügbar",
+    "unavailable": "Nicht verfügbar",
+    "backToCalendar": "Zurück zum Kalender",
+    "selectTime": "Uhrzeit auswählen",
+    "minMeeting": "30 Min. Meeting",
+    "local": "lokal",
+    "noSlots": "Keine verfügbaren Zeitfenster für dieses Datum.",
+    "chooseAnotherDate": "Anderes Datum wählen",
+    "backToTime": "Zurück zur Zeitauswahl",
+    "yourDetails": "Ihre Angaben",
+    "uae": "VAE",
+    "yourLocalTime": "Ihre Ortszeit",
+    "fullName": "Vollständiger Name",
+    "emailAddress": "E-Mail-Adresse",
+    "phoneNumber": "Telefonnummer",
+    "companyName": "Firmenname",
+    "meetingPurpose": "Zweck des Meetings (Optional)",
+    "purposePlaceholder": "Kurze Beschreibung, was Sie besprechen möchten...",
+    "confirmBooking": "Buchung bestätigen",
+    "meetingConfirmed": "Meeting bestätigt!",
+    "successfullyScheduled": "Ihr Meeting wurde erfolgreich geplant",
+    "dateLabel": "Datum",
+    "timeUAE": "Uhrzeit (VAE)",
+    "yourLocalTimeLabel": "Ihre Ortszeit",
+    "duration": "Dauer",
+    "thirtyMinutes": "30 Minuten",
+    "confirmationEmail": "Eine Bestätigungs-E-Mail wurde an Ihr Postfach gesendet.",
+    "scheduleAnother": "Weiteres Meeting planen"
+  },
+  "Calculator": {
+    "meta": {
+      "title": "Team-Effizienzrechner | Backsure Global Support",
+      "description": "Berechnen Sie Ihre Teameffizienz-Einsparungen mit BSG. Entdecken Sie, wie das Outsourcing operativer Aufgaben Kosten senken und die Produktivität Ihres Versicherungs- oder Finanzteams verbessern kann."
+    },
+    "pageTitle": "BSG Team-Effizienzrechner",
+    "heroTitle1": "Berechnen Sie Ihre",
+    "heroTitle2": "Kosteneinsparungen",
+    "heroTitle3": "in 1 Minute",
+    "heroDesc": "Entdecken Sie, wie viel Sie durch das Outsourcing Ihrer Back-Office-Operationen an BSG sparen könnten. Unser Rechner analysiert Ihre aktuellen Kosten und zeigt Ihnen die möglichen Einsparungen.",
+    "badgeQuick": "Schnell & Einfach",
+    "badgeFree": "Kostenlose Analyse",
+    "badgeNoCommit": "Keine Verpflichtung",
+    "statSavings": "Durchschnittliche Einsparungen",
+    "statClients": "Kunden weltweit",
+    "statCountries": "Bediente Länder",
+    "getStarted": "Loslegen",
+    "getStartedDesc": "Wählen Sie Ihr Land und Team, um zu beginnen",
+    "selectCountry": "Wählen Sie Ihr Land",
+    "currencyAutoSet": "Währung automatisch eingestellt auf",
+    "selectTeam": "Wählen Sie Ihr Team",
+    "bsgServicesFor": "BSG-Dienstleistungen für {team}",
+    "startCalculating": "Berechnung starten",
+    "step0": "Land & Teamauswahl",
+    "step1": "Rolle, Teamgröße & Reifegrad",
+    "step2": "Kostenübersicht",
+    "step3": "Aufgabenverteilung",
+    "step4": "Team-Diagnostik",
+    "step5": "Ziele & Zeitplan",
+    "step6": "Kontaktinformationen",
+    "sub0": "Wählen Sie Ihr Land und operatives Team",
+    "sub1": "Definieren Sie Rollenstufe, Teamgröße und Prozessreife",
+    "sub2": "Überprüfen und passen Sie Ihre Kostenstruktur an",
+    "sub3": "Passen Sie die Zeitverteilung auf Aufgaben an",
+    "sub4": "Bewerten Sie die Prozessgesundheit Ihres Teams",
+    "sub5": "Legen Sie Ihre Optimierungsziele und den Zeitplan fest",
+    "sub6": "Geben Sie Ihre Daten ein, um Ihre Analyse zu erhalten",
+    "stepOf": "Schritt {current} von {total}",
+    "selectRoleLevel": "Rollenstufe wählen",
+    "perYear": "/Jahr",
+    "bsgRate": "BSG-Rate: {rate}% des Gehalts",
+    "teamSize": "Teamgröße *",
+    "teamMaturity": "Team-Prozessreife",
+    "maturityDesc": "Dies bestimmt den empfohlenen BSG-Ansatz",
+    "annualSalary": "Jährliches Grundgehalt",
+    "defaultFor": "Standard für {role} in {country}",
+    "otherCosts": "Sonstige / Zusätzliche Kosten",
+    "includes": "Enthält",
+    "custom": "Benutzerdefiniert",
+    "baseSalary": "Grundgehalt",
+    "totalOverheads": "Gesamte Gemeinkosten",
+    "trueCost": "Tatsächliche Kosten",
+    "overheadRatio": "Gemeinkostenquote",
+    "taskAllocDesc": "Passen Sie die Aufgabenzeitverteilung für Ihr {team} an. Gesamt sollte ~100% sein.",
+    "total": "Gesamt: {pct}%",
+    "valid": "Gültig",
+    "adjustTo100": "(Auf ~100% anpassen)",
+    "bestPractice": "Best Practice",
+    "mixed": "Gemischt",
+    "needsWork": "Verbesserungsbedarf",
+    "best": "Beste",
+    "risk": "Risiko",
+    "answeredOf": "{answered} von {total} beantwortet",
+    "primaryGoal": "Primäres Ziel",
+    "targetEfficiency": "Zieleffizienz",
+    "standard": "Standard",
+    "highPerformance": "Hochleistung",
+    "premium": "Premium",
+    "implTimeline": "Umsetzungszeitplan",
+    "threeMonths": "3 Monate",
+    "sixMonths": "6 Monate",
+    "twelveMonths": "12 Monate",
+    "fastTrack": "Schnellspur",
+    "standardTimeline": "Standard",
+    "comprehensive": "Umfassend",
+    "completedOf": "{done} von 3 abgeschlossen",
+    "contactDesc": "Geben Sie Ihre Daten ein, um Ihre personalisierte Analyse zu erhalten. Unser Team wird Sie innerhalb von 24 Stunden kontaktieren.",
+    "fullName": "Vollständiger Name *",
+    "companyEmail": "Firmen-E-Mail *",
+    "companyEmailHint": "Nur Firmen-E-Mail (kein Gmail, Yahoo usw.)",
+    "companyName": "Firmenname *",
+    "mobileNumber": "Handynummer *",
+    "analysisSummary": "Ihre Analyse-Zusammenfassung",
+    "noTeamSelected": "Kein Team ausgewählt",
+    "noRole": "Keine Rolle",
+    "staff": "Mitarbeiter",
+    "currency": "Währung",
+    "previous": "Zurück",
+    "next": "Weiter",
+    "calculateResults": "Ergebnisse berechnen",
+    "requiredFields": "Bitte füllen Sie alle Pflichtfelder aus, bevor Sie fortfahren.",
+    "resultsTitle": "Ihre Effizienzanalyse",
+    "backToCalculator": "Zurück zum Rechner",
+    "downloadPDF": "PDF-Bericht herunterladen",
+    "preparingPDF": "PDF wird vorbereitet...",
+    "talkToExpert": "Mit einem Experten sprechen",
+    "getInTouch": "Kontakt aufnehmen",
+    "reportFor": "{goal} Bericht — {team}",
+    "preparedFor": "Erstellt für {company} · {country} · {size} Mitarbeiter · {currency}",
+    "maturityBadge": "{level} Reifegrad",
+    "goalNarrative": "Basierend auf Ihren Diagnosedaten empfiehlt BSG eine Partnerschaft",
+    "goalNarrativeFor": "für Ihr {size}-Personen-{team}.",
+    "currentEffLabel": "Ihr aktuelles Team arbeitet mit",
+    "efficiencyWith": "Effizienz bei",
+    "annualCostLabel": "jährlichen Kosten.",
+    "bsgCanDeliver": "BSG kann",
+    "efficiencyAt": "Effizienz liefern bei",
+    "savingAnnually": "mit Einsparungen von {amount} jährlich",
+    "qualityInvestmentOf": "mit einer zusätzlichen Qualitätsinvestition von {amount}",
+    "whileReclaiming": "bei gleichzeitiger Rückgewinnung von {hours} Stunden pro Woche.",
+    "diagnosticFindings": "Diagnoseergebnisse",
+    "diagnosticFindingsDesc": "Prozessineffizienzen, die aus Ihrer Teambewertung identifiziert wurden",
+    "impactHigh": "HOCH",
+    "impactMedium": "MITTEL",
+    "impactOk": "OK",
+    "minPerWeek": "Min/Wo",
+    "noDiagnosticFindings": "Keine Diagnoseergebnisse aufgezeichnet.",
+    "taskHandoverMap": "Aufgabenübergabe-Plan",
+    "taskHandoverDesc": "Wie die Verantwortlichkeiten zwischen BSG und Ihrem Team aufgeteilt werden",
+    "bsgAbsorbs": "BSG übernimmt ({pct}% — {hours}h/Wo)",
+    "clientRetains": "Kunde behält ({pct}% — {hours}h/Wo)",
+    "taskHandoverNote": "Die Prozentsätze der Aufgabenübergabe basieren auf Ihrer Diagnosebewertung. BSG übernimmt administrative und prozessintensive Aufgaben, während Ihr Team strategische Entscheidungsfindung und kundenorientierte Verantwortlichkeiten behält.",
+    "noteLabel": "Hinweis:",
+    "financialImpact": "Finanzielle Auswirkung",
+    "financialImpactDesc": "Kostenvergleich: aktuell vs. BSG-Partnerschaft",
+    "annualSavingsLabel": "Ihre jährlichen Einsparungen",
+    "qualityInvestment": "Qualitätsinvestition",
+    "currentTeamCost": "Aktuelle Teamkosten: {amount}",
+    "bsgPartnershipCost": "BSG-Partnerschaftskosten: {amount}",
+    "savingsRange": "Einsparungsspanne: {min} – {max}",
+    "bsgInvestment": "BSG-Investition",
+    "perEmployeeYr": "Pro Mitarbeiter: {amount}/Jahr",
+    "bsgRateLabel": "BSG-Rate: {rate}% des Grundgehalts",
+    "efficiencyGuarantee": "Effizienzgarantie: {pct}%",
+    "investmentLabel": "Investition",
+    "savingsLabel": "Einsparungen",
+    "upliftLabel": "Aufwertung",
+    "roiLabel": "ROI",
+    "efficiencyLabel": "Effizienz",
+    "perEmployeeCostBreakdown": "Kostenübersicht pro Mitarbeiter ({country})",
+    "trueCostPerEmployee": "Tatsächliche Kosten pro Mitarbeiter",
+    "implementationRoadmap": "Umsetzungsfahrplan",
+    "accruedSavings": "Aufgelaufene Einsparungen: {amount}",
+    "methodology": "Methodik & Einschränkungen",
+    "methodologyDesc": "Wie diese Zahlen berechnet wurden",
+    "countryModel": "Ländermodell:",
+    "bsgRateNote": "BSG-Rate: {rate}% des Grundgehalts (länder- und rollenspezifisch). Für BSG-verwaltete Mitarbeiter fallen keine Gemeinkosten an.",
+    "inefficiencyScore": "Ineffizienzwert: Abgeleitet aus {count} Diagnosefragen, gewichtet nach Wichtigkeit, begrenzt auf maximal 20% Produktivitätsverlust.",
+    "maturityAdjustment": "Reifegradanpassung: Stufe {level} ({label}) fügt einen {modifier}%-Modifikator zur Produktivitätsverlustberechnung hinzu.",
+    "savingsRangeNote": "Einsparungsspanne: ±10% der zentralen Schätzung zur Berücksichtigung realer Variabilität.",
+    "methodologyDisclaimer": "Diese Analyse liefert indikative Schätzungen basierend auf selbst berichteten Daten. Tatsächliche Ergebnisse können abweichen. BSG-Effizienzgarantien sind vertragliche Mindeststandards. Kostenkategorien folgen den gesetzlichen Anforderungen von {country}, soweit zutreffend. Währung: {currency}. Alle Zahlen sind jährlich, sofern nicht anders angegeben.",
+    "importantLabel": "Wichtig:",
+    "transformOperations": "Transformieren Sie Ihre {team}-Operationen",
+    "submittingAnalysis": "Ihre Analyse wird übermittelt...",
+    "submitSuccess": "Vielen Dank! Unser Team wird Sie innerhalb von 24 Stunden kontaktieren, um Ihre Optimierungsmöglichkeiten zu besprechen.",
+    "pdfAnalysis": "Analyse",
+    "pdfKeyMetrics": "Schlüsselkennzahlen",
+    "pdfBsgRecommends": "BSG empfiehlt eine Partnerschaft {narrative} für Ihr {size}-Personen-{team}.",
+    "pdfCurrentEfficiency": "Aktuelle Effizienz: {pct}% bei {cost}/Jahr.",
+    "pdfWithBsg": "Mit BSG: {pct}% bei {cost}/Jahr",
+    "pdfSaving": ", Einsparung von {amount}",
+    "pdfFinancialSummary": "Finanzzusammenfassung",
+    "pdfAnnualSavings": "Jährliche Einsparungen",
+    "pdfRange": "Spanne: {min} — {max}",
+    "pdfPerEmployee": "Pro Mitarbeiter: {amount}/Jahr",
+    "pdfMetric": "Kennzahl",
+    "pdfCurrent": "Aktuell",
+    "pdfWithBSG": "Mit BSG",
+    "pdfChange": "Änderung",
+    "pdfAnnualCost": "Jährliche Kosten",
+    "pdfHoursWasted": "Verlorene Stunden/Wo",
+    "pdfImplementationRoadmap": "Umsetzungsfahrplan ({maturity} Reifegrad)",
+    "pdfSavingsLabel": "Einsparungen: {amount}",
+    "pdfMethodology": "Methodik:",
+    "pdfBsgRateNote": "BSG-Rate: {rate}% des Grundgehalts.",
+    "pdfInefficiencyCapped": "Ineffizienz begrenzt auf 20%. Reifegrad {level} ({label}).",
+    "pdfSavingsRangeNote": "Einsparungsspanne: +/-10%. Währung: {currency}.",
+    "pdfDisclaimer": "Diese Analyse liefert indikative Schätzungen. Tatsächliche Ergebnisse können abweichen.",
+    "pdfReportGenerated": "Bericht erstellt am {date}",
+    "pdfFinancialImpact": "Finanzielle Auswirkung & Kostenanalyse",
+    "currencies": {
+      "AED": {
+        "name": "VAE-Dirham"
+      },
+      "USD": {
+        "name": "US-Dollar"
+      },
+      "EUR": {
+        "name": "Euro"
+      },
+      "GBP": {
+        "name": "Britisches Pfund"
+      },
+      "SAR": {
+        "name": "Saudi-Rial"
+      },
+      "QAR": {
+        "name": "Katarischer Rial"
+      },
+      "AUD": {
+        "name": "Australischer Dollar"
+      }
+    },
+    "roles": {
+      "junior": {
+        "name": "Junior-Stufe",
+        "subtitle": "Verwaltung, Supportmitarbeiter"
+      },
+      "mid": {
+        "name": "Mittlere Stufe",
+        "subtitle": "Buchhalter, HR-Manager"
+      },
+      "senior": {
+        "name": "Senior-Stufe",
+        "subtitle": "Finanzmanager, Operations-Leiter"
+      }
+    },
+    "costTypes": {
+      "flat": "Festkosten",
+      "pct": "Prozentsatz",
+      "formula": "Formel",
+      "leave_flight": "Urlaub & Reise",
+      "pct_thresh": "Schwellenwert %",
+      "pct_band": "Band %",
+      "futa": "FUTA",
+      "custom": "Benutzerdefiniert",
+      "pct_opt": "Optional %"
+    },
+    "teams": {
+      "sales": {
+        "name": "Vertrieb & Geschäftsentwicklung",
+        "description": "Leadgenerierung, Pipeline, Angebote",
+        "bsgServices": {
+          "0": "Nachverfolgungsplanung",
+          "1": "Angebotsformatierung & Vorlagen",
+          "2": "CRM-Datenverwaltung",
+          "3": "Meeting-Koordination"
+        },
+        "tasks": {
+          "lead_generation": "Leadgenerierung & Akquise",
+          "client_meetings": "Kundengespräche & Präsentationen",
+          "proposal_creation": "Angebotserstellung & Dokumentation",
+          "follow_up": "Nachverfolgung & Beziehungsmanagement",
+          "admin_sales": "Verwaltungsaufgaben"
+        },
+        "questions": {
+          "0": {
+            "question": "Wie oft werden Nachverfolgungen verpasst oder verzögert?",
+            "options": {
+              "0": "Nie — Automatisierte Systeme",
+              "1": "Manchmal — Manuelle Nachverfolgung",
+              "2": "Oft — Kein systematischer Ansatz"
+            }
+          },
+          "1": {
+            "question": "Werden Angebote aus Vorlagen oder von Grund auf erstellt?",
+            "options": {
+              "0": "Immer mit Vorlagen",
+              "1": "Teilweise vorlagenbasiert",
+              "2": "Jedes Mal manuell erstellt"
+            }
+          },
+          "2": {
+            "question": "Ist die CRM-Dateneingabe automatisiert oder manuell?",
+            "options": {
+              "0": "Vollständig automatisiert",
+              "1": "Gemischter Ansatz",
+              "2": "Komplett manuell"
+            }
+          },
+          "3": {
+            "question": "Wie oft müssen Meetings wegen Konflikten verschoben werden?",
+            "options": {
+              "0": "Selten — Gute Koordination",
+              "1": "Manchmal — Manuelle Planung",
+              "2": "Oft — Schlechte Koordination"
+            }
+          },
+          "4": {
+            "question": "Wird die Kundenkommunikation systematisch nachverfolgt?",
+            "options": {
+              "0": "Immer automatisch nachverfolgt",
+              "1": "Gemischte Nachverfolgung",
+              "2": "Nicht systematisch nachverfolgt"
+            }
+          }
+        }
+      },
+      "operations": {
+        "name": "Operations-Team",
+        "description": "Antrags- & Fallbearbeitung, Prüfung, Entscheidungen",
+        "bsgServices": {
+          "0": "Dokumentensammlung",
+          "1": "Falldatenzusammenstellung",
+          "2": "Vorlagenvorbereitung",
+          "3": "Stakeholder-Koordination"
+        },
+        "tasks": {
+          "case_assessment": "Fallbewertung & Analyse",
+          "application_review": "Antrags- & Vertragsprüfung",
+          "documentation": "Dokumentation & Berichterstattung",
+          "stakeholder_communication": "Stakeholder-Kommunikation",
+          "admin_operations": "Verwaltungsaufgaben"
+        },
+        "questions": {
+          "0": {
+            "question": "Wie oft verzögern sich Fallprüfungen wegen fehlender Informationen?",
+            "options": {
+              "0": "Nie — Vollständige Daten vorab",
+              "1": "Manchmal — Geringfügige Verzögerungen",
+              "2": "Oft — Erhebliche Verzögerungen"
+            }
+          },
+          "1": {
+            "question": "Ist die Antrags- oder Falldateneingabe automatisiert oder manuell?",
+            "options": {
+              "0": "Vollständig automatisierte Systeme",
+              "1": "Teilweise automatisiert",
+              "2": "Komplett manuelle Eingabe"
+            }
+          },
+          "2": {
+            "question": "Wie oft überprüfen Sie dieselben Fälle mehrfach?",
+            "options": {
+              "0": "Nie — Klare Richtlinien",
+              "1": "Manchmal — Unklare Fälle",
+              "2": "Oft — Keine klaren Standards"
+            }
+          },
+          "3": {
+            "question": "Sind Fallnotizen und Entscheidungen klar dokumentiert?",
+            "options": {
+              "0": "Immer — Standardisiertes Format",
+              "1": "Meistens — Einige Lücken",
+              "2": "Schlecht dokumentiert"
+            }
+          },
+          "4": {
+            "question": "Wie reibungslos sind Übergaben zwischen Operations und anderen Teams?",
+            "options": {
+              "0": "Nahtlos — Klarer Prozess",
+              "1": "Etwas Reibung",
+              "2": "Häufige Missverständnisse"
+            }
+          }
+        }
+      },
+      "service_delivery": {
+        "name": "Service Delivery",
+        "description": "Anfrage- & Auftragsbearbeitung, Erfüllung, Lösung",
+        "bsgServices": {
+          "0": "Anfragedokumentation",
+          "1": "Kundenstatuskoordination",
+          "2": "Dokumentenverifizierung",
+          "3": "Lösungsdokumentation"
+        },
+        "tasks": {
+          "request_processing": "Anfragebearbeitung & Prüfung",
+          "customer_communication": "Kundenkommunikation",
+          "documentation_sd": "Dokumentation & Aufzeichnungen",
+          "resolution": "Lösung & Erfüllung",
+          "admin_sd": "Verwaltungsaufgaben"
+        },
+        "questions": {
+          "0": {
+            "question": "Wie oft gehen erforderliche Dokumente verloren oder verzögern sich?",
+            "options": {
+              "0": "Nie — Digitale Nachverfolgung",
+              "1": "Manchmal — Manuelle Nachverfolgung",
+              "2": "Oft — Schlechte Dokumentation"
+            }
+          },
+          "1": {
+            "question": "Sind Anfrage- oder Ticketstatus-Updates automatisiert oder manuell?",
+            "options": {
+              "0": "Vollständig automatisiert",
+              "1": "Teilweise automatisiert",
+              "2": "Komplett manuell"
+            }
+          },
+          "2": {
+            "question": "Wie oft fragen Kunden nach Status-Updates?",
+            "options": {
+              "0": "Selten — Proaktive Updates",
+              "1": "Manchmal",
+              "2": "Sehr oft — Schlechte Kommunikation"
+            }
+          },
+          "3": {
+            "question": "Wird die Dokumentenverifizierung manuell oder automatisiert durchgeführt?",
+            "options": {
+              "0": "Automatische Verifizierung",
+              "1": "Teilautomatisiert",
+              "2": "Komplett manuell"
+            }
+          },
+          "4": {
+            "question": "Wie oft verzögern sich Anfragen wegen fehlender Informationen?",
+            "options": {
+              "0": "Selten — Vollständige Einreichungen",
+              "1": "Manchmal",
+              "2": "Häufig — Schlechte Erstprüfung"
+            }
+          }
+        }
+      },
+      "customer_service": {
+        "name": "Kundenservice",
+        "description": "Anfragen, Kontoänderungen, Verlängerungen, Beschwerden",
+        "bsgServices": {
+          "0": "Anfragebearbeitung",
+          "1": "Kontoänderungsverarbeitung",
+          "2": "Verlängerungskoordination",
+          "3": "Beschwerdeverfolgung"
+        },
+        "tasks": {
+          "customer_inquiries": "Kundenanfragen & Support",
+          "account_changes": "Konto- & Vertragsänderungen",
+          "renewals": "Kontoverlängerungen & Kundenbindung",
+          "complaint_handling": "Beschwerdebearbeitung",
+          "admin_cs": "Verwaltungsaufgaben"
+        },
+        "questions": {
+          "0": {
+            "question": "Wie schnell reagieren Sie auf Kundenanfragen?",
+            "options": {
+              "0": "Sofort — Automatische Antworten",
+              "1": "Innerhalb von Stunden — Manuelle Nachverfolgung",
+              "2": "Tage — Kein systematischer Ansatz"
+            }
+          },
+          "1": {
+            "question": "Ist die Beschwerdeverfolgung automatisiert oder manuell?",
+            "options": {
+              "0": "Vollautomatisches System",
+              "1": "Teilweise verfolgt",
+              "2": "Manuelle Tabellen"
+            }
+          },
+          "2": {
+            "question": "Wie werden Konto- oder Vertragsänderungen verarbeitet?",
+            "options": {
+              "0": "Automatisierter Workflow",
+              "1": "Teilautomatisiert",
+              "2": "Komplett manuell"
+            }
+          },
+          "3": {
+            "question": "Wie oft wiederholen Kunden dieselben Informationen gegenüber verschiedenen Mitarbeitern?",
+            "options": {
+              "0": "Nie — Gemeinsames System",
+              "1": "Manchmal",
+              "2": "Oft — Kein Informationsaustausch"
+            }
+          },
+          "4": {
+            "question": "Werden Kundeninteraktionen systematisch protokolliert?",
+            "options": {
+              "0": "Immer — Automatische Protokollierung",
+              "1": "Meistens — Manuelle Notizen",
+              "2": "Inkonsistente Protokollierung"
+            }
+          }
+        }
+      },
+      "finance": {
+        "name": "Finanzen & Buchhaltung",
+        "description": "Buchhaltung, Berichte, Rechnungsstellung, Abstimmungen",
+        "bsgServices": {
+          "0": "Rechnungsbearbeitung & Kreditoren/Debitoren",
+          "1": "Buchhaltungsunterstützung",
+          "2": "Berichtsvorbereitung",
+          "3": "Zahlungsnachverfolgung"
+        },
+        "tasks": {
+          "accounting": "Buchhaltung & Kontoführung",
+          "financial_reporting": "Finanzberichterstattung",
+          "billing_collections": "Rechnungsstellung & Forderungseinzug",
+          "financial_analysis": "Finanzanalyse",
+          "regulatory_reporting": "Regulatorische Berichterstattung"
+        },
+        "questions": {
+          "0": {
+            "question": "Wie oft erfordern Kontenabstimmungen manuelle Eingriffe?",
+            "options": {
+              "0": "Nie — Vollständig automatisiert",
+              "1": "Manchmal — Teilautomatisiert",
+              "2": "Oft — Überwiegend manuell"
+            }
+          },
+          "1": {
+            "question": "Werden Finanzberichte automatisch oder manuell erstellt?",
+            "options": {
+              "0": "Vollständig automatisiert",
+              "1": "Teilweise automatisiert",
+              "2": "Manuelle Zusammenstellung"
+            }
+          },
+          "2": {
+            "question": "Wie oft werden Zahlungserinnerungen verpasst?",
+            "options": {
+              "0": "Nie — Automatische Erinnerungen",
+              "1": "Manchmal — Manuelle Nachverfolgung",
+              "2": "Oft — Keine systematische Nachverfolgung"
+            }
+          },
+          "3": {
+            "question": "Wie häufig treten Rechnungsfehler auf?",
+            "options": {
+              "0": "Selten — Automatische Validierung",
+              "1": "Manchmal",
+              "2": "Oft — Manuelle Prozesse"
+            }
+          },
+          "4": {
+            "question": "Ist die Ausgabenverfolgung automatisiert oder manuell?",
+            "options": {
+              "0": "Vollständig automatisiert",
+              "1": "Teilautomatisiert",
+              "2": "Manuelle Tabellen"
+            }
+          }
+        }
+      },
+      "compliance": {
+        "name": "Compliance & Risiko",
+        "description": "Regulierungsüberwachung, Audit-Unterstützung, Berichterstattung",
+        "bsgServices": {
+          "0": "Dokumentenzusammenstellung",
+          "1": "Compliance-Verfolgung",
+          "2": "Audit-Vorbereitung",
+          "3": "Verfahrensaktualisierungen"
+        },
+        "tasks": {
+          "regulatory_monitoring": "Regulierungsüberwachung",
+          "compliance_reporting": "Compliance-Berichterstattung",
+          "audit_support": "Audit-Unterstützung",
+          "procedure_updates": "Verfahrens- & Prozessaktualisierungen",
+          "training_compliance": "Schulung & Kommunikation"
+        },
+        "questions": {
+          "0": {
+            "question": "Wie viel Zeit wird für die Audit-Vorbereitung aufgewendet?",
+            "options": {
+              "0": "Minimal — Immer audit-bereit",
+              "1": "Moderate Vorbereitung nötig",
+              "2": "Umfangreiche Vorbereitung erforderlich"
+            }
+          },
+          "1": {
+            "question": "Werden Compliance-Protokolle automatisch geführt?",
+            "options": {
+              "0": "Vollautomatische Protokollierung",
+              "1": "Teilweise automatisiert",
+              "2": "Manuelle Aufzeichnungen"
+            }
+          },
+          "2": {
+            "question": "Wie oft werden regulatorische Updates verpasst oder verzögert?",
+            "options": {
+              "0": "Nie — Automatische Benachrichtigungen",
+              "1": "Manchmal — Manuelle Überwachung",
+              "2": "Oft — Schlechte Nachverfolgung"
+            }
+          },
+          "3": {
+            "question": "Erleben Sie Alarm-Müdigkeit durch Compliance-Systeme?",
+            "options": {
+              "0": "Nein — Intelligente Filterung",
+              "1": "Manchmal — Zu viele Alarme",
+              "2": "Oft — Informationsüberflutung"
+            }
+          },
+          "4": {
+            "question": "Ist die regulatorische Berichterstattung automatisiert oder manuell?",
+            "options": {
+              "0": "Vollständig automatisiert",
+              "1": "Teilautomatisiert",
+              "2": "Manuelle Zusammenstellung"
+            }
+          }
+        }
+      },
+      "it_support": {
+        "name": "IT-Support & Helpdesk",
+        "description": "Ticketbearbeitung, Systemverwaltung, Benutzer-Support",
+        "bsgServices": {
+          "0": "L1/L2 Helpdesk-Tickets",
+          "1": "Benutzerzugang & Onboarding",
+          "2": "Systemverwaltung & Wartung",
+          "3": "IT-Dokumentation"
+        },
+        "tasks": {
+          "ticket_handling": "L1/L2 Ticketbearbeitung",
+          "system_admin": "Systemverwaltung",
+          "user_onboarding": "Benutzer-Onboarding & Zugangsverwaltung",
+          "monitoring_reporting": "Überwachung & Berichterstattung",
+          "it_documentation": "Dokumentation & Verwaltung"
+        },
+        "questions": {
+          "0": {
+            "question": "Wie schnell werden IT-Support-Tickets durchschnittlich gelöst?",
+            "options": {
+              "0": "Innerhalb SLA — Automatische Triage",
+              "1": "Verzögerungen — Manuelle Priorisierung",
+              "2": "Oft überschritten — Kein klarer Prozess"
+            }
+          },
+          "1": {
+            "question": "Ist Ticket-Routing und Triage automatisiert oder manuell?",
+            "options": {
+              "0": "Vollautomatisches Routing",
+              "1": "Teilweise automatisiert",
+              "2": "Komplett manuelle Zuweisung"
+            }
+          },
+          "2": {
+            "question": "Wie oft kontaktieren Benutzer die IT mit wiederkehrenden Problemen?",
+            "options": {
+              "0": "Selten — Ursachen behoben",
+              "1": "Manchmal — Teilweise Behebung",
+              "2": "Häufig — Keine Ursachenanalyse"
+            }
+          },
+          "3": {
+            "question": "Werden Systemzugangsanfragen innerhalb vereinbarter Fristen bearbeitet?",
+            "options": {
+              "0": "Immer — Automatisierter Workflow",
+              "1": "Meistens — Manuelle Genehmigungen",
+              "2": "Oft verzögert — Kein klarer Prozess"
+            }
+          },
+          "4": {
+            "question": "Wird die IT-Dokumentation und Wissensdatenbank aktuell gehalten?",
+            "options": {
+              "0": "Immer — Systematisch gepflegt",
+              "1": "Teilweise — Einige Lücken",
+              "2": "Selten aktualisiert"
+            }
+          }
+        }
+      },
+      "hr_ops": {
+        "name": "HR & Personaloperationen",
+        "description": "Rekrutierungsverwaltung, Onboarding, Gehaltsabrechnungssupport",
+        "bsgServices": {
+          "0": "Rekrutierungsverwaltung & Lebenslauf-Screening",
+          "1": "Onboarding & Offboarding",
+          "2": "Gehaltsabrechnungs-Support",
+          "3": "L&D-Koordination"
+        },
+        "tasks": {
+          "recruitment": "Rekrutierung & Screening",
+          "onboarding": "Onboarding & Offboarding",
+          "payroll_support": "Gehaltsabrechnungs-Support",
+          "ld_coordination": "L&D-Koordination",
+          "hr_admin": "HR-Verwaltung"
+        },
+        "questions": {
+          "0": {
+            "question": "Wie viel HR-Zeit wird für manuelle Dateneingabe vs. strategische Arbeit aufgewendet?",
+            "options": {
+              "0": "Überwiegend strategisch — Systeme übernehmen Verwaltung",
+              "1": "Gemischt — Etwas manuelle Belastung",
+              "2": "Überwiegend Verwaltung — Wenig Zeit für Strategie"
+            }
+          },
+          "1": {
+            "question": "Ist der Onboarding-Prozess standardisiert und dokumentiert?",
+            "options": {
+              "0": "Vollständig standardisiert & automatisiert",
+              "1": "Teilweise standardisiert",
+              "2": "Ad-hoc, variiert je nach Manager"
+            }
+          },
+          "2": {
+            "question": "Wie oft treten Gehaltsabrechnungsfehler oder verspätete Einreichungen auf?",
+            "options": {
+              "0": "Selten — Automatische Validierung",
+              "1": "Manchmal — Manuelle Prüfungen nötig",
+              "2": "Oft — Überwiegend manueller Prozess"
+            }
+          },
+          "3": {
+            "question": "Werden Stellenausschreibungen und Lebenslauf-Screening manuell bearbeitet?",
+            "options": {
+              "0": "Automatisiert — ATS übernimmt Screening",
+              "1": "Teilweise automatisiert",
+              "2": "Komplett manuell — Kein ATS"
+            }
+          },
+          "4": {
+            "question": "Wird die HR-Berichterstattung manuell aus mehreren Quellen zusammengestellt?",
+            "options": {
+              "0": "Automatisch aus HRIS generiert",
+              "1": "Teilautomatisiert",
+              "2": "Manuelle Tabellenzusammenstellung"
+            }
+          }
+        }
+      },
+      "data_backoffice": {
+        "name": "Daten & Back Office",
+        "description": "Dateneingabe, Dokumentenverarbeitung, Qualitätsprüfungen",
+        "bsgServices": {
+          "0": "Dateneingabe & Validierung",
+          "1": "Dokumentenverarbeitung",
+          "2": "Qualitätskontrolle",
+          "3": "Berichterstattung & Zusammenstellung"
+        },
+        "tasks": {
+          "data_entry": "Dateneingabe & Validierung",
+          "document_processing": "Dokumentenverarbeitung & Indexierung",
+          "quality_control": "Qualitätskontrolle & Prüfung",
+          "reporting_compilation": "Berichterstattung & Datenzusammenstellung",
+          "admin_filing": "Verwaltung & Ablage"
+        },
+        "questions": {
+          "0": {
+            "question": "Wie viel Prozent der Dateneingabe ist manuell vs. automatisiert?",
+            "options": {
+              "0": "Überwiegend automatisiert — Minimale manuelle Eingabe",
+              "1": "Gemischt — Erhebliche manuelle Eingabe",
+              "2": "Vollständig manuelle Eingabe"
+            }
+          },
+          "1": {
+            "question": "Wie oft treten Datenfehler oder Nacharbeit durch manuelle Eingabe auf?",
+            "options": {
+              "0": "Selten — Automatische Validierung",
+              "1": "Manchmal — Stichproben nötig",
+              "2": "Häufig — Hohe Fehlerquote"
+            }
+          },
+          "2": {
+            "question": "Wie lange dauert die Dokumentenverarbeitung vom Eingang bis zur Fertigstellung?",
+            "options": {
+              "0": "Innerhalb SLA — Optimierter Workflow",
+              "1": "Manchmal verzögert",
+              "2": "Häufige Rückstände"
+            }
+          },
+          "3": {
+            "question": "Werden Qualitätsprüfungen manuell oder durch automatische Validierung durchgeführt?",
+            "options": {
+              "0": "Automatische Validierungsregeln",
+              "1": "Teilautomatisiert mit manueller Prüfung",
+              "2": "Komplett manuelle Prüfung"
+            }
+          },
+          "4": {
+            "question": "Wird die Berichterstattung manuell aus mehreren Datenquellen zusammengestellt?",
+            "options": {
+              "0": "Automatisch generierte Dashboards",
+              "1": "Teilautomatisiert",
+              "2": "Manuelle Zusammenstellung aus Tabellen"
+            }
+          }
+        }
+      }
+    },
+    "countries": {
+      "UAE": {
+        "name": "Vereinigte Arabische Emirate",
+        "methodologyNote": "EOS-Abfindung = (Gehalt÷365)×21 Tage — UAE-Arbeitsgesetz Artikel 132.",
+        "bannerText": "🇦🇪 VAE-Modell: Pauschale Gemeinkosten + formelbasierte EOS-Abfindung. Keine Arbeitgeber-Sozialversicherungsbeiträge.",
+        "costCategories": {
+          "c1": {
+            "label": "Visum & Dokumentation",
+            "description": "Arbeitserlaubnis, Einreisevisum, Emirates ID",
+            "includedItems": {
+              "0": "Arbeitserlaubnissgebühren",
+              "1": "Visumbearbeitung",
+              "2": "Emirates ID",
+              "3": "Medizinischer Eignungstest"
+            }
+          },
+          "c2": {
+            "label": "Krankenversicherung",
+            "description": "Obligatorische DHA/HAAD Arbeitgeber-Krankenversicherung",
+            "includedItems": {
+              "0": "Krankenversicherung",
+              "1": "Zahnversorgung",
+              "2": "Augenversorgung",
+              "3": "Familienoptionen"
+            }
+          },
+          "c3": {
+            "label": "Schulung & Weiterbildung",
+            "description": "Onboarding, Zertifizierungen, Kurse",
+            "includedItems": {
+              "0": "Erstschulung",
+              "1": "Zertifizierungen",
+              "2": "Konferenzen",
+              "3": "Kompetenzentwicklung"
+            }
+          },
+          "c4": {
+            "label": "Ausstattung & Technologie",
+            "description": "Hardware, Software, Peripheriegeräte",
+            "includedItems": {
+              "0": "Laptop/Desktop",
+              "1": "Softwarelizenzen",
+              "2": "Mobilgerät",
+              "3": "Bürobedarf"
+            }
+          },
+          "c5": {
+            "label": "Bürofläche & Nebenkosten",
+            "description": "Anteilige Arbeitsplatzkosten im VAE-Büro",
+            "includedItems": {
+              "0": "Arbeitsplatzzuweisung",
+              "1": "Nebenkosten",
+              "2": "Internet",
+              "3": "Einrichtungen"
+            }
+          },
+          "c6": {
+            "label": "Dienstende-Abfindung",
+            "description": "UAE-Arbeitsgesetz — 21 Tage Gehalt pro Jahr",
+            "includedItems": {
+              "0": "21 Tage/Jahr (Gesetz Art.132)",
+              "1": "Gesetzliche Pflicht",
+              "2": "Automatisch berechnet",
+              "3": "Basierend auf Grundgehalt"
+            }
+          },
+          "c7": {
+            "label": "Urlaubsgehalt & Flug",
+            "description": "Urlaubsgehalt (30 Tage) + Rückflug",
+            "includedItems": {
+              "0": "Jährliches Urlaubsgehalt (30 Tage)",
+              "1": "Rückflug (jährlich)",
+              "2": "Automatisch berechnet",
+              "3": "UAE-Arbeitsgesetz"
+            }
+          }
+        }
+      },
+      "DE": {
+        "name": "Deutschland",
+        "methodologyNote": "Deutschland: Gesetzliche Sozialabgaben ~22% (Rente 9,3% + Kranken 8,15% + Arbeitslosen 1,3% + Pflege 1,7% + Unfall 1% + Umlagen 2%). Beitragsbemessungsgrenzen gelten pro Kategorie.",
+        "bannerText": "🇩🇪 Deutschland-Modell: Prozentuale gesetzliche Sozialabgaben mit Beitragsbemessungsgrenzen + pauschale Gemeinkosten.",
+        "costCategories": {
+          "c1": {
+            "label": "Rentenversicherung",
+            "description": "Rentenversicherung — 9,3% Arbeitgeberanteil",
+            "includedItems": {
+              "0": "Gesetzliche Rente",
+              "1": "Erwerbsminderung",
+              "2": "Hinterbliebenenrente",
+              "3": "Grenze: €96.600/Jahr"
+            }
+          },
+          "c2": {
+            "label": "Krankenversicherung",
+            "description": "Krankenversicherung — ~8,15%",
+            "includedItems": {
+              "0": "Arzt- & Krankenhausversorgung",
+              "1": "Medikamente",
+              "2": "Mutterschaftsleistungen",
+              "3": "Grenze: €66.150/Jahr"
+            }
+          },
+          "c3": {
+            "label": "Arbeitslosenversicherung",
+            "description": "Arbeitslosenversicherung — 1,3%",
+            "includedItems": {
+              "0": "Arbeitslosengeld",
+              "1": "Umschulungsförderung",
+              "2": "Grenze: €96.600/Jahr",
+              "3": "Über Bundesagentur"
+            }
+          },
+          "c4": {
+            "label": "Pflegeversicherung",
+            "description": "Pflegeversicherung — 1,7%",
+            "includedItems": {
+              "0": "Stationäre Pflege",
+              "1": "Ambulante Pflege",
+              "2": "Grenze: €66.150/Jahr",
+              "3": "Arbeitgeber zahlt 1,7%"
+            }
+          },
+          "c5": {
+            "label": "Unfallversicherung",
+            "description": "Unfallversicherung — ~1,0%",
+            "includedItems": {
+              "0": "Arbeitsunfälle",
+              "1": "Wegeunfälle",
+              "2": "Berufskrankheiten",
+              "3": "Keine Gehaltsgrenze"
+            }
+          },
+          "c6": {
+            "label": "Gesetzliche Umlagen (U1/U2/U3)",
+            "description": "Entgeltfortzahlung, Mutterschaft & Insolvenzumlage ~2%",
+            "includedItems": {
+              "0": "U1: Entgeltfortzahlung",
+              "1": "U2: Mutterschaftsgeld",
+              "2": "U3: Insolvenzgeldumlage",
+              "3": "Keine Gehaltsgrenze"
+            }
+          },
+          "c7": {
+            "label": "Ausstattung, Büro & Schulung",
+            "description": "Hardware, Arbeitsplatz, Weiterbildungskosten",
+            "includedItems": {
+              "0": "Laptop & Peripherie",
+              "1": "Bürofläche (~€230/Monat)",
+              "2": "Schulung & Zertifikate",
+              "3": "Softwarelizenzen"
+            }
+          },
+          "c8": {
+            "label": "Abfindungsrücklage (optional)",
+            "description": "Freiwillige Abfindung — nicht gesetzlich",
+            "includedItems": {
+              "0": "Nur bei Entlassung",
+              "1": "~0,5 Monatsgehalt/Jahr",
+              "2": "Verhandelt",
+              "3": "Standard: €0"
+            }
+          },
+          "c9": {
+            "label": "Urlaubsgehalt",
+            "description": "Jährliche Urlaubskosten (30 Tage)",
+            "includedItems": {
+              "0": "Jährliches Urlaubsgehalt (30 Tage)",
+              "1": "Gesetzlicher Anspruch",
+              "2": "Automatisch berechnet",
+              "3": "Deutsches Arbeitsrecht"
+            }
+          }
+        }
+      },
+      "UK": {
+        "name": "Vereinigtes Königreich",
+        "methodologyNote": "UK: Arbeitgeber-NI 13,8% auf Einkommen über £9.100 Freibetrag + Auto-Enrolment-Rente 3% auf qualifizierendes Band (£6.240–£50.270).",
+        "bannerText": "🇬🇧 UK-Modell: Arbeitgeber-Sozialversicherung 13,8% + Auto-Enrolment-Rente 3% + pauschale Gemeinkosten.",
+        "costCategories": {
+          "c1": {
+            "label": "Arbeitgeber-Sozialversicherung",
+            "description": "13,8% über £9.100/Jahr Freibetrag",
+            "includedItems": {
+              "0": "Staatliche Rente",
+              "1": "NHS-Beiträge",
+              "2": "Sozialleistungssystem",
+              "3": "Freibetrag: £9.100/Jahr"
+            }
+          },
+          "c2": {
+            "label": "Betriebliche Altersvorsorge",
+            "description": "Auto-Enrolment 3% auf qualifizierende Einkünfte",
+            "includedItems": {
+              "0": "Auto-Enrolment verpflichtend",
+              "1": "Min. 3% Arbeitgeber",
+              "2": "Band: £6.240–£50.270",
+              "3": "Arbeitnehmer min. 5%"
+            }
+          },
+          "c3": {
+            "label": "Schulung & Weiterbildung",
+            "description": "Onboarding, CPD, Qualifikationen",
+            "includedItems": {
+              "0": "Onboarding-Kosten",
+              "1": "Berufszertifikate",
+              "2": "Weiterbildungskurse",
+              "3": "Mitgliedschaften"
+            }
+          },
+          "c4": {
+            "label": "Ausstattung & Technologie",
+            "description": "Hardware, Software, Home-Office",
+            "includedItems": {
+              "0": "Laptop & Hardware",
+              "1": "Softwarelizenzen",
+              "2": "Home-Office",
+              "3": "Mobilgerät"
+            }
+          },
+          "c5": {
+            "label": "Bürofläche & Nebenkosten",
+            "description": "Anteilige Arbeitsplatzkosten im UK-Büro",
+            "includedItems": {
+              "0": "Arbeitsplatzzuweisung",
+              "1": "Gewerbesteuer",
+              "2": "Nebenkosten & Internet",
+              "3": "Einrichtungen"
+            }
+          },
+          "c6": {
+            "label": "Urlaubsgehalt",
+            "description": "Jährliche Urlaubskosten (28 Tage gesetzlich)",
+            "includedItems": {
+              "0": "Jährliches Urlaubsgehalt (28 Tage)",
+              "1": "Gesetzlicher Anspruch",
+              "2": "Automatisch berechnet",
+              "3": "UK Employment Rights Act"
+            }
+          }
+        }
+      },
+      "SA": {
+        "name": "Saudi-Arabien",
+        "methodologyNote": "Saudi-Arabien: EOS = (Gehalt÷365)×15 Tage/Jahr (erste 5 Jahre).",
+        "bannerText": "🇸🇦 Saudi-Arabien-Modell: Pauschale Gemeinkosten + EOS-Abfindung (15 Tage/Jahr für die ersten 5 Jahre).",
+        "costCategories": {
+          "c1": {
+            "label": "Iqama & Dokumentation",
+            "description": "Aufenthaltserlaubnis, Arbeitsvisum, GOSI",
+            "includedItems": {
+              "0": "Iqama",
+              "1": "Arbeitsvisumgebühren",
+              "2": "GOSI-Registrierung",
+              "3": "Medizinische Tests"
+            }
+          },
+          "c2": {
+            "label": "GOSI-Beitrag",
+            "description": "9% Arbeitgeber (Saudi) / 2% (Expat)",
+            "includedItems": {
+              "0": "Gefahren 2%",
+              "1": "Renten 7% (Saudi)",
+              "2": "Expats: nur 2%",
+              "3": "Über GOSI-Portal"
+            }
+          },
+          "c3": {
+            "label": "Krankenversicherung",
+            "description": "Obligatorische CCHI-Arbeitgeberversicherung",
+            "includedItems": {
+              "0": "CCHI verpflichtend",
+              "1": "Krankenversicherung",
+              "2": "Zahn & Augen",
+              "3": "Familienoptionen"
+            }
+          },
+          "c4": {
+            "label": "Schulung & Weiterbildung",
+            "description": "Onboarding, Nitaqat-Compliance",
+            "includedItems": {
+              "0": "Erstschulung",
+              "1": "Saudisierungs-Compliance",
+              "2": "Berufszertifikate",
+              "3": "Kompetenzentwicklung"
+            }
+          },
+          "c5": {
+            "label": "Ausstattung & Technologie",
+            "description": "Hardware, Software, Peripheriegeräte",
+            "includedItems": {
+              "0": "Laptop/Desktop",
+              "1": "Softwarelizenzen",
+              "2": "Mobilgerät",
+              "3": "Bürobedarf"
+            }
+          },
+          "c6": {
+            "label": "Bürofläche & Nebenkosten",
+            "description": "Anteilige Arbeitsplatzkosten im KSA-Büro",
+            "includedItems": {
+              "0": "Arbeitsplatzzuweisung",
+              "1": "Nebenkosten",
+              "2": "Internet",
+              "3": "Einrichtungen"
+            }
+          },
+          "c7": {
+            "label": "Dienstende-Abfindung",
+            "description": "Saudi-Arbeitsgesetz — 15 Tage/Jahr",
+            "includedItems": {
+              "0": "Halbes Monatsgehalt/Jahr (Jahr 1–5)",
+              "1": "Volles Monatsgehalt/Jahr (Jahr 5+)",
+              "2": "Bei Kündigung/Entlassung",
+              "3": "Automatisch berechnet"
+            }
+          },
+          "c8": {
+            "label": "Urlaubsgehalt & Flug",
+            "description": "Urlaubsgehalt (21 Tage) + Rückflug",
+            "includedItems": {
+              "0": "Jährliches Urlaubsgehalt (21 Tage)",
+              "1": "Rückflug (jährlich)",
+              "2": "Automatisch berechnet",
+              "3": "Saudi-Arbeitsgesetz"
+            }
+          }
+        }
+      },
+      "QA": {
+        "name": "Katar",
+        "methodologyNote": "Katar: EOS-Abfindung = (Gehalt÷365)×21 Tage pro Jahr gemäß katarischem Arbeitsgesetz.",
+        "bannerText": "🇶🇦 Katar-Modell: Pauschale Gemeinkosten + EOS-Abfindung (21 Tage/Jahr).",
+        "costCategories": {
+          "c1": {
+            "label": "Visum & Aufenthaltserlaubnis",
+            "description": "Arbeitsvisum, Aufenthaltserlaubnis",
+            "includedItems": {
+              "0": "Arbeitsvisumgebühren",
+              "1": "Aufenthaltserlaubnis (RP)",
+              "2": "Medizinischer Eignungstest",
+              "3": "Hamad Card (optional)"
+            }
+          },
+          "c2": {
+            "label": "Krankenversicherung",
+            "description": "Obligatorische Arbeitgeberversicherung unter QIC",
+            "includedItems": {
+              "0": "Krankenversicherung",
+              "1": "Zahn & Augen",
+              "2": "Krankenhausversorgung",
+              "3": "Familienoptionen"
+            }
+          },
+          "c3": {
+            "label": "Schulung & Weiterbildung",
+            "description": "Onboarding, Zertifizierungen",
+            "includedItems": {
+              "0": "Erstschulung",
+              "1": "Zertifizierungen",
+              "2": "Konferenzen",
+              "3": "Kompetenzentwicklung"
+            }
+          },
+          "c4": {
+            "label": "Ausstattung & Technologie",
+            "description": "Hardware, Software, Peripheriegeräte",
+            "includedItems": {
+              "0": "Laptop/Desktop",
+              "1": "Softwarelizenzen",
+              "2": "Mobilgerät",
+              "3": "Bürobedarf"
+            }
+          },
+          "c5": {
+            "label": "Bürofläche & Nebenkosten",
+            "description": "Anteilige Arbeitsplatzkosten in Katar",
+            "includedItems": {
+              "0": "Arbeitsplatzzuweisung",
+              "1": "Nebenkosten",
+              "2": "Internet",
+              "3": "Einrichtungen"
+            }
+          },
+          "c6": {
+            "label": "Dienstende-Abfindung",
+            "description": "Katarisches Arbeitsgesetz — 21 Tage/Jahr",
+            "includedItems": {
+              "0": "3 Wochen Gehalt/Jahr",
+              "1": "Gesetzliche Pflicht",
+              "2": "Automatisch berechnet",
+              "3": "Basierend auf Grundgehalt"
+            }
+          },
+          "c7": {
+            "label": "Urlaubsgehalt & Flug",
+            "description": "Urlaubsgehalt (21 Tage) + Rückflug",
+            "includedItems": {
+              "0": "Jährliches Urlaubsgehalt (21 Tage)",
+              "1": "Rückflug (jährlich)",
+              "2": "Automatisch berechnet",
+              "3": "Katarisches Arbeitsgesetz"
+            }
+          }
+        }
+      },
+      "US": {
+        "name": "Vereinigte Staaten",
+        "methodologyNote": "USA: FICA Sozialversicherung 6,2% (Grenze $176.100/Jahr 2025) + Medicare 1,45% (keine Grenze) + FUTA max. $42/Jahr.",
+        "bannerText": "🇺🇸 US-Modell: FICA (Sozialversicherung 6,2% + Medicare 1,45%) + FUTA + optionaler 401(k)-Zuschuss + pauschale Gemeinkosten.",
+        "costCategories": {
+          "c1": {
+            "label": "Sozialversicherung (FICA)",
+            "description": "6,2% des Gehalts, Grenze $176.100/Jahr (2025)",
+            "includedItems": {
+              "0": "Alters- & Invaliditätsversicherung",
+              "1": "Hinterbliebenenleistungen",
+              "2": "Grenze: $176.100/Jahr",
+              "3": "IRS-bestätigter Satz"
+            }
+          },
+          "c2": {
+            "label": "Medicare (FICA)",
+            "description": "1,45% — keine Gehaltsgrenze",
+            "includedItems": {
+              "0": "Krankenhausversorgung (Teil A)",
+              "1": "Keine Gehaltsgrenze",
+              "2": "IRS-bestätigter Satz",
+              "3": "Arbeitgeber gleicht Arbeitnehmer aus"
+            }
+          },
+          "c3": {
+            "label": "Bundes-Arbeitslosenversicherung (FUTA)",
+            "description": "0,6% auf erste $7.000 — max. $42/Jahr",
+            "includedItems": {
+              "0": "Effektiver Satz: 0,6%",
+              "1": "Nach 5,4% Staatskredit",
+              "2": "Nur erste $7.000 Löhne",
+              "3": "Max. $42/Mitarbeiter/Jahr"
+            }
+          },
+          "c4": {
+            "label": "Staats-Arbeitslosenversicherung (SUTA)",
+            "description": "Variiert nach Bundesstaat — eigenen Satz eingeben",
+            "includedItems": {
+              "0": "Satz variiert nach Staat",
+              "1": "Lohnbasis: $7K–$45K+",
+              "2": "Erfahrungsbasiert",
+              "3": "Eigenen Staatssatz verwenden"
+            }
+          },
+          "c5": {
+            "label": "Krankenversicherung",
+            "description": "Kein Mandat unter 50 VZÄ; ~$7.500/Jahr Durchschnitt",
+            "includedItems": {
+              "0": "ACA: Pflicht ab 50+ VZÄ",
+              "1": "Ca. ~$7.500/Jahr Einzelperson",
+              "2": "Variiert nach Plan & Staat",
+              "3": "Arbeitgeberbeitrag"
+            }
+          },
+          "c6": {
+            "label": "401(k) Arbeitgeberzuschuss",
+            "description": "Optional — Standard 3% des Gehalts",
+            "includedItems": {
+              "0": "Nicht gesetzlich vorgeschrieben",
+              "1": "~85% der Arbeitgeber bieten an",
+              "2": "Typisch: 3–6% des Gehalts",
+              "3": "Steuerlich begünstigt"
+            }
+          },
+          "c7": {
+            "label": "Schulung, Ausstattung & Büro",
+            "description": "Hardware, Arbeitsplatz, Onboarding",
+            "includedItems": {
+              "0": "Laptop & Software",
+              "1": "Bürofläche",
+              "2": "Schulung & Onboarding",
+              "3": "Mobil & Peripherie"
+            }
+          },
+          "c8": {
+            "label": "Urlaubsgehalt",
+            "description": "PTO / jährliche Urlaubskosten (15 Tage Durchschnitt)",
+            "includedItems": {
+              "0": "Bezahlte Freizeit (15 Tage Durchschn.)",
+              "1": "Kein Bundespflicht",
+              "2": "Automatisch berechnet",
+              "3": "Branchendurchschnitt"
+            }
+          }
+        }
+      },
+      "AU": {
+        "name": "Australien",
+        "methodologyNote": "Australien: Superannuation Guarantee 11,5% (keine Grenze) + Arbeiterentschädigung ~1,5%. Keine Arbeitgeber-Krankenversicherung (Medicare ist staatlich finanziert). Keine EOS-Abfindung.",
+        "bannerText": "🇦🇺 Australien-Modell: Superannuation Guarantee 11,5% + Arbeiterentschädigung ~1,5% + pauschale Gemeinkosten.",
+        "costCategories": {
+          "c1": {
+            "label": "Superannuation Guarantee",
+            "description": "Obligatorische Arbeitgeberrente — 11,5% (2024–25)",
+            "includedItems": {
+              "0": "Gesetzliche Arbeitgeberrente",
+              "1": "11,5% der regulären Einkünfte",
+              "2": "Keine Gehaltsgrenze",
+              "3": "Steigt auf 12% Juli 2025"
+            }
+          },
+          "c2": {
+            "label": "Arbeiterentschädigung",
+            "description": "Landesbasiert — ~1,5% Durchschn. Bürorollen",
+            "includedItems": {
+              "0": "Pflicht in allen Bundesstaaten",
+              "1": "~1–2% der Lohnsumme (Büro)",
+              "2": "Deckt Arbeitsunfälle ab",
+              "3": "Variiert nach Staat & Branche"
+            }
+          },
+          "c3": {
+            "label": "Lohnsummensteuer (landesbasiert)",
+            "description": "~4,85–6,85% sobald Lohnsumme Schwelle übersteigt",
+            "includedItems": {
+              "0": "Staatsschwelle: ~$700K–$1,2M",
+              "1": "Satz: 4,85–6,85%",
+              "2": "Gesamtlohnsummenabhängig",
+              "3": "Nur bei Schwellenüberschreitung"
+            }
+          },
+          "c4": {
+            "label": "Schulung & Weiterbildung",
+            "description": "Onboarding, berufliche Weiterentwicklung",
+            "includedItems": {
+              "0": "Erstschulung",
+              "1": "Berufszertifikate",
+              "2": "Weiterbildung & Konferenzen",
+              "3": "Kompetenzentwicklung"
+            }
+          },
+          "c5": {
+            "label": "Ausstattung & Technologie",
+            "description": "Hardware, Software, Home-Office",
+            "includedItems": {
+              "0": "Laptop & Hardware",
+              "1": "Softwarelizenzen",
+              "2": "Home-Office-Zuschuss",
+              "3": "Mobilgerät"
+            }
+          },
+          "c6": {
+            "label": "Bürofläche & Nebenkosten",
+            "description": "Anteilige Arbeitsplatzkosten im australischen Büro",
+            "includedItems": {
+              "0": "Arbeitsplatzzuweisung",
+              "1": "Nebenkosten & Internet",
+              "2": "Gebäudeeinrichtungen",
+              "3": "Gewerbesteuer"
+            }
+          },
+          "c7": {
+            "label": "Urlaubsgehalt",
+            "description": "Jährliche Urlaubskosten (20 Tage gesetzlich)",
+            "includedItems": {
+              "0": "Jährliches Urlaubsgehalt (20 Tage)",
+              "1": "Gesetzlich 4 Wochen",
+              "2": "Automatisch berechnet",
+              "3": "Fair Work Act"
+            }
+          }
+        }
+      }
+    },
+    "goals": {
+      "cost_reduction": {
+        "label": "Kostenreduzierung",
+        "leadNarrative": "fokussiert auf die Reduzierung der Betriebskosten",
+        "kpi1Label": "Jährliche Einsparungen",
+        "kpi2Label": "Gemeinkostenreduzierung",
+        "kpi3Label": "Amortisationszeit"
+      },
+      "efficiency_boost": {
+        "label": "Effizienzsteigerung",
+        "leadNarrative": "fokussiert auf die Maximierung der betrieblichen Effizienz",
+        "kpi1Label": "Effizienzgewinn",
+        "kpi2Label": "Zurückgewonnene Stunden/Woche",
+        "kpi3Label": "Prozessverbesserung"
+      },
+      "quality_improvement": {
+        "label": "Qualitätsverbesserung",
+        "leadNarrative": "fokussiert auf die Verbesserung der Ergebnisqualität und Konsistenz",
+        "kpi1Label": "Effizienzgarantie",
+        "kpi2Label": "Behobene Prozesslücken",
+        "kpi3Label": "Fehlerreduzierung"
+      },
+      "scalability": {
+        "label": "Skalierbarkeit",
+        "leadNarrative": "fokussiert auf den Aufbau skalierbarer Operationen",
+        "kpi1Label": "Freigesetzte Kapazität",
+        "kpi2Label": "Teamflexibilität",
+        "kpi3Label": "Wachstumsbereitschaft"
+      }
+    },
+    "maturity": {
+      "1": {
+        "label": "Basis",
+        "recommendation": "Grundlagen-zuerst-Engagement",
+        "description": "BSG beginnt mit Prozessdokumentation und Standardisierung vor der Optimierung.",
+        "phase1": "Prozessdesign & Dokumentation",
+        "phase2": "Standardisierung & Schulung",
+        "phase3": "Leistungsoptimierung"
+      },
+      "2": {
+        "label": "In Entwicklung",
+        "recommendation": "Strukturierung & Optimierung",
+        "description": "BSG formalisiert bestehende Prozesse und führt Automatisierung ein, wo Lücken bestehen.",
+        "phase1": "Prozessformalisierung",
+        "phase2": "Automatisierung & Integration",
+        "phase3": "Kontinuierliche Verbesserung"
+      },
+      "3": {
+        "label": "Ausgereift",
+        "recommendation": "Optimierungs-Engagement",
+        "description": "BSG optimiert direkt Ihre gut definierten Prozesse für Höchstleistung.",
+        "phase1": "Schnelle Übernahme",
+        "phase2": "Leistungsoptimierung",
+        "phase3": "Erweiterte Analytik"
+      },
+      "4": {
+        "label": "Fortgeschritten",
+        "recommendation": "Verbesserungs-Engagement",
+        "description": "BSG integriert sich nahtlos in Ihre fortgeschrittenen Prozesse und konzentriert sich auf marginale Verbesserungen.",
+        "phase1": "Nahtlose Integration",
+        "phase2": "Marginale Verbesserungen & Automatisierung",
+        "phase3": "Strategische Berichterstattung"
+      }
+    },
+    "countryOptions": {
+      "UAE": "VAE",
+      "DE": "Deutschland",
+      "UK": "UK",
+      "SA": "Saudi",
+      "QA": "Katar",
+      "US": "USA",
+      "AU": "Australien"
+    },
+    "costBadge": {
+      "capped": " (gedeckelt)",
+      "aboveThreshold": "über Freibetrag",
+      "onBand": "auf Band",
+      "optional": "optional",
+      "formula": "Formel",
+      "fixedFuta": "Fest $42/Jahr",
+      "leaveFlight": "Urlaub + Flug",
+      "userEntered": "Benutzereingabe",
+      "flatAmount": "Pauschalbetrag"
+    },
+    "maturityArrow": "Reifegrad →"
+  }
+}
