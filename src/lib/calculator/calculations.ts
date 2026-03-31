@@ -1,4 +1,5 @@
 import type {
+  CountryCode,
   CurrencyCode,
   FormDataState,
   EmployeeCostResult,
@@ -21,8 +22,8 @@ import { currencies, teamQuestions } from './constants';
 import { countryProfiles, goalConfigs, maturityConfigs, timelineMonths } from './countries';
 
 /** Format a currency amount using the correct symbol/prefix */
-export function formatCurrency(amount: number, currency: CurrencyCode = 'AED'): string {
-  const data = currencies[currency];
+export function formatCurrency(amount: number, currency: CurrencyCode | '' = 'AED'): string {
+  const data = currencies[currency as CurrencyCode] || currencies.AED;
   const formatted = Math.round(amount).toLocaleString();
   return data.formatting === 'prefix' ? `${data.symbol}${formatted}` : `${data.symbol} ${formatted}`;
 }
@@ -344,7 +345,7 @@ export function calculateEfficiency(
   roleId: RoleLevelId,
 ): CalculationResults {
   try {
-    const profile = countryProfiles[formData.selectedCountry];
+    const profile = countryProfiles[formData.selectedCountry as CountryCode];
     const teamSize = Math.max(1, parseInt(formData.teamSize) || 1);
     const employeeCost = calculateEmployeeCost(formData, profile, roleId);
     const { fullSalary, trueCost } = employeeCost;

@@ -7,7 +7,7 @@ import {
   StyleSheet,
   Font,
 } from "@react-pdf/renderer";
-import type { CalculationResults, FormDataState, TeamDefinition, RoleLevelId, CurrencyCode } from "@/lib/calculator/types";
+import type { CalculationResults, FormDataState, TeamDefinition, RoleLevelId, CurrencyCode, GoalType, MaturityLevel, TimelineOption } from "@/lib/calculator/types";
 import { currencies } from "@/lib/calculator/constants";
 import { goalConfigs } from "@/lib/calculator/countries";
 import { calculateTaskHandover, calculateRoadmap, calculateGoalKPIs } from "@/lib/calculator/calculations";
@@ -140,13 +140,13 @@ interface CalculatorResultsPDFProps {
 }
 
 export function CalculatorResultsPDF({ results, formData, selectedTeam, translations: tr }: CalculatorResultsPDFProps) {
-  const c = formData.selectedCurrency;
-  const goalCfg = goalConfigs[formData.primaryGoal];
+  const c = formData.selectedCurrency as CurrencyCode;
+  const goalCfg = goalConfigs[formData.primaryGoal as GoalType];
   const { currentSituation, withBSG, results: r, employeeCost, diagnosticResults } = results;
 
   const taskHandover = calculateTaskHandover(selectedTeam, diagnosticResults);
-  const roadmap = calculateRoadmap(formData.teamMaturity, formData.timeline, r.realSavings);
-  const goalKPIs = calculateGoalKPIs(formData.primaryGoal, results, c);
+  const roadmap = calculateRoadmap(formData.teamMaturity as MaturityLevel, formData.timeline as TimelineOption, r.realSavings);
+  const goalKPIs = calculateGoalKPIs(formData.primaryGoal as GoalType, results, c);
 
   return (
     <Document>

@@ -1310,6 +1310,7 @@
     "getStarted": "Get Started",
     "getStartedDesc": "Select your country and team to begin",
     "selectCountry": "Select Your Country",
+    "selectCountryPlaceholder": "-- Select a country --",
     "currencyAutoSet": "Currency auto-set to",
     "selectTeam": "Select Your Team",
     "bsgServicesFor": "BSG Services for {team}",

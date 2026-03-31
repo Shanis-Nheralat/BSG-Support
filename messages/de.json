@@ -1310,6 +1310,7 @@
     "getStarted": "Loslegen",
     "getStartedDesc": "Wählen Sie Ihr Land und Team, um zu beginnen",
     "selectCountry": "Wählen Sie Ihr Land",
+    "selectCountryPlaceholder": "-- Land auswählen --",
     "currencyAutoSet": "Währung automatisch eingestellt auf",
     "selectTeam": "Wählen Sie Ihr Team",
     "bsgServicesFor": "BSG-Dienstleistungen für {team}",

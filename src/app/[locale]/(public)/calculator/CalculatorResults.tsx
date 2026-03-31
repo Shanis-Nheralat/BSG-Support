@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 import dynamic from 'next/dynamic';
 import { useTranslations, useLocale } from 'next-intl';
 import { Loader2, Search, ArrowLeftRight, CircleCheckBig, Building, Coins, Map, FileText, ArrowLeft, MessageSquare } from 'lucide-react';
-import type { CalculationResults, FormDataState, TeamDefinition, RoleLevelId } from '@/lib/calculator/types';
+import type { CalculationResults, FormDataState, TeamDefinition, RoleLevelId, CountryCode, GoalType, CurrencyCode, MaturityLevel, TimelineOption } from '@/lib/calculator/types';
 import { formatCurrency, calculateTaskHandover, calculateRoadmap, calculateGoalKPIs } from '@/lib/calculator/calculations';
 import { roleDefaults } from '@/lib/calculator/constants';
 import { countryProfiles, goalConfigs } from '@/lib/calculator/countries';
@@ -39,15 +39,15 @@ export default function CalculatorResults({
   const [submitStatus, setSubmitStatus] = useState<{ type: 'success' | 'error'; message: string } | null>(null);
   const hasSubmitted = useRef(false);
 
-  const c = formData.selectedCurrency;
-  const profile = countryProfiles[formData.selectedCountry];
-  const goalCfg = goalConfigs[formData.primaryGoal];
+  const c = formData.selectedCurrency as CurrencyCode;
+  const profile = countryProfiles[formData.selectedCountry as CountryCode];
+  const goalCfg = goalConfigs[formData.primaryGoal as GoalType];
   const { currentSituation, withBSG, results: r, diagnosticResults, employeeCost } = results;
 
   // Computed results
   const taskHandover = calculateTaskHandover(selectedTeam, diagnosticResults);
-  const roadmap = calculateRoadmap(formData.teamMaturity, formData.timeline, r.realSavings);
-  const goalKPIs = calculateGoalKPIs(formData.primaryGoal, results, c);
+  const roadmap = calculateRoadmap(formData.teamMaturity as MaturityLevel, formData.timeline as TimelineOption, r.realSavings);
+  const goalKPIs = calculateGoalKPIs(formData.primaryGoal as GoalType, results, c);
 
   // Auto-submit lead on mount
   useEffect(() => {
@@ -124,15 +124,15 @@ export default function CalculatorResults({
             <div className="mt-3 flex flex-wrap items-center justify-center gap-2">
               <span className="rounded-full bg-white/20 px-3 py-1 text-xs font-semibold">{profile.flag} {t(`countries.${formData.selectedCountry}.name`)}</span>
               <span className="rounded-full bg-white/20 px-3 py-1 text-xs font-semibold">{t('maturityBadge', { level: t(`maturity.${formData.teamMaturity}.label`) })}</span>
-              <span className="rounded-full bg-white/20 px-3 py-1 text-xs font-semibold">{formData.timeline.replace('_', ' ')}</span>
+              <span className="rounded-full bg-white/20 px-3 py-1 text-xs font-semibold">{formData.timeline === '3_months' ? t('threeMonths') : formData.timeline === '6_months' ? t('sixMonths') : t('twelveMonths')}</span>
             </div>
 
             {/* Goal KPIs */}
-            <div className="mt-5 grid grid-cols-3 gap-3">
+            <div className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-3">
               {goalKPIs.map((kpi, i) => (
-                <div key={i} className="rounded-xl border border-white/20 bg-white/10 p-3 text-center">
-                  <div className="text-xl font-bold tracking-tight sm:text-2xl">{kpi.value}</div>
-                  <div className="text-[10px] font-semibold uppercase tracking-wider opacity-75">{t(`goals.${formData.primaryGoal}.kpi${i+1}Label`)}</div>
+                <div key={i} className="rounded-xl border border-white/20 bg-white/10 p-3 text-center sm:p-3">
+                  <div className="text-2xl font-bold tracking-tight">{kpi.value}</div>
+                  <div className="text-[11px] font-semibold uppercase tracking-wider opacity-75 sm:text-[10px]">{t(`goals.${formData.primaryGoal}.kpi${i+1}Label`)}</div>
                 </div>
               ))}
             </div>

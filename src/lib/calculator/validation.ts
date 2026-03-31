@@ -39,7 +39,7 @@ export function validateStep(
     case 0: // Country & Team Selection
       return !!selectedTeam && !!formData.selectedCountry;
     case 1: // Role, Team Size & Maturity
-      return !!selectedRole && !!formData.teamSize?.trim() && parseInt(formData.teamSize) > 0;
+      return !!selectedRole && !!formData.teamSize?.trim() && parseInt(formData.teamSize) > 0 && !!formData.teamMaturity;
     case 2: // Cost Breakdown
       return !!formData.fullSalary && parseInt(formData.fullSalary) > 0;
     case 3: // Task Allocation

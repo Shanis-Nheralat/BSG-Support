@@ -120,8 +120,8 @@ export interface FormDataState {
   companyName: string;
   mobileNumber: string;
   // Country & Currency
-  selectedCountry: CountryCode;
-  selectedCurrency: CurrencyCode;
+  selectedCountry: CountryCode | '';
+  selectedCurrency: CurrencyCode | '';
   // Team & Role
   teamSize: string;
   fullSalary: string;
@@ -130,13 +130,13 @@ export interface FormDataState {
   costCustomFlags: Record<string, boolean>;
   otherCosts: string;
   // Maturity
-  teamMaturity: MaturityLevel;
+  teamMaturity: MaturityLevel | '';
   // Diagnostics
   diagnosticAnswers: Record<number, number>;
   // Goals
-  primaryGoal: GoalType;
-  targetEfficiency: EfficiencyTarget;
-  timeline: TimelineOption;
+  primaryGoal: GoalType | '';
+  targetEfficiency: EfficiencyTarget | '';
+  timeline: TimelineOption | '';
 }
 
 // ── Calculation Results ──

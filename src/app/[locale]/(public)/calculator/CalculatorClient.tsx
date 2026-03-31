@@ -48,7 +48,7 @@ export default function CalculatorClient() {
   }, [currentStep, showResults]);
 
   const currentTeam = useMemo(() => teams.find((t) => t.id === selectedTeam), [selectedTeam]);
-  const currentProfile = useMemo(() => countryProfiles[formData.selectedCountry], [formData.selectedCountry]);
+  const currentProfile = useMemo(() => formData.selectedCountry ? countryProfiles[formData.selectedCountry] : null, [formData.selectedCountry]);
 
   const totalAllocation = useMemo(
     () => Object.values(taskAllocations).reduce((sum, v) => sum + v, 0),
@@ -56,7 +56,7 @@ export default function CalculatorClient() {
   );
 
   const employeeCost = useMemo(
-    () => selectedRole ? calculateEmployeeCost(formData, currentProfile, selectedRole) : null,
+    () => selectedRole && currentProfile ? calculateEmployeeCost(formData, currentProfile, selectedRole) : null,
     [formData, currentProfile, selectedRole],
   );
 
@@ -83,6 +83,7 @@ export default function CalculatorClient() {
 
   const handleRoleChange = useCallback((roleId: RoleLevelId) => {
     setSelectedRole(roleId);
+    if (!formData.selectedCountry) return;
     const profile = countryProfiles[formData.selectedCountry];
     setFormData((prev) => ({
       ...prev,
@@ -106,6 +107,7 @@ export default function CalculatorClient() {
   const handleNext = () => {
     if (!validateStep(currentStep, formData, selectedTeam, selectedRole, totalAllocation)) {
       setErrors([t('requiredFields')]);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
       return;
     }
     setErrors([]);
@@ -217,15 +219,18 @@ export default function CalculatorClient() {
                       onChange={(e) => handleCountryChange(e.target.value as CountryCode)}
                       className="w-full rounded-xl border-2 border-gray-200 bg-white px-4 py-3 text-sm font-medium text-gray-700 transition-all focus:border-navy focus:outline-none focus:ring-2 focus:ring-navy/20"
                     >
+                      <option value="" disabled>{t('selectCountryPlaceholder')}</option>
                       {COUNTRY_OPTIONS.map((c) => (
                         <option key={c.code} value={c.code}>
                           {c.flag} {t(`countryOptions.${c.code}`)} ({countryToCurrencyMap[c.code]})
                         </option>
                       ))}
                     </select>
+                    {formData.selectedCurrency && (
                     <p className="mt-1.5 text-[11px] text-gray-400">
                       {t('currencyAutoSet')} <strong className="text-navy">{formData.selectedCurrency}</strong>
                     </p>
+                    )}
                   </div>
 
                   {/* Team Selector - 2-col grid */}
@@ -338,7 +343,7 @@ export default function CalculatorClient() {
             )}
 
           {/* ── Step 1: Role, Team Size & Maturity ── */}
-          {currentStep === 1 && (
+          {currentStep === 1 && currentProfile && (
             <div className="space-y-6">
               {/* Role Selection */}
               <div>
@@ -425,7 +430,7 @@ export default function CalculatorClient() {
           )}
 
           {/* ── Step 2: Cost Breakdown ── */}
-          {currentStep === 2 && (
+          {currentStep === 2 && currentProfile && (
             <div className="space-y-4">
               {/* Country banner */}
               <div className={`rounded-lg border p-3 text-xs leading-relaxed ${currentProfile.bannerClass}`}>
@@ -543,7 +548,7 @@ export default function CalculatorClient() {
               {/* Cost Summary */}
               {employeeCost && (
                 <div className="rounded-xl bg-[#0f172a] p-4 text-white">
-                  <div className="grid grid-cols-4 gap-3 text-center">
+                  <div className="grid grid-cols-2 gap-3 text-center sm:grid-cols-4">
                     <div>
                       <p className="text-sm font-bold">{formatCurrency(employeeCost.fullSalary, formData.selectedCurrency)}</p>
                       <p className="text-[9px] uppercase tracking-wider text-gray-400">{t("baseSalary")}</p>
@@ -866,7 +871,7 @@ export default function CalculatorClient() {
               <div className="rounded-xl bg-navy-50 p-4">
                 <p className="text-xs font-semibold text-navy">{t("analysisSummary")}</p>
                 <div className="mt-2 grid grid-cols-2 gap-2 text-[11px] text-navy-600">
-                  <span>{currentProfile.flag} {t(`countries.${formData.selectedCountry}.name`)}</span>
+                  <span>{currentProfile?.flag} {t(`countries.${formData.selectedCountry}.name`)}</span>
                   <span>{currentTeam ? t(`teams.${currentTeam.id}.name`) : t('noTeamSelected')}</span>
                   <span>{selectedRole ? t(`roles.${selectedRole}.name`) : t('noRole')} / {formData.teamSize || '0'} {t('staff')}</span>
                   <span>{t('currency')}: {formData.selectedCurrency}</span>
