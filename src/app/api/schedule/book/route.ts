@@ -4,7 +4,7 @@ import { isSlotAvailable, calculateEndTime, formatTimeDisplay, formatSlotForTime
 import { sendEmail } from "@/lib/email";
 import { notifyNewBooking } from "@/lib/notifications";
 import { resolveLocale, loadEmailTranslations } from "@/lib/email-translations";
-import { getMeetingUserConfirmation } from "@/lib/email-templates";
+import { getMeetingAdminNotification, getMeetingUserConfirmation } from "@/lib/email-templates";
 
 export async function POST(request: NextRequest) {
   try {
@@ -75,7 +75,7 @@ export async function POST(request: NextRequest) {
       },
     });
 
-    // Format date for display (locale-aware)
+    // Format date for display (locale-aware for user, English for admin)
     const displayDate = bookingDate.toLocaleDateString(
       locale === "de" ? "de-DE" : "en-US",
       {
@@ -86,12 +86,36 @@ export async function POST(request: NextRequest) {
         timeZone: "Asia/Dubai",
       }
     );
+    const adminDisplayDate = bookingDate.toLocaleDateString("en-US", {
+      weekday: "long",
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+      timeZone: "Asia/Dubai",
+    });
 
     const displayTime = formatTimeDisplay(time);
     const localTime = formatSlotForTimezone(time, date, timezone);
 
-    // Create admin notification
-    await notifyNewBooking(name, displayDate, displayTime, booking.id);
+    // Create in-app admin notification (always English date)
+    await notifyNewBooking(name, adminDisplayDate, displayTime, booking.id);
+
+    // Send admin email notification (always English)
+    const adminEmail = process.env.ADMIN_EMAIL || process.env.SMTP_FROM;
+    if (adminEmail) {
+      const adminContent = getMeetingAdminNotification({
+        name,
+        email,
+        phone: phone || undefined,
+        company: company || undefined,
+        purpose: purpose || undefined,
+        date: adminDisplayDate,
+        time: displayTime,
+        localTime,
+        timezone,
+      });
+      await sendEmail({ to: adminEmail, ...adminContent });
+    }
 
     // Send confirmation email to visitor (in user's language)
     const t = await loadEmailTranslations(locale);

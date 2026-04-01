@@ -56,7 +56,7 @@ export async function GET(request: NextRequest) {
       }
     }
 
-    const [posts, total, categories, tags] = await Promise.all([
+    const [posts, total] = await Promise.all([
       prisma.blog_posts.findMany({
         where,
         orderBy: [
@@ -104,38 +104,46 @@ export async function GET(request: NextRequest) {
         },
       }),
       prisma.blog_posts.count({ where }),
-      // Get all categories with post counts (for filter UI)
-      prisma.blog_categories.findMany({
-        orderBy: { name: "asc" },
-        select: {
-          id: true,
-          name: true,
-          slug: true,
-          _count: {
-            select: {
-              posts: {
-                where: { status: "published" },
+    ]);
+
+    // Fetch filter metadata separately so failures don't break the listing
+    let categories: Array<{ id: number; name: string; slug: string; _count: { posts: number } }> = [];
+    let tags: Array<{ id: number; name: string; slug: string; _count: { posts: number } }> = [];
+    try {
+      [categories, tags] = await Promise.all([
+        prisma.blog_categories.findMany({
+          orderBy: { name: "asc" },
+          select: {
+            id: true,
+            name: true,
+            slug: true,
+            _count: {
+              select: {
+                posts: {
+                  where: { status: "published" },
+                },
               },
             },
           },
-        },
-      }),
-      // Get popular tags (for filter UI)
-      prisma.blog_tags.findMany({
-        orderBy: { name: "asc" },
-        select: {
-          id: true,
-          name: true,
-          slug: true,
-          _count: {
-            select: {
-              posts: true,
+        }),
+        prisma.blog_tags.findMany({
+          orderBy: { name: "asc" },
+          select: {
+            id: true,
+            name: true,
+            slug: true,
+            _count: {
+              select: {
+                posts: true,
+              },
             },
           },
-        },
-        take: 20,
-      }),
-    ]);
+          take: 20,
+        }),
+      ]);
+    } catch (filterError) {
+      console.error("Error fetching blog filters:", filterError);
+    }
 
     // Transform posts to flatten tags and overlay translations
     const transformedPosts = posts.map((post) => {
@@ -172,8 +180,9 @@ export async function GET(request: NextRequest) {
     });
   } catch (error) {
     console.error("Error fetching public blog posts:", error);
+    const message = error instanceof Error ? error.message : "Unknown error";
     return NextResponse.json(
-      { error: "Failed to fetch blog posts" },
+      { error: "Failed to fetch blog posts", details: message },
       { status: 500 }
     );
   }

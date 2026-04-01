@@ -99,7 +99,7 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
   const t = await getTranslations("BlogDetail");
 
   // Try EN slug first, then translated slug
-  let post = await prisma.blog_posts.findUnique({
+  let post = await prisma.blog_posts.findFirst({
     where: { slug, status: "published" },
     include: {
       category: true,

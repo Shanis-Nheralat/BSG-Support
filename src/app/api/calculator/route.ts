@@ -200,6 +200,24 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // Validate required calculation fields
+    if (
+      !body.selectedTeam || !body.selectedCountry || !body.primaryGoal ||
+      !body.timeline || !body.currency ||
+      typeof body.teamSize !== "number" || body.teamSize < 1 ||
+      typeof body.currentCost !== "number" ||
+      typeof body.bsgCost !== "number" ||
+      typeof body.savings !== "number" ||
+      typeof body.efficiencyGain !== "number" ||
+      typeof body.hoursReclaimed !== "number" ||
+      typeof body.roi !== "number"
+    ) {
+      return NextResponse.json(
+        { error: "Missing or invalid calculation results" },
+        { status: 400 }
+      );
+    }
+
     // Resolve locale for user-facing emails
     const locale = resolveLocale(body.locale, request.cookies.get("NEXT_LOCALE")?.value);
 
@@ -367,9 +385,10 @@ export async function POST(request: NextRequest) {
         // renderToBuffer expects ReactElement<DocumentProps> but our component wraps Document internally
         const pdfBuffer = await renderToBuffer(pdfElement as React.ReactElement);
         const teamName = selectedTeam ? t(`Calculator.teams.${selectedTeam.id}.name`) : body.selectedTeam;
+        const safeFilename = `BSG-${teamName}-Analysis-${body.companyName}`.replace(/[^a-zA-Z0-9 _-]/g, "").replace(/\s+/g, "-");
 
         pdfAttachment = [{
-          filename: `BSG-${teamName}-Analysis-${body.companyName}.pdf`,
+          filename: `${safeFilename}.pdf`,
           content: Buffer.from(pdfBuffer),
           contentType: "application/pdf",
         }];

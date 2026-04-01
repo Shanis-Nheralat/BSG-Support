@@ -48,6 +48,12 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(new URL("/admin/dashboard", request.url));
   }
 
+  // ── /admin/login → redirect to proper login page ──
+  if (pathname === "/admin/login" || pathname === "/admin/login/") {
+    const token = await getToken({ req: request, secret: process.env.NEXTAUTH_SECRET });
+    return NextResponse.redirect(new URL(token ? "/admin/dashboard" : "/login", request.url));
+  }
+
   // ── Admin routes: authentication + RBAC ──
   if (pathname.startsWith("/admin")) {
     const token = await getToken({

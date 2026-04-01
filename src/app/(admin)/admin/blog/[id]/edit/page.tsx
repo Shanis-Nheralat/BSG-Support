@@ -14,7 +14,8 @@ export default async function EditBlogPostPage({ params }: EditBlogPostPageProps
   const session = await getSession();
   if (!session?.user) redirect("/login");
 
-  const postId = parseInt(params.id);
+  const { id } = await params;
+  const postId = parseInt(id);
   if (isNaN(postId)) notFound();
 
   const [post, categories] = await Promise.all([

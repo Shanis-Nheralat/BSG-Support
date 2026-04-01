@@ -143,6 +143,58 @@ export function getCalculatorAdminNotification(data: {
   return { subject, html, text };
 }
 
+export function getMeetingAdminNotification(data: {
+  name: string;
+  email: string;
+  phone?: string;
+  company?: string;
+  purpose?: string;
+  date: string;
+  time: string;
+  localTime: string;
+  timezone: string;
+}) {
+  const subject = `New Meeting Booking: ${data.name} – ${data.date}`;
+
+  const html = `
+    <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+      <div style="background: #062767; color: white; padding: 20px; text-align: center;">
+        <h1 style="margin: 0;">New Meeting Booking</h1>
+      </div>
+      <div style="padding: 20px; background: #f9fafb;">
+        <h2 style="color: #062767; margin-top: 0;">Visitor Details</h2>
+        <table style="width: 100%; border-collapse: collapse;">
+          <tr><td style="padding: 8px 0; border-bottom: 1px solid #e5e7eb;"><strong>Name:</strong></td><td style="padding: 8px 0; border-bottom: 1px solid #e5e7eb;">${escapeHtml(data.name)}</td></tr>
+          <tr><td style="padding: 8px 0; border-bottom: 1px solid #e5e7eb;"><strong>Email:</strong></td><td style="padding: 8px 0; border-bottom: 1px solid #e5e7eb;"><a href="mailto:${escapeHtml(data.email)}">${escapeHtml(data.email)}</a></td></tr>
+          ${data.phone ? `<tr><td style="padding: 8px 0; border-bottom: 1px solid #e5e7eb;"><strong>Phone:</strong></td><td style="padding: 8px 0; border-bottom: 1px solid #e5e7eb;">${escapeHtml(data.phone)}</td></tr>` : ""}
+          ${data.company ? `<tr><td style="padding: 8px 0; border-bottom: 1px solid #e5e7eb;"><strong>Company:</strong></td><td style="padding: 8px 0; border-bottom: 1px solid #e5e7eb;">${escapeHtml(data.company)}</td></tr>` : ""}
+        </table>
+
+        <h2 style="color: #062767; margin-top: 24px;">Meeting Schedule</h2>
+        <table style="width: 100%; border-collapse: collapse;">
+          <tr><td style="padding: 8px 0; border-bottom: 1px solid #e5e7eb;"><strong>Date:</strong></td><td style="padding: 8px 0; border-bottom: 1px solid #e5e7eb;">${escapeHtml(data.date)}</td></tr>
+          <tr><td style="padding: 8px 0; border-bottom: 1px solid #e5e7eb;"><strong>Time (UAE):</strong></td><td style="padding: 8px 0; border-bottom: 1px solid #e5e7eb;">${escapeHtml(data.time)} GST</td></tr>
+          <tr><td style="padding: 8px 0; border-bottom: 1px solid #e5e7eb;"><strong>Visitor Local Time:</strong></td><td style="padding: 8px 0; border-bottom: 1px solid #e5e7eb;">${escapeHtml(data.localTime)} (${data.timezone.replace(/_/g, " ")})</td></tr>
+          <tr><td style="padding: 8px 0; border-bottom: 1px solid #e5e7eb;"><strong>Duration:</strong></td><td style="padding: 8px 0; border-bottom: 1px solid #e5e7eb;">30 minutes</td></tr>
+        </table>
+
+        ${data.purpose ? `<h2 style="color: #062767; margin-top: 24px;">Purpose</h2><p>${escapeHtml(data.purpose)}</p>` : ""}
+
+        <div style="text-align: center; margin-top: 24px;">
+          <a href="mailto:${escapeHtml(data.email)}?subject=Your Meeting with BSG on ${encodeURIComponent(data.date)}" style="display: inline-block; background: #062767; color: white; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: bold;">Reply to Visitor</a>
+        </div>
+      </div>
+      <div style="background: #062767; color: white; padding: 12px; text-align: center; font-size: 12px;">
+        Backsure Global Support - Meeting Booking Notification
+      </div>
+    </div>
+  `;
+
+  const text = `New Meeting Booking\n\nName: ${data.name}\nEmail: ${data.email}\n${data.phone ? `Phone: ${data.phone}\n` : ""}${data.company ? `Company: ${data.company}\n` : ""}\nDate: ${data.date}\nTime (UAE): ${data.time} GST\nVisitor Local Time: ${data.localTime} (${data.timezone.replace(/_/g, " ")})\nDuration: 30 minutes\n${data.purpose ? `\nPurpose: ${data.purpose}\n` : ""}`;
+
+  return { subject, html, text };
+}
+
 // ═══════════════════════════════════════════════════
 // ── USER TEMPLATES (i18n via translation function) ──
 // ═══════════════════════════════════════════════════
