@@ -1,8 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
-import { writeFile, mkdir } from "fs/promises";
-import path from "path";
+import { uploadFile } from "@/lib/upload";
 
 export async function POST(request: NextRequest) {
   const session = await getServerSession(authOptions);
@@ -46,18 +45,8 @@ export async function POST(request: NextRequest) {
     const ext = (file.name.split(".").pop()?.toLowerCase() || "jpg").replace(/[^a-z0-9]/g, "");
     const fileName = `${timestamp}-${randomStr}.${ext}`;
 
-    // Ensure uploads directory exists
-    const uploadsDir = path.join(process.cwd(), "public", "uploads", folder);
-    await mkdir(uploadsDir, { recursive: true });
-
-    // Save file
-    const bytes = await file.arrayBuffer();
-    const buffer = Buffer.from(bytes);
-    const filePath = path.join(uploadsDir, fileName);
-    await writeFile(filePath, buffer);
-
-    // Return the public URL path
-    const publicPath = `/uploads/${folder}/${fileName}`;
+    // Upload file (Vercel Blob in production, local filesystem in dev)
+    const publicPath = await uploadFile(file, `${folder}/${fileName}`);
 
     return NextResponse.json({
       success: true,

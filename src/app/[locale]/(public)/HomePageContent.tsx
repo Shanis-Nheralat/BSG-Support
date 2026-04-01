@@ -17,14 +17,31 @@ import {
   DollarSign,
   FileCheck,
   Code,
+  Clock,
 } from "lucide-react";
 import ScrollReveal from "@/components/animation/ScrollReveal";
 import Counter from "@/components/animation/Counter";
 import HeroBackground from "@/components/animation/HeroBackground";
 import HeroScheduler from "@/components/HeroScheduler";
 import { HomeFAQ } from "./HomeFAQ";
+import Image from "next/image";
 
-export default function HomePageContent() {
+interface BlogPostSummary {
+  id: number;
+  title: string;
+  slug: string;
+  excerpt: string | null;
+  image_path: string | null;
+  published_at: string | null;
+  reading_time: number;
+  category: { name: string; slug: string } | null;
+}
+
+interface HomePageContentProps {
+  latestPosts?: BlogPostSummary[];
+}
+
+export default function HomePageContent({ latestPosts = [] }: HomePageContentProps) {
   const t = useTranslations("Home");
   const tc = useTranslations("Common");
 
@@ -394,6 +411,93 @@ export default function HomePageContent() {
           </div>
         </div>
       </section>
+
+      {/* Latest Insights */}
+      {latestPosts.length > 0 && (
+        <section className="bg-gray-50 py-16 lg:py-24">
+          <div className="mx-auto max-w-7xl px-4 lg:px-8">
+            <ScrollReveal animation="fade-in-up">
+              <div className="text-center">
+                <h2 className="font-poppins text-3xl font-bold text-gray-900">
+                  {t("latestInsights.title")}
+                </h2>
+                <p className="mt-3 text-sm text-gray-600">
+                  {t("latestInsights.subtitle")}
+                </p>
+              </div>
+            </ScrollReveal>
+
+            <div className="mt-12 grid gap-8 md:grid-cols-3">
+              {latestPosts.map((post, index) => (
+                <ScrollReveal
+                  key={post.id}
+                  animation="fade-in-up"
+                  delay={index * 150}
+                >
+                  <Link
+                    href={`/blog/${post.slug}` as `/blog/${string}`}
+                    className="group hover-lift block overflow-hidden rounded-xl border border-gray-200 bg-white transition-all hover:border-gold"
+                  >
+                    {/* Image */}
+                    <div className="relative aspect-[16/10] overflow-hidden bg-gray-100">
+                      {post.image_path ? (
+                        <Image
+                          src={post.image_path}
+                          alt={post.title}
+                          fill
+                          className="object-cover transition-transform duration-500 group-hover:scale-105"
+                          sizes="(max-width: 768px) 100vw, 33vw"
+                        />
+                      ) : (
+                        <div className="flex h-full items-center justify-center bg-navy-50">
+                          <span className="font-poppins text-3xl font-bold text-navy/20">BSG</span>
+                        </div>
+                      )}
+                      {/* Category badge */}
+                      {post.category && (
+                        <span className="absolute left-3 top-3 rounded-full bg-navy/80 px-3 py-1 text-xs font-medium text-white backdrop-blur-sm">
+                          {post.category.name}
+                        </span>
+                      )}
+                    </div>
+                    {/* Content */}
+                    <div className="p-6">
+                      <h3 className="font-poppins text-lg font-semibold text-gray-900 line-clamp-2 group-hover:text-navy">
+                        {post.title}
+                      </h3>
+                      {post.excerpt && (
+                        <p className="mt-2 text-sm leading-relaxed text-gray-600 line-clamp-2">
+                          {post.excerpt}
+                        </p>
+                      )}
+                      <div className="mt-4 flex items-center justify-between">
+                        <span className="inline-flex items-center gap-1 text-xs text-gray-500">
+                          <Clock className="h-3.5 w-3.5" />
+                          {t("latestInsights.minRead", { minutes: post.reading_time })}
+                        </span>
+                        <span className="inline-flex items-center gap-1 text-sm font-medium text-navy group-hover:text-gold-700">
+                          {t("latestInsights.readMore")} <ArrowRight className="h-3.5 w-3.5 arrow-animate" />
+                        </span>
+                      </div>
+                    </div>
+                  </Link>
+                </ScrollReveal>
+              ))}
+            </div>
+
+            <ScrollReveal animation="fade-in-up" delay={500}>
+              <div className="mt-10 text-center">
+                <Link
+                  href="/blog"
+                  className="group inline-flex items-center gap-2 rounded-lg border-2 border-navy px-8 py-3 font-semibold text-navy transition-all hover:bg-navy hover:text-white"
+                >
+                  {t("latestInsights.viewAll")} <ArrowRight className="h-4 w-4 arrow-animate" />
+                </Link>
+              </div>
+            </ScrollReveal>
+          </div>
+        </section>
+      )}
 
       {/* FAQ - imported from separate component */}
       <HomeFAQ />

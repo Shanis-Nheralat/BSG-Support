@@ -270,7 +270,7 @@ export default async function CandidatesListPage({ searchParams }: CandidatesPag
                         </a>
                         {candidate.resume_path && (
                           <a
-                            href={`/uploads/resumes/${candidate.resume_path}`}
+                            href={candidate.resume_path.startsWith("http") ? candidate.resume_path : `/uploads/resumes/${candidate.resume_path}`}
                             target="_blank"
                             className="rounded p-1.5 text-gray-400 hover:bg-gray-100 hover:text-blue-600 dark:hover:bg-gray-700"
                             title="Download Resume"

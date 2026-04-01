@@ -166,6 +166,13 @@
     "cta": {
       "title": "Ready to Scale Smarter?",
       "description": "Let's create a custom support model for your business."
+    },
+    "latestInsights": {
+      "title": "Latest Insights",
+      "subtitle": "Expert perspectives on business operations and industry trends",
+      "viewAll": "View All Insights",
+      "readMore": "Read More",
+      "minRead": "{minutes} min read"
     }
   },
   "HomeFAQ": {
@@ -1154,6 +1161,7 @@
     },
     "heroTitle": "Insights & Resources",
     "heroSubtitle": "Explore the latest insights, industry trends, and expert advice to help your business thrive.",
+    "heroTagline": "Expert Perspectives on Business Operations",
     "searchPlaceholder": "Search articles...",
     "searchButton": "Search",
     "allCategories": "All Categories",
@@ -1165,6 +1173,11 @@
     "clearFilters": "Clear filters",
     "showing": "Showing {from} - {to} of {total} articles",
     "featured": "Featured",
+    "editorsPick": "Editor's Pick",
+    "popularTopics": "Popular Topics",
+    "readMore": "Read More",
+    "readingTime": "{minutes} min read",
+    "pageOf": "Page {current} of {total}",
     "views": "{count} views",
     "noArticlesFiltered": "No articles found matching your filters.",
     "noArticlesYet": "No articles published yet. Check back soon!",
@@ -1176,6 +1189,15 @@
     "views": "{count} views",
     "minRead": "{minutes} min read",
     "relatedArticles": "Related Articles",
+    "tableOfContents": "In This Article",
+    "shareArticle": "Share",
+    "copyLink": "Copy Link",
+    "linkCopied": "Link copied!",
+    "publishedBy": "Published by",
+    "authorName": "Backsure Global Support",
+    "authorTagline": "Expert insights on business operations and industry trends",
+    "viewAllInsights": "View All Insights",
+    "scheduleCall": "Schedule a Call",
     "ctaTitle": "Ready to Transform Your Business Operations?",
     "ctaDescription": "Contact us today to learn how BSG Support can help your business grow.",
     "ctaButton": "Get in Touch",

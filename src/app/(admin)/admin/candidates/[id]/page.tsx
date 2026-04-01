@@ -182,7 +182,7 @@ export default async function CandidateDetailPage({ params }: CandidateDetailPag
                   </div>
                 </div>
                 <a
-                  href={`/uploads/resumes/${candidate.resume_path}`}
+                  href={candidate.resume_path.startsWith("http") ? candidate.resume_path : `/uploads/resumes/${candidate.resume_path}`}
                   target="_blank"
                   className="flex items-center gap-2 rounded-lg bg-navy-600 px-4 py-2 text-sm font-medium text-white hover:bg-navy-700"
                 >

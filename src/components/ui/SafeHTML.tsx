@@ -12,8 +12,25 @@ export default function SafeHTML({ html, className }: SafeHTMLProps) {
   const [sanitizedHTML, setSanitizedHTML] = useState('');
 
   useEffect(() => {
+    // Inject id attributes on h2/h3 tags for TOC anchor links
+    const processedHTML = html.replace(
+      /<(h[23])([^>]*)>(.*?)<\/\1>/gi,
+      (match, tag, attrs, content) => {
+        // Skip if id already exists
+        if (/id\s*=/.test(attrs)) return match;
+        // Generate slug from text content
+        const textContent = content.replace(/<[^>]*>/g, '').trim();
+        const slug = textContent
+          .toLowerCase()
+          .replace(/[^a-z0-9]+/g, '-')
+          .replace(/^-|-$/g, '');
+        if (!slug) return match;
+        return `<${tag}${attrs} id="${slug}">${content}</${tag}>`;
+      }
+    );
+
     // DOMPurify configuration - allow safe HTML tags for blog content
-    const cleanHTML = DOMPurify.sanitize(html, {
+    const cleanHTML = DOMPurify.sanitize(processedHTML, {
       ALLOWED_TAGS: [
         'h1', 'h2', 'h3', 'h4', 'h5', 'h6',
         'p', 'br', 'hr',

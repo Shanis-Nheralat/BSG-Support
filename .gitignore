@@ -38,6 +38,6 @@ next-env.d.ts
 
 /src/generated/prisma
 
-.vercel
-
-.vercel
+# temp scripts
+.vercel-tmp/
+nul

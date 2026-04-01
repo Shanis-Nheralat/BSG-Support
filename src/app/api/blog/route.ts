@@ -70,6 +70,7 @@ export async function GET(request: NextRequest) {
           title: true,
           slug: true,
           excerpt: true,
+          content: true,
           image_path: true,
           featured: true,
           published_at: true,
@@ -145,17 +146,19 @@ export async function GET(request: NextRequest) {
       console.error("Error fetching blog filters:", filterError);
     }
 
-    // Transform posts to flatten tags and overlay translations
+    // Transform posts to flatten tags, overlay translations, and compute reading time
     const transformedPosts = posts.map((post) => {
       const tr = post.translations[0];
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      const { translations: _tr, ...rest } = post;
+      const { translations: _tr, content: _content, ...rest } = post;
+      const wordCount = post.content.replace(/<[^>]*>/g, "").split(/\s+/).filter(Boolean).length;
       return {
         ...rest,
         title: tr?.title ?? post.title,
         slug: tr?.slug ?? post.slug,
         excerpt: tr?.excerpt ?? post.excerpt,
         tags: post.tags.map((pt) => pt.tag),
+        reading_time: Math.max(1, Math.ceil(wordCount / 200)),
       };
     });
 

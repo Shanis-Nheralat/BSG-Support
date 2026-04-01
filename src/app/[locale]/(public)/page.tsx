@@ -1,6 +1,7 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Metadata } from "next";
 import HomePageContent from "./HomePageContent";
+import { prisma } from "@/lib/prisma";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://backsureglobalsupport.com";
 
@@ -45,5 +46,59 @@ export default async function HomePage({
   const { locale } = await params;
   setRequestLocale(locale);
 
-  return <HomePageContent />;
+  // Fetch 3 latest published blog posts for "Latest Insights" section
+  let latestPosts: {
+    id: number;
+    title: string;
+    slug: string;
+    excerpt: string | null;
+    image_path: string | null;
+    published_at: string | null;
+    reading_time: number;
+    category: { name: string; slug: string } | null;
+  }[] = [];
+
+  try {
+    const posts = await prisma.blog_posts.findMany({
+      where: { status: "published" },
+      orderBy: { published_at: "desc" },
+      take: 3,
+      select: {
+        id: true,
+        title: true,
+        slug: true,
+        excerpt: true,
+        content: true,
+        image_path: true,
+        published_at: true,
+        category: { select: { name: true, slug: true } },
+        translations: {
+          where: { locale },
+          select: { title: true, slug: true, excerpt: true },
+        },
+      },
+    });
+
+    latestPosts = posts.map((post) => {
+      const tr = post.translations[0];
+      const wordCount = post.content
+        .replace(/<[^>]*>/g, "")
+        .split(/\s+/)
+        .filter(Boolean).length;
+      return {
+        id: post.id,
+        title: tr?.title ?? post.title,
+        slug: tr?.slug ?? post.slug,
+        excerpt: tr?.excerpt ?? post.excerpt,
+        image_path: post.image_path,
+        published_at: post.published_at?.toISOString() ?? null,
+        reading_time: Math.max(1, Math.ceil(wordCount / 200)),
+        category: post.category,
+      };
+    });
+  } catch (error) {
+    console.error("Failed to fetch latest blog posts:", error);
+  }
+
+  return <HomePageContent latestPosts={latestPosts} />;
 }

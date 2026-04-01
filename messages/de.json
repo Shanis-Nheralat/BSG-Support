@@ -166,6 +166,13 @@
     "cta": {
       "title": "Bereit, smarter zu skalieren?",
       "description": "Lassen Sie uns ein individuelles Support-Modell für Ihr Unternehmen erstellen."
+    },
+    "latestInsights": {
+      "title": "Neueste Einblicke",
+      "subtitle": "Expertenperspektiven zu Geschäftsprozessen und Branchentrends",
+      "viewAll": "Alle Einblicke anzeigen",
+      "readMore": "Weiterlesen",
+      "minRead": "{minutes} Min. Lesezeit"
     }
   },
   "HomeFAQ": {
@@ -1154,6 +1161,7 @@
     },
     "heroTitle": "Einblicke & Ressourcen",
     "heroSubtitle": "Entdecken Sie die neuesten Einblicke, Branchentrends und Expertentipps, um Ihr Unternehmen voranzubringen.",
+    "heroTagline": "Expertenperspektiven zu Geschäftsprozessen",
     "searchPlaceholder": "Artikel suchen...",
     "searchButton": "Suchen",
     "allCategories": "Alle Kategorien",
@@ -1165,6 +1173,11 @@
     "clearFilters": "Filter löschen",
     "showing": "Zeige {from} - {to} von {total} Artikeln",
     "featured": "Empfohlen",
+    "editorsPick": "Empfehlung der Redaktion",
+    "popularTopics": "Beliebte Themen",
+    "readMore": "Weiterlesen",
+    "readingTime": "{minutes} Min. Lesezeit",
+    "pageOf": "Seite {current} von {total}",
     "views": "{count} Aufrufe",
     "noArticlesFiltered": "Keine Artikel gefunden, die Ihren Filtern entsprechen.",
     "noArticlesYet": "Noch keine Artikel veröffentlicht. Schauen Sie bald wieder vorbei!",
@@ -1176,6 +1189,15 @@
     "views": "{count} Aufrufe",
     "minRead": "{minutes} Min. Lesezeit",
     "relatedArticles": "Verwandte Artikel",
+    "tableOfContents": "In diesem Artikel",
+    "shareArticle": "Teilen",
+    "copyLink": "Link kopieren",
+    "linkCopied": "Link kopiert!",
+    "publishedBy": "Veröffentlicht von",
+    "authorName": "Backsure Global Support",
+    "authorTagline": "Experteneinblicke in Geschäftsprozesse und Branchentrends",
+    "viewAllInsights": "Alle Einblicke anzeigen",
+    "scheduleCall": "Gespräch vereinbaren",
     "ctaTitle": "Bereit, Ihre Geschäftsabläufe zu transformieren?",
     "ctaDescription": "Kontaktieren Sie uns noch heute, um zu erfahren, wie BSG Support Ihrem Unternehmen beim Wachstum helfen kann.",
     "ctaButton": "Kontakt aufnehmen",

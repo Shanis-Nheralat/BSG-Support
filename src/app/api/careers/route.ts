@@ -4,8 +4,7 @@ import { sendEmail } from "@/lib/email";
 import { notifyNewCandidate } from "@/lib/notifications";
 import { resolveLocale, loadEmailTranslations } from "@/lib/email-translations";
 import { getCareersAdminNotification, getCareersUserConfirmation } from "@/lib/email-templates";
-import { writeFile, mkdir } from "fs/promises";
-import path from "path";
+import { uploadFile } from "@/lib/upload";
 
 export async function POST(request: NextRequest) {
   try {
@@ -71,17 +70,8 @@ export async function POST(request: NextRequest) {
       const ext = resume.name.split(".").pop();
       const fileName = `${safeFileName}-${timestamp}.${ext}`;
 
-      // Ensure uploads directory exists
-      const uploadsDir = path.join(process.cwd(), "public", "uploads", "resumes");
-      await mkdir(uploadsDir, { recursive: true });
-
-      // Save file
-      const bytes = await resume.arrayBuffer();
-      const buffer = Buffer.from(bytes);
-      const filePath = path.join(uploadsDir, fileName);
-      await writeFile(filePath, buffer);
-
-      resumePath = fileName;
+      // Upload file (Vercel Blob in production, local filesystem in dev)
+      resumePath = await uploadFile(resume, `resumes/${fileName}`);
     }
 
     // Create candidate in database

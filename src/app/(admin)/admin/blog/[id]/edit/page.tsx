@@ -21,7 +21,7 @@ export default async function EditBlogPostPage({ params }: EditBlogPostPageProps
   const [post, categories] = await Promise.all([
     prisma.blog_posts.findUnique({
       where: { id: postId },
-      include: { translations: true },
+      include: { translations: true, tags: { include: { tag: true } } },
     }),
     prisma.blog_categories.findMany({
       orderBy: { name: "asc" },
@@ -32,6 +32,9 @@ export default async function EditBlogPostPage({ params }: EditBlogPostPageProps
 
   // Extract German translation if it exists
   const deTranslation = post.translations.find((t) => t.locale === "de") || null;
+
+  // Extract existing tags
+  const existingTags = post.tags.map((pt) => pt.tag.name);
 
   return (
     <>
@@ -55,6 +58,7 @@ export default async function EditBlogPostPage({ params }: EditBlogPostPageProps
           meta_keywords: post.meta_keywords,
         }}
         categories={categories}
+        existingTags={existingTags}
         existingTranslation={deTranslation ? {
           title: deTranslation.title,
           slug: deTranslation.slug,

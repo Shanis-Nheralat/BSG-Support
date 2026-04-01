@@ -1,10 +1,10 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import { Button, Input } from "@/components/ui";
 import Card from "@/components/ui/Card";
-import { Save, ArrowLeft, X, Image as ImageIcon, Plus, Check, Languages, Loader2 } from "lucide-react";
+import { Save, ArrowLeft, X, Image as ImageIcon, Plus, Check, Languages, Loader2, Tag, Clock } from "lucide-react";
 import Link from "next/link";
 
 interface Category {
@@ -42,15 +42,89 @@ interface BlogPostFormProps {
   post?: PostData;
   categories: Category[];
   existingTranslation?: TranslationData;
+  existingTags?: string[];
 }
 
-export function BlogPostForm({ post, categories: initialCategories, existingTranslation }: BlogPostFormProps) {
+export function BlogPostForm({ post, categories: initialCategories, existingTranslation, existingTags }: BlogPostFormProps) {
   const router = useRouter();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState("");
   const [imagePath, setImagePath] = useState(post?.image_path || "");
   const [isUploading, setIsUploading] = useState(false);
   const [isTranslating, setIsTranslating] = useState(false);
+
+  // Tag state
+  const [selectedTags, setSelectedTags] = useState<string[]>(existingTags || []);
+  const [tagInput, setTagInput] = useState("");
+  const [allTags, setAllTags] = useState<string[]>([]);
+  const [showTagSuggestions, setShowTagSuggestions] = useState(false);
+
+  // Reading time state
+  const [readingTime, setReadingTime] = useState(0);
+  const contentRef = useRef<HTMLTextAreaElement>(null);
+
+  // Fetch all existing tags for autocomplete
+  const fetchTags = useCallback(async () => {
+    try {
+      const res = await fetch("/api/admin/blog/tags");
+      if (res.ok) {
+        const data = await res.json();
+        setAllTags(data.tags.map((t: { name: string }) => t.name));
+      }
+    } catch {
+      // Silently fail - autocomplete is non-critical
+    }
+  }, []);
+
+  useEffect(() => {
+    fetchTags();
+  }, [fetchTags]);
+
+  // Compute initial reading time from existing content
+  useEffect(() => {
+    if (post?.content) {
+      const words = post.content.replace(/<[^>]*>/g, "").split(/\s+/).filter(Boolean).length;
+      setReadingTime(Math.max(1, Math.ceil(words / 200)));
+    }
+  }, [post?.content]);
+
+  function handleContentInput(e: React.FormEvent<HTMLTextAreaElement>) {
+    const text = e.currentTarget.value;
+    const words = text.replace(/<[^>]*>/g, "").split(/\s+/).filter(Boolean).length;
+    setReadingTime(Math.max(1, Math.ceil(words / 200)));
+  }
+
+  function addTag(tag: string) {
+    const trimmed = tag.trim();
+    if (trimmed && !selectedTags.includes(trimmed)) {
+      setSelectedTags([...selectedTags, trimmed]);
+    }
+    setTagInput("");
+    setShowTagSuggestions(false);
+  }
+
+  function removeTag(tag: string) {
+    setSelectedTags(selectedTags.filter((t) => t !== tag));
+  }
+
+  function handleTagKeyDown(e: React.KeyboardEvent<HTMLInputElement>) {
+    if (e.key === "Enter" || e.key === ",") {
+      e.preventDefault();
+      if (tagInput.trim()) {
+        addTag(tagInput);
+      }
+    } else if (e.key === "Backspace" && !tagInput && selectedTags.length > 0) {
+      removeTag(selectedTags[selectedTags.length - 1]);
+    }
+  }
+
+  const filteredSuggestions = tagInput
+    ? allTags.filter(
+        (t) =>
+          t.toLowerCase().includes(tagInput.toLowerCase()) &&
+          !selectedTags.includes(t)
+      )
+    : [];
 
   // German translation state
   const [deTitle, setDeTitle] = useState(existingTranslation?.title || "");
@@ -210,6 +284,7 @@ export function BlogPostForm({ post, categories: initialCategories, existingTran
       meta_title: formData.get("meta_title") as string || null,
       meta_description: formData.get("meta_description") as string || null,
       meta_keywords: formData.get("meta_keywords") as string || null,
+      tags: selectedTags,
     };
 
     // Include German translation if any DE field is filled
@@ -307,14 +382,24 @@ export function BlogPostForm({ post, categories: initialCategories, existingTran
                 />
               </div>
               <div>
-                <label className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">
-                  Content *
-                </label>
+                <div className="mb-1 flex items-center justify-between">
+                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                    Content *
+                  </label>
+                  {readingTime > 0 && (
+                    <span className="inline-flex items-center gap-1 rounded-full bg-navy-50 px-2.5 py-0.5 text-xs text-navy-600 dark:bg-navy-900/30 dark:text-navy-400">
+                      <Clock className="h-3 w-3" />
+                      ~{readingTime} min read
+                    </span>
+                  )}
+                </div>
                 <textarea
+                  ref={contentRef}
                   name="content"
                   rows={15}
                   required
                   defaultValue={post?.content || ""}
+                  onInput={handleContentInput}
                   className="w-full rounded-lg border border-gray-300 px-4 py-2 font-mono text-sm focus:border-navy-500 focus:outline-none focus:ring-1 focus:ring-navy-500 dark:border-gray-600 dark:bg-gray-800 dark:text-white"
                   placeholder="Write your post content here... (HTML supported)"
                 />
@@ -585,6 +670,7 @@ export function BlogPostForm({ post, categories: initialCategories, existingTran
             {/* Image Preview */}
             {imagePath ? (
               <div className="relative mb-4">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={imagePath}
                   alt="Featured"
@@ -643,6 +729,71 @@ export function BlogPostForm({ post, categories: initialCategories, existingTran
                 hint="Enter external image URL"
               />
             </div>
+          </Card>
+
+          <Card>
+            <h3 className="mb-4 text-lg font-semibold text-gray-900 dark:text-white flex items-center gap-2">
+              <Tag className="h-5 w-5" />
+              Tags
+            </h3>
+
+            {/* Selected Tags */}
+            {selectedTags.length > 0 && (
+              <div className="mb-3 flex flex-wrap gap-1.5">
+                {selectedTags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="inline-flex items-center gap-1 rounded-full bg-navy-50 px-3 py-1 text-xs font-medium text-navy-700 dark:bg-navy-900/30 dark:text-navy-400"
+                  >
+                    #{tag}
+                    <button
+                      type="button"
+                      onClick={() => removeTag(tag)}
+                      className="ml-0.5 rounded-full p-0.5 hover:bg-navy-100 dark:hover:bg-navy-800"
+                    >
+                      <X className="h-3 w-3" />
+                    </button>
+                  </span>
+                ))}
+              </div>
+            )}
+
+            {/* Tag Input */}
+            <div className="relative">
+              <input
+                type="text"
+                value={tagInput}
+                onChange={(e) => {
+                  setTagInput(e.target.value);
+                  setShowTagSuggestions(true);
+                }}
+                onKeyDown={handleTagKeyDown}
+                onFocus={() => setShowTagSuggestions(true)}
+                onBlur={() => setTimeout(() => setShowTagSuggestions(false), 200)}
+                placeholder="Type a tag and press Enter..."
+                className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-navy-500 focus:outline-none focus:ring-1 focus:ring-navy-500 dark:border-gray-600 dark:bg-gray-800 dark:text-white"
+              />
+
+              {/* Suggestions Dropdown */}
+              {showTagSuggestions && filteredSuggestions.length > 0 && (
+                <div className="absolute z-10 mt-1 max-h-40 w-full overflow-y-auto rounded-lg border border-gray-200 bg-white shadow-lg dark:border-gray-600 dark:bg-gray-800">
+                  {filteredSuggestions.slice(0, 8).map((suggestion) => (
+                    <button
+                      type="button"
+                      key={suggestion}
+                      onMouseDown={(e) => {
+                        e.preventDefault();
+                        addTag(suggestion);
+                      }}
+                      className="block w-full px-3 py-2 text-left text-sm text-gray-700 hover:bg-navy-50 dark:text-gray-300 dark:hover:bg-navy-900/30"
+                    >
+                      #{suggestion}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+            <p className="mt-2 text-xs text-gray-500">Press Enter or comma to add a tag</p>
           </Card>
         </div>
       </div>

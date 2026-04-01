@@ -2,9 +2,12 @@ import { notFound } from "next/navigation";
 import { Link } from "@/i18n/navigation";
 import Image from "next/image";
 import { prisma } from "@/lib/prisma";
-import { Calendar, Eye, ArrowLeft, Tag } from "lucide-react";
+import { Calendar, Eye, Tag, Clock, ArrowRight } from "lucide-react";
 import SafeHTML from "@/components/ui/SafeHTML";
 import BlogComments from "@/components/BlogComments";
+import ReadingProgress from "@/components/ReadingProgress";
+import ShareButtons from "@/components/ShareButtons";
+import HeroBackground from "@/components/animation/HeroBackground";
 import { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
@@ -14,10 +17,27 @@ interface BlogDetailPageProps {
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://backsureglobalsupport.com";
 
+// Extract headings from HTML content for TOC
+function extractHeadings(html: string): Array<{ id: string; text: string; level: number }> {
+  const headings: Array<{ id: string; text: string; level: number }> = [];
+  const regex = /<h([23])[^>]*>(.*?)<\/h\1>/gi;
+  let match;
+  while ((match = regex.exec(html)) !== null) {
+    const text = match[2].replace(/<[^>]*>/g, "").trim();
+    const id = text
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/^-|-$/g, "");
+    if (id && text) {
+      headings.push({ id, text, level: parseInt(match[1]) });
+    }
+  }
+  return headings;
+}
+
 export async function generateMetadata({ params }: BlogDetailPageProps): Promise<Metadata> {
   const { slug, locale } = await params;
 
-  // Try to find by EN slug first, then by translated slug
   let post = await prisma.blog_posts.findUnique({
     where: { slug },
     include: {
@@ -98,7 +118,6 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
   setRequestLocale(locale);
   const t = await getTranslations("BlogDetail");
 
-  // Try EN slug first, then translated slug
   let post = await prisma.blog_posts.findFirst({
     where: { slug, status: "published" },
     include: {
@@ -127,7 +146,6 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
 
   if (!post) notFound();
 
-  // Overlay translated fields
   const postTr = 'translations' in post && Array.isArray(post.translations) && post.translations[0];
   const displayTitle = (postTr && postTr.title) || post.title;
   const displayExcerpt = (postTr && postTr.excerpt) || post.excerpt;
@@ -139,7 +157,7 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
     data: { views: { increment: 1 } },
   });
 
-  // Get related posts
+  // Get related posts with content for reading time
   const relatedPosts = await prisma.blog_posts.findMany({
     where: {
       status: "published",
@@ -149,11 +167,11 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
     take: 3,
     orderBy: { published_at: "desc" },
     include: {
+      category: true,
       translations: { where: { locale }, select: { title: true, slug: true, excerpt: true }, take: 1 },
     },
   });
 
-  // Get approved comment count
   const commentCount = await prisma.blog_comments.count({
     where: { post_id: post.id, status: "approved" },
   });
@@ -167,16 +185,20 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
     }).format(new Date(date));
   }
 
-  // Calculate reading time (approx 200 words per minute)
-  const wordCount = displayContent.replace(/<[^>]*>/g, "").split(/\s+/).length;
-  const readingTime = Math.ceil(wordCount / 200);
+  const wordCount = displayContent.replace(/<[^>]*>/g, "").split(/\s+/).filter(Boolean).length;
+  const readingTime = Math.max(1, Math.ceil(wordCount / 200));
 
-  // JSON-LD Structured Data for SEO
+  // Extract TOC headings
+  const headings = extractHeadings(displayContent);
+
+  // Image URL for hero and JSON-LD
   const imageUrl = post.image_path
     ? post.image_path.startsWith("http")
       ? post.image_path
       : `${SITE_URL}${post.image_path}`
     : `${SITE_URL}/images/og-default.jpg`;
+
+  const postUrl = `${SITE_URL}/${locale}/blog/${(postTr && postTr.slug) || post.slug}`;
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -208,26 +230,56 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
     keywords: post.tags.map((tg) => tg.tag.name).join(", "),
   };
 
+  const hasHeroImage = !!post.image_path;
+
   return (
     <>
+      {/* Reading Progress Bar */}
+      <ReadingProgress />
+
       {/* JSON-LD Structured Data */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      {/* Hero */}
-      <section className="bg-navy py-16 text-white">
-        <div className="mx-auto max-w-4xl px-4 lg:px-8">
-          <Link
-            href="/blog"
-            className="mb-6 inline-flex items-center gap-2 text-sm text-white/70 hover:text-white"
-          >
-            <ArrowLeft className="h-4 w-4" />
-            {t("backToBlog")}
-          </Link>
+      {/* Immersive Hero */}
+      <section className={`relative overflow-hidden text-white ${hasHeroImage ? 'py-24 lg:py-32' : 'py-20 lg:py-28'}`}>
+        {/* Background */}
+        {hasHeroImage ? (
+          <>
+            <Image
+              src={post.image_path!}
+              alt={displayTitle}
+              fill
+              className="object-cover"
+              priority
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/80 to-navy/40" />
+          </>
+        ) : (
+          <>
+            <div className="absolute inset-0 bg-navy" />
+            <HeroBackground />
+          </>
+        )}
 
-          <div className="flex flex-wrap gap-2 mb-4">
+        <div className="relative z-10 mx-auto max-w-4xl px-4 lg:px-8">
+          {/* Breadcrumb */}
+          <nav className="mb-6 flex flex-wrap items-center gap-2 text-sm text-white/50">
+            <Link href="/" className="transition-colors hover:text-white/80">Home</Link>
+            <span>/</span>
+            <Link href="/blog" className="transition-colors hover:text-white/80">Blog</Link>
+            {post.category && (
+              <>
+                <span>/</span>
+                <span className="text-white/60">{post.category.name}</span>
+              </>
+            )}
+          </nav>
+
+          {/* Category Badge */}
+          <div className="mb-4 flex flex-wrap gap-2">
             {post.category && (
               <span className="inline-block rounded-full bg-gold px-3 py-1 text-xs font-medium text-white">
                 {post.category.name}
@@ -235,20 +287,28 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
             )}
           </div>
 
-          <h1 className="font-poppins text-3xl font-bold lg:text-4xl">
+          {/* Title */}
+          <h1 className="font-poppins text-3xl font-bold leading-tight lg:text-4xl xl:text-5xl">
             {displayTitle}
           </h1>
 
-          <div className="mt-6 flex flex-wrap items-center gap-6 text-sm text-white/70">
+          {/* Meta Row */}
+          <div className="mt-6 flex flex-wrap items-center gap-4 text-sm text-white/70">
             <div className="flex items-center gap-2">
               <Calendar className="h-4 w-4" />
               {formatDate(post.published_at || post.created_at)}
             </div>
             <div className="flex items-center gap-2">
+              <Clock className="h-4 w-4" />
+              {t("minRead", { minutes: readingTime })}
+            </div>
+            <div className="flex items-center gap-2">
               <Eye className="h-4 w-4" />
               {t("views", { count: post.views.toLocaleString() })}
             </div>
-            <span>{t("minRead", { minutes: readingTime })}</span>
+            <div className="ml-auto">
+              <ShareButtons url={postUrl} title={displayTitle} />
+            </div>
           </div>
 
           {/* Tags */}
@@ -269,35 +329,64 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
         </div>
       </section>
 
-      {/* Content */}
+      {/* Article Content with TOC Sidebar */}
       <article className="py-12">
-        <div className="mx-auto max-w-4xl px-4 lg:px-8">
-          {/* Featured Image */}
-          {post.image_path && (
-            <div className="mb-8 overflow-hidden rounded-xl">
-              <Image
-                src={post.image_path}
-                alt={displayTitle}
-                width={1200}
-                height={630}
-                className="h-auto w-full object-cover"
-                priority
+        <div className="mx-auto max-w-7xl px-4 lg:px-8">
+          <div className={headings.length > 2 ? "lg:grid lg:grid-cols-[1fr_280px] lg:gap-12" : ""}>
+            {/* Main Content */}
+            <div className="mx-auto max-w-4xl lg:mx-0">
+              {/* Excerpt */}
+              {displayExcerpt && (
+                <p className="mb-8 text-xl leading-relaxed text-gray-600">
+                  {displayExcerpt}
+                </p>
+              )}
+
+              {/* Post Content */}
+              <SafeHTML
+                html={displayContent}
+                className="prose prose-lg max-w-none prose-headings:font-poppins prose-headings:text-gray-900 prose-a:text-navy prose-a:no-underline hover:prose-a:underline"
               />
+
+              {/* Author Section */}
+              <div className="mt-12 rounded-xl border border-gray-200 bg-navy-50 p-6">
+                <div className="flex items-center gap-4">
+                  <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-navy text-white">
+                    <span className="font-poppins text-sm font-bold">BSG</span>
+                  </div>
+                  <div>
+                    <p className="text-xs text-gray-500">{t("publishedBy")}</p>
+                    <p className="font-poppins font-semibold text-gray-900">{t("authorName")}</p>
+                    <p className="text-sm text-gray-500">{t("authorTagline")}</p>
+                  </div>
+                </div>
+              </div>
             </div>
-          )}
 
-          {/* Excerpt */}
-          {displayExcerpt && (
-            <p className="mb-8 text-xl leading-relaxed text-gray-600">
-              {displayExcerpt}
-            </p>
-          )}
-
-          {/* Post Content */}
-          <SafeHTML
-            html={displayContent}
-            className="prose prose-lg max-w-none prose-headings:font-poppins prose-headings:text-gray-900 prose-a:text-navy prose-a:no-underline hover:prose-a:underline"
-          />
+            {/* TOC Sidebar (Desktop only, only if enough headings) */}
+            {headings.length > 2 && (
+              <aside className="hidden lg:block">
+                <div className="sticky top-24">
+                  <h4 className="mb-4 font-poppins text-sm font-semibold uppercase tracking-wider text-gray-400">
+                    {t("tableOfContents")}
+                  </h4>
+                  <nav className="space-y-1 border-l-2 border-gray-200">
+                    {headings.map((heading) => (
+                      <a
+                        key={heading.id}
+                        href={`#${heading.id}`}
+                        className={`block border-l-2 -ml-[2px] py-1.5 text-sm transition-colors hover:border-gold hover:text-navy ${
+                          heading.level === 3 ? "pl-6" : "pl-4"
+                        } border-transparent text-gray-500`}
+                      >
+                        {heading.text}
+                      </a>
+                    ))}
+                  </nav>
+                </div>
+              </aside>
+            )}
+          </div>
         </div>
       </article>
 
@@ -317,55 +406,100 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
                 const rTitle = (rTr && rTr.title) || related.title;
                 const rSlug = (rTr && rTr.slug) || related.slug;
                 const rExcerpt = (rTr && rTr.excerpt) || related.excerpt;
+                const rReadingTime = Math.max(1, Math.ceil(related.content.replace(/<[^>]*>/g, "").split(/\s+/).filter(Boolean).length / 200));
                 return (
-                <Link
-                  key={related.id}
-                  href={`/blog/${rSlug}`}
-                  className="group rounded-xl border border-gray-200 bg-white p-6 transition-shadow hover:shadow-lg"
-                >
-                  {related.image_path && (
-                    <div className="mb-4 overflow-hidden rounded-lg">
-                      <img
-                        src={related.image_path}
-                        alt={rTitle}
-                        className="h-40 w-full object-cover transition-transform group-hover:scale-105"
-                      />
+                  <Link
+                    key={related.id}
+                    href={`/blog/${rSlug}`}
+                    className="group hover-lift overflow-hidden rounded-xl border border-gray-200 bg-white transition-all hover:border-gold hover:shadow-lg"
+                  >
+                    {/* Image */}
+                    <div className="relative">
+                      {related.image_path ? (
+                        <div className="relative aspect-[16/10] overflow-hidden">
+                          <Image
+                            src={related.image_path}
+                            alt={rTitle}
+                            fill
+                            className="object-cover transition-transform duration-500 group-hover:scale-105"
+                            sizes="(max-width: 768px) 100vw, 33vw"
+                          />
+                        </div>
+                      ) : (
+                        <div className="flex aspect-[16/10] items-center justify-center bg-gradient-to-br from-navy-50 to-navy-100">
+                          <span className="font-poppins text-2xl font-bold text-navy/10">BSG</span>
+                        </div>
+                      )}
+                      {related.category && (
+                        <span className="absolute bottom-3 left-3 rounded-full bg-white/90 px-3 py-1 text-xs font-medium text-gray-700 shadow-sm backdrop-blur-sm">
+                          {related.category.name}
+                        </span>
+                      )}
                     </div>
-                  )}
-                  <h3 className="font-poppins font-semibold text-gray-900 group-hover:text-navy">
-                    {rTitle}
-                  </h3>
-                  {rExcerpt && (
-                    <p className="mt-2 line-clamp-2 text-sm text-gray-600">
-                      {rExcerpt}
-                    </p>
-                  )}
-                  <p className="mt-3 text-xs text-gray-400">
-                    {formatDate(related.published_at || related.created_at)}
-                  </p>
-                </Link>
+                    <div className="p-5">
+                      <h3 className="font-poppins font-semibold text-gray-900 group-hover:text-navy">
+                        {rTitle}
+                      </h3>
+                      {rExcerpt && (
+                        <p className="mt-2 line-clamp-2 text-sm text-gray-600">
+                          {rExcerpt}
+                        </p>
+                      )}
+                      <div className="mt-3 flex items-center gap-3 text-xs text-gray-400">
+                        <div className="flex items-center gap-1">
+                          <Calendar className="h-3 w-3" />
+                          {formatDate(related.published_at || related.created_at)}
+                        </div>
+                        <div className="flex items-center gap-1">
+                          <Clock className="h-3 w-3" />
+                          {t("minRead", { minutes: rReadingTime })}
+                        </div>
+                      </div>
+                    </div>
+                  </Link>
                 );
               })}
+            </div>
+            <div className="mt-8 text-center">
+              <Link
+                href="/blog"
+                className="inline-flex items-center gap-2 font-medium text-navy hover:text-gold"
+              >
+                {t("viewAllInsights")} <ArrowRight className="h-4 w-4" />
+              </Link>
             </div>
           </div>
         </section>
       )}
 
       {/* CTA */}
-      <section className="bg-navy py-16 text-white">
-        <div className="mx-auto max-w-4xl px-4 text-center lg:px-8">
-          <h2 className="font-poppins text-2xl font-bold">
-            {t("ctaTitle")}
-          </h2>
-          <p className="mt-4 text-white/70">
-            {t("ctaDescription")}
-          </p>
-          <Link
-            href="/contact"
-            className="mt-6 inline-flex rounded-lg bg-gold px-6 py-3 font-medium text-white transition-colors hover:bg-gold-dark"
-          >
-            {t("ctaButton")}
-          </Link>
+      <section className="relative overflow-hidden bg-navy py-16 text-white">
+        <HeroBackground />
+        <div className="relative z-10 mx-auto max-w-7xl px-4 lg:px-8">
+          <div className="flex flex-col items-center gap-8 text-center lg:flex-row lg:text-left">
+            <div className="flex-1">
+              <h2 className="font-poppins text-2xl font-bold lg:text-3xl">
+                {t("ctaTitle")}
+              </h2>
+              <p className="mt-4 text-white/70">
+                {t("ctaDescription")}
+              </p>
+            </div>
+            <div className="flex flex-col gap-3 sm:flex-row">
+              <Link
+                href="/contact"
+                className="inline-flex items-center justify-center rounded-lg bg-gold px-6 py-3 font-medium text-white transition-colors hover:bg-gold-dark"
+              >
+                {t("ctaButton")}
+              </Link>
+              <Link
+                href="/contact"
+                className="inline-flex items-center justify-center rounded-lg border border-white/30 px-6 py-3 font-medium text-white transition-colors hover:bg-white/10"
+              >
+                {t("scheduleCall")}
+              </Link>
+            </div>
+          </div>
         </div>
       </section>
     </>
