@@ -137,9 +137,10 @@ interface CalculatorResultsPDFProps {
   roleId: RoleLevelId;
   translations: PDFTranslations;
   locale?: string;
+  logoSrc?: string;
 }
 
-export function CalculatorResultsPDF({ results, formData, selectedTeam, translations: tr }: CalculatorResultsPDFProps) {
+export function CalculatorResultsPDF({ results, formData, selectedTeam, translations: tr, logoSrc }: CalculatorResultsPDFProps) {
   const c = formData.selectedCurrency as CurrencyCode;
   const goalCfg = goalConfigs[formData.primaryGoal as GoalType];
   const { currentSituation, withBSG, results: r, employeeCost, diagnosticResults } = results;
@@ -154,7 +155,7 @@ export function CalculatorResultsPDF({ results, formData, selectedTeam, translat
       <Page size="A4" style={s.page}>
         <View style={s.hdr}>
           {/* eslint-disable-next-line jsx-a11y/alt-text */}
-          <Image src="/images/logo.png" style={s.hdrLogo} />
+          <Image src={logoSrc || "/images/logo.png"} style={s.hdrLogo} />
           <View style={s.hdrText}>
             <Text style={s.hdrTitle}>{tr.teamName} — {tr.goalLabel} {tr.analysis}</Text>
             <Text style={s.hdrSub}>{formData.companyName} | {tr.countryName} | {results.teamSize} {tr.staffLabel} | {tr.currencyName}</Text>
@@ -242,7 +243,7 @@ export function CalculatorResultsPDF({ results, formData, selectedTeam, translat
       <Page size="A4" style={s.page}>
         <View style={s.hdr}>
           {/* eslint-disable-next-line jsx-a11y/alt-text */}
-          <Image src="/images/logo.png" style={s.hdrLogo} />
+          <Image src={logoSrc || "/images/logo.png"} style={s.hdrLogo} />
           <View style={s.hdrText}>
             <Text style={s.hdrTitle}>{tr.financialImpact}</Text>
             <Text style={s.hdrSub}>{formData.companyName} | {tr.teamName} | {tr.countryName}</Text>

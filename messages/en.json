@@ -2709,5 +2709,72 @@
       "flatAmount": "Flat amount"
     },
     "maturityArrow": "maturity →"
+  },
+  "Emails": {
+    "common": {
+      "greeting": "Dear {name},",
+      "bestRegards": "Best regards,",
+      "bsgTeam": "The BSG Team",
+      "bsgHrTeam": "The BSG HR Team",
+      "reachOut": "In the meantime, feel free to reach out to us directly at",
+      "responseTime": "We aim to respond within {hours} hours.",
+      "footerText": "Backsure Global Support | Dubai, UAE"
+    },
+    "contact": {
+      "userSubjectGeneral": "We've received your inquiry - BSG Support",
+      "userSubjectMeeting": "Your meeting request has been received - BSG Support",
+      "userSubjectIntake": "Your service inquiry has been received - BSG Support",
+      "thankYouTitle": "Thank You for Reaching Out",
+      "userBody": "Thank you for contacting Backsure Global Support. We have received your {formType} and our team will review it promptly.",
+      "formTypeGeneral": "inquiry",
+      "formTypeMeeting": "meeting request",
+      "formTypeIntake": "service inquiry",
+      "meetingDateNote": "We have noted your preferred meeting date: {date}{time}."
+    },
+    "careers": {
+      "userSubject": "Application received - {position} at BSG Support",
+      "headerTitle": "Application Received",
+      "userBody": "Thank you for applying for the {position} position at Backsure Global Support. We have received your application and our HR team will review it carefully.",
+      "reviewNote": "If your profile matches our requirements, we will reach out to schedule the next steps. Please allow our team a few business days to review all applications."
+    },
+    "meeting": {
+      "userSubject": "Your Meeting is Confirmed - Backsure Global Support",
+      "headerTitle": "Meeting Confirmed",
+      "userBody": "Your meeting with Backsure Global Support has been confirmed. Here are the details:",
+      "dateLabel": "Date",
+      "timeUaeLabel": "Time (UAE)",
+      "localTimeLabel": "Your Local Time",
+      "durationLabel": "Duration",
+      "duration": "30 minutes",
+      "rescheduleNote": "If you need to reschedule or cancel, please contact us at {email} or call {phone}."
+    },
+    "calculator": {
+      "userSubject": "Your BSG Team Efficiency Analysis Results",
+      "headerTitle": "Your Team Efficiency Analysis",
+      "introBody": "Thank you for using our Team Efficiency Calculator. We have analysed your {team} operations and prepared a detailed report. Your personalised PDF report is attached to this email.",
+      "kpiSectionTitle": "Key Results",
+      "financialTitle": "Financial Impact",
+      "currentCostLabel": "Current Annual Cost",
+      "bsgCostLabel": "BSG Partnership Cost",
+      "annualSavingsLabel": "Annual Savings",
+      "roiLabel": "Return on Investment",
+      "efficiencyLabel": "Efficiency Improvement",
+      "hoursLabel": "Hours Reclaimed/Week",
+      "diagnosticTitle": "Top Diagnostic Findings",
+      "roadmapTitle": "Implementation Roadmap",
+      "pdfAttached": "Your detailed PDF report is attached to this email.",
+      "ctaText": "Ready to get started? Our team will contact you within 24 hours to discuss your optimisation opportunities.",
+      "ctaButton": "Get in Touch",
+      "teamLabel": "Team",
+      "countryCurrencyLabel": "Country / Currency",
+      "teamSizeLabel": "Team Size",
+      "goalLabel": "Goal",
+      "timelineLabel": "Timeline",
+      "phaseLabel": "Phase {number}",
+      "savingsBy": "Savings by this phase: {amount}",
+      "highImpact": "HIGH",
+      "medImpact": "MEDIUM",
+      "minutesPerWeek": "min/wk"
+    }
   }
 }

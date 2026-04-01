@@ -3,7 +3,7 @@
 import { Suspense, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { Phone, Mail, MapPin, Send } from "lucide-react";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import Button from "@/components/ui/Button";
 import Input from "@/components/ui/Input";
 import MeetingScheduler from "./MeetingScheduler";
@@ -13,6 +13,7 @@ function ContactContent() {
   const tabParam = searchParams.get("tab");
   const dateParam = searchParams.get("date");
   const t = useTranslations("Contact");
+  const locale = useLocale();
 
   const [activeTab, setActiveTab] = useState<"general" | "meeting" | "intake">(
     tabParam === "meeting" ? "meeting" : "general"
@@ -42,6 +43,7 @@ function ContactContent() {
     const formData = new FormData(e.currentTarget);
     const data: Record<string, string> = {
       form_type: formTypeMap[activeTab],
+      locale,
     };
 
     formData.forEach((value, key) => {

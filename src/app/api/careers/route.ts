@@ -1,7 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
-import { sendEmail, getApplicationNotificationEmail } from "@/lib/email";
+import { sendEmail } from "@/lib/email";
 import { notifyNewCandidate } from "@/lib/notifications";
+import { resolveLocale, loadEmailTranslations } from "@/lib/email-translations";
+import { getCareersAdminNotification, getCareersUserConfirmation } from "@/lib/email-templates";
 import { writeFile, mkdir } from "fs/promises";
 import path from "path";
 
@@ -16,6 +18,7 @@ export async function POST(request: NextRequest) {
     const resume = formData.get("resume") as File | null;
     const jobIdStr = formData.get("job_id") as string | null;
     const jobId = jobIdStr ? parseInt(jobIdStr) : null;
+    const bodyLocale = formData.get("locale") as string | null;
 
     // Validate required fields
     if (!name || !email || !phone || !position) {
@@ -33,6 +36,9 @@ export async function POST(request: NextRequest) {
         { status: 400 }
       );
     }
+
+    // Resolve locale for user-facing emails
+    const locale = resolveLocale(bodyLocale || undefined, request.cookies.get("NEXT_LOCALE")?.value);
 
     // Validate resume if provided
     let resumePath = "";
@@ -103,10 +109,10 @@ export async function POST(request: NextRequest) {
     // Create admin notification
     await notifyNewCandidate(name, position, candidate.id);
 
-    // Send notification email to HR
+    // Send notification email to HR (always English)
     const hrEmail = process.env.HR_EMAIL || process.env.ADMIN_EMAIL || process.env.SMTP_FROM;
     if (hrEmail) {
-      const emailContent = getApplicationNotificationEmail({
+      const adminContent = getCareersAdminNotification({
         name,
         email,
         phone,
@@ -115,34 +121,18 @@ export async function POST(request: NextRequest) {
 
       await sendEmail({
         to: hrEmail,
-        ...emailContent,
+        ...adminContent,
         replyTo: email,
       });
     }
 
-    // Send confirmation email to applicant
-    const confirmationHtml = `
-      <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-        <div style="background: #062767; color: white; padding: 20px; text-align: center;">
-          <h1 style="margin: 0; font-size: 22px;">Application Received</h1>
-        </div>
-        <div style="padding: 24px;">
-          <p>Dear ${name},</p>
-          <p>Thank you for applying for the <strong>${position}</strong> position at Backsure Global Support. We have received your application and our HR team will review it carefully.</p>
-          <p>If your profile matches our requirements, we will reach out to schedule the next steps. Please allow our team a few business days to review all applications.</p>
-          <p>In the meantime, feel free to reach out to us at <a href="mailto:info@backsureglobalsupport.com">info@backsureglobalsupport.com</a> if you have any questions.</p>
-          <p>Best regards,<br>The BSG HR Team</p>
-        </div>
-        <div style="background: #f3f4f6; padding: 12px; text-align: center; font-size: 12px; color: #6b7280;">
-          Backsure Global Support | Dubai, UAE | <a href="https://backsureglobalsupport.com">www.backsureglobalsupport.com</a>
-        </div>
-      </div>
-    `;
+    // Send confirmation email to applicant (in user's language)
+    const t = await loadEmailTranslations(locale);
+    const userContent = getCareersUserConfirmation({ name, position }, t);
 
     await sendEmail({
       to: email,
-      subject: `Application received - ${position} at BSG Support`,
-      html: confirmationHtml,
+      ...userContent,
     });
 
     return NextResponse.json(

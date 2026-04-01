@@ -61,6 +61,10 @@ export default function CalculatorResults({
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
+            locale,
+            teamId: selectedTeam?.id,
+            roleId,
+            calculationResults: results,
             fullName: formData.fullName,
             companyEmail: formData.companyEmail,
             companyName: formData.companyName,

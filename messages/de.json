@@ -2709,5 +2709,72 @@
       "flatAmount": "Pauschalbetrag"
     },
     "maturityArrow": "Reifegrad →"
+  },
+  "Emails": {
+    "common": {
+      "greeting": "Sehr geehrte/r {name},",
+      "bestRegards": "Mit freundlichen Gr\u00fc\u00dfen,",
+      "bsgTeam": "Das BSG Team",
+      "bsgHrTeam": "Das BSG HR-Team",
+      "reachOut": "In der Zwischenzeit k\u00f6nnen Sie uns gerne direkt kontaktieren unter",
+      "responseTime": "Wir werden uns innerhalb von {hours} Stunden bei Ihnen melden.",
+      "footerText": "Backsure Global Support | Dubai, VAE"
+    },
+    "contact": {
+      "userSubjectGeneral": "Wir haben Ihre Anfrage erhalten - BSG Support",
+      "userSubjectMeeting": "Ihre Terminanfrage wurde erhalten - BSG Support",
+      "userSubjectIntake": "Ihre Serviceanfrage wurde erhalten - BSG Support",
+      "thankYouTitle": "Vielen Dank f\u00fcr Ihre Nachricht",
+      "userBody": "Vielen Dank, dass Sie Backsure Global Support kontaktiert haben. Wir haben Ihre {formType} erhalten und unser Team wird sie umgehend pr\u00fcfen.",
+      "formTypeGeneral": "Anfrage",
+      "formTypeMeeting": "Terminanfrage",
+      "formTypeIntake": "Serviceanfrage",
+      "meetingDateNote": "Wir haben Ihren gew\u00fcnschten Termin vorgemerkt: {date}{time}."
+    },
+    "careers": {
+      "userSubject": "Bewerbung eingegangen - {position} bei BSG Support",
+      "headerTitle": "Bewerbung eingegangen",
+      "userBody": "Vielen Dank f\u00fcr Ihre Bewerbung auf die Position {position} bei Backsure Global Support. Wir haben Ihre Bewerbung erhalten und unser HR-Team wird sie sorgf\u00e4ltig pr\u00fcfen.",
+      "reviewNote": "Wenn Ihr Profil unseren Anforderungen entspricht, werden wir uns mit Ihnen in Verbindung setzen, um die n\u00e4chsten Schritte zu besprechen. Bitte geben Sie unserem Team einige Werktage zur Pr\u00fcfung aller Bewerbungen."
+    },
+    "meeting": {
+      "userSubject": "Ihr Termin ist best\u00e4tigt - Backsure Global Support",
+      "headerTitle": "Termin best\u00e4tigt",
+      "userBody": "Ihr Termin mit Backsure Global Support wurde best\u00e4tigt. Hier sind die Details:",
+      "dateLabel": "Datum",
+      "timeUaeLabel": "Uhrzeit (VAE)",
+      "localTimeLabel": "Ihre Ortszeit",
+      "durationLabel": "Dauer",
+      "duration": "30 Minuten",
+      "rescheduleNote": "Wenn Sie den Termin verschieben oder absagen m\u00f6chten, kontaktieren Sie uns bitte unter {email} oder rufen Sie {phone} an."
+    },
+    "calculator": {
+      "userSubject": "Ihre BSG Team-Effizienzanalyse Ergebnisse",
+      "headerTitle": "Ihre Team-Effizienzanalyse",
+      "introBody": "Vielen Dank f\u00fcr die Nutzung unseres Team-Effizienz-Rechners. Wir haben Ihre {team}-Abl\u00e4ufe analysiert und einen detaillierten Bericht erstellt. Ihr personalisierter PDF-Bericht ist dieser E-Mail angeh\u00e4ngt.",
+      "kpiSectionTitle": "Wichtige Ergebnisse",
+      "financialTitle": "Finanzielle Auswirkungen",
+      "currentCostLabel": "Aktuelle j\u00e4hrliche Kosten",
+      "bsgCostLabel": "BSG-Partnerschaftskosten",
+      "annualSavingsLabel": "J\u00e4hrliche Einsparungen",
+      "roiLabel": "Kapitalrendite",
+      "efficiencyLabel": "Effizienzverbesserung",
+      "hoursLabel": "Zur\u00fcckgewonnene Stunden/Woche",
+      "diagnosticTitle": "Wichtigste Diagnoseergebnisse",
+      "roadmapTitle": "Umsetzungsfahrplan",
+      "pdfAttached": "Ihr detaillierter PDF-Bericht ist dieser E-Mail angeh\u00e4ngt.",
+      "ctaText": "Bereit anzufangen? Unser Team wird Sie innerhalb von 24 Stunden kontaktieren, um Ihre Optimierungsm\u00f6glichkeiten zu besprechen.",
+      "ctaButton": "Kontakt aufnehmen",
+      "teamLabel": "Team",
+      "countryCurrencyLabel": "Land / W\u00e4hrung",
+      "teamSizeLabel": "Teamgr\u00f6\u00dfe",
+      "goalLabel": "Ziel",
+      "timelineLabel": "Zeitrahmen",
+      "phaseLabel": "Phase {number}",
+      "savingsBy": "Einsparungen bis zu dieser Phase: {amount}",
+      "highImpact": "HOCH",
+      "medImpact": "MITTEL",
+      "minutesPerWeek": "Min/Woche"
+    }
   }
 }

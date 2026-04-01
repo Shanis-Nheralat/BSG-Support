@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import { Send } from "lucide-react";
 import Button from "@/components/ui/Button";
 import Input from "@/components/ui/Input";
@@ -18,6 +18,7 @@ interface CareersApplicationFormProps {
 
 export function CareersApplicationForm({ jobs }: CareersApplicationFormProps) {
   const t = useTranslations("CareersForm");
+  const locale = useLocale();
   const searchParams = useSearchParams();
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
@@ -51,6 +52,9 @@ export function CareersApplicationForm({ jobs }: CareersApplicationFormProps) {
     if (selectedJobId) {
       formData.set("job_id", selectedJobId);
     }
+
+    // Add locale for i18n emails
+    formData.set("locale", locale);
 
     try {
       const res = await fetch("/api/careers", {

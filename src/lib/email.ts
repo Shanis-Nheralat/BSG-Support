@@ -11,16 +11,23 @@ const transporter = nodemailer.createTransport({
   },
 });
 
+interface EmailAttachment {
+  filename: string;
+  content: Buffer;
+  contentType: string;
+}
+
 interface EmailOptions {
   to: string | string[];
   subject: string;
   text?: string;
   html?: string;
   replyTo?: string;
+  attachments?: EmailAttachment[];
 }
 
 export async function sendEmail(options: EmailOptions) {
-  const { to, subject, text, html, replyTo } = options;
+  const { to, subject, text, html, replyTo, attachments } = options;
 
   try {
     const info = await transporter.sendMail({
@@ -30,6 +37,11 @@ export async function sendEmail(options: EmailOptions) {
       text,
       html,
       replyTo,
+      attachments: attachments?.map((a) => ({
+        filename: a.filename,
+        content: a.content,
+        contentType: a.contentType,
+      })),
     });
 
     console.log("Email sent:", info.messageId);

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import { Send } from "lucide-react";
 import Button from "@/components/ui/Button";
 import Input from "@/components/ui/Input";
@@ -13,6 +13,7 @@ interface JobApplicationFormProps {
 
 export function JobApplicationForm({ jobId, jobTitle }: JobApplicationFormProps) {
   const t = useTranslations("JobDetail");
+  const locale = useLocale();
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState("");
@@ -35,6 +36,9 @@ export function JobApplicationForm({ jobId, jobTitle }: JobApplicationFormProps)
     // Set job info
     formData.set("position", jobTitle);
     formData.set("job_id", String(jobId));
+
+    // Add locale for i18n emails
+    formData.set("locale", locale);
 
     try {
       const res = await fetch("/api/careers", {

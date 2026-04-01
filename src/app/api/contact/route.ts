@@ -1,7 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
-import { sendEmail, getContactNotificationEmail } from "@/lib/email";
+import { sendEmail } from "@/lib/email";
 import { notifyNewInquiry } from "@/lib/notifications";
+import { resolveLocale, loadEmailTranslations } from "@/lib/email-translations";
+import { getContactAdminNotification, getContactUserConfirmation } from "@/lib/email-templates";
 
 export async function POST(request: NextRequest) {
   try {
@@ -13,6 +15,7 @@ export async function POST(request: NextRequest) {
       company,
       message,
       form_type,
+      locale: bodyLocale,
       // Meeting specific fields
       meeting_date,
       meeting_time,
@@ -52,6 +55,9 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // Resolve locale for user-facing emails
+    const locale = resolveLocale(bodyLocale, request.cookies.get("NEXT_LOCALE")?.value);
+
     // Create inquiry in database
     const inquiry = await prisma.inquiries.create({
       data: {
@@ -80,10 +86,10 @@ export async function POST(request: NextRequest) {
     // Create admin notification
     await notifyNewInquiry(name, form_type, inquiry.id);
 
-    // Send notification email to admin
+    // Send notification email to admin (always English)
     const adminEmail = process.env.ADMIN_EMAIL || process.env.SMTP_FROM;
     if (adminEmail) {
-      const emailContent = getContactNotificationEmail({
+      const adminContent = getContactAdminNotification({
         name,
         email,
         phone,
@@ -94,45 +100,30 @@ export async function POST(request: NextRequest) {
 
       await sendEmail({
         to: adminEmail,
-        ...emailContent,
+        ...adminContent,
         replyTo: email,
       });
     }
 
-    // Send confirmation email to the submitter
-    const subjectMap: Record<string, string> = {
-      general_inquiry: "We've received your inquiry - BSG Support",
-      meeting_request: "Your meeting request has been received - BSG Support",
-      service_intake: "Your service inquiry has been received - BSG Support",
-    };
+    // Send confirmation email to the submitter (in user's language)
+    const t = await loadEmailTranslations(locale);
 
-    const meetingDetail =
-      form_type === "meeting_request" && meeting_date
-        ? `<p>We have noted your preferred meeting date: <strong>${new Date(meeting_date).toLocaleDateString("en-US", { weekday: "long", year: "numeric", month: "long", day: "numeric" })}</strong>${meeting_time ? ` at <strong>${meeting_time}</strong>` : ""}.</p>`
-        : "";
+    let meetingDateStr: string | undefined;
+    if (form_type === "meeting_request" && meeting_date) {
+      meetingDateStr = new Date(meeting_date).toLocaleDateString(
+        locale === "de" ? "de-DE" : "en-US",
+        { weekday: "long", year: "numeric", month: "long", day: "numeric" }
+      );
+    }
 
-    const confirmationHtml = `
-      <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-        <div style="background: #062767; color: white; padding: 20px; text-align: center;">
-          <h1 style="margin: 0; font-size: 22px;">Thank You for Reaching Out</h1>
-        </div>
-        <div style="padding: 24px;">
-          <p>Dear ${name},</p>
-          <p>Thank you for contacting Backsure Global Support. We have received your ${form_type.replace(/_/g, " ")} and our team will review it promptly.</p>
-          ${meetingDetail}
-          <p>We aim to respond within <strong>24 hours</strong>. In the meantime, feel free to reach out to us directly at <a href="mailto:info@backsureglobalsupport.com">info@backsureglobalsupport.com</a>.</p>
-          <p>Best regards,<br>The BSG Team</p>
-        </div>
-        <div style="background: #f3f4f6; padding: 12px; text-align: center; font-size: 12px; color: #6b7280;">
-          Backsure Global Support | Dubai, UAE | <a href="https://backsureglobalsupport.com">www.backsureglobalsupport.com</a>
-        </div>
-      </div>
-    `;
+    const userContent = getContactUserConfirmation(
+      { name, formType: form_type, meetingDate: meetingDateStr, meetingTime: meeting_time },
+      t,
+    );
 
     await sendEmail({
       to: email,
-      subject: subjectMap[form_type] || "We've received your message - BSG Support",
-      html: confirmationHtml,
+      ...userContent,
     });
 
     return NextResponse.json(

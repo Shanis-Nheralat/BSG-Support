@@ -1,13 +1,15 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { isSlotAvailable, calculateEndTime, formatTimeDisplay, formatSlotForTimezone } from "@/lib/schedule";
-import { sendEmail, getMeetingConfirmationEmail } from "@/lib/email";
+import { sendEmail } from "@/lib/email";
 import { notifyNewBooking } from "@/lib/notifications";
+import { resolveLocale, loadEmailTranslations } from "@/lib/email-translations";
+import { getMeetingUserConfirmation } from "@/lib/email-templates";
 
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { date, time, name, email, phone, company, purpose, timezone } = body;
+    const { date, time, name, email, phone, company, purpose, timezone, locale: bodyLocale } = body;
 
     // Validate required fields
     if (!date || !time || !name || !email || !timezone) {
@@ -42,6 +44,9 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // Resolve locale for user-facing emails
+    const locale = resolveLocale(bodyLocale, request.cookies.get("NEXT_LOCALE")?.value);
+
     // Check slot availability
     const available = await isSlotAvailable(date, time);
     if (!available) {
@@ -70,14 +75,17 @@ export async function POST(request: NextRequest) {
       },
     });
 
-    // Format date for display
-    const displayDate = bookingDate.toLocaleDateString("en-US", {
-      weekday: "long",
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-      timeZone: "Asia/Dubai",
-    });
+    // Format date for display (locale-aware)
+    const displayDate = bookingDate.toLocaleDateString(
+      locale === "de" ? "de-DE" : "en-US",
+      {
+        weekday: "long",
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+        timeZone: "Asia/Dubai",
+      }
+    );
 
     const displayTime = formatTimeDisplay(time);
     const localTime = formatSlotForTimezone(time, date, timezone);
@@ -85,14 +93,12 @@ export async function POST(request: NextRequest) {
     // Create admin notification
     await notifyNewBooking(name, displayDate, displayTime, booking.id);
 
-    // Send confirmation email to visitor
-    const emailContent = getMeetingConfirmationEmail({
-      name,
-      date: displayDate,
-      time: displayTime,
-      localTime,
-      timezone,
-    });
+    // Send confirmation email to visitor (in user's language)
+    const t = await loadEmailTranslations(locale);
+    const emailContent = getMeetingUserConfirmation(
+      { name, date: displayDate, time: displayTime, localTime, timezone },
+      t,
+    );
 
     await sendEmail({
       to: email,
