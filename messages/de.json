@@ -58,7 +58,8 @@
     "logoAlt": "Backsure Global Support – Grenzen überbrücken"
   },
   "HeroScheduler": {
-    "title": "Kostenlose Beratung vereinbaren"
+    "title": "Kostenlose Beratung vereinbaren",
+    "subtitle": "Buchen Sie ein kostenloses 30-Minuten-Gespräch"
   },
   "Home": {
     "meta": {
@@ -1182,7 +1183,11 @@
     "noArticlesFiltered": "Keine Artikel gefunden, die Ihren Filtern entsprechen.",
     "noArticlesYet": "Noch keine Artikel veröffentlicht. Schauen Sie bald wieder vorbei!",
     "previous": "Zurück",
-    "next": "Weiter"
+    "next": "Weiter",
+    "ctaTitle": "Bleiben Sie den Branchentrends voraus",
+    "ctaDescription": "Erhalten Sie Experteneinblicke zu Geschäftsprozessen, Outsourcing-Strategien und digitaler Transformation.",
+    "ctaButton": "Kontakt aufnehmen",
+    "scheduleCall": "Gespräch vereinbaren"
   },
   "BlogDetail": {
     "backToBlog": "Zurück zum Blog",

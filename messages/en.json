@@ -58,7 +58,8 @@
     "logoAlt": "Backsure Global Support - Bridging Borders"
   },
   "HeroScheduler": {
-    "title": "Schedule a Free Consultation"
+    "title": "Schedule a Free Consultation",
+    "subtitle": "Book a free 30-minute meeting"
   },
   "Home": {
     "meta": {
@@ -1182,7 +1183,11 @@
     "noArticlesFiltered": "No articles found matching your filters.",
     "noArticlesYet": "No articles published yet. Check back soon!",
     "previous": "Previous",
-    "next": "Next"
+    "next": "Next",
+    "ctaTitle": "Stay Ahead of Industry Trends",
+    "ctaDescription": "Get expert insights on business operations, outsourcing strategies, and digital transformation delivered to your workflow.",
+    "ctaButton": "Get in Touch",
+    "scheduleCall": "Schedule a Call"
   },
   "BlogDetail": {
     "backToBlog": "Back to Blog",

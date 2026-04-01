@@ -561,6 +561,33 @@ export default function BlogContent({ initialPosts, initialCategories }: BlogCon
                 </div>
               )}
 
+              {/* Newsletter CTA */}
+              {posts.length > 0 && (
+                <div className="mt-16 rounded-2xl bg-navy px-6 py-12 text-center text-white sm:px-12">
+                  <h2 className="font-poppins text-2xl font-bold lg:text-3xl">
+                    {t("ctaTitle")}
+                  </h2>
+                  <p className="mx-auto mt-4 max-w-xl text-white/70">
+                    {t("ctaDescription")}
+                  </p>
+                  <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+                    <Link
+                      href="/contact"
+                      className="inline-flex items-center gap-2 rounded-lg bg-gold px-6 py-3 font-medium text-white transition-colors hover:bg-gold-dark"
+                    >
+                      {t("ctaButton")}
+                      <ArrowRight className="h-4 w-4" />
+                    </Link>
+                    <Link
+                      href="/contact"
+                      className="inline-flex items-center gap-2 rounded-lg border border-white/30 px-6 py-3 font-medium text-white transition-colors hover:bg-white/10"
+                    >
+                      {t("scheduleCall")}
+                    </Link>
+                  </div>
+                </div>
+              )}
+
               {/* Pagination */}
               {pagination.pages > 1 && (
                 <div className="mt-12 flex items-center justify-center gap-2">
