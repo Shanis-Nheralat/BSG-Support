@@ -60,6 +60,7 @@ export default function PublicHeader() {
   const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname();
   const navRef = useRef<HTMLDivElement>(null);
+  const mobileNavRef = useRef<HTMLDivElement>(null);
   const headerRef = useRef<HTMLElement>(null);
   const [headerHeight, setHeaderHeight] = useState(72);
   const hoverTimeoutRef = useRef<NodeJS.Timeout | null>(null);
@@ -90,7 +91,12 @@ export default function PublicHeader() {
   // Close dropdown on outside click
   useEffect(() => {
     function handleClick(e: MouseEvent) {
-      if (navRef.current && !navRef.current.contains(e.target as Node)) {
+      const target = e.target as Node;
+      if (
+        navRef.current &&
+        !navRef.current.contains(target) &&
+        (!mobileNavRef.current || !mobileNavRef.current.contains(target))
+      ) {
         setOpenDropdown(null);
       }
     }
@@ -307,6 +313,7 @@ export default function PublicHeader() {
 
         {/* Mobile Menu */}
         <div
+          ref={mobileNavRef}
           className={`fixed right-0 z-50 h-[calc(100vh-var(--header-height))] w-64 transform border-l border-gray-200 bg-white shadow-2xl transition-transform duration-300 sm:w-72 lg:hidden ${
             mobileOpen ? "translate-x-0" : "translate-x-full"
           }`}
