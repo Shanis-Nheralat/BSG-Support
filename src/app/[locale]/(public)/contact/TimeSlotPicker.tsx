@@ -41,7 +41,7 @@ export default function TimeSlotPicker({
       if (!res.ok) throw new Error(data.error);
       setSlots(data.slots || []);
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Failed to load time slots");
+      setError(err instanceof Error ? err.message : t("failedToLoadSlots"));
     } finally {
       setLoading(false);
     }

@@ -349,7 +349,9 @@
     "success": {
       "title": "Thank you!",
       "message": "Your message has been received. We'll get back to you within 24 hours."
-    }
+    },
+    "failedToSubmit": "Failed to submit form",
+    "errorOccurred": "An error occurred"
   },
   "DataSecurity": {
     "meta": {
@@ -1273,7 +1275,13 @@
     "emailLabel": "Email",
     "phoneLabel": "Phone",
     "resumeLabel": "Resume (PDF, DOC, DOCX)",
-    "submitApplication": "Submit Application"
+    "submitApplication": "Submit Application",
+    "failedToSubmit": "Failed to submit application",
+    "errorOccurred": "An error occurred",
+    "placeholderFirstName": "John",
+    "placeholderLastName": "Doe",
+    "placeholderEmail": "john@example.com",
+    "placeholderPhone": "+971 50 123 4567"
   },
   "Meeting": {
     "stepDate": "Select Date",
@@ -1316,7 +1324,47 @@
     "duration": "Duration",
     "thirtyMinutes": "30 minutes",
     "confirmationEmail": "A confirmation email has been sent to your inbox.",
-    "scheduleAnother": "Schedule Another Meeting"
+    "scheduleAnother": "Schedule Another Meeting",
+    "failedToBook": "Failed to book meeting",
+    "failedToLoadSlots": "Failed to load time slots",
+    "errorOccurred": "An error occurred",
+    "placeholderName": "John Doe",
+    "placeholderEmail": "john@example.com",
+    "placeholderPhone": "+971 50 123 4567",
+    "placeholderCompany": "Your company"
+  },
+  "BlogComments": {
+    "heading": "Comments",
+    "loading": "Loading comments...",
+    "noComments": "No comments yet. Be the first to share your thoughts!",
+    "cancelReply": "Cancel Reply",
+    "reply": "Reply",
+    "writeReply": "Write a Reply",
+    "leaveComment": "Leave a Comment",
+    "nameLabel": "Name",
+    "namePlaceholder": "Your name",
+    "emailLabel": "Email",
+    "emailPlaceholder": "your@email.com",
+    "emailPrivacy": "Your email will not be published.",
+    "commentLabel": "Comment",
+    "commentPlaceholder": "Share your thoughts...",
+    "characters": "{count}/2000 characters",
+    "submitting": "Submitting...",
+    "postReply": "Post Reply",
+    "postComment": "Post Comment",
+    "moderation": "All comments are reviewed before being published.",
+    "failedToSubmit": "Failed to submit comment."
+  },
+  "ShareButtons": {
+    "copied": "Copied!",
+    "copyLink": "Copy link",
+    "share": "Share",
+    "shareLinkedIn": "Share on LinkedIn",
+    "shareX": "Share on X"
+  },
+  "NotFound": {
+    "title": "Page not found",
+    "goHome": "Go Home"
   },
   "Calculator": {
     "meta": {

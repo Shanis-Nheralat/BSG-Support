@@ -1,6 +1,6 @@
 "use client";
 
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { CheckCircle, Calendar, Clock, Globe, RotateCcw } from "lucide-react";
 import Button from "@/components/ui/Button";
 
@@ -23,7 +23,13 @@ export default function BookingConfirmation({
   onReset,
 }: BookingConfirmationProps) {
   const t = useTranslations("Meeting");
+  const locale = useLocale();
   const shortTimezone = timezone.split("/").pop()?.replace(/_/g, " ") || timezone;
+
+  const displayDate = new Date(booking.date + "T12:00:00").toLocaleDateString(
+    locale === "de" ? "de-DE" : "en-US",
+    { weekday: "long", month: "long", day: "numeric", year: "numeric" }
+  );
 
   return (
     <div className="text-center">
@@ -45,7 +51,7 @@ export default function BookingConfirmation({
             <Calendar className="mt-0.5 h-5 w-5 text-navy" />
             <div>
               <p className="text-xs font-medium uppercase text-gray-400">{t("dateLabel")}</p>
-              <p className="font-medium text-gray-900">{booking.date}</p>
+              <p className="font-medium text-gray-900">{displayDate}</p>
             </div>
           </div>
 

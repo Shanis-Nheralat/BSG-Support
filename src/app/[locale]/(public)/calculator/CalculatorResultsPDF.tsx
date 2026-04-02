@@ -64,9 +64,10 @@ const s = StyleSheet.create({
   noteTxt: { fontSize: 7, color: cl.navy, lineHeight: 1.4 },
 });
 
-function fmt(amount: number, currency: CurrencyCode): string {
+function fmt(amount: number, currency: CurrencyCode, locale?: string): string {
   const info = currencies[currency];
-  return `${info.symbol}${amount.toLocaleString("en-US", { maximumFractionDigits: 0 })}`;
+  const numLocale = locale === "de" ? "de-DE" : "en-US";
+  return `${info.symbol}${amount.toLocaleString(numLocale, { maximumFractionDigits: 0 })}`;
 }
 
 interface PDFTranslations {
@@ -140,7 +141,7 @@ interface CalculatorResultsPDFProps {
   logoSrc?: string;
 }
 
-export function CalculatorResultsPDF({ results, formData, selectedTeam, translations: tr, logoSrc }: CalculatorResultsPDFProps) {
+export function CalculatorResultsPDF({ results, formData, selectedTeam, translations: tr, logoSrc, locale }: CalculatorResultsPDFProps) {
   const c = formData.selectedCurrency as CurrencyCode;
   const goalCfg = goalConfigs[formData.primaryGoal as GoalType];
   const { currentSituation, withBSG, results: r, employeeCost, diagnosticResults } = results;
@@ -257,14 +258,14 @@ export function CalculatorResultsPDF({ results, formData, selectedTeam, translat
             <View style={s.col2}>
               <View style={[s.card, { backgroundColor: "#f0fdf4", border: "1px solid #86efac" }]}>
                 <Text style={[s.lbl, { color: cl.green600 }]}>{r.isPositiveSavings ? tr.annualSavings : tr.qualityInvestment}</Text>
-                <Text style={[s.val, { color: cl.green600 }]}>{fmt(Math.abs(r.realSavings), c)}</Text>
+                <Text style={[s.val, { color: cl.green600 }]}>{fmt(Math.abs(r.realSavings), c, locale)}</Text>
                 <Text style={{ fontSize: 7, color: cl.gray500, marginTop: 2 }}>{tr.range}</Text>
               </View>
             </View>
             <View style={s.col2}>
               <View style={[s.card, { backgroundColor: "#eff6ff", border: "1px solid #93c5fd" }]}>
                 <Text style={[s.lbl, { color: cl.blue700 }]}>{tr.bsgInvestment}</Text>
-                <Text style={[s.val, { color: cl.blue700 }]}>{fmt(withBSG.bsgTotalCost, c)}</Text>
+                <Text style={[s.val, { color: cl.blue700 }]}>{fmt(withBSG.bsgTotalCost, c, locale)}</Text>
                 <Text style={{ fontSize: 7, color: cl.gray500, marginTop: 2 }}>{tr.perEmployee}</Text>
               </View>
             </View>
@@ -275,11 +276,11 @@ export function CalculatorResultsPDF({ results, formData, selectedTeam, translat
             <View style={s.summGrid}>
               <View style={s.summItem}>
                 <Text style={s.summLbl}>{tr.investment}</Text>
-                <Text style={s.summVal}>{fmt(withBSG.bsgTotalCost, c)}</Text>
+                <Text style={s.summVal}>{fmt(withBSG.bsgTotalCost, c, locale)}</Text>
               </View>
               <View style={s.summItem}>
                 <Text style={s.summLbl}>{r.isPositiveSavings ? tr.savings : tr.uplift}</Text>
-                <Text style={[s.summVal, { color: cl.gold }]}>{fmt(Math.abs(r.realSavings), c)}</Text>
+                <Text style={[s.summVal, { color: cl.gold }]}>{fmt(Math.abs(r.realSavings), c, locale)}</Text>
               </View>
               <View style={s.summItem}>
                 <Text style={s.summLbl}>{tr.roi}</Text>
@@ -299,17 +300,17 @@ export function CalculatorResultsPDF({ results, formData, selectedTeam, translat
           <View style={[s.card, { backgroundColor: cl.red600 }]}>
             <View style={s.costRow}>
               <Text style={[s.costLbl, { fontWeight: 600 }]}>{tr.baseSalary}</Text>
-              <Text style={[s.costVal, { fontWeight: 600 }]}>{fmt(employeeCost.fullSalary, c)}</Text>
+              <Text style={[s.costVal, { fontWeight: 600 }]}>{fmt(employeeCost.fullSalary, c, locale)}</Text>
             </View>
             {Object.entries(employeeCost.costBreakdown).map(([key, item]) => (
               <View key={key} style={s.costRow}>
                 <Text style={s.costLbl}>{getIconEmoji(item.icon || '')} {tr.costCategoryLabels[key] || item.label}</Text>
-                <Text style={s.costVal}>{fmt(item.value, c)}</Text>
+                <Text style={s.costVal}>{fmt(item.value, c, locale)}</Text>
               </View>
             ))}
             <View style={[s.costRow, { borderBottom: "none", paddingTop: 4 }]}>
               <Text style={[s.costLbl, { fontWeight: 700, fontSize: 9 }]}>{tr.trueCostPerEmployee}</Text>
-              <Text style={[s.costVal, { fontWeight: 700, fontSize: 9 }]}>{fmt(employeeCost.trueCost, c)}</Text>
+              <Text style={[s.costVal, { fontWeight: 700, fontSize: 9 }]}>{fmt(employeeCost.trueCost, c, locale)}</Text>
             </View>
           </View>
 
@@ -323,8 +324,8 @@ export function CalculatorResultsPDF({ results, formData, selectedTeam, translat
             </View>
             <View style={s.tblRow}>
               <Text style={[s.tblCell, { textAlign: "left", fontWeight: 600 }]}>{tr.annualCost}</Text>
-              <Text style={[s.tblCell, { color: cl.red600 }]}>{fmt(currentSituation.teamCost, c)}</Text>
-              <Text style={[s.tblCell, { color: cl.green600 }]}>{fmt(withBSG.bsgTotalCost, c)}</Text>
+              <Text style={[s.tblCell, { color: cl.red600 }]}>{fmt(currentSituation.teamCost, c, locale)}</Text>
+              <Text style={[s.tblCell, { color: cl.green600 }]}>{fmt(withBSG.bsgTotalCost, c, locale)}</Text>
               <Text style={[s.tblCell, { color: r.isPositiveSavings ? cl.green600 : cl.red600 }]}>
                 {r.isPositiveSavings ? `-${Math.round((r.realSavings / currentSituation.teamCost) * 100)}%` : `+${Math.round((Math.abs(r.realSavings) / currentSituation.teamCost) * 100)}%`}
               </Text>
@@ -355,7 +356,7 @@ export function CalculatorResultsPDF({ results, formData, selectedTeam, translat
                   <Text style={{ fontSize: 14, fontWeight: 700, color: cl.blue700 }}>{phase.number}</Text>
                   <Text style={{ fontSize: 7, fontWeight: 600, color: cl.blue700, marginTop: 1 }}>{phase.monthRange}</Text>
                   <Text style={{ fontSize: 8, fontWeight: 600, color: cl.gray900, marginTop: 2 }}>{tr.phaseNames[phase.number - 1] || phase.name}</Text>
-                  <Text style={{ fontSize: 6, color: cl.gray500, marginTop: 2 }}>{tr.savingsLabel.replace('{amount}', fmt(Math.max(0, phase.accruedSavings), c))}</Text>
+                  <Text style={{ fontSize: 6, color: cl.gray500, marginTop: 2 }}>{tr.savingsLabel.replace('{amount}', fmt(Math.max(0, phase.accruedSavings), c, locale))}</Text>
                 </View>
               </View>
             ))}

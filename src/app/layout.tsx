@@ -224,6 +224,12 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        {/* Set lang attribute before hydration based on URL path */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){var m=location.pathname.match(/^\\/(de|en)/);if(m)document.documentElement.lang=m[1]})()`,
+          }}
+        />
         <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
         <link
           rel="preconnect"

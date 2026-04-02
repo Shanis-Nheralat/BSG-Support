@@ -73,12 +73,12 @@ export default function BookingForm({
       const result = await res.json();
 
       if (!res.ok) {
-        throw new Error(result.error || "Failed to book meeting");
+        throw new Error(result.error || t("failedToBook"));
       }
 
       onComplete(result.booking);
     } catch (err) {
-      setError(err instanceof Error ? err.message : "An error occurred");
+      setError(err instanceof Error ? err.message : t("errorOccurred"));
     } finally {
       setSubmitting(false);
     }
@@ -123,24 +123,24 @@ export default function BookingForm({
       )}
 
       <form onSubmit={handleSubmit} className="space-y-4">
-        <Input label={t("fullName")} name="name" required placeholder="John Doe" />
+        <Input label={t("fullName")} name="name" required placeholder={t("placeholderName")} />
         <Input
           label={t("emailAddress")}
           name="email"
           type="email"
           required
-          placeholder="john@example.com"
+          placeholder={t("placeholderEmail")}
         />
         <Input
           label={t("phoneNumber")}
           name="phone"
           type="tel"
-          placeholder="+971 50 123 4567"
+          placeholder={t("placeholderPhone")}
         />
         <Input
           label={t("companyName")}
           name="company"
-          placeholder="Your company"
+          placeholder={t("placeholderCompany")}
         />
         <div>
           <label className="mb-1.5 block text-sm font-medium text-gray-700">

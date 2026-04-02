@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
+import { useLocale, useTranslations } from 'next-intl';
 import { MessageSquare, Send, Loader2, User } from 'lucide-react';
 
 interface Comment {
@@ -17,6 +18,8 @@ interface BlogCommentsProps {
 }
 
 export default function BlogComments({ slug, commentCount }: BlogCommentsProps) {
+  const t = useTranslations("BlogComments");
+  const locale = useLocale();
   const [comments, setComments] = useState<Comment[]>([]);
   const [loading, setLoading] = useState(true);
   const [formData, setFormData] = useState({ author_name: '', author_email: '', content: '' });
@@ -62,7 +65,7 @@ export default function BlogComments({ slug, commentCount }: BlogCommentsProps) 
       const data = await res.json();
 
       if (!res.ok) {
-        throw new Error(data.error || 'Failed to submit comment');
+        throw new Error(data.error || t("failedToSubmit"));
       }
 
       setSubmitStatus({ type: 'success', message: data.message });
@@ -71,7 +74,7 @@ export default function BlogComments({ slug, commentCount }: BlogCommentsProps) 
     } catch (error) {
       setSubmitStatus({
         type: 'error',
-        message: error instanceof Error ? error.message : 'Failed to submit comment.',
+        message: error instanceof Error ? error.message : t("failedToSubmit"),
       });
     } finally {
       setIsSubmitting(false);
@@ -79,7 +82,7 @@ export default function BlogComments({ slug, commentCount }: BlogCommentsProps) 
   }
 
   function formatDate(dateStr: string) {
-    return new Intl.DateTimeFormat('en-US', {
+    return new Intl.DateTimeFormat(locale === "de" ? "de-DE" : "en-US", {
       month: 'long',
       day: 'numeric',
       year: 'numeric',
@@ -99,17 +102,17 @@ export default function BlogComments({ slug, commentCount }: BlogCommentsProps) 
       <div className="mx-auto max-w-4xl px-4 lg:px-8">
         <h2 className="mb-8 flex items-center gap-2 font-poppins text-2xl font-bold text-gray-900">
           <MessageSquare className="h-6 w-6 text-navy" />
-          Comments {commentCount > 0 && <span className="text-base font-normal text-gray-500">({commentCount})</span>}
+          {t("heading")} {commentCount > 0 && <span className="text-base font-normal text-gray-500">({commentCount})</span>}
         </h2>
 
         {/* Comment List */}
         {loading ? (
           <div className="flex items-center justify-center py-8 text-gray-400">
             <Loader2 className="mr-2 h-5 w-5 animate-spin" />
-            Loading comments...
+            {t("loading")}
           </div>
         ) : topLevelComments.length === 0 ? (
-          <p className="mb-8 text-sm text-gray-500">No comments yet. Be the first to share your thoughts!</p>
+          <p className="mb-8 text-sm text-gray-500">{t("noComments")}</p>
         ) : (
           <div className="mb-10 space-y-6">
             {topLevelComments.map((comment) => (
@@ -129,7 +132,7 @@ export default function BlogComments({ slug, commentCount }: BlogCommentsProps) 
                   onClick={() => setReplyTo(replyTo === comment.id ? null : comment.id)}
                   className="mt-3 text-xs font-medium text-navy hover:underline"
                 >
-                  {replyTo === comment.id ? 'Cancel Reply' : 'Reply'}
+                  {replyTo === comment.id ? t("cancelReply") : t("reply")}
                 </button>
 
                 {/* Nested Replies */}
@@ -155,7 +158,7 @@ export default function BlogComments({ slug, commentCount }: BlogCommentsProps) 
         {/* Comment Form */}
         <div className="rounded-xl border border-gray-200 bg-gray-50 p-6">
           <h3 className="mb-4 font-poppins text-lg font-semibold text-navy">
-            {replyTo ? 'Write a Reply' : 'Leave a Comment'}
+            {replyTo ? t("writeReply") : t("leaveComment")}
           </h3>
 
           {submitStatus && (
@@ -174,31 +177,31 @@ export default function BlogComments({ slug, commentCount }: BlogCommentsProps) 
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="grid gap-4 sm:grid-cols-2">
                 <div>
-                  <label className="mb-1 block text-sm font-medium text-gray-700">Name *</label>
+                  <label className="mb-1 block text-sm font-medium text-gray-700">{t("nameLabel")} *</label>
                   <input
                     type="text"
                     required
                     value={formData.author_name}
                     onChange={(e) => setFormData((p) => ({ ...p, author_name: e.target.value }))}
                     className="w-full rounded-lg border border-gray-300 bg-white px-4 py-2.5 text-sm text-gray-900 placeholder:text-gray-400 focus:border-navy focus:ring-1 focus:ring-navy"
-                    placeholder="Your name"
+                    placeholder={t("namePlaceholder")}
                   />
                 </div>
                 <div>
-                  <label className="mb-1 block text-sm font-medium text-gray-700">Email *</label>
+                  <label className="mb-1 block text-sm font-medium text-gray-700">{t("emailLabel")} *</label>
                   <input
                     type="email"
                     required
                     value={formData.author_email}
                     onChange={(e) => setFormData((p) => ({ ...p, author_email: e.target.value }))}
                     className="w-full rounded-lg border border-gray-300 bg-white px-4 py-2.5 text-sm text-gray-900 placeholder:text-gray-400 focus:border-navy focus:ring-1 focus:ring-navy"
-                    placeholder="your@email.com"
+                    placeholder={t("emailPlaceholder")}
                   />
-                  <p className="mt-1 text-xs text-gray-400">Your email will not be published.</p>
+                  <p className="mt-1 text-xs text-gray-400">{t("emailPrivacy")}</p>
                 </div>
               </div>
               <div>
-                <label className="mb-1 block text-sm font-medium text-gray-700">Comment *</label>
+                <label className="mb-1 block text-sm font-medium text-gray-700">{t("commentLabel")} *</label>
                 <textarea
                   required
                   rows={4}
@@ -206,9 +209,9 @@ export default function BlogComments({ slug, commentCount }: BlogCommentsProps) 
                   value={formData.content}
                   onChange={(e) => setFormData((p) => ({ ...p, content: e.target.value }))}
                   className="w-full rounded-lg border border-gray-300 bg-white px-4 py-2.5 text-sm text-gray-900 placeholder:text-gray-400 focus:border-navy focus:ring-1 focus:ring-navy"
-                  placeholder="Share your thoughts..."
+                  placeholder={t("commentPlaceholder")}
                 />
-                <p className="mt-1 text-xs text-gray-400">{formData.content.length}/2000 characters</p>
+                <p className="mt-1 text-xs text-gray-400">{t("characters", { count: formData.content.length })}</p>
               </div>
               <button
                 type="submit"
@@ -218,16 +221,16 @@ export default function BlogComments({ slug, commentCount }: BlogCommentsProps) 
                 {isSubmitting ? (
                   <>
                     <Loader2 className="h-4 w-4 animate-spin" />
-                    Submitting...
+                    {t("submitting")}
                   </>
                 ) : (
                   <>
                     <Send className="h-4 w-4" />
-                    {replyTo ? 'Post Reply' : 'Post Comment'}
+                    {replyTo ? t("postReply") : t("postComment")}
                   </>
                 )}
               </button>
-              <p className="text-xs text-gray-400">All comments are reviewed before being published.</p>
+              <p className="text-xs text-gray-400">{t("moderation")}</p>
             </form>
           )}
         </div>

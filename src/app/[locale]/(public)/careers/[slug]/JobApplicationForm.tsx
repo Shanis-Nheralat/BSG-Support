@@ -49,13 +49,13 @@ export function JobApplicationForm({ jobId, jobTitle }: JobApplicationFormProps)
       const result = await res.json();
 
       if (!res.ok) {
-        throw new Error(result.error || "Failed to submit application");
+        throw new Error(result.error || t("failedToSubmit"));
       }
 
       setSubmitted(true);
       form.reset();
     } catch (err) {
-      setError(err instanceof Error ? err.message : "An error occurred");
+      setError(err instanceof Error ? err.message : t("errorOccurred"));
     } finally {
       setSubmitting(false);
     }
@@ -85,13 +85,13 @@ export function JobApplicationForm({ jobId, jobTitle }: JobApplicationFormProps)
           label={t("firstName")}
           name="firstName"
           required
-          placeholder="John"
+          placeholder={t("placeholderFirstName")}
         />
         <Input
           label={t("lastName")}
           name="lastName"
           required
-          placeholder="Doe"
+          placeholder={t("placeholderLastName")}
         />
       </div>
 
@@ -100,7 +100,7 @@ export function JobApplicationForm({ jobId, jobTitle }: JobApplicationFormProps)
         name="email"
         type="email"
         required
-        placeholder="john@example.com"
+        placeholder={t("placeholderEmail")}
       />
 
       <Input
@@ -108,7 +108,7 @@ export function JobApplicationForm({ jobId, jobTitle }: JobApplicationFormProps)
         name="phone"
         type="tel"
         required
-        placeholder="+971 50 123 4567"
+        placeholder={t("placeholderPhone")}
       />
 
       <div>

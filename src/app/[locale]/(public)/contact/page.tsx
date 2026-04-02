@@ -60,13 +60,13 @@ function ContactContent() {
       const result = await res.json();
 
       if (!res.ok) {
-        throw new Error(result.error || "Failed to submit form");
+        throw new Error(result.error || t("failedToSubmit"));
       }
 
       setSuccess(true);
       e.currentTarget.reset();
     } catch (err) {
-      setError(err instanceof Error ? err.message : "An error occurred");
+      setError(err instanceof Error ? err.message : t("errorOccurred"));
     } finally {
       setSubmitting(false);
     }

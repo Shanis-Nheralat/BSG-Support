@@ -349,7 +349,9 @@
     "success": {
       "title": "Vielen Dank!",
       "message": "Ihre Nachricht wurde empfangen. Wir melden uns innerhalb von 24 Stunden bei Ihnen."
-    }
+    },
+    "failedToSubmit": "Formular konnte nicht gesendet werden",
+    "errorOccurred": "Ein Fehler ist aufgetreten"
   },
   "DataSecurity": {
     "meta": {
@@ -1273,7 +1275,13 @@
     "emailLabel": "E-Mail",
     "phoneLabel": "Telefon",
     "resumeLabel": "Lebenslauf (PDF, DOC, DOCX)",
-    "submitApplication": "Bewerbung einreichen"
+    "submitApplication": "Bewerbung einreichen",
+    "failedToSubmit": "Bewerbung konnte nicht eingereicht werden",
+    "errorOccurred": "Ein Fehler ist aufgetreten",
+    "placeholderFirstName": "Max",
+    "placeholderLastName": "Mustermann",
+    "placeholderEmail": "max@beispiel.de",
+    "placeholderPhone": "+49 170 123 4567"
   },
   "Meeting": {
     "stepDate": "Datum wählen",
@@ -1316,7 +1324,47 @@
     "duration": "Dauer",
     "thirtyMinutes": "30 Minuten",
     "confirmationEmail": "Eine Bestätigungs-E-Mail wurde an Ihr Postfach gesendet.",
-    "scheduleAnother": "Weiteres Meeting planen"
+    "scheduleAnother": "Weiteres Meeting planen",
+    "failedToBook": "Meeting konnte nicht gebucht werden",
+    "failedToLoadSlots": "Zeitfenster konnten nicht geladen werden",
+    "errorOccurred": "Ein Fehler ist aufgetreten",
+    "placeholderName": "Max Mustermann",
+    "placeholderEmail": "max@beispiel.de",
+    "placeholderPhone": "+49 170 123 4567",
+    "placeholderCompany": "Ihr Unternehmen"
+  },
+  "BlogComments": {
+    "heading": "Kommentare",
+    "loading": "Kommentare werden geladen...",
+    "noComments": "Noch keine Kommentare. Teilen Sie als Erster Ihre Gedanken!",
+    "cancelReply": "Antwort abbrechen",
+    "reply": "Antworten",
+    "writeReply": "Antwort schreiben",
+    "leaveComment": "Kommentar hinterlassen",
+    "nameLabel": "Name",
+    "namePlaceholder": "Ihr Name",
+    "emailLabel": "E-Mail",
+    "emailPlaceholder": "ihre@email.de",
+    "emailPrivacy": "Ihre E-Mail-Adresse wird nicht veröffentlicht.",
+    "commentLabel": "Kommentar",
+    "commentPlaceholder": "Teilen Sie Ihre Gedanken...",
+    "characters": "{count}/2000 Zeichen",
+    "submitting": "Wird gesendet...",
+    "postReply": "Antwort senden",
+    "postComment": "Kommentar senden",
+    "moderation": "Alle Kommentare werden vor der Veröffentlichung überprüft.",
+    "failedToSubmit": "Kommentar konnte nicht gesendet werden."
+  },
+  "ShareButtons": {
+    "copied": "Kopiert!",
+    "copyLink": "Link kopieren",
+    "share": "Teilen",
+    "shareLinkedIn": "Auf LinkedIn teilen",
+    "shareX": "Auf X teilen"
+  },
+  "NotFound": {
+    "title": "Seite nicht gefunden",
+    "goHome": "Zur Startseite"
   },
   "Calculator": {
     "meta": {

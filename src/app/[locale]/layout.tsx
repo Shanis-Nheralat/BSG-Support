@@ -21,9 +21,12 @@ export async function generateMetadata({
   return {
     alternates: {
       canonical: `${SITE_URL}/${locale}`,
-      languages: Object.fromEntries(
-        routing.locales.map((l) => [l, `${SITE_URL}/${l}`])
-      ),
+      languages: {
+        ...Object.fromEntries(
+          routing.locales.map((l) => [l, `${SITE_URL}/${l}`])
+        ),
+        "x-default": `${SITE_URL}/${routing.defaultLocale}`,
+      },
     },
   };
 }
