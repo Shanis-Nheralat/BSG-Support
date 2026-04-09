@@ -118,7 +118,7 @@ export default function TimeSlotPicker({
               key={slot.time}
               type="button"
               onClick={() => onTimeSelect(slot.time, slot.displayTime, slot.localTime)}
-              className="group flex flex-col items-center rounded-lg border border-gray-200 px-3 py-3 text-sm transition-all hover:border-navy hover:bg-navy hover:text-white hover:shadow-md"
+              className="group flex flex-col items-center rounded-lg border border-gray-200 px-3 py-3 text-sm text-gray-900 transition-all hover:border-navy hover:bg-navy hover:text-white hover:shadow-md"
             >
               <span className="font-semibold">{slot.displayTime}</span>
               <span className="mt-0.5 text-xs text-gray-400 group-hover:text-white/70">

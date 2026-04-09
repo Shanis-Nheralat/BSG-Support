@@ -148,7 +148,7 @@ export default function BookingForm({
           </label>
           <textarea
             name="purpose"
-            className="block w-full rounded-lg border border-gray-300 px-3 py-2 text-sm shadow-sm focus:border-navy focus:outline-none focus:ring-2 focus:ring-navy-100"
+            className="block w-full rounded-lg border border-gray-300 px-3 py-2 text-sm text-gray-900 shadow-sm focus:border-navy focus:outline-none focus:ring-2 focus:ring-navy-100"
             rows={3}
             placeholder={t("purposePlaceholder")}
           />

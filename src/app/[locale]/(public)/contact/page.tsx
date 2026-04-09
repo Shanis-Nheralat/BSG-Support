@@ -201,7 +201,7 @@ function ContactContent() {
                     </label>
                     <textarea
                       name="message"
-                      className="block w-full rounded-lg border border-gray-300 px-3 py-2 text-sm shadow-sm focus:border-navy focus:outline-none focus:ring-2 focus:ring-navy-100"
+                      className="block w-full rounded-lg border border-gray-300 px-3 py-2 text-sm text-gray-900 shadow-sm focus:border-navy focus:outline-none focus:ring-2 focus:ring-navy-100"
                       rows={5}
                       required
                     />
@@ -220,7 +220,7 @@ function ContactContent() {
                     </label>
                     <select
                       name="service_type"
-                      className="block w-full rounded-lg border border-gray-300 px-3 py-2 text-sm shadow-sm focus:border-navy focus:outline-none focus:ring-2 focus:ring-navy-100"
+                      className="block w-full rounded-lg border border-gray-300 px-3 py-2 text-sm text-gray-900 shadow-sm focus:border-navy focus:outline-none focus:ring-2 focus:ring-navy-100"
                       required
                     >
                       <option value="">{t("form.selectSolution")}</option>
@@ -240,7 +240,7 @@ function ContactContent() {
                     </label>
                     <select 
                       name="implementation_timeline"
-                      className="block w-full rounded-lg border border-gray-300 px-3 py-2 text-sm shadow-sm focus:border-navy focus:outline-none focus:ring-2 focus:ring-navy-100"
+                      className="block w-full rounded-lg border border-gray-300 px-3 py-2 text-sm text-gray-900 shadow-sm focus:border-navy focus:outline-none focus:ring-2 focus:ring-navy-100"
                     >
                       <option>{t("form.immediately")}</option>
                       <option>{t("form.within1Month")}</option>
@@ -255,7 +255,7 @@ function ContactContent() {
                     </label>
                     <textarea
                       name="message"
-                      className="block w-full rounded-lg border border-gray-300 px-3 py-2 text-sm shadow-sm focus:border-navy focus:outline-none focus:ring-2 focus:ring-navy-100"
+                      className="block w-full rounded-lg border border-gray-300 px-3 py-2 text-sm text-gray-900 shadow-sm focus:border-navy focus:outline-none focus:ring-2 focus:ring-navy-100"
                       rows={4}
                       required
                     />
