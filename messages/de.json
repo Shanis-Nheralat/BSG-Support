@@ -992,7 +992,18 @@
     "leadershipTitle": "Führungsteam",
     "leader1": {
       "role": "Gründer",
-      "bio": "Bringt umfassende Erfahrung in der Unterstützung schnell wachsender Startups und Unternehmen mit, mit Expertise in Backend-Operationen, Outsourcing-Modellen und Teamaufbau."
+      "bio": "Nach fast einem Jahrzehnt im Management von Finanz- und Backend-Operationen für umsatzstarke Unternehmen gründete Muhammed Shanis Backsure Global Support, um ein wiederkehrendes Problem zu lösen, das er branchenweit beobachtete: Unternehmen, die mit teuren, ineffizienten und übermäßig manuellen operativen Prozessen kämpfen. Mit Erfahrung in der Verwaltung von über 45 Mio. USD an jährlichen Transaktionen, der Leitung operativer Teams und dem Aufbau von Automatisierungslösungen für Versicherungsaggregatoren und -makler hilft er Unternehmen heute, durch technologiegestütztes Outsourcing und Prozessoptimierung intelligenter zu skalieren."
+    },
+    "valuesTitle": "Wofür wir stehen",
+    "values": {
+      "partnership": {
+        "title": "Langfristige Partnerschaften",
+        "desc": "Wir bauen langfristige Partnerschaften auf, indem wir das Geschäft jedes Kunden tiefgreifend verstehen und unsere Unterstützung an seine sich entwickelnden Bedürfnisse anpassen."
+      },
+      "problemSolving": {
+        "title": "Problemlöser, nicht Aufgabenerfüller",
+        "desc": "Wir erledigen nicht nur Aufgaben — wir lösen Probleme. Jedes Engagement ist eine Gelegenheit, die Arbeitsweise unserer Kunden zu verbessern."
+      }
     },
     "departmentsTitle": "Unsere Abteilungen",
     "departmentsSubtitle": "Hinter jeder erfolgreichen Kundenpartnerschaft steht ein strukturiertes Team von Spezialisten, die in wichtigen Geschäftsbereichen arbeiten.",

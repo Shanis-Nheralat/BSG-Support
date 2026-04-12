@@ -1,5 +1,5 @@
 import { Link } from "@/i18n/navigation";
-import { Mail, ArrowRight } from "lucide-react";
+import { Mail, ArrowRight, Linkedin, Settings, HeadphonesIcon, Code, Users, Handshake, Lightbulb } from "lucide-react";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import Image from "next/image";
 
@@ -17,20 +17,20 @@ export default async function TeamPage({ params }: { params: { locale: string } 
 
   const leadership = [
     {
-      initials: "MS",
       name: "Muhammed Shanis Nheralat",
       role: t("leader1.role"),
-      email: "shanisnheralat@gmail.com",
+      email: "shanis@backsureglobalsupport.com",
+      linkedin: "https://www.linkedin.com/in/muhammedshanis592/",
       bio: t("leader1.bio"),
       image: "/images/team/shanis-nheralat.jpg",
     },
   ];
 
   const departments = [
-    { title: t("departments.operations.title"), desc: t("departments.operations.desc") },
-    { title: t("departments.clientSuccess.title"), desc: t("departments.clientSuccess.desc") },
-    { title: t("departments.technology.title"), desc: t("departments.technology.desc") },
-    { title: t("departments.hr.title"), desc: t("departments.hr.desc") },
+    { icon: <Settings className="h-6 w-6" />, title: t("departments.operations.title"), desc: t("departments.operations.desc") },
+    { icon: <HeadphonesIcon className="h-6 w-6" />, title: t("departments.clientSuccess.title"), desc: t("departments.clientSuccess.desc") },
+    { icon: <Code className="h-6 w-6" />, title: t("departments.technology.title"), desc: t("departments.technology.desc") },
+    { icon: <Users className="h-6 w-6" />, title: t("departments.hr.title"), desc: t("departments.hr.desc") },
   ];
 
   return (
@@ -53,44 +53,83 @@ export default async function TeamPage({ params }: { params: { locale: string } 
           <h2 className="text-center font-poppins text-3xl font-bold text-gray-900">
             {t("leadershipTitle")}
           </h2>
-          <div className="mx-auto mt-12 grid max-w-4xl gap-8 md:grid-cols-1">
+          <div className="mx-auto mt-12 max-w-3xl">
             {leadership.map((member) => (
               <div
                 key={member.name}
-                className="rounded-xl border border-gray-200 p-8 text-center"
+                className="rounded-xl border border-gray-200 p-8 md:flex md:items-start md:gap-8 md:text-left"
               >
-                <div className="mx-auto mb-4 h-32 w-32 overflow-hidden rounded-full border-4 border-navy/10">
-                  {member.image ? (
-                    <Image
-                      src={member.image}
-                      alt={member.name}
-                      width={128}
-                      height={128}
-                      className="h-full w-full object-cover"
-                      priority
-                    />
-                  ) : (
-                    <div className="flex h-full w-full items-center justify-center bg-navy text-3xl font-bold text-white">
-                      {member.initials}
-                    </div>
-                  )}
+                {/* Photo */}
+                <div className="mx-auto mb-6 h-40 w-40 flex-shrink-0 overflow-hidden rounded-full border-4 border-navy/10 md:mx-0 md:mb-0">
+                  <Image
+                    src={member.image}
+                    alt={member.name}
+                    width={160}
+                    height={160}
+                    className="h-full w-full object-cover"
+                    priority
+                  />
                 </div>
-                <h3 className="font-poppins text-xl font-semibold text-gray-900">
-                  {member.name}
-                </h3>
-                <p className="mt-1 font-medium text-gold-700">{member.role}</p>
-                <p className="mx-auto mt-4 max-w-lg text-sm leading-relaxed text-gray-600">
-                  {member.bio}
-                </p>
-                <a
-                  href={`mailto:${member.email}`}
-                  className="mt-4 inline-flex items-center gap-2 text-sm text-navy hover:text-gold"
-                >
-                  <Mail className="h-4 w-4" />
-                  {member.email}
-                </a>
+
+                {/* Info */}
+                <div className="text-center md:text-left">
+                  <h3 className="font-poppins text-2xl font-semibold text-gray-900">
+                    {member.name}
+                  </h3>
+                  <p className="mt-1 font-medium text-gold-700">{member.role}</p>
+                  <p className="mt-4 text-sm leading-relaxed text-gray-600">
+                    {member.bio}
+                  </p>
+                  <div className="mt-5 flex flex-wrap items-center justify-center gap-4 md:justify-start">
+                    <a
+                      href={`mailto:${member.email}`}
+                      className="inline-flex items-center gap-2 text-sm text-navy hover:text-gold"
+                    >
+                      <Mail className="h-4 w-4" />
+                      {member.email}
+                    </a>
+                    <a
+                      href={member.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 text-sm text-navy hover:text-gold"
+                    >
+                      <Linkedin className="h-4 w-4" />
+                      LinkedIn
+                    </a>
+                  </div>
+                </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Company Values */}
+      <section className="bg-navy py-16 text-white">
+        <div className="mx-auto max-w-7xl px-4 lg:px-8">
+          <h2 className="text-center font-poppins text-3xl font-bold">
+            {t("valuesTitle")}
+          </h2>
+          <div className="mx-auto mt-12 grid max-w-4xl gap-8 md:grid-cols-2">
+            <div className="rounded-xl border border-white/10 p-8">
+              <div className="mb-3 inline-flex rounded-lg bg-gold/20 p-2">
+                <Handshake className="h-6 w-6 text-gold" />
+              </div>
+              <h3 className="font-poppins text-xl font-semibold">{t("values.partnership.title")}</h3>
+              <p className="mt-2 text-white/70">
+                {t("values.partnership.desc")}
+              </p>
+            </div>
+            <div className="rounded-xl border border-white/10 p-8">
+              <div className="mb-3 inline-flex rounded-lg bg-gold/20 p-2">
+                <Lightbulb className="h-6 w-6 text-gold" />
+              </div>
+              <h3 className="font-poppins text-xl font-semibold">{t("values.problemSolving.title")}</h3>
+              <p className="mt-2 text-white/70">
+                {t("values.problemSolving.desc")}
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -108,8 +147,11 @@ export default async function TeamPage({ params }: { params: { locale: string } 
             {departments.map((dept, i) => (
               <div
                 key={i}
-                className="rounded-xl border border-gray-200 bg-white p-6"
+                className="hover-lift rounded-xl border border-gray-200 bg-white p-6"
               >
+                <div className="mb-4 inline-flex rounded-lg bg-navy-50 p-3 text-navy">
+                  {dept.icon}
+                </div>
                 <h3 className="font-poppins text-lg font-semibold text-gray-900">
                   {dept.title}
                 </h3>
