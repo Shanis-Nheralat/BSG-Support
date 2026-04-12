@@ -1,6 +1,7 @@
 import { Link } from "@/i18n/navigation";
 import { Mail, ArrowRight } from "lucide-react";
 import { getTranslations, setRequestLocale } from "next-intl/server";
+import Image from "next/image";
 
 export async function generateMetadata({ params }: { params: { locale: string } }) {
   const t = await getTranslations({ locale: params.locale, namespace: "Team" });
@@ -21,6 +22,7 @@ export default async function TeamPage({ params }: { params: { locale: string } 
       role: t("leader1.role"),
       email: "shanisnheralat@gmail.com",
       bio: t("leader1.bio"),
+      image: "/images/team/shanis-nheralat.jpg",
     },
   ];
 
@@ -57,8 +59,21 @@ export default async function TeamPage({ params }: { params: { locale: string } 
                 key={member.name}
                 className="rounded-xl border border-gray-200 p-8 text-center"
               >
-                <div className="mx-auto mb-4 flex h-24 w-24 items-center justify-center rounded-full bg-navy text-3xl font-bold text-white">
-                  {member.initials}
+                <div className="mx-auto mb-4 h-32 w-32 overflow-hidden rounded-full border-4 border-navy/10">
+                  {member.image ? (
+                    <Image
+                      src={member.image}
+                      alt={member.name}
+                      width={128}
+                      height={128}
+                      className="h-full w-full object-cover"
+                      priority
+                    />
+                  ) : (
+                    <div className="flex h-full w-full items-center justify-center bg-navy text-3xl font-bold text-white">
+                      {member.initials}
+                    </div>
+                  )}
                 </div>
                 <h3 className="font-poppins text-xl font-semibold text-gray-900">
                   {member.name}
