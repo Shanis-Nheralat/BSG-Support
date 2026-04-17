@@ -2,10 +2,13 @@
 
 import { useState, useRef, useEffect, useCallback } from "react";
 import { useRouter } from "next/navigation";
+import dynamic from "next/dynamic";
 import { Button, Input } from "@/components/ui";
 import Card from "@/components/ui/Card";
 import { Save, ArrowLeft, X, Image as ImageIcon, Plus, Check, Languages, Loader2, Tag, Clock } from "lucide-react";
 import Link from "next/link";
+
+const RichTextEditor = dynamic(() => import("@/components/ui/RichTextEditor"), { ssr: false });
 
 interface Category {
   id: number;
@@ -61,7 +64,9 @@ export function BlogPostForm({ post, categories: initialCategories, existingTran
 
   // Reading time state
   const [readingTime, setReadingTime] = useState(0);
-  const contentRef = useRef<HTMLTextAreaElement>(null);
+
+  // Controlled content state for rich text editor
+  const [content, setContent] = useState(post?.content || "");
 
   // Fetch all existing tags for autocomplete
   const fetchTags = useCallback(async () => {
@@ -80,19 +85,15 @@ export function BlogPostForm({ post, categories: initialCategories, existingTran
     fetchTags();
   }, [fetchTags]);
 
-  // Compute initial reading time from existing content
+  // Compute reading time whenever content changes
   useEffect(() => {
-    if (post?.content) {
-      const words = post.content.replace(/<[^>]*>/g, "").split(/\s+/).filter(Boolean).length;
+    if (content) {
+      const words = content.replace(/<[^>]*>/g, "").split(/\s+/).filter(Boolean).length;
       setReadingTime(Math.max(1, Math.ceil(words / 200)));
+    } else {
+      setReadingTime(0);
     }
-  }, [post?.content]);
-
-  function handleContentInput(e: React.FormEvent<HTMLTextAreaElement>) {
-    const text = e.currentTarget.value;
-    const words = text.replace(/<[^>]*>/g, "").split(/\s+/).filter(Boolean).length;
-    setReadingTime(Math.max(1, Math.ceil(words / 200)));
-  }
+  }, [content]);
 
   function addTag(tag: string) {
     const trimmed = tag.trim();
@@ -226,7 +227,6 @@ export function BlogPostForm({ post, categories: initialCategories, existingTran
     if (title) fields.title = title;
     const excerpt = fd.get("excerpt") as string;
     if (excerpt) fields.excerpt = excerpt;
-    const content = fd.get("content") as string;
     if (content) fields.content = content;
     const metaTitle = fd.get("meta_title") as string;
     if (metaTitle) fields.meta_title = metaTitle;
@@ -276,7 +276,7 @@ export function BlogPostForm({ post, categories: initialCategories, existingTran
       title: formData.get("title") as string,
       slug: formData.get("slug") as string,
       excerpt: formData.get("excerpt") as string || null,
-      content: formData.get("content") as string,
+      content,
       image_path: imagePath || null,
       featured: formData.get("featured") === "on",
       status: formData.get("status") as string,
@@ -393,15 +393,12 @@ export function BlogPostForm({ post, categories: initialCategories, existingTran
                     </span>
                   )}
                 </div>
-                <textarea
-                  ref={contentRef}
-                  name="content"
-                  rows={15}
-                  required
-                  defaultValue={post?.content || ""}
-                  onInput={handleContentInput}
-                  className="w-full rounded-lg border border-gray-300 px-4 py-2 font-mono text-sm focus:border-navy-500 focus:outline-none focus:ring-1 focus:ring-navy-500 dark:border-gray-600 dark:bg-gray-800 dark:text-white"
-                  placeholder="Write your post content here... (HTML supported)"
+                <input type="hidden" name="content" value={content} />
+                <RichTextEditor
+                  content={content}
+                  onChange={setContent}
+                  placeholder="Write your post content here..."
+                  minHeight="300px"
                 />
               </div>
             </div>
@@ -504,15 +501,14 @@ export function BlogPostForm({ post, categories: initialCategories, existingTran
                 <label className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">
                   Inhalt (DE)
                 </label>
-                <textarea
-                  rows={10}
-                  value={deContent}
-                  onChange={(e) => {
-                    setDeContent(e.target.value);
+                <RichTextEditor
+                  content={deContent}
+                  onChange={(html) => {
+                    setDeContent(html);
                     setDeAutoTranslated(false);
                   }}
-                  className="w-full rounded-lg border border-gray-300 px-4 py-2 font-mono text-sm focus:border-navy-500 focus:outline-none focus:ring-1 focus:ring-navy-500 dark:border-gray-600 dark:bg-gray-800 dark:text-white"
-                  placeholder="German content (HTML supported)..."
+                  placeholder="German content..."
+                  minHeight="200px"
                 />
               </div>
               <Input

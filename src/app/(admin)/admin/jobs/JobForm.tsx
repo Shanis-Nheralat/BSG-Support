@@ -2,10 +2,13 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import dynamic from "next/dynamic";
 import { Button, Input } from "@/components/ui";
 import Card from "@/components/ui/Card";
 import { Save, ArrowLeft, Languages, Loader2 } from "lucide-react";
 import Link from "next/link";
+
+const RichTextEditor = dynamic(() => import("@/components/ui/RichTextEditor"), { ssr: false });
 
 interface JobData {
   id?: number;
@@ -64,6 +67,11 @@ export function JobForm({ job, departments: existingDepartments, existingTransla
   const [useCustomDepartment, setUseCustomDepartment] = useState(false);
   const [isTranslating, setIsTranslating] = useState(false);
 
+  // Controlled state for rich text editor fields
+  const [description, setDescription] = useState(job?.description || "");
+  const [requirements, setRequirements] = useState(job?.requirements || "");
+  const [benefits, setBenefits] = useState(job?.benefits || "");
+
   // German translation state
   const [deTitle, setDeTitle] = useState(existingTranslation?.title || "");
   const [deSlug, setDeSlug] = useState(existingTranslation?.slug || "");
@@ -88,11 +96,8 @@ export function JobForm({ job, departments: existingDepartments, existingTransla
     const fields: Record<string, string> = {};
     const title = fd.get("title") as string;
     if (title) fields.title = title;
-    const description = fd.get("description") as string;
     if (description) fields.description = description;
-    const requirements = fd.get("requirements") as string;
     if (requirements) fields.requirements = requirements;
-    const benefits = fd.get("benefits") as string;
     if (benefits) fields.benefits = benefits;
 
     if (Object.keys(fields).length === 0) {
@@ -144,9 +149,9 @@ export function JobForm({ job, departments: existingDepartments, existingTransla
       employment_type: formData.get("employment_type") as string,
       experience: formData.get("experience") as string || null,
       salary_range: formData.get("salary_range") as string || null,
-      description: formData.get("description") as string,
-      requirements: formData.get("requirements") as string || null,
-      benefits: formData.get("benefits") as string || null,
+      description,
+      requirements: requirements || null,
+      benefits: benefits || null,
       status: formData.get("status") as string,
       featured: formData.get("featured") === "on",
     };
@@ -339,13 +344,11 @@ export function JobForm({ job, departments: existingDepartments, existingTransla
                 <label className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">
                   Description *
                 </label>
-                <textarea
-                  name="description"
-                  rows={6}
-                  required
-                  defaultValue={job?.description || ""}
-                  className="w-full rounded-lg border border-gray-300 px-4 py-2 text-sm focus:border-navy-500 focus:outline-none focus:ring-1 focus:ring-navy-500 dark:border-gray-600 dark:bg-gray-800 dark:text-white"
+                <RichTextEditor
+                  content={description}
+                  onChange={setDescription}
                   placeholder="Describe the role, responsibilities, and what makes this position exciting..."
+                  minHeight="180px"
                 />
               </div>
 
@@ -353,28 +356,24 @@ export function JobForm({ job, departments: existingDepartments, existingTransla
                 <label className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">
                   Requirements
                 </label>
-                <textarea
-                  name="requirements"
-                  rows={6}
-                  defaultValue={job?.requirements || ""}
-                  className="w-full rounded-lg border border-gray-300 px-4 py-2 text-sm focus:border-navy-500 focus:outline-none focus:ring-1 focus:ring-navy-500 dark:border-gray-600 dark:bg-gray-800 dark:text-white"
-                  placeholder="List the required skills, qualifications, and experience (one per line)..."
+                <RichTextEditor
+                  content={requirements}
+                  onChange={setRequirements}
+                  placeholder="List the required skills, qualifications, and experience..."
+                  minHeight="180px"
                 />
-                <p className="mt-1 text-xs text-gray-500">Enter each requirement on a new line</p>
               </div>
 
               <div>
                 <label className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">
                   Benefits
                 </label>
-                <textarea
-                  name="benefits"
-                  rows={4}
-                  defaultValue={job?.benefits || ""}
-                  className="w-full rounded-lg border border-gray-300 px-4 py-2 text-sm focus:border-navy-500 focus:outline-none focus:ring-1 focus:ring-navy-500 dark:border-gray-600 dark:bg-gray-800 dark:text-white"
-                  placeholder="List the benefits and perks (one per line)..."
+                <RichTextEditor
+                  content={benefits}
+                  onChange={setBenefits}
+                  placeholder="List the benefits and perks..."
+                  minHeight="120px"
                 />
-                <p className="mt-1 text-xs text-gray-500">Enter each benefit on a new line</p>
               </div>
             </div>
           </Card>
@@ -428,36 +427,33 @@ export function JobForm({ job, departments: existingDepartments, existingTransla
                 <label className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">
                   Beschreibung (DE)
                 </label>
-                <textarea
-                  rows={6}
-                  value={deDescription}
-                  onChange={(e) => { setDeDescription(e.target.value); setDeAutoTranslated(false); }}
-                  className="w-full rounded-lg border border-gray-300 px-4 py-2 text-sm focus:border-navy-500 focus:outline-none focus:ring-1 focus:ring-navy-500 dark:border-gray-600 dark:bg-gray-800 dark:text-white"
+                <RichTextEditor
+                  content={deDescription}
+                  onChange={(html) => { setDeDescription(html); setDeAutoTranslated(false); }}
                   placeholder="German job description..."
+                  minHeight="150px"
                 />
               </div>
               <div>
                 <label className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">
                   Anforderungen (DE)
                 </label>
-                <textarea
-                  rows={4}
-                  value={deRequirements}
-                  onChange={(e) => { setDeRequirements(e.target.value); setDeAutoTranslated(false); }}
-                  className="w-full rounded-lg border border-gray-300 px-4 py-2 text-sm focus:border-navy-500 focus:outline-none focus:ring-1 focus:ring-navy-500 dark:border-gray-600 dark:bg-gray-800 dark:text-white"
+                <RichTextEditor
+                  content={deRequirements}
+                  onChange={(html) => { setDeRequirements(html); setDeAutoTranslated(false); }}
                   placeholder="German requirements..."
+                  minHeight="150px"
                 />
               </div>
               <div>
                 <label className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">
                   Vorteile (DE)
                 </label>
-                <textarea
-                  rows={3}
-                  value={deBenefits}
-                  onChange={(e) => { setDeBenefits(e.target.value); setDeAutoTranslated(false); }}
-                  className="w-full rounded-lg border border-gray-300 px-4 py-2 text-sm focus:border-navy-500 focus:outline-none focus:ring-1 focus:ring-navy-500 dark:border-gray-600 dark:bg-gray-800 dark:text-white"
+                <RichTextEditor
+                  content={deBenefits}
+                  onChange={(html) => { setDeBenefits(html); setDeAutoTranslated(false); }}
                   placeholder="German benefits..."
+                  minHeight="120px"
                 />
               </div>
               <Input

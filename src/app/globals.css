@@ -265,6 +265,59 @@
   font-feature-settings: "tnum";
 }
 
+/* ═══════════════════════════════════════════════════════════════════
+   TIPTAP RICH TEXT EDITOR
+   ═══════════════════════════════════════════════════════════════════ */
+
+.tiptap p.is-editor-empty:first-child::before {
+  content: attr(data-placeholder);
+  float: left;
+  color: #9ca3af;
+  pointer-events: none;
+  height: 0;
+}
+
+.tiptap {
+  outline: none;
+}
+
+.tiptap ul { list-style-type: disc; padding-left: 1.5em; }
+.tiptap ol { list-style-type: decimal; padding-left: 1.5em; }
+.tiptap li { margin: 0.25em 0; }
+.tiptap blockquote {
+  border-left: 3px solid #062767;
+  padding-left: 1em;
+  margin: 0.75em 0;
+  color: #4b5563;
+}
+.tiptap pre {
+  background: #1e293b;
+  color: #e2e8f0;
+  padding: 0.75em 1em;
+  border-radius: 0.5rem;
+  overflow-x: auto;
+  font-family: ui-monospace, monospace;
+  font-size: 0.875em;
+}
+.tiptap code {
+  background: #f1f5f9;
+  padding: 0.15em 0.3em;
+  border-radius: 0.25rem;
+  font-size: 0.875em;
+}
+.tiptap pre code {
+  background: none;
+  padding: 0;
+}
+.tiptap img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.5rem;
+  margin: 0.75em 0;
+}
+.tiptap h2 { font-size: 1.25em; font-weight: 700; margin: 0.75em 0 0.5em; }
+.tiptap h3 { font-size: 1.1em; font-weight: 600; margin: 0.75em 0 0.5em; }
+
 /* Hover lift effect for cards */
 .hover-lift {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
