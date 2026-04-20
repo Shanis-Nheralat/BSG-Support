@@ -102,6 +102,7 @@ export async function POST(request: NextRequest) {
       content,
       image_path,
       featured,
+      post_type,
       status,
       category_id,
       meta_title,
@@ -115,6 +116,13 @@ export async function POST(request: NextRequest) {
     if (!title || !slug || !content) {
       return NextResponse.json(
         { error: "Title, slug, and content are required" },
+        { status: 400 }
+      );
+    }
+
+    if (!category_id) {
+      return NextResponse.json(
+        { error: "Category is required" },
         { status: 400 }
       );
     }
@@ -140,8 +148,9 @@ export async function POST(request: NextRequest) {
         content,
         image_path: image_path || null,
         featured: featured || false,
+        post_type: post_type || null,
         status: status || "draft",
-        category_id: category_id || null,
+        category_id,
         author_id: session.user.id ? parseInt(session.user.id) : null,
         meta_title: meta_title || null,
         meta_description: meta_description || null,

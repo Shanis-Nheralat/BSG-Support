@@ -73,8 +73,16 @@ export async function GET(request: NextRequest) {
           content: true,
           image_path: true,
           featured: true,
+          post_type: true,
           published_at: true,
           views: true,
+          _count: {
+            select: {
+              comments: {
+                where: { status: "approved" },
+              },
+            },
+          },
           category: {
             select: {
               id: true,
@@ -150,7 +158,7 @@ export async function GET(request: NextRequest) {
     const transformedPosts = posts.map((post) => {
       const tr = post.translations[0];
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      const { translations: _tr, content: _content, ...rest } = post;
+      const { translations: _tr, content: _content, _count, ...rest } = post;
       const wordCount = post.content.replace(/<[^>]*>/g, "").split(/\s+/).filter(Boolean).length;
       return {
         ...rest,
@@ -159,6 +167,7 @@ export async function GET(request: NextRequest) {
         excerpt: tr?.excerpt ?? post.excerpt,
         tags: post.tags.map((pt) => pt.tag),
         reading_time: Math.max(1, Math.ceil(wordCount / 200)),
+        comment_count: _count.comments,
       };
     });
 

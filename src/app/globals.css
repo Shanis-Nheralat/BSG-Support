@@ -101,6 +101,45 @@
   .rounded-lg {
     page-break-inside: avoid;
   }
+
+  /* Blog article print optimizations */
+  article {
+    max-width: 100% !important;
+  }
+
+  article .prose {
+    max-width: 100% !important;
+    font-size: 11pt !important;
+    line-height: 1.6 !important;
+  }
+
+  article .prose img {
+    max-width: 100% !important;
+    page-break-inside: avoid;
+  }
+
+  article .prose h2,
+  article .prose h3 {
+    page-break-after: avoid;
+  }
+
+  article .prose a {
+    color: #062767 !important;
+    text-decoration: underline !important;
+  }
+
+  article .prose a::after {
+    content: " (" attr(href) ")";
+    font-size: 9pt;
+    color: #666;
+  }
+
+  /* Hide interactive elements in print */
+  [data-floating-share],
+  [data-mobile-toc],
+  .fixed {
+    display: none !important;
+  }
 }
 
 /* Notification pulse animation */

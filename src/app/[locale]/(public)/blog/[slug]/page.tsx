@@ -2,11 +2,13 @@ import { notFound } from "next/navigation";
 import { Link } from "@/i18n/navigation";
 import Image from "next/image";
 import { prisma } from "@/lib/prisma";
-import { Calendar, Eye, Tag, Clock, ArrowRight } from "lucide-react";
+import { Calendar, Eye, Tag, Clock, ArrowRight, BookOpen } from "lucide-react";
 import SafeHTML from "@/components/ui/SafeHTML";
 import BlogComments from "@/components/BlogComments";
 import ReadingProgress from "@/components/ReadingProgress";
 import ShareButtons from "@/components/ShareButtons";
+import FloatingShareBar from "@/components/FloatingShareBar";
+import MobileTOC from "@/components/MobileTOC";
 import HeroBackground from "@/components/animation/HeroBackground";
 import { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
@@ -237,6 +239,9 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
       {/* Reading Progress Bar */}
       <ReadingProgress />
 
+      {/* Floating Share Bar (Desktop) */}
+      <FloatingShareBar url={postUrl} title={displayTitle} />
+
       {/* JSON-LD Structured Data */}
       <script
         type="application/ld+json"
@@ -273,7 +278,7 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
             {post.category && (
               <>
                 <span>/</span>
-                <span className="text-white/60">{post.category.name}</span>
+                <Link href={`/blog?category=${post.category.slug}`} className="transition-colors hover:text-white/80">{post.category.name}</Link>
               </>
             )}
           </nav>
@@ -349,17 +354,28 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
               />
 
               {/* Author Section */}
-              <div className="mt-12 rounded-xl border border-gray-200 bg-navy-50 p-6">
+              <div className="mt-12 rounded-xl border border-gray-200 bg-gradient-to-r from-navy-50 to-white p-6">
                 <div className="flex items-center gap-4">
-                  <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-navy text-white">
-                    <span className="font-poppins text-sm font-bold">BSG</span>
+                  <div className="relative h-14 w-14 flex-shrink-0 overflow-hidden rounded-full border-2 border-gold/30 bg-white p-1.5">
+                    <Image
+                      src="/images/logo.png"
+                      alt="Backsure Global Support"
+                      fill
+                      className="object-contain"
+                    />
                   </div>
-                  <div>
-                    <p className="text-xs text-gray-500">{t("publishedBy")}</p>
-                    <p className="font-poppins font-semibold text-gray-900">{t("authorName")}</p>
+                  <div className="flex-1">
+                    <p className="text-xs font-medium uppercase tracking-wider text-gray-400">{t("publishedBy")}</p>
+                    <p className="font-poppins text-base font-semibold text-gray-900">{t("authorName")}</p>
                     <p className="text-sm text-gray-500">{t("authorTagline")}</p>
                   </div>
                 </div>
+                {post.published_at && (
+                  <div className="mt-4 flex items-center gap-2 border-t border-gray-200 pt-4 text-xs text-gray-400">
+                    <Calendar className="h-3.5 w-3.5" />
+                    <span>{t("publishedOn")} {formatDate(post.published_at)}</span>
+                  </div>
+                )}
               </div>
             </div>
 
@@ -389,6 +405,9 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
           </div>
         </div>
       </article>
+
+      {/* Mobile TOC */}
+      <MobileTOC headings={headings} label={t("tableOfContents")} />
 
       {/* Comments Section */}
       <BlogComments slug={slug} commentCount={commentCount} />
@@ -426,8 +445,9 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
                           />
                         </div>
                       ) : (
-                        <div className="flex aspect-[16/10] items-center justify-center bg-gradient-to-br from-navy-50 to-navy-100">
-                          <span className="font-poppins text-2xl font-bold text-navy/10">BSG</span>
+                        <div className="flex aspect-[16/10] flex-col items-center justify-center bg-gradient-to-br from-navy-50 via-navy-100 to-gold-50">
+                          <BookOpen className="h-10 w-10 text-navy/15" />
+                          <span className="mt-2 font-poppins text-xs font-semibold uppercase tracking-widest text-navy/15">BSG Insights</span>
                         </div>
                       )}
                       {related.category && (

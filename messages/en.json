@@ -1200,7 +1200,12 @@
     "ctaTitle": "Stay Ahead of Industry Trends",
     "ctaDescription": "Get expert insights on business operations, outsourcing strategies, and digital transformation delivered to your workflow.",
     "ctaButton": "Get in Touch",
-    "scheduleCall": "Schedule a Call"
+    "scheduleCall": "Schedule a Call",
+    "trending": "Trending Now",
+    "newsletterPlaceholder": "Enter your email address",
+    "newsletterDisclaimer": "We respect your privacy. Unsubscribe at any time.",
+    "loadMore": "Load More Articles",
+    "loadingMore": "Loading..."
   },
   "BlogDetail": {
     "backToBlog": "Back to Blog",
@@ -1212,6 +1217,7 @@
     "copyLink": "Copy Link",
     "linkCopied": "Link copied!",
     "publishedBy": "Published by",
+    "publishedOn": "Published on",
     "authorName": "Backsure Global Support",
     "authorTagline": "Expert insights on business operations and industry trends",
     "viewAllInsights": "View All Insights",

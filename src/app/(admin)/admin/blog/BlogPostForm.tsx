@@ -24,6 +24,7 @@ interface PostData {
   content: string;
   image_path: string | null;
   featured: boolean;
+  post_type: string | null;
   status: string;
   category_id: number | null;
   meta_title: string | null;
@@ -271,6 +272,12 @@ export function BlogPostForm({ post, categories: initialCategories, existingTran
     setIsSubmitting(true);
     setError("");
 
+    if (!selectedCategoryId) {
+      setError("Please select a category before saving.");
+      setIsSubmitting(false);
+      return;
+    }
+
     const formData = new FormData(e.currentTarget);
     const data: Record<string, unknown> = {
       title: formData.get("title") as string,
@@ -280,7 +287,8 @@ export function BlogPostForm({ post, categories: initialCategories, existingTran
       image_path: imagePath || null,
       featured: formData.get("featured") === "on",
       status: formData.get("status") as string,
-      category_id: selectedCategoryId ? parseInt(selectedCategoryId) : null,
+      post_type: (formData.get("post_type") as string) || null,
+      category_id: parseInt(selectedCategoryId),
       meta_title: formData.get("meta_title") as string || null,
       meta_description: formData.get("meta_description") as string || null,
       meta_keywords: formData.get("meta_keywords") as string || null,
@@ -563,7 +571,24 @@ export function BlogPostForm({ post, categories: initialCategories, existingTran
               </div>
               <div>
                 <label className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">
-                  Category
+                  Post Type
+                </label>
+                <select
+                  name="post_type"
+                  defaultValue={post?.post_type || ""}
+                  className="w-full rounded-lg border border-gray-300 px-4 py-2 text-sm focus:border-navy-500 focus:outline-none focus:ring-1 focus:ring-navy-500 dark:border-gray-600 dark:bg-gray-800 dark:text-white"
+                >
+                  <option value="">None</option>
+                  <option value="guide">Guide</option>
+                  <option value="news">News</option>
+                  <option value="case-study">Case Study</option>
+                  <option value="tutorial">Tutorial</option>
+                  <option value="opinion">Opinion</option>
+                </select>
+              </div>
+              <div>
+                <label className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">
+                  Category <span className="text-red-500">*</span>
                 </label>
                 {showNewCategory ? (
                   <div className="space-y-2">
@@ -611,9 +636,10 @@ export function BlogPostForm({ post, categories: initialCategories, existingTran
                     <select
                       value={selectedCategoryId}
                       onChange={(e) => setSelectedCategoryId(e.target.value)}
-                      className="flex-1 rounded-lg border border-gray-300 px-4 py-2 text-sm focus:border-navy-500 focus:outline-none focus:ring-1 focus:ring-navy-500 dark:border-gray-600 dark:bg-gray-800 dark:text-white"
+                      required
+                      className={`flex-1 rounded-lg border px-4 py-2 text-sm focus:border-navy-500 focus:outline-none focus:ring-1 focus:ring-navy-500 dark:border-gray-600 dark:bg-gray-800 dark:text-white ${!selectedCategoryId ? "border-red-300" : "border-gray-300"}`}
                     >
-                      <option value="">No Category</option>
+                      <option value="">Select Category *</option>
                       {categories.map((cat) => (
                         <option key={cat.id} value={String(cat.id)}>
                           {cat.name}

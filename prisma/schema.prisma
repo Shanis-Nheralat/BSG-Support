@@ -123,6 +123,7 @@ model blog_posts {
   content          String            @db.LongText
   image_path       String?           @db.VarChar(255)
   featured         Boolean           @default(false)
+  post_type        String?           @db.VarChar(50)
   status           blog_posts_status @default(draft)
   published_at     DateTime?         @db.DateTime(0)
   category_id      Int?

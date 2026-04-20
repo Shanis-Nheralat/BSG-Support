@@ -4,7 +4,7 @@ import { useState, useEffect, useCallback } from "react";
 import { Link } from "@/i18n/navigation";
 import { useLocale, useTranslations } from "next-intl";
 import Image from "next/image";
-import { Calendar, Search, ChevronLeft, ChevronRight, X, Clock, Eye, ArrowRight } from "lucide-react";
+import { Calendar, Search, ChevronLeft, ChevronRight, X, Clock, Eye, ArrowRight, BookOpen, MessageSquare, Mail } from "lucide-react";
 
 interface Category {
   id: number;
@@ -26,9 +26,11 @@ interface BlogPost {
   excerpt: string | null;
   image_path: string | null;
   featured: boolean;
+  post_type: string | null;
   published_at: string | null;
   views: number;
   reading_time?: number;
+  comment_count?: number;
   category: Category | null;
   tags: BlogTag[];
 }
@@ -68,9 +70,14 @@ export default function BlogContent({ initialPosts, initialCategories }: BlogCon
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [searchInput, setSearchInput] = useState<string>("");
   const [loading, setLoading] = useState(false);
+  const [loadingMore, setLoadingMore] = useState(false);
 
-  const fetchPosts = useCallback(async (page: number = 1) => {
-    setLoading(true);
+  const fetchPosts = useCallback(async (page: number = 1, append: boolean = false) => {
+    if (append) {
+      setLoadingMore(true);
+    } else {
+      setLoading(true);
+    }
     try {
       const params = new URLSearchParams({
         page: page.toString(),
@@ -92,7 +99,11 @@ export default function BlogContent({ initialPosts, initialCategories }: BlogCon
       const data = await response.json();
 
       if (response.ok) {
-        setPosts(data.posts);
+        if (append) {
+          setPosts((prev) => [...prev, ...data.posts]);
+        } else {
+          setPosts(data.posts);
+        }
         setPagination(data.pagination);
         if (data.filters) {
           setCategories(data.filters.categories);
@@ -103,6 +114,7 @@ export default function BlogContent({ initialPosts, initialCategories }: BlogCon
       console.error("Error fetching posts:", error);
     } finally {
       setLoading(false);
+      setLoadingMore(false);
     }
   }, [activeCategory, activeTag, searchQuery, locale]);
 
@@ -131,9 +143,42 @@ export default function BlogContent({ initialPosts, initialCategories }: BlogCon
     }).format(new Date(dateString));
   };
 
+  const postTypeBadge = (type: string | null) => {
+    if (!type) return null;
+    const styles: Record<string, string> = {
+      guide: "bg-emerald-50 text-emerald-700",
+      news: "bg-blue-50 text-blue-700",
+      "case-study": "bg-purple-50 text-purple-700",
+      tutorial: "bg-amber-50 text-amber-700",
+      opinion: "bg-rose-50 text-rose-700",
+    };
+    const cls = styles[type] || "bg-gray-100 text-gray-600";
+    const label = type.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
+    return (
+      <span className={`inline-block rounded px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider ${cls}`}>
+        {label}
+      </span>
+    );
+  };
+
   const featuredPosts = posts.filter((p) => p.featured);
   const regularPosts = posts.filter((p) => !p.featured);
+  const trendingPosts = [...posts].sort((a, b) => b.views - a.views).slice(0, 4);
   const hasActiveFilters = activeCategory !== "all" || activeTag || searchQuery;
+
+  const highlightText = (text: string | null) => {
+    if (!text || !searchQuery) return text;
+    const escaped = searchQuery.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    const parts = text.split(new RegExp(`(${escaped})`, "gi"));
+    if (parts.length === 1) return text;
+    return parts.map((part, i) =>
+      part.toLowerCase() === searchQuery.toLowerCase() ? (
+        <mark key={i} className="rounded bg-gold/20 px-0.5 text-inherit">{part}</mark>
+      ) : (
+        part
+      )
+    );
+  };
 
   return (
     <>
@@ -326,8 +371,9 @@ export default function BlogContent({ initialPosts, initialCategories }: BlogCon
                               />
                             </div>
                           ) : (
-                            <div className="flex aspect-[16/10] items-center justify-center bg-gradient-to-br from-navy to-navy-dark md:aspect-auto md:h-full">
-                              <span className="font-poppins text-3xl font-bold text-white/20">BSG</span>
+                            <div className="flex aspect-[16/10] flex-col items-center justify-center bg-gradient-to-br from-navy to-navy-dark md:aspect-auto md:h-full">
+                              <BookOpen className="h-12 w-12 text-white/15" />
+                              <span className="mt-2 font-poppins text-sm font-semibold uppercase tracking-widest text-white/15">BSG Insights</span>
                             </div>
                           )}
                         </div>
@@ -382,8 +428,9 @@ export default function BlogContent({ initialPosts, initialCategories }: BlogCon
                               />
                             </div>
                           ) : (
-                            <div className="flex aspect-[16/10] items-center justify-center bg-gradient-to-br from-navy to-navy-dark">
-                              <span className="font-poppins text-3xl font-bold text-white/20">BSG</span>
+                            <div className="flex aspect-[16/10] flex-col items-center justify-center bg-gradient-to-br from-navy to-navy-dark">
+                              <BookOpen className="h-12 w-12 text-white/15" />
+                              <span className="mt-2 font-poppins text-sm font-semibold uppercase tracking-widest text-white/15">BSG Insights</span>
                             </div>
                           )}
                         </div>
@@ -456,6 +503,40 @@ export default function BlogContent({ initialPosts, initialCategories }: BlogCon
                 </div>
               )}
 
+              {/* Trending Now */}
+              {trendingPosts.length > 0 && pagination.page === 1 && !hasActiveFilters && (
+                <div className="mb-12">
+                  <div className="mb-5 flex items-center gap-3">
+                    <span className="inline-block rounded-full bg-gold/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-gold-dark">
+                      {t("trending")}
+                    </span>
+                    <div className="h-px flex-1 bg-gray-200" />
+                  </div>
+                  <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+                    {trendingPosts.map((post, idx) => (
+                      <Link
+                        key={post.slug}
+                        href={`/blog/${post.slug}`}
+                        className="group flex items-start gap-3 rounded-lg border border-gray-100 bg-white p-4 transition-all hover:border-gold/30 hover:shadow-md"
+                      >
+                        <span className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-navy font-poppins text-sm font-bold text-white">
+                          {idx + 1}
+                        </span>
+                        <div className="min-w-0 flex-1">
+                          <h4 className="line-clamp-2 text-sm font-semibold leading-snug text-gray-900 group-hover:text-navy">
+                            {post.title}
+                          </h4>
+                          <div className="mt-1.5 flex items-center gap-2 text-xs text-gray-400">
+                            <Eye className="h-3 w-3" />
+                            {post.views.toLocaleString()} {t("views", { count: "" }).trim()}
+                          </div>
+                        </div>
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              )}
+
               {/* Regular Posts Grid */}
               {regularPosts.length > 0 && (
                 <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
@@ -478,8 +559,9 @@ export default function BlogContent({ initialPosts, initialCategories }: BlogCon
                             />
                           </div>
                         ) : (
-                          <div className="flex aspect-[16/10] items-center justify-center bg-gradient-to-br from-navy-50 to-navy-100">
-                            <span className="font-poppins text-2xl font-bold text-navy/10">BSG</span>
+                          <div className="flex aspect-[16/10] flex-col items-center justify-center bg-gradient-to-br from-navy-50 via-navy-100 to-gold-50">
+                            <BookOpen className="h-10 w-10 text-navy/15" />
+                            <span className="mt-2 font-poppins text-xs font-semibold uppercase tracking-widest text-navy/15">BSG Insights</span>
                           </div>
                         )}
                         {/* Category overlay */}
@@ -488,15 +570,21 @@ export default function BlogContent({ initialPosts, initialCategories }: BlogCon
                             {post.category.name}
                           </span>
                         )}
+                        {/* Post type badge */}
+                        {post.post_type && (
+                          <span className="absolute right-3 top-3">
+                            {postTypeBadge(post.post_type)}
+                          </span>
+                        )}
                       </div>
 
                       {/* Content */}
                       <div className="p-5">
                         <h3 className="font-poppins text-lg font-bold leading-tight text-gray-900 group-hover:text-navy">
-                          {post.title}
+                          {highlightText(post.title)}
                         </h3>
                         <p className="mt-2 line-clamp-3 text-sm leading-relaxed text-gray-600">
-                          {post.excerpt}
+                          {highlightText(post.excerpt)}
                         </p>
 
                         {/* Tags */}
@@ -527,9 +615,17 @@ export default function BlogContent({ initialPosts, initialCategories }: BlogCon
                               </div>
                             )}
                           </div>
-                          <div className="flex items-center gap-1">
-                            <Eye className="h-3 w-3" />
-                            {post.views.toLocaleString()}
+                          <div className="flex items-center gap-3">
+                            {typeof post.comment_count === "number" && post.comment_count > 0 && (
+                              <div className="flex items-center gap-1">
+                                <MessageSquare className="h-3 w-3" />
+                                {post.comment_count}
+                              </div>
+                            )}
+                            <div className="flex items-center gap-1">
+                              <Eye className="h-3 w-3" />
+                              {post.views.toLocaleString()}
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -564,27 +660,66 @@ export default function BlogContent({ initialPosts, initialCategories }: BlogCon
               {/* Newsletter CTA */}
               {posts.length > 0 && (
                 <div className="mt-16 rounded-2xl bg-navy px-6 py-12 text-center text-white sm:px-12">
-                  <h2 className="font-poppins text-2xl font-bold lg:text-3xl">
+                  <Mail className="mx-auto h-10 w-10 text-gold" />
+                  <h2 className="mt-4 font-poppins text-2xl font-bold lg:text-3xl">
                     {t("ctaTitle")}
                   </h2>
                   <p className="mx-auto mt-4 max-w-xl text-white/70">
                     {t("ctaDescription")}
                   </p>
-                  <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-                    <Link
-                      href="/contact"
-                      className="inline-flex items-center gap-2 rounded-lg bg-gold px-6 py-3 font-medium text-white transition-colors hover:bg-gold-dark"
+                  <div className="mx-auto mt-8 max-w-md">
+                    <form
+                      action="/contact"
+                      method="get"
+                      className="flex flex-col gap-3 sm:flex-row"
                     >
-                      {t("ctaButton")}
-                      <ArrowRight className="h-4 w-4" />
-                    </Link>
+                      <input
+                        type="email"
+                        name="email"
+                        placeholder={t("newsletterPlaceholder")}
+                        required
+                        className="flex-1 rounded-lg border border-white/20 bg-white/10 px-4 py-3 text-sm text-white placeholder-white/50 backdrop-blur-sm focus:border-gold focus:outline-none focus:ring-1 focus:ring-gold"
+                      />
+                      <button
+                        type="submit"
+                        className="inline-flex items-center justify-center gap-2 rounded-lg bg-gold px-6 py-3 font-medium text-white transition-colors hover:bg-gold-dark"
+                      >
+                        {t("ctaButton")}
+                        <ArrowRight className="h-4 w-4" />
+                      </button>
+                    </form>
+                    <p className="mt-3 text-xs text-white/40">{t("newsletterDisclaimer")}</p>
+                  </div>
+                  <div className="mt-6">
                     <Link
                       href="/contact"
-                      className="inline-flex items-center gap-2 rounded-lg border border-white/30 px-6 py-3 font-medium text-white transition-colors hover:bg-white/10"
+                      className="inline-flex items-center gap-2 text-sm font-medium text-white/70 transition-colors hover:text-white"
                     >
                       {t("scheduleCall")}
+                      <ArrowRight className="h-3.5 w-3.5" />
                     </Link>
                   </div>
+                </div>
+              )}
+
+              {/* Load More Button */}
+              {pagination.hasNext && (
+                <div className="mt-10 text-center">
+                  <button
+                    type="button"
+                    onClick={() => fetchPosts(pagination.page + 1, true)}
+                    disabled={loadingMore}
+                    className="inline-flex items-center gap-2 rounded-lg border-2 border-navy px-8 py-3 text-sm font-semibold text-navy transition-colors hover:bg-navy hover:text-white disabled:opacity-50"
+                  >
+                    {loadingMore ? (
+                      <>
+                        <span className="h-4 w-4 animate-spin rounded-full border-2 border-navy border-t-transparent" />
+                        {t("loadingMore")}
+                      </>
+                    ) : (
+                      t("loadMore")
+                    )}
+                  </button>
                 </div>
               )}
 

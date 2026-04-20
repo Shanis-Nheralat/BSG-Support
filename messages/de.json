@@ -1200,7 +1200,12 @@
     "ctaTitle": "Bleiben Sie den Branchentrends voraus",
     "ctaDescription": "Erhalten Sie Experteneinblicke zu Geschäftsprozessen, Outsourcing-Strategien und digitaler Transformation.",
     "ctaButton": "Kontakt aufnehmen",
-    "scheduleCall": "Gespräch vereinbaren"
+    "scheduleCall": "Gespräch vereinbaren",
+    "trending": "Im Trend",
+    "newsletterPlaceholder": "Ihre E-Mail-Adresse eingeben",
+    "newsletterDisclaimer": "Wir respektieren Ihre Privatsphäre. Jederzeit abmeldbar.",
+    "loadMore": "Mehr Artikel laden",
+    "loadingMore": "Laden..."
   },
   "BlogDetail": {
     "backToBlog": "Zurück zum Blog",
@@ -1212,6 +1217,7 @@
     "copyLink": "Link kopieren",
     "linkCopied": "Link kopiert!",
     "publishedBy": "Veröffentlicht von",
+    "publishedOn": "Veröffentlicht am",
     "authorName": "Backsure Global Support",
     "authorTagline": "Experteneinblicke in Geschäftsprozesse und Branchentrends",
     "viewAllInsights": "Alle Einblicke anzeigen",

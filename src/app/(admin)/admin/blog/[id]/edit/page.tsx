@@ -51,6 +51,7 @@ export default async function EditBlogPostPage({ params }: EditBlogPostPageProps
           content: post.content,
           image_path: post.image_path,
           featured: post.featured,
+          post_type: post.post_type,
           status: post.status,
           category_id: post.category_id,
           meta_title: post.meta_title,
