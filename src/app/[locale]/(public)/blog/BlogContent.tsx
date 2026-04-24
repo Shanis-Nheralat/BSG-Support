@@ -384,12 +384,13 @@ export default function BlogContent({ initialPosts, initialCategories }: BlogCon
                                 {featuredPosts[0].category.name}
                               </span>
                             )}
+                            {postTypeBadge(featuredPosts[0].post_type)}
                           </div>
                           <h2 className="mt-3 font-poppins text-2xl font-bold text-gray-900 group-hover:text-navy lg:text-3xl">
-                            {featuredPosts[0].title}
+                            {highlightText(featuredPosts[0].title)}
                           </h2>
                           <p className="mt-3 line-clamp-3 text-gray-600">
-                            {featuredPosts[0].excerpt}
+                            {highlightText(featuredPosts[0].excerpt)}
                           </p>
                           <div className="mt-4 flex items-center gap-4 text-sm text-gray-400">
                             <div className="flex items-center gap-1.5">
@@ -441,11 +442,12 @@ export default function BlogContent({ initialPosts, initialCategories }: BlogCon
                                 {featuredPosts[0].category.name}
                               </span>
                             )}
+                            {postTypeBadge(featuredPosts[0].post_type)}
                           </div>
                           <h2 className="mt-3 font-poppins text-xl font-bold text-gray-900 group-hover:text-navy lg:text-2xl">
-                            {featuredPosts[0].title}
+                            {highlightText(featuredPosts[0].title)}
                           </h2>
-                          <p className="mt-2 line-clamp-2 text-gray-600">{featuredPosts[0].excerpt}</p>
+                          <p className="mt-2 line-clamp-2 text-gray-600">{highlightText(featuredPosts[0].excerpt)}</p>
                           <div className="mt-4 flex items-center gap-4 text-sm text-gray-400">
                             <div className="flex items-center gap-1.5">
                               <Calendar className="h-3.5 w-3.5" />
@@ -480,13 +482,16 @@ export default function BlogContent({ initialPosts, initialCategories }: BlogCon
                               </div>
                             )}
                             <div className="flex flex-col justify-center">
-                              {post.category && (
-                                <span className="mb-1 inline-block self-start rounded-full bg-gold-50 px-2.5 py-0.5 text-xs font-medium text-gold-dark">
-                                  {post.category.name}
-                                </span>
-                              )}
+                              <div className="mb-1 flex flex-wrap items-center gap-1.5">
+                                {post.category && (
+                                  <span className="inline-block self-start rounded-full bg-gold-50 px-2.5 py-0.5 text-xs font-medium text-gold-dark">
+                                    {post.category.name}
+                                  </span>
+                                )}
+                                {postTypeBadge(post.post_type)}
+                              </div>
                               <h3 className="font-poppins text-sm font-semibold leading-tight text-gray-900 group-hover:text-navy">
-                                {post.title}
+                                {highlightText(post.title)}
                               </h3>
                               <div className="mt-2 flex items-center gap-3 text-xs text-gray-400">
                                 <span>{formatDate(post.published_at)}</span>
@@ -524,7 +529,7 @@ export default function BlogContent({ initialPosts, initialCategories }: BlogCon
                         </span>
                         <div className="min-w-0 flex-1">
                           <h4 className="line-clamp-2 text-sm font-semibold leading-snug text-gray-900 group-hover:text-navy">
-                            {post.title}
+                            {highlightText(post.title)}
                           </h4>
                           <div className="mt-1.5 flex items-center gap-2 text-xs text-gray-400">
                             <Eye className="h-3 w-3" />
