@@ -127,6 +127,23 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // Validate status enum value
+    const validStatuses = ["draft", "pending", "published", "archived"];
+    if (status && !validStatuses.includes(status)) {
+      return NextResponse.json(
+        { error: `Invalid status "${status}". Must be one of: ${validStatuses.join(", ")}` },
+        { status: 400 }
+      );
+    }
+
+    // Validate category_id is a valid number
+    if (isNaN(Number(category_id))) {
+      return NextResponse.json(
+        { error: "Invalid category selected. Please choose a valid category." },
+        { status: 400 }
+      );
+    }
+
     // Check if slug already exists
     const existingPost = await prisma.blog_posts.findUnique({
       where: { slug },
@@ -140,6 +157,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Create post
+    const authorId = session.user.id ? parseInt(session.user.id) : null;
     const post = await prisma.blog_posts.create({
       data: {
         title,
@@ -150,8 +168,8 @@ export async function POST(request: NextRequest) {
         featured: featured || false,
         post_type: post_type || null,
         status: status || "draft",
-        category_id,
-        author_id: session.user.id ? parseInt(session.user.id) : null,
+        category_id: Number(category_id),
+        author_id: isNaN(authorId as number) ? null : authorId,
         meta_title: meta_title || null,
         meta_description: meta_description || null,
         meta_keywords: meta_keywords || null,
@@ -210,9 +228,74 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ post }, { status: 201 });
   } catch (error) {
     console.error("Error creating post:", error);
+
+    // Provide specific error messages based on the error type
+    if (error && typeof error === "object" && "code" in error) {
+      const prismaError = error as { code: string; meta?: { target?: string[] | string; field_name?: string; cause?: string } };
+
+      switch (prismaError.code) {
+        case "P2002": {
+          const target = prismaError.meta?.target;
+          const field = Array.isArray(target) ? target.join(", ") : target || "field";
+          return NextResponse.json(
+            { error: `A post with this ${field} already exists. Please use a unique value.` },
+            { status: 409 }
+          );
+        }
+        case "P2003": {
+          const fieldName = prismaError.meta?.field_name || "reference";
+          return NextResponse.json(
+            { error: `Invalid reference: the selected ${fieldName} does not exist. Please check your selections.` },
+            { status: 400 }
+          );
+        }
+        case "P2011": {
+          const field = prismaError.meta?.target || "field";
+          return NextResponse.json(
+            { error: `Required field "${field}" cannot be empty.` },
+            { status: 400 }
+          );
+        }
+        case "P2012": {
+          return NextResponse.json(
+            { error: `A required field is missing from the request.` },
+            { status: 400 }
+          );
+        }
+        case "P2006": {
+          return NextResponse.json(
+            { error: `Invalid value provided for one of the fields. Please check your input.` },
+            { status: 400 }
+          );
+        }
+        default:
+          break;
+      }
+    }
+
+    // Check for validation-type errors in the message
     const message = error instanceof Error ? error.message : "Unknown error";
+
+    if (message.includes("Argument") && message.includes("needs to be")) {
+      // Prisma validation error - extract meaningful part
+      const match = message.match(/Argument `(\w+)`:.*?needs to be (.+)/);
+      if (match) {
+        return NextResponse.json(
+          { error: `Invalid value for "${match[1]}": expected ${match[2]}.` },
+          { status: 400 }
+        );
+      }
+    }
+
+    if (message.includes("Invalid value for argument")) {
+      return NextResponse.json(
+        { error: `Invalid data provided: ${message}` },
+        { status: 400 }
+      );
+    }
+
     return NextResponse.json(
-      { error: "Failed to create post", details: message },
+      { error: `Failed to create post: ${message}` },
       { status: 500 }
     );
   }

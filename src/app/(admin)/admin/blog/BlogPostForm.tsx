@@ -323,7 +323,9 @@ export function BlogPostForm({ post, categories: initialCategories, existingTran
 
       if (!res.ok) {
         const result = await res.json();
-        throw new Error(result.error || "Failed to save post");
+        const errorMessage = result.error || "Failed to save post";
+        const details = result.details ? ` (${result.details})` : "";
+        throw new Error(`${errorMessage}${details}`);
       }
 
       router.push("/admin/blog");
